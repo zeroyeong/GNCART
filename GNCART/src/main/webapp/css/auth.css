@@ -1,0 +1,200 @@
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* home-content */
+.home-section .home-content {
+    position: relative;
+    padding-top: 90px;
+}
+
+/* auth box */
+.btnsList {
+    margin-top: 10px;
+}
+
+.btns a {
+    margin-right: 10px;
+    background-color: #11101d;
+    color: #eee;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: 0.5s;
+    text-decoration: none;
+}
+
+.home-content .auth-board-boxes .auth-box {
+    width: 97%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    padding: 10px 30px;
+    margin: 5px 30px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+}
+
+.home-content .auth-board-boxes .auth-box .authBtn {
+    position: absolute;
+    right: 80px;
+    width: 100px;
+    background: #11101d;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    top: 120px;
+}
+
+.home-content .auth-board-boxes .auth-box .authBtn:hover {
+    background: #4070f4;
+}
+
+.home-content .auth-board-boxes .auth-box .title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.home-content .auth-board-boxes .auth-box .title a {
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #11101d;
+}
+
+.home-content .auth-board-boxes .auth-box .auth-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.auth-board-boxes .auth-box .auth-details li.topic {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.auth-board-boxes .auth-box .auth-details li {
+    margin: 8px 0;
+}
+
+.auth-board-boxes .auth-box .auth-details li a {
+    font-size: 18px;
+    color: #333;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: #11101d;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+
+}
+
+tbody td {
+    padding: 10px;
+    width: 67px;
+}
+
+tbody tr:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+tbody td a {
+    color: #333;
+    text-decoration: none;
+}
+
+tfoot td {
+    padding-top: 25px;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #eee;
+    color: #11101d;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.page a:hover {
+    background-color: #11101d;
+    color: white;
+}
+
+/*모달*/
+.modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 모달 창 스타일 설정 */
+.modal-content {
+    position: relative;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.modalBtn {
+    background-color: #11101d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+.modalBtn:hover {
+    background: #4070f4;
+}
+
+.modal-close {
+    position: absolute;
+    top:0px;
+    right: 3px;
+    cursor: pointer;
+    font-size: 20px;
+}

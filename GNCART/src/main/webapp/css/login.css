@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color:#11101d;
+}
+.login-form {
+    
+    position:relative; z-index: 1;
+}
+.login-form h1 {
+    font-size: 45px; color: #fff;
+    text-align: center;
+    margin-bottom: 80px;
+    text-shadow: 2px 2px 2px #fff;
+}
+    
+.login-form h1 a{
+    font-size: 45px; color: #fff;
+    text-shadow: 2px 2px 2px #fff;
+    text-decoration: none;
+}
+.login { 
+    width:400px;
+}
+.login input {
+    width: 100%;
+    padding:20px 10px 10px;
+    border: 1px solid gray;
+    font-size:20px; color:black;
+    border-radius: 5px;
+}
+.login input::placeholder{
+    color:gray;
+}
+.login .loginBtn {
+    top: 77%;
+    position: absolute;
+    height: 50px;
+    display: flex;
+    width: 400px;
+    background: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px gray;
+    justify-content: center;
+    align-items: center;
+}
+.login .loginBtn b{
+    color:#11101d;
+    font-size:20px; color:black;
+    text-decoration : none;
+}
+.caption {
+    margin-top: 80px;
+    position: relative;
+    text-align: center;
+}
+
+.caption a {
+    font-size:18px; color:gray;
+    text-decoration: none;
+}
+
+.logSave {
+    position: relative;
+    top:7px;
+    color: #fff;
+}

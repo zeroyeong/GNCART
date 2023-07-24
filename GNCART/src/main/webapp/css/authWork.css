@@ -1,0 +1,112 @@
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #11101d;
+}
+
+form {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+label {
+    font-weight: bold;
+    color: #11101d;
+}
+
+input[type="text"],
+select,
+textarea {
+    padding: 7px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.radio-group label {
+    margin-right: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table th {
+    background-color: #eee;
+}
+
+.submitBtn {
+    background-color: #11101d;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+.submitBtn:hover {
+    background: #4070f4;
+
+}
+
+.lineContainer {
+    position: fixed;
+    top: 5px;
+    right: 157px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+
+.lineContainer th,
+.lineContainer td {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    text-align: center;
+}
+
+img {
+    height: 33px;
+    width: 50px;
+}
+
+.lineBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #11101d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.lineBtn:hover {
+    background: #4070f4;
+}
