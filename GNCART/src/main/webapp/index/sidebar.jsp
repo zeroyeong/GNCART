@@ -53,7 +53,7 @@
         <li><a href="../auth/authHold.jsp">결재 승인</a></li>
       </div>
       <li>
-        <a href="#">
+        <a href="http://localhost:8080/GNCART/mypage/mypageMain.jsp">
           <i class='bx bx-info-circle icon'></i>
           <span class="links_name">My Page</span>
         </a>
