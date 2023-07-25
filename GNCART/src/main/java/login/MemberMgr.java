@@ -39,7 +39,7 @@ public class MemberMgr {
             pstmt.setString(1, id);
             pstmt.setString(2, pw);
 
-            rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery(); 
             flag = rs.next();
 
             if (flag) {
