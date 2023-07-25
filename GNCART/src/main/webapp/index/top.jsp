@@ -10,7 +10,7 @@
       </div> 
 
       <div class="profile-details">
-        <a href="#"><img src="../images/profile.jpg" alt="" /></a>
+        <a href="#"><img src="../images/<%= session.getAttribute("memImg")%>" alt="" /></a>
         <span class="admin_name"><%= session.getAttribute("memName")%></span>
       </div>
     </nav>

@@ -23,8 +23,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GNC:ART</title>
   <link rel="stylesheet" href="../css/index.css">
-  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>	
-  <!--boxIcons CDN Link-->
+   <!--boxIcons CDN Link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -242,7 +241,6 @@
     </div>
   </section>
 
-  <script src="../script/indexScript.js"></script>
 </body>
 
 </html>
