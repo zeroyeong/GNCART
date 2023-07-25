@@ -19,7 +19,8 @@ public class MemberMgr {
             e.printStackTrace();
         }
     }
-
+    public String acNum = null;
+    
     // 로그인 처리
     public boolean loginMember(String id, String pw, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -33,7 +34,7 @@ public class MemberMgr {
         try {
             con = pool.getConnection();
 
-            sql = "SELECT MEM_NO, MEM_ID, MEM_NAME, MEM_DATE, MEM_TEL, MEM_MAIL, MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_AND, MEM_IMG, AC_NO, WORK_NO, PART_NO, LE_NO, AP_NO FROM member WHERE MEM_ID = ? AND MEM_PW = ?";
+            sql = "SELECT*FROM member a JOIN LEVEL b ON a.LE_NO=b.LE_NO WHERE MEM_ID = ? AND MEM_PW = ?";
  
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, id);
@@ -58,7 +59,7 @@ public class MemberMgr {
                 String workNo = rs.getString("WORK_NO");
                 String partNo = rs.getString("PART_NO");
                 String leNo = rs.getString("LE_NO");
-                String apNo = rs.getString("AP_NO");
+                String leLevel = rs.getString("LE_LEVEL");
                 
                 session.setAttribute("memNo", memNo);
                 session.setAttribute("memId", memId);
@@ -75,7 +76,9 @@ public class MemberMgr {
                 session.setAttribute("workNo", workNo);
                 session.setAttribute("partNo", partNo);
                 session.setAttribute("leNo", leNo);
-                session.setAttribute("apNO", apNo);
+                session.setAttribute("leLevel", leLevel);
+                
+                acNum=acNo;
             }
 
             session.setMaxInactiveInterval(-1);

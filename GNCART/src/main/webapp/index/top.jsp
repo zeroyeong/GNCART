@@ -11,7 +11,7 @@
 
       <div class="profile-details">
         <a href="#"><img src="../images/<%= session.getAttribute("memImg")%>" alt="" /></a>
-        <span class="admin_name"><%= session.getAttribute("memName")%></span>
+        <span class="admin_name"><%= session.getAttribute("leLevel")%>  <%= session.getAttribute("memName")%></span>
       </div>
     </nav>
    
