@@ -1,0 +1,61 @@
+
+function mapSearch() {
+			
+	url = "conAddMap.jsp?";
+	window.open(url, "condolencesMap","width=900,height=700, left=400, top=150,scrollbars=yes");
+}
+
+function findFile(){
+	$("#file").on('change',function(){
+	  var name = $("#file").val();
+	  $("#addfile").val(name);
+	});
+}
+
+function deleteMap(){
+
+	var loadMap = document.getElementById("loadMap");
+	var changeFile = document.getElementById("changeMap");
+	loadMap.style.display = 'none';
+	changeMap.style.display = 'block';
+		
+	//주소 값 초기화
+	var kakaoField = document.getElementById("kakaoField");
+		kakaoField.value = "";	
+	
+	var locationId = document.getElementById("locationId");
+		locationId.value = "";
+		locationId.placeholder='지도에서 검색 해주세요';
+		
+		document.getElementsByName('filed')[0].setAttribute('id', 'filed');
+}
+
+function deleteFile(){
+
+	var loadFile = document.getElementById("loadFile");
+	var changeFile = document.getElementById("changeFile");
+	loadFile.style.display = 'none';
+	changeFile.style.display = 'block';
+	
+	var addfile = document.getElementById("addfile");
+	var delFile = document.getElementById("delFile");
+	delFile.value = addfile.value;
+	
+	console.log("delFile= " + delFile.value);
+	addfile.value = "";
+	
+	document.getElementsByName('af')[0].setAttribute('id', 'af');
+}
+
+//히든타입 addressName filename 데이터
+function reviseSubmit(){
+	
+	var kakaoField = document.getElementById("kakaoField");
+	var addressName = document.getElementById("addressName");
+	
+	addressName.value = kakaoField.value;
+		
+	document.postFrm.submit();
+}
+
+
