@@ -24,4 +24,4 @@
 <body>
     <input type="hidden" name="NOT_NO" value="<%=NOT_NO%>">
 </body>
-</html>
+</html> 

@@ -15,7 +15,7 @@
 	String NOT_CONTENT = bean.getNOT_CONTENT();
 	String NOT_DATE = bean.getNOT_DATE();
 	String NOT_FILENAME = bean.getNOT_FILENAME();
-	int NOT_FILESIZE = bean.getNOT_FILESIZE();
+	int NOT_FILESIZE = bean.getNOT_FILESIZE(); 
 	int NOT_HIT = bean.getNOT_HIT();
 	int MEM_NO = bean.getMEM_NO();
 	int NOTSUB_NO = bean.getNOTSUB_NO();

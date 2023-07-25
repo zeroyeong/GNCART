@@ -54,7 +54,7 @@
                       </tr>
                   </tfoot>
                   <tbody>
-                  <%
+                  <% 
                   Vector<NoticeBean> vlist = null; 
                   vlist = nMgr.getBoardList();
                   if (vlist.isEmpty()) {

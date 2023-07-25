@@ -10,7 +10,7 @@
 	<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<%
+	<% 
 		request.setCharacterEncoding("UTF-8");
 	
 	String[] NOT_NO = request.getParameterValues("chk");
