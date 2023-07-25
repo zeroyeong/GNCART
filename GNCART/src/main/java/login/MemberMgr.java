@@ -33,7 +33,7 @@ public class MemberMgr {
         try {
             con = pool.getConnection();
 
-            sql = "SELECT MEM_NO, MEM_ID, MEM_NAME, MEM_DATE, MEM_MAIL, MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_ADN, AC_NO, WORK_NO, PART_NO, LE_NO FROM member WHERE MEM_ID = ? AND MEM_PW = ?";
+            sql = "SELECT MEM_NO, MEM_ID, MEM_NAME, MEM_DATE, MEM_TEL, MEM_MAIL, MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_AND, MEM_IMG, AC_NO, WORK_NO, PART_NO, LE_NO, AP_NO FROM member WHERE MEM_ID = ? AND MEM_PW = ?";
  
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, id);
@@ -47,29 +47,35 @@ public class MemberMgr {
                 String memId = rs.getString("MEM_ID");
                 String memName = rs.getString("MEM_NAME");
                 String memDate = rs.getString("MEM_DATE");
+                String memTel = rs.getString("MEM_TEL");
                 String memMail = rs.getString("MEM_MAIL");
                 String memPhone = rs.getString("MEM_PHONE");
                 String memAdd = rs.getString("MEM_ADD");
                 String memBirth = rs.getString("MEM_BIRTH");
-                String memAdn = rs.getString("MEM_ADN");
+                String memAnd = rs.getString("MEM_AND");
+                String memImg = rs.getString("MEM_IMG");
                 String acNo = rs.getString("AC_NO");
                 String workNo = rs.getString("WORK_NO");
                 String partNo = rs.getString("PART_NO");
                 String leNo = rs.getString("LE_NO");
+                String apNo = rs.getString("AP_NO");
                 
                 session.setAttribute("memNo", memNo);
                 session.setAttribute("memId", memId);
                 session.setAttribute("memName", memName);
                 session.setAttribute("memDate", memDate);
+                session.setAttribute("memTel", memTel);
                 session.setAttribute("memMail", memMail);
                 session.setAttribute("memPhone", memPhone);
                 session.setAttribute("memAdd", memAdd);
                 session.setAttribute("memBirth", memBirth);
-                session.setAttribute("memAdn", memAdn);
+                session.setAttribute("memAnd", memAnd);
+                session.setAttribute("memImg", memImg);
                 session.setAttribute("acNo", acNo);
                 session.setAttribute("workNo", workNo);
                 session.setAttribute("partNo", partNo);
                 session.setAttribute("leNo", leNo);
+                session.setAttribute("apNO", apNo);
             }
 
             session.setMaxInactiveInterval(-1);
