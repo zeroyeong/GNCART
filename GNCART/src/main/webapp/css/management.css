@@ -1,0 +1,214 @@
+/**************************/
+/*********전체설정*********/
+/**************************/
+
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+a{
+  text-decoration:none;
+  color:#11101d;
+}
+
+#container{
+  margin:20px;
+  background-color:#fff;
+  padding:30px;
+  border:3px solid #eee;
+  border-radius:20px;
+}
+
+/*********************/
+/****페이지 타이틀****/
+/*********************/
+
+.title{
+  padding-top:5px;
+  margin-bottom:20px;
+}
+.title h2{
+  border-bottom:1px solid gray;
+  padding-bottom:5px;
+}
+
+.btns{
+  margin-top:15px;
+}
+
+.btns a{
+  margin-right:10px;
+  background-color:#eee;
+  padding:5px;
+  border-radius:5px;
+  font-size:0.9em;
+  font-weight:bold;
+  transition: 0.3s;
+}
+
+.btns a:first-child{
+  background-color:#11101d;
+  color:#fff;
+}
+
+.btns a:hover{
+  background-color:gray;
+  color:#fff;
+}
+
+/**************************/
+/******페이지 소제목*******/
+/**************************/
+
+.smallTitle{
+  border:3px solid #eee;
+  padding:10px;
+  margin:20px 0;
+  text-align:center;
+}
+
+/**************************/
+/******페이지   본문*******/
+/**************************/
+.content{
+  width:100%;
+}
+
+/***********표 상단***********/
+
+.tableTopMenu{
+  width:100%;
+  height:30px;
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+/*___________buttonT___________*/
+
+.buttonT{
+  width:100%;
+}
+
+.buttonT td{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+}
+
+/*________memCheck_______*/
+
+input[value="사용자 수정"]{
+  padding:5px;
+  border-radius:5px;
+  transition:0.3s;
+
+  background:#eee;
+  border:none;
+}
+
+input[value="사용자 수정"]:hover{
+  background-color:gray;
+  color:#fff;
+  font-weight:bold;
+}
+
+/***********전체 사원 표***********/
+
+.memberT{
+  width:100%;
+  font-size:0.9em;
+  text-align:center;
+}
+
+table, th, td{
+  border:transparent;
+  border-collapse:collapse;
+}
+
+.memberT thead{
+  background-color:#11101d;
+  color:#fff;
+  padding:10px 0;
+}
+
+.memberT tbody{
+  padding:10px 0;
+}
+
+td{
+  padding:5px 0;
+}
+
+.memberT tr:last-child{
+  border-bottom:2px solid #11101d
+}
+
+.memberT tbody tr:hover{
+  background-color:#eee;
+}
+
+/***********bottom table***********/
+
+.bottomtable{
+  width:100%;
+}
+
+.bottomtable td{
+  width:33.33%;
+  text-align:center;
+}
+
+.bottomtable td:nth-child(2){
+	text-align:center;
+}
+
+/***********searchFrm***********/
+
+.search{
+  margin:10px 0;
+  width:100%;
+  height:30px;
+
+  display:flex;
+  justify-content:flex-end;
+}
+
+#keyField{
+  width:80px;
+  font-size:0.75em;
+  padding:0 5px;
+
+  border:1px solid gray;
+  border-right:none;
+
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+}
+
+#keyWord{
+  max-width:90%;
+  height:100%;
+  border:1px solid gray;
+  border-right:none;
+  padding:0 10px;
+}
+
+#searchFrmBtn{
+  width:50px;
+  height:100%;
+  border:1px solid gray;
+  background-color:#eee;
+  color:#11101d;
+  font-weight:bold;
+  transition:0.3s;
+
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
+}
+
+#searchFrmBtn:hover{
+  background-color:gray;
+  color:#fff;
+}

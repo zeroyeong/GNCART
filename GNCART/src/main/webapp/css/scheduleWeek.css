@@ -1,0 +1,161 @@
+a{
+  text-decoration:none;
+  color:#11101d
+}
+
+#container{
+  margin:20px;
+  background-color:#fff;
+  padding:30px;
+  border:3px solid #eee;
+  border-radius:20px;
+}
+
+/*********************/
+/****페이지 타이틀****/
+/*********************/
+.title{
+  padding-top:5px;
+  margin-bottom:20px;
+}
+.title h2{
+  border-bottom:1px solid gray;
+  padding-bottom:5px;
+}
+
+.btnBox{
+  display:flex;
+  justify-content:space-between;
+}
+
+.btns{
+  margin-top:15px;
+}
+.btns a{
+  margin-right:10px;
+  background-color:#eee;
+  padding:5px;
+  border-radius:5px;
+  font-size:0.9em;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btns a:last-child{
+  background-color:#11101d;
+  color:#fff;
+}
+
+.btns a:hover{
+  background-color:gray;
+  color:#fff;
+}
+
+/*********************/
+/********버튼 들******/
+/*********************/
+#btnsList{
+  display: flex;
+  justify-content:space-between;
+  margin-top:15px;
+  margin-bottom:20px;
+}
+#btns a{
+  margin-right:10px;
+  background-color:#eee;
+  color:#11101d;
+  font-weight:bold;
+  padding:5px;
+  border-radius:5px;
+  font-size:0.9em;;
+  transition:0.3s;
+}
+#btns:last-child a{
+  background-color:#11101d;
+  color:#fff;
+}
+
+#btns a:hover{
+  background-color:grey;
+  color:#eee;
+}
+
+/*-------------------------------------*/
+/*-----------------소제목--------------*/
+/*-------------------------------------*/
+
+.smallTitle{
+  border:3px solid #eee;
+  padding:20px;
+  margin:20px 0;
+}
+
+.yearBtn{
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+}
+
+.yearBtn h3{
+  width:40%;
+  text-align:center;
+  padding-bottom:5px;
+}
+
+.yearBtn button{
+  width:30%;
+  background-color:transparent;
+  border:transparent;
+  color:gray;
+  padding:0 20px;
+}
+
+.prev{
+  text-align:left;
+}
+
+.next{
+  text-align:right;
+}
+
+/*********************/
+/******본문 내용******/
+/*********************/
+
+.scheduletable-list{
+  border-top:2px solid #11101d;
+  border-bottom:2px solid #11101d;
+
+  padding:20px 0;
+}
+
+.scheduleList{
+  width:100%;
+}
+
+.scheduleList table, td{
+  border-collapse:collapse;
+  text-align:center;
+}
+
+td:first-child{
+  width:20%;
+}
+
+td:nth-child(2){
+  width:30%;
+}
+
+td:last-child{
+  width:50%;
+  text-align:left;
+}
+
+.day{
+  display:inline-block;
+  width:120px;
+  height:120px;
+  line-height: 120px;
+  background-color:#eee;
+  border-radius: 50%;
+}

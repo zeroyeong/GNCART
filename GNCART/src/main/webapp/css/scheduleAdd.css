@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+a{
+  text-decoration:none;
+  color:#000;
+}
+ul{
+  list-style:none;
+}
+body{
+  background: #f5f5f5;
+}
+
+/**********************************/
+/***************전체***************/
+/**********************************/
+
+.container{
+  width:500px;
+  margin:20px auto;
+  padding:30px;
+  background-color:#fff;
+  border:3px solid #eee;
+  border-radius:20px;
+}
+
+/**********************************/
+/**********타이틀 + X 버튼************/
+/**********************************/
+
+.topmenu{
+	display:flex;
+	justify-content:space-between;
+	padding-bottom:5px;
+  	margin-bottom:10px;
+  	border-bottom:1px solid #000;
+}
+
+#closeBtn{
+  text-align:center;
+  font-size:2em;
+  color:black;
+  margin-top:-10px;
+}
+
+/**********************************/
+/***************본문***************/
+/**********************************/
+
+ul{
+  display:flex;
+  flex-direction:column;
+  margin-bottom:20px;
+}
+
+li{
+  height:30px;
+  line-height:30px;
+  margin-bottom:10px;
+}
+
+li label{
+  float:left;
+  width:100px;
+}
+
+li select, input, textarea{
+  width:330px;
+  height:30px;
+  float:right;
+  padding:5px;
+}
+
+li:nth-child(6){
+  height:100px;
+}
+
+li textarea{
+  height:100px;
+}
+
+.sche_date{
+  float:right;
+  width:330px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.sche_date input{
+  margin-right:10px;
+}
+
+/**********************************/
+/***************버튼***************/
+/**********************************/
+
+.button{
+  display:flex;
+  justify-content:center;
+}
+
+.button input{
+  display:inline-block;
+  width:80px;
+  height:30px;
+  background-color:#eee;
+  color:#000;
+  border:transparent;
+  border-radius:5px;
+  transition:0.3s;
+}
+
+.button input:first-child{
+  margin-right:10px;
+}
+
+.button input:hover{
+  background-color:#000;
+  color:#fff;
+  font-weight:bold;
+}
+

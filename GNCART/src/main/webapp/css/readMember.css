@@ -1,0 +1,160 @@
+/**************************/
+/*********전체설정*********/
+/**************************/
+
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+a{
+  text-decoration:none;
+  color:#11101d;
+}
+ul{
+  list-style:none;
+}
+
+#container{
+  margin:20px;
+  background-color:#fff;
+  padding:30px;
+  padding-bottom:70px;
+  border:3px solid #eee;
+  border-radius:20px;
+}
+
+/*********************/
+/****페이지 타이틀****/
+/*********************/
+
+.title{
+  padding-top:5px;
+  margin-bottom:20px;
+}
+.title h2{
+  border-bottom:1px solid gray;
+  padding-bottom:5px;
+}
+
+.btns{
+  margin-top:15px;
+}
+
+.btns a{
+  margin-right:10px;
+  background-color:#eee;
+  padding:5px;
+  border-radius:5px;
+  font-size:0.9em;
+  font-weight:bold;
+  transition: 0.3s;
+}
+
+.btns a:hover{
+  background-color:gray;
+  color:#fff;
+}
+
+/**************************/
+/******페이지 소제목*******/
+/**************************/
+
+.smallTitle{
+  border:3px solid #eee;
+  padding:10px;
+  margin:20px 0;
+  text-align:center;
+}
+
+/**************************/
+/******페이지   본문*******/
+/**************************/
+.content{
+  width:100%;
+  border-top:2px solid #11101d;
+  border-bottom:2px solid #11101d;
+  padding:10px 0;
+  padding-bottom:60px;
+}
+
+/*-----------------USER-INFO--------------*/
+
+table, td{
+  border-collapse:collapse;
+}
+
+table{
+  width:80%;
+  margin:20px auto;
+}
+
+td{
+  padding:10px;
+  border-top:1px solid gray;
+  border-bottom:1px solid gray;
+}
+
+img{
+	width:150px;
+}
+
+td:first-child, td:nth-child(3){
+  width:20%;
+  text-align:center;
+  background-color:#eee;
+  font-weight:bold;
+}
+
+tr:last-child td:first-child{
+  background-color:#fff;
+}
+
+.user-imgT{
+  width:100%;
+}
+
+.user-imgT td{
+  background-color:#fff;
+  text-align:center;
+  border:none;
+  padding:0;
+}
+
+.downBtn{
+  font-size:0.8em;
+  margin-left:150px;  
+}
+
+/*-----------------BUTTON--------------*/
+
+.button{
+  width:100%;
+}
+
+.button a{
+  float:right;
+  height:35px;
+  width:60px;
+  text-align:center;
+  line-height:35px;
+  font-size:0.8em;
+  
+  margin-right:10px;
+
+  border:none;
+  background-color:#eee;
+  border-radius:5px;
+
+  transition:0.3s;
+}
+
+.button a:first-child{
+  margin-right:0;
+}
+
+.button a:hover{
+  background-color:gray;
+  font-weight:bold;
+  color:#fff;
+}

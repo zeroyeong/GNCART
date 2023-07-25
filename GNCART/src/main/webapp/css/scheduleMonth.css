@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+/**************************/
+/*********전체설정*********/
+/**************************/
+
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+a{
+  text-decoration:none;
+  color:#11101d;
+}
+
+#container{
+  margin:20px;
+  background-color:#fff;
+  padding:30px;
+  border:3px solid #eee;
+  border-radius:20px;
+}
+
+/*********************/
+/****페이지 타이틀****/
+/*********************/
+.title{
+  padding-top:5px;
+  margin-bottom:20px;
+}
+.title h2{
+  border-bottom:1px solid gray;
+  padding-bottom:5px;
+}
+
+.btnBox{
+  display:flex;
+  justify-content:space-between;
+}
+
+.btns{
+  margin-top:15px;
+}
+.btns a{
+  margin-right:10px;
+  background-color:#eee;
+  padding:5px;
+  border-radius:5px;
+  font-size:0.9em;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btns a:first-child{
+  background-color:#11101d;
+  color:#fff;
+}
+
+.btns a:hover{
+  background-color:gray;
+  color:#fff;
+}
+
+/**************************/
+/******페이지 소제목*******/
+/**************************/
+
+.smallTitle{
+  border:3px solid #eee;
+  padding:20px;
+  margin:20px 0;
+}
+
+.yearBtn{
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+}
+
+.yearBtn h3{
+  width:40%;
+  text-align:center;
+  padding-bottom:5px;
+}
+
+.yearBtn button{
+  width:30%;
+  background-color:transparent;
+  border:transparent;
+  color:gray;
+  padding:0 20px;
+}
+
+.prev{
+  text-align:left;
+}
+
+.next{
+  text-align:right;
+}
+
+#month{
+  width:100%;
+  display:flex;
+  gap:10px;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  padding:10px;
+}
+
+#month a{
+  display:block;
+  padding:2px 10px;
+  border-radius:5px;
+  transition:0.3s;
+}
+
+#month a:hover{
+  background-color:gray;
+  color:#fff;
+}
+
+#month a.active{
+  background-color:#11101d;
+  color:#fff;
+}
+
+/**************************/
+/******페이지   본문*******/
+/**************************/
+.content{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+}
+.contentBox{
+  width:49%;
+  border:3px solid #eee;
+}
+
+/******캘린더 스타일******/
+table{
+  width:100%;
+}
+
+table, th, td{
+  border:1px solid transparent;
+  border-collapse:collapse;
+  text-align:center;
+}
+
+td{
+  padding:10px 0;
+  width:14.3%
+}
+
+thead tr:first-child td{
+  font-size:larger;
+  font-weight:bold;
+}
+
+thead tr:last-child{
+  background-color:#11101d;
+  color:#fff;
+  font-weight:bold;
+}
+
+/******일정List 스타일******/
+
+.scheduleList td:first-child{
+  width:40%;
+  text-align:center;
+}
+
+.scheduleList td:last-child{
+  width:60%;
+}
+
+.scheduleList tbody td:last-child{
+  text-align:left;
+}
