@@ -25,7 +25,7 @@
             </div>
         </form>
         <div class="caption">
-            <a href="forgetPw.jsp">Forgot password?</a>
+            <a href="forgetPw.jsp">Forgot password?</a> 
         </div>
 
    </section>
