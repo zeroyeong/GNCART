@@ -3,14 +3,6 @@
 <%@ page import="login.MemberBean" %>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 
-<%
-	request.setCharacterEncoding("UTF-8");
-
-	String id = (String)session.getAttribute("idKey");
-	String pw = (String)session.getAttribute("pwKey");
-	String name = mMgr.nameFind(id,pw);
-%>
-
     <nav>
       <div class="alert-icon">
         <i class='bx bx-bell' data-count="1"></i>
@@ -19,7 +11,7 @@
 
       <div class="profile-details">
         <a href="#"><img src="../images/profile.jpg" alt="" /></a>
-        <span class="admin_name"><%=name%></span>
+        <span class="admin_name"><%= session.getAttribute("memName")%></span>
       </div>
     </nav>
    

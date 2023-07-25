@@ -4,105 +4,104 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import common.DBConnectionMgr;
 
-//MemberMgr 클래스는 jsp 페이지에서 자바빈즈 를 사용하여 정의된 메서드를 호출하는 DAO 와 비슷한 역할을 합니다.
-//각 기능에 맞는 메서드를 정의 하여, 메서드 호출시 DB연결, 쿼리문 처리, 결과값 return 하는 클래스 입니다.
 public class MemberMgr {
-	private DBConnectionMgr pool;
+    private DBConnectionMgr pool;
 
-	public MemberMgr() {
-		try {
-			pool = DBConnectionMgr.getInstance();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public MemberMgr() {
+        try {
+            pool = DBConnectionMgr.getInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-		// 로그인 처리
-		public boolean loginMember(String id, String pw) {
-			
-				Connection con = null;
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				String sql = null;
-				boolean flag = false;
+    // 로그인 처리
+    public boolean loginMember(String id, String pw, HttpServletRequest request) {
+        HttpSession session = request.getSession();
 
-				try {
-					con = pool.getConnection();
-					
-					sql = "select MEM_ID from member where MEM_ID = ? and MEM_PW = ?";
-					//id 컬럼을 찾는 select 쿼리를 작성한다. where 절 에 매개변수로 받은 id, pw를 입력함.
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, id);
-					pstmt.setString(2, pw);
-					
-					rs = pstmt.executeQuery();
-					flag = rs.next();
-					
-					return flag;
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					pool.freeConnection(con, pstmt, rs);
-				}
-				return false;
-			}
-		
-		//멤버테이블 이름 찾아서 우측상단 이름 넣기
-		public String nameFind(String id, String pw) {
-			
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = null;
-			String name = null;
-			try {
-				con = pool.getConnection();
-				
-				sql = "select MEM_NAME from member where MEM_ID = ? and MEM_PW = ?";
-			
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, id);
-				pstmt.setString(2, pw);
-				
-				rs = pstmt.executeQuery();
-				
-			
-				if(rs.next()) {
-					name = rs.getString("MEM_NAME");
-				}
-				return name;
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				pool.freeConnection(con, pstmt, rs);
-			}
-			return "";
-		}
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = null;
+        boolean flag = false;
 
-		
-		 // 비밀번호 변경
-	    public boolean resetPassword(String id, String newPw) {
-	        Connection con = null;
-	        PreparedStatement pstmt = null;
-	        String sql = null;
-	      
-	        try {
-	        	con = pool.getConnection();
+        try {
+            con = pool.getConnection();
 
-	            sql = "UPDATE member SET MEM_PW = ? WHERE MEM_ID = ?";
-	            pstmt = con.prepareStatement(sql);
-	            pstmt.setString(1, newPw);
-	            pstmt.setString(2, id);
+            sql = "SELECT MEM_ID, MEM_NAME, MEM_DATE, MEM_MAIL, MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_AND, AC_NO, WORK_NO, PART_NO, LE_NO FROM member WHERE MEM_ID = ? AND MEM_PW = ?";
+ 
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.setString(2, pw);
 
-	            int rowsAffected = pstmt.executeUpdate();
-	            return rowsAffected > 0;
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        } finally {
-	            pool.freeConnection(con, pstmt);
-	        }
-	        return false;
-	    }
-	}
+            rs = pstmt.executeQuery();
+            flag = rs.next();
+
+            if (flag) {
+                String memId = rs.getString("MEM_ID");
+                String memName = rs.getString("MEM_NAME");
+                String memDate = rs.getString("MEM_DATE");
+                String memMail = rs.getString("MEM_MAIL");
+                String memPhone = rs.getString("MEM_PHONE");
+                String memAdd = rs.getString("MEM_ADD");
+                String memBirth = rs.getString("MEM_BIRTH");
+                String memAnd = rs.getString("MEM_AND");
+                String acNo = rs.getString("AC_NO");
+                String workNo = rs.getString("WORK_NO");
+                String partNo = rs.getString("PART_NO");
+                String leNo = rs.getString("LE_NO");
+
+                session.setAttribute("memId", memId);
+                session.setAttribute("memName", memName);
+                session.setAttribute("memDate", memDate);
+                session.setAttribute("memMail", memMail);
+                session.setAttribute("memPhone", memPhone);
+                session.setAttribute("memAdd", memAdd);
+                session.setAttribute("memBirth", memBirth);
+                session.setAttribute("memAnd", memAnd);
+                session.setAttribute("acNo", acNo);
+                session.setAttribute("workNo", workNo);
+                session.setAttribute("partNo", partNo);
+                session.setAttribute("leNo", leNo);
+            }
+
+            session.setMaxInactiveInterval(-1);
+
+            return flag;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.freeConnection(con, pstmt, rs);
+        }
+        return false;
+    }
+
+    // 비밀번호 변경
+    public boolean resetPassword(String id, String newPw) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        String sql = null;
+
+        try {
+            con = pool.getConnection();
+
+            sql = "UPDATE member SET MEM_PW = ? WHERE MEM_ID = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, newPw);
+            pstmt.setString(2, id);
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.freeConnection(con, pstmt);
+        }
+        return false;
+    }
+}

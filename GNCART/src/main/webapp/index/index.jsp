@@ -1,14 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="login.MemberBean" %>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
-<% // 세션에서 로그인 정보 가져오기 
-	String id=(String) session.getAttribute("idKey"); String pw=(String)
-	session.getAttribute("pwKey"); String name=mMgr.nameFind(id, pw); 
-	// 로그인 안했을 시 로그인 페이지로 리다이렉트 
-	if (id==null||pw==null) { response.sendRedirect("../00login/login.jsp"); }
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate" );
-	response.setHeader("Pragma", "no-cache" ); response.setHeader("Expires", "0" );
+
+<%
+ //로그인 안했을 시 로그인 페이지로 리다이렉트 
+ if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+    response.sendRedirect("../login.jsp");
+
+ // 캐시 설정
+ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate" ); 
+ response.setHeader("Pragma", "no-cache" ); 
+ response.setHeader("Expires", "0" ); 
 %>
+
 <!DOCTYPE html>
 <html lang="ko">
  

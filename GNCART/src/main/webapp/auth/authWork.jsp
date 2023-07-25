@@ -3,18 +3,8 @@
 <%@ page import="login.MemberBean" %>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 <%
-    // 세션에서 로그인 정보 가져오기
-    String id = (String) session.getAttribute("idKey");
-    String pw = (String) session.getAttribute("pwKey");
-    String name = mMgr.nameFind(id, pw);
-    
-    // 로그인 안했을 시 로그인 페이지로 리다이렉트
-    if (id == null || pw == null) {
-        response.sendRedirect("../login.jsp");
-    }
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
+  if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+    response.sendRedirect("../login.jsp");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -53,46 +43,24 @@
             </tr>
 
             <tr>
-                <td><label for="AUTH_NUM">문서번호</label></td>
-                <td><input type="text" id="AUTH_NUM" name="AUTH_NUM"></td>
-                <td><label for="department">소속 부서</label></td>
-                <td><input type="text" id="department" name="department"></td>
-            </tr>
-            <tr>
                 <td><label for="MEM_NAME">성명</label></td>
                 <td><input type="text" id="MEM_NAME" name="MEM_NAME"></td>
+            </tr>
+            <tr>
                 <td><label for="position">직급</label></td>
                 <td><input type="text" id="position" name="position"></td>
             </tr>
             <tr>
-                <td><label for="AUTH_SDATE">휴가 시작일 ~ 휴가 종료일</label></td>
-                <td colspan="3">
-                    <input type="date" id="AUTH_SDATE" name="AUTH_SDATE" required>
-                    ~
-                    <input type="date" id="AUTH_EDATE" name="AUTH_EDATE" required>
-                </td>
+                <td><label for="department">소속 부서</label></td>
+                <td><input type="text" id="department" name="department"></td>
             </tr>
             <tr>
-                <td><label>휴가 사유</label></td>
-                <td colspan="3">
-                    <div class="radio-group">
-                        <input type="radio" id="vacation_reason1" name="vacation_reason" value="월차" required>
-                        <label for="vacation_reason1">월차</label>
-
-                        <input type="radio" id="vacation_reason2" name="vacation_reason" value="연차" required>
-                        <label for="vacation_reason2">연차</label>
-
-                        <input type="radio" id="vacation_reason3" name="vacation_reason" value="병가" required>
-                        <label for="vacation_reason3">병가</label>
-
-                        <input type="radio" id="vacation_reason4" name="vacation_reason" value="기타" required>
-                        <label for="vacation_reason4">기타</label>
-                    </div>
-                </td>
+                <td><label for="WORK_DETAIL">업무 내용</label></td>
+                <td colspan="3"><textarea id="WORK_DETAIL" name="WORK_DETAIL" rows="10" cols="50"></textarea></td>
             </tr>
             <tr>
-                <td><label for="AUTH_PP">상세 사유</label></td>
-                <td colspan="3"><textarea id="AUTH_PP" name="AUTH_PP" rows="10" cols="50"></textarea></td>
+                <td><label for="WORK_SPECIAL">특이사항</label></td>
+                <td colspan="3"><textarea id="WORK_SPECIAL" name="WORK_SPECIAL" rows="5" cols="50"></textarea></td>
             </tr>
         </table>
         <br>
@@ -100,6 +68,7 @@
         <button class="submitBtn" type="submit">작성완료</button>
     </form>
 
+    <script src="../script/authScript.js"></script>
 </body>
 
 </html>

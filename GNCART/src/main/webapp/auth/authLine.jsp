@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="login.MemberBean" %>
+<jsp:useBean id="mMgr" class="login.MemberMgr" />
+<%
+  if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+    response.sendRedirect("../login.jsp");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -17,7 +23,7 @@
     <h1>결재선 설정</h1>
     <form action="" method="post">
         <label for="approver1">결재자 1</label>
-        <select name="#" id="#">
+        <select name="approver1" id="approver1">
             <option value="manager1">매니저 1</option>
             <option value="manager2">매니저 2</option>
             <option value="manager3">매니저 3</option>
@@ -26,13 +32,14 @@
         <br>
 
         <label for="approver2">결재자 2</label>
-        <select name="#" id="#">
+        <select name="approver2" id="approver2">
             <option value="manager1">매니저 1</option>
             <option value="manager2">매니저 2</option>
             <option value="manager3">매니저 3</option>
         </select>
 
         <button class="submitBtn" type="submit">확인</button>
+    </form>
 </body>
 
 </html>

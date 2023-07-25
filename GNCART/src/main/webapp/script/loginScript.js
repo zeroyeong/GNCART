@@ -1,3 +1,4 @@
+/*Remember ID */
 $(document).ready(function () {
     var key = getCookie("idChk");
     if (key != "") {
@@ -49,6 +50,7 @@ function getCookie(cookieName) {
     return unescape(cookieValue);
 }
 
+/*loginCheck.jsp */
 function loginCheck() {
     if (document.loginFrm.id.value == "") {
         alert("아이디를 입력해 주세요.");

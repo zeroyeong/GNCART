@@ -3,19 +3,9 @@
 <%@ page import="login.MemberBean" %>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 <%
-    // 세션에서 로그인 정보 가져오기
-    String id = (String) session.getAttribute("idKey");
-    String pw = (String) session.getAttribute("pwKey");
-    String name = mMgr.nameFind(id, pw);
-    
-    // 로그인 안했을 시 로그인 페이지로 리다이렉트
-    if (id == null || pw == null) {
-        response.sendRedirect("../login.jsp");
-    }
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
-%>>
+  if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+    response.sendRedirect("../login.jsp");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -204,7 +194,7 @@
 
 </section>
 
-<script src="./script/indexScript.js"></script>
+<script src="../script/indexScript.js"></script>
 </body>
 
 </html>

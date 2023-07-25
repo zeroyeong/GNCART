@@ -3,18 +3,8 @@
 <%@ page import="login.MemberBean" %>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 <%
-    // 세션에서 로그인 정보 가져오기
-    String id = (String) session.getAttribute("idKey");
-    String pw = (String) session.getAttribute("pwKey");
-    String name = mMgr.nameFind(id, pw);
-    
-    // 로그인 안했을 시 로그인 페이지로 리다이렉트
-    if (id == null || pw == null) {
-        response.sendRedirect("../login.jsp");
-    }
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
+  if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+    response.sendRedirect("../login.jsp");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -53,19 +43,19 @@
             </tr>
 
             <tr>
-                <td><label for="AUTH_NUM">문서번호</label></td>
-                <td><input type="text" id="AUTH_NUM" name="AUTH_NUM"></td>
-                <td><label for="department">소속 부서</label></td>
-                <td><input type="text" id="department" name="department"></td>
-            </tr>
-            <tr>
                 <td><label for="MEM_NAME">성명</label></td>
                 <td><input type="text" id="MEM_NAME" name="MEM_NAME"></td>
+            </tr>
+            <tr>
                 <td><label for="position">직급</label></td>
                 <td><input type="text" id="position" name="position"></td>
             </tr>
             <tr>
-                <td><label for="AUTH_SDATE">휴가 시작일 ~ 휴가 종료일</label></td>
+                <td><label for="department">소속 부서</label></td>
+                <td><input type="text" id="department" name="department"></td>
+            </tr>
+            <tr>
+                <td><label for="AUTH_SDATE">휴가 날짜</label></td>
                 <td colspan="3">
                     <input type="date" id="AUTH_SDATE" name="AUTH_SDATE" required>
                     ~
@@ -100,18 +90,7 @@
         <button class="submitBtn" type="submit">작성완료</button>
     </form>
 
-<script>
-  function lineBtn() {
-    // authLine.jsp 파일의 URL을 지정합니다.
-    var popupUrl = "authLine.jsp";
-
-    // 팝업 창을 열기 위한 옵션들을 설정합니다.
-    var popupOptions = "width=500,height=400,scrollbars=yes";
-
-    // window.open() 함수를 사용하여 팝업을 엽니다.
-    window.open(popupUrl, "Line 팝업", popupOptions);
-  }
-</script>
+    <script src="../script/authScript.js"></script>
 </body>
 
 </html>
