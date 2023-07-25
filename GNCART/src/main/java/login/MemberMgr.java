@@ -33,7 +33,7 @@ public class MemberMgr {
         try {
             con = pool.getConnection();
 
-            sql = "SELECT MEM_ID, MEM_NAME, MEM_DATE, MEM_MAIL, MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_AND, AC_NO, WORK_NO, PART_NO, LE_NO FROM member WHERE MEM_ID = ? AND MEM_PW = ?";
+            sql = "SELECT MEM_NO, MEM_ID, MEM_NAME, MEM_DATE, MEM_MAIL, MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_ADN, AC_NO, WORK_NO, PART_NO, LE_NO FROM member WHERE MEM_ID = ? AND MEM_PW = ?";
  
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, id);
@@ -43,6 +43,7 @@ public class MemberMgr {
             flag = rs.next();
 
             if (flag) {
+            	String memNo = rs.getString("MEM_NO");
                 String memId = rs.getString("MEM_ID");
                 String memName = rs.getString("MEM_NAME");
                 String memDate = rs.getString("MEM_DATE");
@@ -50,12 +51,13 @@ public class MemberMgr {
                 String memPhone = rs.getString("MEM_PHONE");
                 String memAdd = rs.getString("MEM_ADD");
                 String memBirth = rs.getString("MEM_BIRTH");
-                String memAnd = rs.getString("MEM_AND");
+                String memAdn = rs.getString("MEM_ADN");
                 String acNo = rs.getString("AC_NO");
                 String workNo = rs.getString("WORK_NO");
                 String partNo = rs.getString("PART_NO");
                 String leNo = rs.getString("LE_NO");
-
+                
+                session.setAttribute("memNo", memNo);
                 session.setAttribute("memId", memId);
                 session.setAttribute("memName", memName);
                 session.setAttribute("memDate", memDate);
@@ -63,7 +65,7 @@ public class MemberMgr {
                 session.setAttribute("memPhone", memPhone);
                 session.setAttribute("memAdd", memAdd);
                 session.setAttribute("memBirth", memBirth);
-                session.setAttribute("memAnd", memAnd);
+                session.setAttribute("memAdn", memAdn);
                 session.setAttribute("acNo", acNo);
                 session.setAttribute("workNo", workNo);
                 session.setAttribute("partNo", partNo);

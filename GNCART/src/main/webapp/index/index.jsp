@@ -11,6 +11,8 @@
  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate" ); 
  response.setHeader("Pragma", "no-cache" ); 
  response.setHeader("Expires", "0" ); 
+ 
+ String work = (String)session.getAttribute("workNo");
 %>
 
 <!DOCTYPE html>
@@ -44,6 +46,7 @@
               <div class="box-topic">공지사항</div>
             </a>
             <div class="indicator">
+            	<p><%=work %></p>
               <p>123123123123</p>
               <p>123123123123</p>
               <p>123123123123</p>
