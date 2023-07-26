@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="login.MemberBean" %>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
-
+<%@ page import="schedule.ScheduleBean" %>
 <%
  //로그인 안했을 시 로그인 페이지로 리다이렉트 
  if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
@@ -11,8 +10,6 @@
  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate" ); 
  response.setHeader("Pragma", "no-cache" ); 
  response.setHeader("Expires", "0" ); 
- 
- String work = (String)session.getAttribute("workNo");
 %>
 
 <!DOCTYPE html>
@@ -45,7 +42,7 @@
               <div class="box-topic">공지사항</div>
             </a>
             <div class="indicator">
-            	<p><%=work %></p>
+              <p>123123123123</p>
               <p>123123123123</p>
               <p>123123123123</p>
               <p>123123123123</p>

@@ -19,7 +19,7 @@ public class ResetPasswordServlet extends HttpServlet {
         String newPw1 = request.getParameter("resetPw1");
         String newPw2 = request.getParameter("resetPw2"); 
 
-        // 비밀번호 검증 및 초기화 처리
+        // 비밀번호 검증 및 변경처리
         if (newPw1.equals(newPw2)) {
             MemberMgr memberMgr = new MemberMgr();
             boolean success = memberMgr.resetPassword(id, newPw1);

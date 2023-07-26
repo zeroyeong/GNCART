@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="login.MemberBean" %>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 
 <%
@@ -20,7 +19,7 @@
 	    session.setAttribute("pwKey",pw);
 		
 	    //관리자 페이지로 로그인 	
-	    if(mMgr.acNum.equals("2")){
+	    if(mMgr.acNum == 2){
 	    	msg = "관리자 로그인 성공";
 	        url = "management/managementIndex/jsp/managementIndex.jsp";
 	    }

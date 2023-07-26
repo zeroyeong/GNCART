@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="login.MemberBean" %>
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
 <%
   if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)

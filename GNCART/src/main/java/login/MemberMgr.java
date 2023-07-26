@@ -19,7 +19,7 @@ public class MemberMgr {
             e.printStackTrace();
         }
     }
-    public String acNum = null;
+    public int acNum = 0;
     
     // 로그인 처리
     public boolean loginMember(String id, String pw, HttpServletRequest request) {
@@ -44,7 +44,7 @@ public class MemberMgr {
             flag = rs.next();
 
             if (flag) {
-            	String memNo = rs.getString("MEM_NO");
+            	int memNo = rs.getInt("MEM_NO");
                 String memId = rs.getString("MEM_ID");
                 String memName = rs.getString("MEM_NAME");
                 String memDate = rs.getString("MEM_DATE");
@@ -55,10 +55,10 @@ public class MemberMgr {
                 String memBirth = rs.getString("MEM_BIRTH");
                 String memAnd = rs.getString("MEM_AND");
                 String memImg = rs.getString("MEM_IMG");
-                String acNo = rs.getString("AC_NO");
-                String workNo = rs.getString("WORK_NO");
-                String partNo = rs.getString("PART_NO");
-                String leNo = rs.getString("LE_NO");
+                int acNo = rs.getInt("AC_NO");
+                int workNo = rs.getInt("WORK_NO");
+                int partNo = rs.getInt("PART_NO");
+                int leNo = rs.getInt("LE_NO");
                 String leLevel = rs.getString("LE_LEVEL");
                 
                 session.setAttribute("memNo", memNo);
