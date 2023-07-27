@@ -18,14 +18,23 @@ function checkAll() {
         checkboxes[i].checked = selectAllCheckbox.checked;
     }
 }
-function check() {
-	   document.ReviseFrm.submit();
-	}
 function down(NOT_FILENAME){
 	document.downFrm.NOT_FILENAME.value=NOT_FILENAME;
 	document.downFrm.submit();
-}    
-    function writeNOT() {
+}
+    function getCurrentDate() {
+      var currentDate = new Date();
+      var year = currentDate.getFullYear();
+      var month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      var day = String(currentDate.getDate()	).padStart(2, '0');
+
+      return year + '-' + month + '-' + day;
+}
+
+    var currentDateInput = document.getElementById('currentDateInput');
+    currentDateInput.value = getCurrentDate();
+    
+	function writeNOT() {
     	  var title = document.getElementById("not_title").value;
     	  var content = document.getElementById("not_content").value;
 
@@ -42,3 +51,11 @@ function down(NOT_FILENAME){
     	  }
     	  return true;
     	}
+    function findFile(){
+    	$("#file").on('change',function(){
+    	  var name = $("#file").val();
+    	  $("#filename").val(name);
+    	});
+    }
+    
+ 	

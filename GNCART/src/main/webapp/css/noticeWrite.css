@@ -3,6 +3,10 @@ a{
   color:#11101d
 }
 
+#filename{
+	color:blue;
+}
+
 #container{
   margin:20px;
   padding:30px 30px 15px;
@@ -14,11 +18,32 @@ a{
 }
 
 #title{
+  display:flex;
+  justify-content:space-between;
   margin:5px 0;
 }
 
+/* Detail */
+#writerInfo{
+  margin:5px 0;
+}
+
+#writerInfo span{
+  margin-right:10px;
+  font-size:0.9em;
+  color:#888;
+}
+#writerInfo span a{
+  font-size:0.9em;
+  color:#888;
+}
+/* Detail */
+
+
+
 table{
-  margin-top:30px;
+  margin:30px auto 0;
+  width:100%;
 }
 
 table,th,td{
@@ -36,6 +61,12 @@ td input,select,textarea{
   border:transparent;
   padding:20px;
   font-size:1em;
+}
+
+td button{
+    width: 5.5rem;
+ 	height:30px;
+    margin: 0 auto;
 }
 
 textarea{
@@ -60,8 +91,10 @@ td input,select{
 
 #btns{
   margin:20px 0;
+  margin-left: auto;
   float:right;
 }
+
 #btns input{
   background-color:#11101d;
   width:90px;
@@ -72,7 +105,7 @@ td input,select{
 }
 
 #btns input:first-child{
-  margin-right:20px;
+ /* margin-right:0px; */
 }
 
 #btns input {
@@ -83,6 +116,13 @@ td input,select{
   background-color:#eee;
   color:#11101d;
 }
+
+/* input을 button 변경 임시 */
+
+#btns{
+  margin:20px 0;
+  margin-left: auto;
+}
 #btns button{
   background-color:#11101d;
   width:90px;
@@ -90,6 +130,12 @@ td input,select{
   border:transparent;
   border-radius:10px;
   transition:0.5s;
+  color:#fff;
+  font-weight:bold; 
+}
+
+#btns button:first-child{
+ /* margin-right:20px;*/
 }
 
 #btns button a{
@@ -98,7 +144,62 @@ td input,select{
 }
 #btns button:hover{
   background-color:#eee;
+  color:#11101d;
 }
 #btns button:hover a{
   color:#11101d;
+}
+
+#btns > button[type="submit"]:hover{
+  color:#11101d;
+}
+
+.addbox #filename {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+.addbox #kakaoField {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+.addbox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #11101d;
+    border-radius:20px;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.addbox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.addbox input[type="button"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
 }

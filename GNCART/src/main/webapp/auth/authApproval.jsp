@@ -7,193 +7,83 @@
 %>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GNC:ART</title>
-  <link rel="stylesheet" href="../css/index.css">
-  <link rel="stylesheet" href="../css/auth.css">
-  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>	
-  <!--boxIcons CDN Link-->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GNC:ART</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <!--boxIcons CDN Link-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
+ 
 <body>
-  <!-- sidebar include -->	
-  <jsp:include page="../index/sidebar.jsp" flush="false"/>	 
+  <!-- sidebar include -->
+  <jsp:include page="../index/sidebar.jsp" flush="false" />
 
-  <section class="home-section">   
-   <!-- top include -->
-  <jsp:include page="../index/top.jsp" flush="false"/>	
-	
-<!--home-content-->
-<div class="home-content">
-    <div class="auth-board-boxes">
-        <div class="auth-box">
-            <div class="title"><a href="">결재 승인</a></div>
-            <div class="btnsList">
-                <div class="btns">
-                    <a href="authHold.jsp" style="background-color:#eee; color:#11101d;">대기</a>
-                    <a href="authApproval.jsp">승인</a>
-                    <a href="authReturn.jsp" style="background-color:#eee; color:#11101d;">반려</a>
-                </div>
-                <div class="auth-details">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>문서번호</th>
-                                <th>문서명</th>
-                                <th>작성자</th>
-                                <th>유형</th>
-                                <th>신청일</th>
-                                <th>결제일</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                            <tr onclick="window.location.href='#';">
-                                <td>6</td>
-                                <td>휴가신청합니다</td>
-                                <td>김대리</td>
-                                <td>휴가</td>
-                                <td>2023-06-27</td>
-                                <td>2023-07-01</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="6">
-                                    <div class="page">
-                                        <a href="#">이전</a>
-                                        <a href="#">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">5</a>
-                                        <a href="#">6</a>
-                                        <a href="#">7</a>
-                                        <a href="#">8</a>
-                                        <a href="#">9</a>
-                                        <a href="#">10</a>
-                                        <a href="#">다음</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tfoot>
+  <section class="home-section">
+    <!-- top include -->
+    <jsp:include page="../index/top.jsp" flush="false" />
 
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+     <!--home-content-->
+  <div class="container-fluid">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h5>결재 승인</h5>
+      </div>
+      <div class="card-body">
+          <div>
+              <table id="example" class="table table-striped" style="width:100%">
+                  <thead>
+                      <tr>
+                          <th>문서번호</th>
+                          <th>문서명</th>
+                          <th>작성자</th>
+                          <th>유형</th>
+                          <th>신청일</th>
+                          <th>결재일</th>
+                      </tr>
+                  </thead>
+                  <tfoot>
+                      <tr>
+                        <th>문서번호</th>
+                        <th>문서명</th>
+                        <th>작성자</th>
+                        <th>유형</th>
+                        <th>신청일</th>
+                        <th>결재일</th>
+                      </tr>
+                  </tfoot>
+                  <tbody>
+                      <tr>
+                          <td> 1</td>
+                          <td>제목을 입력해주세요</td>
+                          <td>작성자를 입력하세요</td>
+                          <td>0</td>
+                          <td>2011/04/25</td>
+                          <td>2011/04/25</td>
+                      </tr>
+                  </tbody>
+              </table>
+              <div id="btns">
+              	<button>대기</button>
+              	<button>승인</button>
+              	<button>반려</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  </section>
 
-
-</section>
-
-<script src="../script/indexScript.js"></script>
+    <script src="../script/indexScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+	<script src="../script/authScript.js"></script>
+	<script src="../script/notice.js"></script>
 </body>
 
 </html>

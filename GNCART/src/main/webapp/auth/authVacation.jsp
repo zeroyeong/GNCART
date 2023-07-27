@@ -5,6 +5,41 @@
   if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");
 %>
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String Name = (String)session.getAttribute("memName");
+	int le = (int)session.getAttribute("leNo");
+	int part = (int)session.getAttribute("partNo");
+	int No = (int)session.getAttribute("memNo");
+	
+	String leValue = "";
+	
+	if (le == 1) {
+		leValue ="사원";
+	} else if (le == 2) {
+		leValue ="대리";
+	} else if (le == 3) {
+		leValue = "팀장";
+	} else { 
+		leValue = "부장";
+	}
+	String PartValue = "";
+	
+	if (part == 1) {
+		PartValue ="경영지원팀";
+	} else if (part == 2) {
+		PartValue = "개발팀";
+	} else if (part == 3) {
+		PartValue = "홍보팀";
+	} else if (part == 4) {
+		PartValue = "영업팀";
+	} else if (part == 5) {
+		PartValue = "서비스지원팀";
+	} else {
+		PartValue = "전체부서";
+	}
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -43,15 +78,16 @@
 
             <tr>
                 <td><label for="MEM_NAME">성명</label></td>
-                <td><input type="text" id="MEM_NAME" name="MEM_NAME"></td>
+                <td><input type="text" id="MEM_NAME" value="<%=Name%>" readonly></td>
+                <input type="hidden" name="MEM_NO" value="<%=No%>">
             </tr>
             <tr>
                 <td><label for="position">직급</label></td>
-                <td><input type="text" id="position" name="position"></td>
+                <td><input type="text" id="position" value="<%=leValue%>" readonly></td>
             </tr>
             <tr>
                 <td><label for="department">소속 부서</label></td>
-                <td><input type="text" id="department" name="department"></td>
+                <td><input type="text" id="department" value="<%=PartValue%>" readonly></td>
             </tr>
             <tr>
                 <td><label for="AUTH_SDATE">휴가 날짜</label></td>
@@ -65,23 +101,23 @@
                 <td><label>휴가 사유</label></td>
                 <td colspan="3">
                     <div class="radio-group">
-                        <input type="radio" id="vacation_reason1" name="vacation_reason" value="월차" required>
+                        <input type="radio" id="vacation_reason1" name="VAC_REASON" value="0" required>
                         <label for="vacation_reason1">월차</label>
 
-                        <input type="radio" id="vacation_reason2" name="vacation_reason" value="연차" required>
+                        <input type="radio" id="vacation_reason2" name="VAC_REASON" value="1" required>
                         <label for="vacation_reason2">연차</label>
 
-                        <input type="radio" id="vacation_reason3" name="vacation_reason" value="병가" required>
+                        <input type="radio" id="vacation_reason3" name="VAC_REASON" value="2" required>
                         <label for="vacation_reason3">병가</label>
 
-                        <input type="radio" id="vacation_reason4" name="vacation_reason" value="기타" required>
+                        <input type="radio" id="vacation_reason4" name="VAC_REASON" value="3" required>
                         <label for="vacation_reason4">기타</label>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td><label for="AUTH_PP">상세 사유</label></td>
-                <td colspan="3"><textarea id="AUTH_PP" name="AUTH_PP" rows="10" cols="50"></textarea></td>
+                <td colspan="3"><textarea id="AUTH_PP" name="VAC_DETAIL" rows="10" cols="50"></textarea></td>
             </tr>
         </table>
         <br>

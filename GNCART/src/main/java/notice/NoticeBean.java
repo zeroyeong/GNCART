@@ -11,9 +11,32 @@ public class NoticeBean {
 	private int NOT_FILESIZE;
 	private int MEM_NO;
 	private int NOTSUB_NO;
+	private int PART_NO;
 	private String MEM_NAME;
 	private String NOT_SUB;
-	
+	private String MEM_ID;
+	private String PART_TYPE;
+
+
+
+	public int getPART_NO() {
+		return PART_NO;
+	}
+	public void setPART_NO(int pART_NO) {
+		PART_NO = pART_NO;
+	}
+	public String getPART_TYPE() {
+		return PART_TYPE;
+	}
+	public void setPART_TYPE(String pART_TYPE) {
+		PART_TYPE = pART_TYPE;
+	}
+	public String getMEM_ID() {
+		return MEM_ID;
+	}
+	public void setMEM_ID(String mEM_ID) {
+		MEM_ID = mEM_ID;
+	}
 	public String getNOT_SUB() {
 		return NOT_SUB;
 	}

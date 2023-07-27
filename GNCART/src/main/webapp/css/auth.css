@@ -1,154 +1,158 @@
-/* Googlefont Poppins CDN Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+@import url(https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css);
+@import url(https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css);
+a {
+	text-decoration-line:none;
+}
+li {
+    list-style:none;
+}
+ul {
+    padding-left: 0;
+}
+#notice-wr ul li {
+    line-height: 30px;
+    list-style: none;
+    padding: 10px auto;
+    margin: 20px auto;
 }
 
-/* home-content */
-.home-section .home-content {
-    position: relative;
-    padding-top: 90px;
+#notice-wr textarea{
+    resize: none;
+    width: 70%;
+    height: 300px;
+
+}
+        
+#notice-wr label {
+    float: left;  /* 왼쪽으로 배치 */
+    font-size: 20px;  /* 글자 크기 - 13px */
+    width: 150px;  /* 너비 - 110px */
 }
 
-/* auth box */
-.btnsList {
-    margin-top: 10px;
+#notice-wr input{
+    width: 70%;
+    height: 30px;
+
 }
 
-.btns a {
-    margin-right: 10px;
-    background-color: #11101d;
-    color: #eee;
-    font-weight: bold;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    transition: 0.5s;
-    text-decoration: none;
+#notice-wr input[readonly] {  /* 읽기 전용 필드의 스타일 */
+    border:none;
 }
 
-.home-content .auth-board-boxes .auth-box {
-    width: 97%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background: rgb(255, 255, 255);
-    padding: 10px 30px;
-    margin: 5px 30px;
-    border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+#notice-wr select{
+    width:200px;
+    height:30px;
 }
-
-.home-content .auth-board-boxes .auth-box .authBtn {
-    position: absolute;
-    right: 80px;
-    width: 100px;
-    background: #11101d;
-    color: white;
-    border-radius: 5px;
-    font-size: 18px;
-    text-decoration: none;
-    top: 120px;
+.bt_wrap {
+    text-align: center;
+    margin-top: 30px;
 }
-
-.home-content .auth-board-boxes .auth-box .authBtn:hover {
-    background: #4070f4;
+.bt_wrap a {
+    display: inline-block;
+    padding: 10px;
+    font-size: 1.4rem;
 }
-
-.home-content .auth-board-boxes .auth-box .title {
-    font-size: 24px;
-    font-weight: 500;
-}
-
-.home-content .auth-board-boxes .auth-box .title a {
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: none;
-    color: #11101d;
-}
-
-.home-content .auth-board-boxes .auth-box .auth-details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.auth-board-boxes .auth-box .auth-details li.topic {
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.auth-board-boxes .auth-box .auth-details li {
-    margin: 8px 0;
-}
-
-.auth-board-boxes .auth-box .auth-details li a {
-    font-size: 18px;
-    color: #333;
-    font-weight: 400;
-    text-decoration: none;
-}
-
-/* Table Styling */
-table {
+.board_view {
     width: 100%;
-    border-collapse: collapse;
 }
 
-thead th {
-    background-color: #11101d;
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    text-align: left;
-
+.board_view .title {
+    padding: 20px 15px;
+    font-size: 2rem;
 }
 
-tbody td {
-    padding: 10px;
-    width: 67px;
+.board_view .info {
+    padding: 15px;
+    border-bottom: 1px solid black;
+    font-size: 0;
 }
 
-tbody tr:hover {
-    background-color: #eee;
-    cursor: pointer;
+.board_view .info dl {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10
 }
 
-tbody td a {
-    color: #333;
-    text-decoration: none;
+.board_view .info dl:first-child {
+    padding-left: 0;
 }
 
-tfoot td {
-    padding-top: 25px;
+.board_view .info dl::before {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 13px;
+    background: #ddd;
 }
 
-.page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.board_view .info dl:first-child::before {
+    display: none;
 }
 
-.page a {
-    margin: 0 5px;
-    padding: 5px 10px;
-    background-color: #eee;
-    color: #11101d;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+.board_view .info dl dt,
+.board_view .info dl dd {
+    display: inline-block;
+    font-size: 1.4rem;
 }
 
-.page a:hover {
-    background-color: #11101d;
-    color: white;
+.board_view .info dl dd {
+    margin-left: 10px;
+    color: #777;
 }
 
-/*모달*/
+.board_view .cont {
+    padding: 15px;
+    border-bottom: 1px solid #000;
+    line-height: 160%;
+    font-size: 1.4rem;
+}
+.none input[type=text] {
+    outline: none;
+}
+.none textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.container-fluid {
+    padding-top: 100px !important;
+}
+.page-link {
+    background-color: #11101D !important;
+    color: white !important;
+}
+  #btns{
+    margin:20px 0;
+    margin-left: auto;
+    float: right;
+  }
+  #btns button{
+    background-color:#11101d;
+    width:90px;
+    height:50px;
+    border:transparent;
+    border-radius:10px;
+    transition:0.5s;
+    color:#fff;
+    font-weight:bold;
+  }
+  #btns button:hover{
+    background-color:#eee;
+    color:#11101d;
+  }
+  #btns button a{
+  color:#fff;
+  font-weight:bold;
+  }
+  #btns button:hover a{
+    color:#11101d;
+  }
+  
 .modal-background {
     display: none;
     position: fixed;
@@ -163,6 +167,7 @@ tfoot td {
 .modal-content {
     position: relative;
     display: flex;
+    flex-direction: row; /* 가로 방향으로 자식 요소들을 배치 */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -170,8 +175,8 @@ tfoot td {
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
-    flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
     white-space: nowrap;
 }
 
@@ -184,7 +189,7 @@ tfoot td {
     font-size: 16px;
     border-radius: 5px;
     display: block;
-    margin: 0 auto;
+    margin: 5px;
 }
 
 .modalBtn:hover {
