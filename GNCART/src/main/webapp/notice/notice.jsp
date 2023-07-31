@@ -88,12 +88,18 @@
 						</form>
 						<div id="btns">
 						<%
-						int acNo = (int)session.getAttribute("acNo");
-						int partNo = (int)session.getAttribute("partNo");
-						
-						if (acNo == 2 || partNo == 1) { %>
+						Integer acNo = (Integer) session.getAttribute("acNo");
+						Integer partNo = (Integer) session.getAttribute("partNo");
+							
+						if (acNo == null || partNo == null) {
+						    out.print("<script>");
+						    out.print("alert('로그인을 해주세요');");
+						    out.print("location.href = '../login.jsp';");
+						    out.print("</script>");
+						}
+						else if (acNo == 2 || partNo == 1) { %>
 							<button type="button"><a href="noticeWrite.jsp">글쓰기</a></button>
-							<%} %>
+							<%}%>
 							<button type="button" onclick="submitForm()">삭제하기</button>
 						</div>
 					</div>

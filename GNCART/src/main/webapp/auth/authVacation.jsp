@@ -40,6 +40,7 @@
 		PartValue = "전체부서";
 	}
 %>
+<%String test = request.getParameter("line1"); %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -54,9 +55,9 @@
 </head>
 
 <body>
-    <h2>휴가 신청서</h2>
+    <h2>휴가 신청서<%=test %></h2>
 
-    <form action="#" method="post">
+    <form method="post" action="../vacWrite">
         <button class="lineBtn" onclick="lineBtn()">결재선</button>
         <div class="lineContainer">
             <table>
@@ -78,51 +79,51 @@
 
             <tr>
                 <td><label for="MEM_NAME">성명</label></td>
-                <td><input type="text" id="MEM_NAME" value="<%=Name%>" readonly></td>
+                <td><input type="text" value="<%=Name%>" readonly></td>
                 <input type="hidden" name="MEM_NO" value="<%=No%>">
             </tr>
             <tr>
                 <td><label for="position">직급</label></td>
-                <td><input type="text" id="position" value="<%=leValue%>" readonly></td>
+                <td><input type="text" value="<%=leValue%>" readonly></td>
             </tr>
             <tr>
                 <td><label for="department">소속 부서</label></td>
-                <td><input type="text" id="department" value="<%=PartValue%>" readonly></td>
+                <td><input type="text" value="<%=PartValue%>" readonly></td>
             </tr>
             <tr>
                 <td><label for="AUTH_SDATE">휴가 날짜</label></td>
                 <td colspan="3">
-                    <input type="date" id="AUTH_SDATE" name="AUTH_SDATE" required>
+                    <input type="date" name="VAC_SDATE" required>
                     ~
-                    <input type="date" id="AUTH_EDATE" name="AUTH_EDATE" required>
+                    <input type="date" name="VAC_EDATE" required>
                 </td>
             </tr>
             <tr>
                 <td><label>휴가 사유</label></td>
                 <td colspan="3">
                     <div class="radio-group">
-                        <input type="radio" id="vacation_reason1" name="VAC_REASON" value="0" required>
-                        <label for="vacation_reason1">월차</label>
+          			  <input type="radio" name="VAC_REASON" value="1" required>
+          			  <label for="vacation_reason1">월차</label>
 
-                        <input type="radio" id="vacation_reason2" name="VAC_REASON" value="1" required>
-                        <label for="vacation_reason2">연차</label>
+         			   <input type="radio" name="VAC_REASON" value="2" required>
+          			   <label for="vacation_reason2">연차</label>
 
-                        <input type="radio" id="vacation_reason3" name="VAC_REASON" value="2" required>
-                        <label for="vacation_reason3">병가</label>
+          			   <input type="radio" name="VAC_REASON" value="3" required>
+          			   <label for="vacation_reason3">병가</label>
 
-                        <input type="radio" id="vacation_reason4" name="VAC_REASON" value="3" required>
-                        <label for="vacation_reason4">기타</label>
+          			   <input type="radio" name="VAC_REASON" value="4" required>
+         			   <label for="vacation_reason4">기타</label>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td><label for="AUTH_PP">상세 사유</label></td>
-                <td colspan="3"><textarea id="AUTH_PP" name="VAC_DETAIL" rows="10" cols="50"></textarea></td>
+                <td colspan="3"><textarea name="VAC_DETAIL" rows="10" cols="50"></textarea></td>
             </tr>
         </table>
         <br>
 
-        <button class="submitBtn" type="submit">작성완료</button>
+      <button class="submitBtn" type="submit">작성완료</button>
     </form>
 
     <script src="../script/authScript.js"></script>

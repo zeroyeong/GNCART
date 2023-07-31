@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="auth.AuthBean"%>
+<%@ page import="java.util.Vector"%>
+<jsp:useBean id="aMgr" class="auth.AuthMgr" />
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 <%
   if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
@@ -31,7 +34,7 @@
   <div class="container-fluid">
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-          <h5>결재 반려</h5>
+          <h5>결재 대기</h5>
       </div>
       <div class="card-body">
           <div>
@@ -57,20 +60,50 @@
                       </tr>
                   </tfoot>
                   <tbody>
+                                 <%
+                  Vector<AuthBean> vlist = null; 
+                  vlist = aMgr.getAuthList();
+                  if (vlist.isEmpty()) {
+                	  out.println("등록된 게시글이 없습니다.");
+                  } else {
+                  %>
+				<%    for (int i=0; i<vlist.size(); i++) { 
+                      AuthBean bean = vlist.get(i);
+                      int DOC_NO = bean.getDOC_NO();
+                      String DOC_NAME = bean.getDOC_NAME();
+                      String MEM_NAME = bean.getMEM_NAME();
+                      int DOC_STATES = bean.getDOC_STATES();
+                      String DOC_REGDATE = bean.getDOC_REGDATE();
+                      String DOC_APPDATE = bean.getDOC_APPDATE(); 
+                      if (DOC_STATES == 2) {
+                  %>
                       <tr>
-                          <td> 1</td>
-                          <td>제목을 입력해주세요</td>
-                          <td>작성자를 입력하세요</td>
-                          <td>0</td>
-                          <td>2011/04/25</td>
-                          <td>2011/04/25</td>
+                          <td><%=DOC_NO %></td>
+                          <td><%=DOC_NAME %></td>
+                          <td><%=MEM_NAME %></td>
+                          <%if(DOC_STATES == 0) {%>
+                        	  <td>대기</td>
+                          <%} else if(DOC_STATES == 1) {%>
+                          	  <td>승인</td>
+                          <%} else if(DOC_STATES == 2) {%>
+                          	  <td>반려</td>
+                          <%} else { %>
+                          	  <td>종결</td>
+                          <%} %>
+                          <td><%=DOC_REGDATE %></td>
+                          <%if(DOC_APPDATE == null) {%>
+                          	  <td>결재대기중</td>
+                          <%} %>
                       </tr>
+                      <%} %>
+                  <%} %>
+              <%} %>
                   </tbody>
               </table>
               <div id="btns">
-              	<button>대기</button>
-              	<button>승인</button>
-              	<button>반려</button>
+              	<button><a href="authHold.jsp">대기</a></button>
+              	<button><a href="authApproval.jsp">승인</a></button>
+              	<button><a href="authReturn.jsp">반려</a></button>
               </div>
           </div>
       </div>
