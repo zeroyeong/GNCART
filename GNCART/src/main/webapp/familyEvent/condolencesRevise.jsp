@@ -7,18 +7,23 @@
 <%
 int con_no = Integer.parseInt(request.getParameter("con_no"));
 ConBean bean = new ConBean();
-bean = (ConBean) session.getAttribute("bean");
-//bean = conMgr.getBoard(con_no);
+bean = conMgr.getBoard(con_no);
 String title = bean.getCon_title();
 String content = bean.getCon_content();
 String regdate = bean.getCon_regdate();
 String type = bean.getCon_type();
-String location = bean.getCon_location();
+String userPart = bean.getCon_userPart();
+String userName = bean.getCon_userName();
 String desdate = bean.getCon_desdate();
+String location = bean.getCon_location();
 String map = bean.getCon_map();
 String filename = bean.getCon_file();
 int hit = bean.getCon_hit();
+int mem_no = bean.getMem_no();
 String writer = bean.getMem_name();
+String part_type = bean.getPart_type();
+
+int memNo = (int)session.getAttribute("memNo");
 %>
 
 <!DOCTYPE html>
@@ -47,7 +52,7 @@ String writer = bean.getMem_name();
 		<div class="home-content">
 			<div id="container">
 				<div id="title">
-					<h2>일정 수정</h2>
+					<h2>경조사 일정 수정</h2>
 				</div>
 
 				<hr>
@@ -74,12 +79,14 @@ String writer = bean.getMem_name();
 									<option>장례식</option>
 									<option>출산</option>
 							</select></td>
-							<td class="tableTitle"><label for="part">해당 부서</label></td>
-							<td><select id="part" name="part" value="">
-									<option value="part1">부서 1</option>
-									<option value="part1">부서 2</option>
-									<option value="part1">부서 3</option>
-							</select></td>
+							<td class="tableTitle"><label for="part">부서 / 이름</label></td>
+							<td>
+								<div class="addbox">
+								<input id="user_part_name" name="user_part_name" placeholder="부서 / 이름" value="<%= userPart %> / <%= userName %>" readonly>
+								<label for="userBtn">직원 찾기</label>
+								<input type="button" id="userBtn" name="userBtn" onclick="userSearch()">
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<td class="tableTitle detail"><label for="detailContent">상세

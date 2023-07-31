@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/conAddMap.css">
+<link rel="stylesheet" href="../css/conAddMap.css?asd">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -66,7 +66,7 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24e23b8a98c1750309dd34a0c1ea57d3&libraries=services"></script>
 	<script src="../script/indexScript.js"></script>
-	<script src="../script/conAddMap.js"></script>
+	<script src="../script/conAddMap.js?asdd"></script>
 
 </body>
 </html>

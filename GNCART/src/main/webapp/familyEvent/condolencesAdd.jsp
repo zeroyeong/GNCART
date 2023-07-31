@@ -7,6 +7,12 @@
 
 <% 
 request.setCharacterEncoding("UTF-8");
+int memNo = (int)session.getAttribute("memNo");
+
+String user ="";
+if(request.getParameter("user") != null){
+	user = request.getParameter("user");
+}
 %> 
  
 <!DOCTYPE html> 
@@ -16,7 +22,7 @@ request.setCharacterEncoding("UTF-8");
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesAdd.css?after">
+<link rel="stylesheet" href="../css/condolencesAdd.css?after1">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -34,7 +40,7 @@ request.setCharacterEncoding("UTF-8");
 		<div class="home-content">
 			<div id="container">
 				<div id="title">
-					<h2>일정 추가</h2>
+					<h2>경조사 일정 추가</h2>
 				</div>
 				<hr>
 				<form name="postFrm" method="post" action="conboardPost"
@@ -59,12 +65,14 @@ request.setCharacterEncoding("UTF-8");
 									<option>장례식</option>
 									<option>출산</option>
 							</select></td>
-							<td class="tableTitle"><label for="part">해당 부서</label></td>
-							<td><select id="part" name="part">
-									<option value="part1">부서 1</option>
-									<option value="part1">부서 2</option>
-									<option value="part1">부서 3</option>
-							</select></td>
+							<td class="tableTitle"><label for="part">부서 / 이름</label></td>
+							<td>
+								<div class="addbox">
+								<input id="user_part_name" name="user_part_name" placeholder="부서 / 이름" readonly>
+								<label for="userBtn">직원 찾기</label>
+								<input type="button" id="userBtn" name="userBtn" onclick="userSearch()">
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<td class="tableTitle detail"><label for="detailContent">상세
@@ -93,7 +101,11 @@ request.setCharacterEncoding("UTF-8");
 							</td>
 						</tr>
 					</table>
-
+					
+					<input type="hidden" name="memNo" value="<%= memNo %>">
+					<input type="hidden" name="userpart" value="userpart">
+					<input type="hidden" name="username" value="username">
+					
 					<div id="btns">
 						<button type="submit">저장</button>
 						<button type="reset">다시쓰기</button>

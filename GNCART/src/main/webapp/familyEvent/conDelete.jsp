@@ -10,6 +10,8 @@ request.setCharacterEncoding("UTF-8");
 String checkedList [] = request.getParameterValues("check");
 String conNum = request.getParameter("con_no");
 
+String pageName = request.getParameter("pageName");
+int memNo = (int)session.getAttribute("memNo");
 %> 
 <!DOCTYPE html>
 <html lang="ko">
@@ -20,20 +22,52 @@ String conNum = request.getParameter("con_no");
 </head>
 <body>
 <%
-if(checkedList != null){
-	conMgr.deleteBoard(checkedList);
+
+//선택된 게시글이 없을때
+if(checkedList == null && pageName.equals("condolences")){
+%>
+	<script type="text/javascript">
+    	alert("선택된 게시글이 없습니다.");
+    </script>
+<%	
 }
-else if(conNum != null){
+//게시판 에서 삭제 
+if(checkedList != null){ 
+	boolean myboard = true;
+
+	myboard = conMgr.checkBoard(checkedList, memNo); //게시판에서 체크한 항목이 내가 작성한 글인지 확인
+	
+	if(myboard){
+		conMgr.deleteBoard(checkedList); //삭제 
+%>
+		<script type="text/javascript">
+			alert("선택된 게시글이 삭제되었습니다.");
+		</script>
+<% 		
+	} else {
+%>		
+		<script type="text/javascript">
+			alert("본인이 작성한 게시글만 삭제가 가능합니다.");
+		</script>
+<% 	
+	}
+}
+//본인글에 들어가서 삭제 
+else if(conNum != null && conNum != ""){ 
 	int con_no =Integer.parseInt(conNum); 
 	conMgr.deleteBoard(con_no);
+%>
+	<script type="text/javascript">
+		alert("게시글이 삭제되었습니다.");
+	</script>
+<%
 }
-
 %>
 
 <script type="text/javascript">
 location.href="condolences.jsp";
 </script>
 
-<script src="../script/conDelete.js"></script>
+
 </body>
 </html>

@@ -85,3 +85,15 @@ function sendmap(){
 	window.opener.document.getElementById("kakaoField").value = placeName + " / " + addressName;
 	self.close();
 }
+
+//엔터 누르면 서치
+var place = document.getElementById("place");
+
+place.addEventListener("keydown", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("searchBtn").click();
+  }
+});
+
+

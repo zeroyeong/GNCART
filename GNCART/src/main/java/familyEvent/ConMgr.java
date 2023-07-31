@@ -18,12 +18,13 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import common.DBConnectionMgr;
+import management.ManagementBean;
 
 public class ConMgr {
 
 	private DBConnectionMgr pool;
 	// 파일 업로드 관련 설정 작성
-	private static final String SAVEFOLDER = "C:/gnctest/gnc0717a/src/main/webapp/filestorage";
+	private static final String SAVEFOLDER = "C:/GNCART/GNCART/GNCART/src/main/webapp/filestorage";
 	private static final String ENCTYPE = "UTF-8";
 	private static int MAXSIZE = 5 * 1024 * 1024;
 
@@ -53,7 +54,7 @@ public class ConMgr {
 		try {
 			con = pool.getConnection();
 
-			sql = "SELECT * FROM CONDOLENCES";
+			sql = "SELECT * FROM condolences C JOIN member M ON C.MEM_NO = M.MEM_NO";
 			pstmt = con.prepareStatement(sql);
 
 			rs = pstmt.executeQuery();
@@ -64,6 +65,7 @@ public class ConMgr {
 				bean.setCon_title(rs.getString("con_title"));
 				bean.setCon_regdate(rs.getString("con_regdate"));
 				bean.setCon_hit(rs.getInt("con_hit"));
+				bean.setMem_no(rs.getInt("mem_no"));
 				bean.setMem_name(rs.getString("mem_name"));
 
 				blist.add(bean);
@@ -118,10 +120,13 @@ public class ConMgr {
 		MultipartRequest multi = null;
 
 		int filesize = 0;
-
 		String filename = null;
 
+		String userPart = "";
+		String userName = "";
+		
 		ConBean bean = new ConBean();
+			
 		try {
 			con = pool.getConnection();
 
@@ -136,27 +141,42 @@ public class ConMgr {
 			} else {
 				filename = "";
 			}
+			
 			String content = multi.getParameter("content");
 			content = UtilMgr.replace(content, "<", "&lt;");
+				
+			//String "/" 기준으로 나누기
+			if(multi.getParameter("user_part_name") != null) {
+				String user_part_name = multi.getParameter("user_part_name");
+				
+				if (user_part_name.contains("/")) {
+					String temp[] = user_part_name.split("/");
 
+					userPart = temp[0];
+					userName = temp[1];
+				} else {
+					userPart = "부서";
+					userName = "이름";
+				}
+			}
+			
 			int con_no = getNext();
 
-			sql = "INSERT INTO CONDOLENCES (CON_NO, CON_TITLE, CON_CONTENT, CON_TYPE, CON_REGDATE, CON_DESDATE, CON_LOCATION, CON_MAP, CON_FILE, CON_HIT, MEM_NO, MEM_NAME, PART_TYPE)";
-			sql += "values(?, ?, ?, ?, now(), ?, ?, ?, ?, ?, ? ,? ,?)";
+			sql = "INSERT INTO CONDOLENCES (CON_NO, CON_TITLE, CON_CONTENT, CON_REGDATE, CON_TYPE, CON_USERPART, CON_USERNAME, CON_DESDATE, CON_LOCATION, CON_MAP, CON_FILE, CON_HIT, MEM_NO)";
+			sql += "values(?, ?, ?, now(), ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, con_no);
 			pstmt.setString(2, multi.getParameter("title"));
 			pstmt.setString(3, multi.getParameter("content"));
 			pstmt.setString(4, multi.getParameter("type"));
-			pstmt.setString(5, multi.getParameter("desdate"));
-			pstmt.setString(6, multi.getParameter("location"));
-			pstmt.setString(7, multi.getParameter("map"));
-			pstmt.setString(8, filename);
-			pstmt.setInt(9, 88);
-			pstmt.setInt(10, 99);
-			pstmt.setString(11, "지금 로그인된 사람");
-			pstmt.setString(12, "인사팀");
-			// 맵추가
+			pstmt.setString(5, userPart);
+			pstmt.setString(6, userName);
+			pstmt.setString(7, multi.getParameter("desdate"));
+			pstmt.setString(8, multi.getParameter("location"));
+			pstmt.setString(9, multi.getParameter("map"));
+			pstmt.setString(10, filename);
+			pstmt.setInt(11, 0);
+			pstmt.setInt(12, Integer.parseInt(multi.getParameter("memNo")));
 
 			pstmt.executeUpdate();
 
@@ -205,7 +225,7 @@ public class ConMgr {
 		ConBean bean = new ConBean();
 		try {
 			con = pool.getConnection();
-			sql = "SELECT * FROM CONDOLENCES WHERE CON_NO = ?";
+			sql = "SELECT * FROM condolences C JOIN member M ON C.MEM_NO = M.MEM_NO JOIN part p ON p.PART_NO = M.PART_NO WHERE CON_NO = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, con_no);
 			rs = pstmt.executeQuery();
@@ -215,12 +235,16 @@ public class ConMgr {
 				bean.setCon_content(rs.getString("con_content"));
 				bean.setCon_regdate(rs.getString("con_regdate"));
 				bean.setCon_type(rs.getString("con_type"));
-				bean.setCon_location(rs.getString("con_location"));
+				bean.setCon_userPart(rs.getString("con_userpart"));
+				bean.setCon_userName(rs.getString("con_username"));
 				bean.setCon_desdate(rs.getString("con_desdate"));
+				bean.setCon_location(rs.getString("con_location"));
 				bean.setCon_map(rs.getString("con_map"));
 				bean.setCon_file(rs.getString("con_file"));
 				bean.setCon_hit(rs.getInt("con_hit"));
+				bean.setMem_no(rs.getInt("mem_no"));
 				bean.setMem_name(rs.getString("mem_name"));
+				bean.setPart_type(rs.getString("part_type"));
 			}
 //			int num = bean.getCon_no();
 //			String title = bean.getCon_title();
@@ -248,9 +272,11 @@ public class ConMgr {
 		MultipartRequest multi = null;
 
 		int filesize = 0;
-
 		String filename = null;
 
+		String userPart = "";
+		String userName = "";
+		
 		ConBean upBean = new ConBean();
 
 		try {
@@ -279,28 +305,37 @@ public class ConMgr {
 			String content = multi.getParameter("content");
 			content = UtilMgr.replace(content, "<", "&lt;");
 
+			if(multi.getParameter("user_part_name") != null) {
+				String user_part_name = multi.getParameter("user_part_name");
+				String temp[] = user_part_name.split("/");
+
+				userPart = temp[0];
+				userName = temp[1];
+			}
+					
 			upBean.setCon_no(Integer.parseInt(multi.getParameter("con_no")));
 			upBean.setCon_title(multi.getParameter("title"));
 			upBean.setCon_content(multi.getParameter("content"));
 			upBean.setCon_type(multi.getParameter("type"));
-			// upBean.setCon_regdate(multi.getParameter("regdate"));
-			upBean.setCon_location(multi.getParameter("location"));
+			upBean.setCon_userPart(userPart);
+			upBean.setCon_userName(userName);
 			upBean.setCon_desdate(multi.getParameter("desdate"));
+			upBean.setCon_location(multi.getParameter("location"));
 			upBean.setCon_map(multi.getParameter("map"));
 			upBean.setCon_file(filename);
-			// upBean.setCon_hit(Integer.parseInt(multi.getParameter("hit")));
-			// upBean.setCon_writer(multi.getParameter("writer"));
 
-			sql = "UPDATE CONDOLENCES SET CON_TITLE=?, CON_CONTENT=?, CON_TYPE=?, CON_LOCATION=?, CON_DESDATE=?, CON_MAP=?, CON_FILE=? WHERE CON_NO=?";
+			sql = "UPDATE CONDOLENCES SET CON_TITLE=?, CON_CONTENT=?, CON_TYPE=?, CON_USERPART=?, CON_USERNAME=?, CON_DESDATE=?, CON_LOCATION=?, CON_MAP=?, CON_FILE=? WHERE CON_NO=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, upBean.getCon_title());
 			pstmt.setString(2, upBean.getCon_content());
 			pstmt.setString(3, upBean.getCon_type());
-			pstmt.setString(4, upBean.getCon_location());
-			pstmt.setString(5, upBean.getCon_desdate());
-			pstmt.setString(6, upBean.getCon_map());
-			pstmt.setString(7, upBean.getCon_file());
-			pstmt.setInt(8, upBean.getCon_no());
+			pstmt.setString(4, upBean.getCon_userPart());
+			pstmt.setString(5, upBean.getCon_userName());		
+			pstmt.setString(6, upBean.getCon_desdate());
+			pstmt.setString(7, upBean.getCon_location());
+			pstmt.setString(8, upBean.getCon_map());
+			pstmt.setString(9, upBean.getCon_file());
+			pstmt.setInt(10, upBean.getCon_no());
 
 			pstmt.executeUpdate();
 
@@ -342,15 +377,15 @@ public class ConMgr {
 	}
 
 	// 조회수 증가
-	public void upCount(int num) {
+	public void upCount(int con_no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "update tblBoard set count=count+1 where num=?";
+			sql = "update condolences set con_hit=con_hit+1 where con_no=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, con_no);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -567,5 +602,181 @@ public class ConMgr {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean checkBoard(String checkedList[], int memNo)
+	{
+		Connection con = null;
 
+		PreparedStatement pstmt = null;
+
+		String sql = null;
+
+		ResultSet rs = null;
+
+		try {
+			con = pool.getConnection();
+
+			// con.setAutoCommit(false);
+			sql = "SELECT * FROM CONDOLENCES WHERE CON_NO=?";
+			pstmt = con.prepareStatement(sql);
+
+			for (String check : checkedList) {
+				pstmt.setInt(1, Integer.parseInt(check));
+				rs = pstmt.executeQuery();
+
+				if(rs.next()) {
+					if(memNo != Integer.parseInt(rs.getString("mem_no"))) {
+						return false;
+					}
+				}
+			}
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return true;
+	}
+	
+	public Vector<ManagementBean> userSearch() {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = null;
+		
+		Vector<ManagementBean> mlist = new Vector<ManagementBean>();
+		
+		try {
+			con = pool.getConnection();
+
+			sql = "SELECT*FROM member a\r\n" 
+					+ "JOIN accounttype b ON a.AC_NO=b.AC_NO\r\n"
+					+ "JOIN worktype c ON a.WORK_NO=c.WORK_NO\r\n" 
+					+ "JOIN part d ON a.PART_NO=d.PART_NO\r\n"
+					+ "JOIN level e ON a.LE_NO=e.LE_NO\r\n" 
+					+ "JOIN acposition f ON a.AP_NO=f.AP_NO\r\n";
+
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ManagementBean mbean=new ManagementBean();
+				mbean.setMEM_NO(rs.getInt("MEM_NO"));
+				mbean.setMEM_NAME(rs.getString("MEM_NAME"));
+				mbean.setMEM_ID(rs.getString("MEM_ID"));
+				mbean.setMEM_PW(rs.getString("MEM_PW"));
+				mbean.setMEM_DATE(rs.getString("MEM_DATE"));
+				mbean.setMEM_TEL(rs.getString("MEM_TEL"));
+				mbean.setMEM_MAIL(rs.getString("MEM_MAIL"));
+				mbean.setMEM_PHONE(rs.getString("MEM_PHONE"));
+				mbean.setMEM_ADD(rs.getString("MEM_ADD"));
+				mbean.setMEM_BIRTH(rs.getString("MEM_BIRTH"));				
+				mbean.setMEM_AND(rs.getString("MEM_AND"));
+				
+				mbean.setAC_NO(rs.getInt("AC_NO"));
+				mbean.setWORK_NO(rs.getInt("WORK_NO"));
+				mbean.setPART_NO(rs.getInt("PART_NO"));
+				mbean.setLE_NO(rs.getInt("LE_NO"));
+				mbean.setAP_NO(rs.getInt("AP_NO"));
+				
+				mbean.setAC_TYPE(rs.getString("AC_TYPE"));
+				mbean.setWORK_TYPE(rs.getString("WORK_TYPE"));
+				mbean.setPART_TYPE(rs.getString("PART_TYPE"));
+				mbean.setLE_LEVEL(rs.getString("LE_LEVEL"));
+				mbean.setAP_TYPE(rs.getString("AP_TYPE"));
+				mlist.add(mbean);			
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+
+		return mlist;
+	}
+	
+public Vector<ManagementBean> userFind(String keyWord) {
+			
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = null;
+		
+		Vector<ManagementBean> mlist = new Vector<ManagementBean>();
+		
+		try {
+			con = pool.getConnection();
+
+			sql = "SELECT*FROM member a\r\n" 
+					+ "JOIN accounttype b ON a.AC_NO=b.AC_NO\r\n"
+					+ "JOIN worktype c ON a.WORK_NO=c.WORK_NO\r\n" 
+					+ "JOIN part d ON a.PART_NO=d.PART_NO\r\n"
+					+ "JOIN level e ON a.LE_NO=e.LE_NO\r\n" 
+					+ "JOIN acposition f ON a.AP_NO=f.AP_NO\r\n";
+			
+			if(!keyWord.contains(" ")) {			
+				sql += "WHERE PART_TYPE LIKE ? OR MEM_NAME LIKE ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, keyWord);
+				pstmt.setString(2, keyWord);
+
+			} else {
+				String word1 = "";
+				String word2 = "";
+				
+				String temp[] = keyWord.split(" ");
+
+				word1 = temp[0];
+				word2 = temp[1];
+				
+				sql += "WHERE PART_TYPE LIKE ? AND MEM_NAME LIKE ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, word1);
+				pstmt.setString(2, word2);			
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ManagementBean mbean=new ManagementBean();
+				mbean.setMEM_NO(rs.getInt("MEM_NO"));
+				mbean.setMEM_NAME(rs.getString("MEM_NAME"));
+				mbean.setMEM_ID(rs.getString("MEM_ID"));
+				mbean.setMEM_PW(rs.getString("MEM_PW"));
+				mbean.setMEM_DATE(rs.getString("MEM_DATE"));
+				mbean.setMEM_TEL(rs.getString("MEM_TEL"));
+				mbean.setMEM_MAIL(rs.getString("MEM_MAIL"));
+				mbean.setMEM_PHONE(rs.getString("MEM_PHONE"));
+				mbean.setMEM_ADD(rs.getString("MEM_ADD"));
+				mbean.setMEM_BIRTH(rs.getString("MEM_BIRTH"));				
+				mbean.setMEM_AND(rs.getString("MEM_AND"));
+				
+				mbean.setAC_NO(rs.getInt("AC_NO"));
+				mbean.setWORK_NO(rs.getInt("WORK_NO"));
+				mbean.setPART_NO(rs.getInt("PART_NO"));
+				mbean.setLE_NO(rs.getInt("LE_NO"));
+				mbean.setAP_NO(rs.getInt("AP_NO"));
+				
+				mbean.setAC_TYPE(rs.getString("AC_TYPE"));
+				mbean.setWORK_TYPE(rs.getString("WORK_TYPE"));
+				mbean.setPART_TYPE(rs.getString("PART_TYPE"));
+				mbean.setLE_LEVEL(rs.getString("LE_LEVEL"));
+				mbean.setAP_TYPE(rs.getString("AP_TYPE"));
+				mlist.add(mbean);			
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con, pstmt, rs);
+		} 
+
+		return mlist;
+	}
 }

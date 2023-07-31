@@ -5,8 +5,10 @@ public class ConBean {
 	private int con_no;	
 	private String con_title;
 	private String con_content;
-	private String con_type;
 	private String con_regdate;
+	private String con_type;
+	private String con_userPart;
+	private String con_userName;
 	private String con_desdate;
 	private String con_location;
 	private String con_map;
@@ -34,17 +36,29 @@ public class ConBean {
 	public void setCon_content(String con_content) {
 		this.con_content = con_content;
 	}
+	public String getCon_regdate() {
+		return con_regdate;
+	}
+	public void setCon_regdate(String con_regdate) {
+		this.con_regdate = con_regdate;
+	}
 	public String getCon_type() {
 		return con_type;
 	}
 	public void setCon_type(String con_type) {
 		this.con_type = con_type;
 	}
-	public String getCon_regdate() {
-		return con_regdate;
+	public String getCon_userPart() {
+		return con_userPart;
 	}
-	public void setCon_regdate(String con_regdate) {
-		this.con_regdate = con_regdate;
+	public void setCon_userPart(String con_userPart) {
+		this.con_userPart = con_userPart;
+	}
+	public String getCon_userName() {
+		return con_userName;
+	}
+	public void setCon_userName(String con_userName) {
+		this.con_userName = con_userName;
 	}
 	public String getCon_desdate() {
 		return con_desdate;
@@ -93,22 +107,20 @@ public class ConBean {
 	}
 	public void setPart_type(String part_type) {
 		this.part_type = part_type;
-	}	
-	
-	public ConBean() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	public ConBean(int con_no, String con_title, String con_content, String con_type, String con_regdate,
-			String con_desdate, String con_location, String con_map, String con_file, int con_hit, int mem_no,
-			String mem_name, String part_type) {
+	
+	
+	public ConBean(int con_no, String con_title, String con_content, String con_regdate, String con_type,
+			String con_userPart, String con_userName, String con_desdate, String con_location, String con_map,
+			String con_file, int con_hit, int mem_no, String mem_name, String part_type) {
 		super();
 		this.con_no = con_no;
 		this.con_title = con_title;
 		this.con_content = con_content;
-		this.con_type = con_type;
 		this.con_regdate = con_regdate;
+		this.con_type = con_type;
+		this.con_userPart = con_userPart;
+		this.con_userName = con_userName;
 		this.con_desdate = con_desdate;
 		this.con_location = con_location;
 		this.con_map = con_map;
@@ -118,4 +130,14 @@ public class ConBean {
 		this.mem_name = mem_name;
 		this.part_type = part_type;
 	}
+
+
+	public ConBean() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	
 }

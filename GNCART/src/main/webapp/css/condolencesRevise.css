@@ -267,6 +267,16 @@ td input,select{
     color: #999999;
 }
 
+.addbox #user_part_name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 50%;
+    color: #999999;
+}
+
 .addbox label {
     display: inline-block;
     padding: 10px 20px;

@@ -85,14 +85,15 @@ Vector<ConBean> blist = null;
 									String title = bean.getCon_title();
 									String regdate = bean.getCon_regdate();
 									String wtriter = bean.getMem_name();
-									int hit = bean.getCon_hit();												
+									int hit = bean.getCon_hit();
+									int mem_no = bean.getMem_no();
 							%>
 							<tr>
-								<td><input class="checkbox" name="check" type="checkbox" value="<%=con_no%>"><%= con_no %></td>
-								<td><a href="condolencesDetail.jsp?con_no=<%=con_no %>"><%=title%></a></td>
+								<td><input class="checkbox" name="check" type="checkbox" value="<%=con_no%>"><%=con_no%></td>
+								<td><a href="condolencesDetail.jsp?con_no=<%= con_no %>"><%=title%></a></td>
 								<td><%=wtriter%></td>
 								<td><%=hit%></td>
-								<td><%=regdate%></td>
+								<td><%=regdate%></td>								
 							</tr>									
 							<%						
 									} //for
@@ -109,7 +110,7 @@ Vector<ConBean> blist = null;
 								삭제하기
 							</button>
 						</div>
-						<input type="hidden" name ="con_no">
+					<input type="hidden" name ="pageName" value="condolences">
 					</form>
 				</div>
 			</div>
