@@ -20,19 +20,39 @@ String url = request.getParameter("pageName");
 </head>
 <body>
 	<%
+	if(checkedList == null && msgNum == null){
+	%>
+		<script type="text/javascript">
+	    	alert("선택된 게시글이 없습니다.");
+	    </script>	
+	<%
+	}
+	
 	if (checkedList != null) {
-		msgMgr.deleteMsg(checkedList);
+		msgMgr.deleteMsg(checkedList, url);
+	%> 
+		<script type="text/javascript">
+		alert("선택된 게시글이 삭제되었습니다.");
+		</script>
+	<%
 	} else if (msgNum != null) {
 		int msg_no = Integer.parseInt(msgNum);
-		msgMgr.deleteMsg(msg_no);
+		msgMgr.deleteMsg(msg_no, url);
+	%>
+		<script type="text/javascript">
+		alert("선택된 게시글이 삭제되었습니다.");
+		</script>
+	<%	
 	}
 	%>
 
 	<input type="hidden" id="pageName" value="<%=url%>">
 
 	<script type="text/javascript">
-		var url = document.getElementById('pageName');
-
+	
+		var url = document.getElementById("pageName");
+		url.value += ".jsp";
+		
 		location.href = url.value;
 	</script>
 

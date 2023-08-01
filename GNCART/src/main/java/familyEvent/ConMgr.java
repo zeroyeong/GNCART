@@ -150,7 +150,7 @@ public class ConMgr {
 				String user_part_name = multi.getParameter("user_part_name");
 				
 				if (user_part_name.contains("/")) {
-					String temp[] = user_part_name.split("/");
+					String temp[] = user_part_name.split(" / ");
 
 					userPart = temp[0];
 					userName = temp[1];
@@ -307,7 +307,7 @@ public class ConMgr {
 
 			if(multi.getParameter("user_part_name") != null) {
 				String user_part_name = multi.getParameter("user_part_name");
-				String temp[] = user_part_name.split("/");
+				String temp[] = user_part_name.split(" / ");
 
 				userPart = temp[0];
 				userName = temp[1];

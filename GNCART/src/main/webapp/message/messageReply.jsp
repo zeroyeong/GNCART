@@ -9,16 +9,19 @@
 <% 
 request.setCharacterEncoding("UTF-8");
 
+String fromPartType= request.getParameter("fromPartType");
+String fromName = request.getParameter("fromName");
+
 ManagementBean bean = new ManagementBean();
 
 int mem_no = (int)session.getAttribute("memNo");
 bean =  msgMgr.userInfo(mem_no);
- 
+
 String mem_name = bean.getMEM_NAME();
 String part_type = bean.getPART_TYPE();
 %>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -55,11 +58,7 @@ String part_type = bean.getPART_TYPE();
 						<tr>
 						<td class="tableTitle"><label for="part">부서 / 이름</label></td>
 						<td colspan="3">
-							<div class="addbox">
-							<input id="user_part_name" name="user_part_name" placeholder="부서 / 이름" readonly>
-							<label for="userBtn">직원 찾기</label>
-							<input type="button" id="userBtn" name="userBtn" onclick="userSearch()">
-							</div>
+							<input id="user_part_name" name="user_part_name" placeholder="부서 / 이름" value="<%= fromPartType %> / <%= fromName %>" readonly>
 						</td>
 						</tr>
 						<tr>

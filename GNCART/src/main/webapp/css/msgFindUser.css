@@ -152,62 +152,21 @@ td input,select{
   color:#11101d;
 }
 
-.addbox #filename {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
+/*conAddUser*/
+
+#searchdiv{
+	display:flex;
+	justify-content:space-between;
+	align-items: center;
 }
 
-.addbox #kakaoField {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
+#searchbar{
+ margin-left:20px;
 }
 
-.addbox #user_part_name {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 50%;
-    color: #999999;
+#searchBtn{
+	margin-right:20px;
+	margin-left:20px;
 }
+/*conAddUser*/
 
-.addbox label {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #11101d;
-    border-radius:20px;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
-}
-
-.addbox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}
-
-.addbox input[type="button"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}

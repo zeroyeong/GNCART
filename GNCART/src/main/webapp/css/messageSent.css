@@ -163,6 +163,38 @@ ul {
   	margin-right: 15px;
   }
   
+    
+  #messageBox{
+  	display:flex;
+  	align-items: baseline;
+  }
+  
+   .msgBtn{
+    margin:0 0;
+    margin-left: 20px;
+    float: left;
+  }
+  .msgBtn button{
+    background-color:#11101d;
+    color:#fff;
+    width:90px;
+    height:50px;
+    border:transparent;
+    border-radius:10px;
+    transition:0.5s;
+  }
+
+  .msgBtn button a{
+    color:#fff;
+    font-weight:bold;
+  }
+  .msgBtn button:hover{
+    background-color:#eee;
+  }
+  .msgBtn button:hover a{
+    color:#11101d;
+  }
+
   
 
   

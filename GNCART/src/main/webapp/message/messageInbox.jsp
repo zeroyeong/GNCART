@@ -8,7 +8,18 @@
 <% 
 request.setCharacterEncoding("UTF-8");
 Vector<MsgBean> msglist = null; 
- 
+
+if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null) {
+	response.sendRedirect("../login.jsp");
+	return;
+}
+String memId = (String)session.getAttribute("memId");
+String memName = (String)session.getAttribute("memName");
+int memNo = (int)session.getAttribute("memNo");
+
+String pageName = "messageInbox";
+int cnt = 1;
+
 %> 
 <!DOCTYPE html>
 <html lang="ko">
@@ -17,7 +28,7 @@ Vector<MsgBean> msglist = null;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/messageInbox.css">
+<link rel="stylesheet" href="../css/messageInbox.css?after3">
 
 
 <!--Boxicons CDN Link-->
@@ -37,7 +48,13 @@ Vector<MsgBean> msglist = null;
 	<div class="container-fluid">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h5>경조사 알림</h5>
+				<div id="messageBox">
+					<h5>받은 메시지</h5>
+					<div class="msgBtn">
+					<button type="button"><a href="messageInbox.jsp">받은 편지함</a></button>
+					<button type="button"><a href="messageSent.jsp">보낸 편지함</a></button>
+					</div>
+				</div>
 			</div>
 			<div class="card-body">
 				<div>
@@ -68,29 +85,32 @@ Vector<MsgBean> msglist = null;
 								<td>2023/12/25</td>
 							</tr>
 
-							<%							
-								int cnt = 1;
-								String fromName = "박말쑥";
-								String pageName = "messageInbox.jsp";
-								msglist = msgMgr.msgInboxList(fromName);								
+							<%												
+								msglist = msgMgr.msgInboxList(memName);								
 								for(int i=0; i < msglist.size(); i++){
 									
 									MsgBean bean = new MsgBean();
 									bean = msglist.get(i);
 									int msg_no = bean.getMsg_no();
 									String msg_title = bean.getMsg_title();
-									String msg_toname = bean.getMsg_toname();
-									String msg_sendtime = bean.getMsg_sendtime();
+									String msg_fromParyType = bean.getMsg_fromPartType();
+									String msg_fromName = bean.getMsg_fromName();
+									String msg_sendTime = bean.getMsg_sendTime();
+									int msg_showcheck = bean.getMsg_showCheck();
+									
+									// 0이면 둘다 보이고 1이면 보낸사람이 지운상태 2이면 받은사람이 지운상태
+									if(msg_showcheck == 0 || msg_showcheck == 1){ 
 							%>
 							<tr>
 								<td><input class="checkbox" name="check" type="checkbox" value="<%= msg_no %>"><%= cnt %></td>
-								<td><%= msg_toname %></td>
+								<td><%= msg_fromParyType %> <%= msg_fromName %></td>
 								<td><a id="" href="messageDetail.jsp?msg_no=<%= msg_no %>&pageName=<%= pageName %>"><%= msg_title %></a></td>
-								<td><%= msg_sendtime %></td>
+								<td><%= msg_sendTime %></td>
 							</tr>									
 							<%
 							cnt++;  
-								}
+									}//if
+								}//for
 							%>
 						</tbody>
 					</table>
@@ -98,10 +118,9 @@ Vector<MsgBean> msglist = null;
 						
 						<div id="btns">
 							<button type="button"><a href="messageWrite.jsp">보내기</a></button>
-							<button type="button" onclick="deleteBtn()">
-								삭제하기
-							</button>
+							<button type="button" onclick="deleteBtn()">삭제하기</button>
 						</div>
+						
 					</form>
 				</div>
 			</div>

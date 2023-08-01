@@ -13,13 +13,20 @@
 
 	String title = bean.getMsg_title();
 	String content = bean.getMsg_content();
-	String toname = bean.getMsg_toname();
-	String fromname = bean.getMsg_fromname();
-	String sendtime = bean.getMsg_sendtime();
-	String readtime = bean.getMsg_readtime();
+	String toPartType = bean.getMsg_toPartType();
+	String toName = bean.getMsg_toName();
+	String fromPartType = bean.getMsg_fromPartType();
+	String fromName = bean.getMsg_fromName();
+	String sendTime = bean.getMsg_sendTime();
+	String readTime = bean.getMsg_readTime(); 
 	String read = bean.getMsg_read();
+	int delCnt = bean.getMsg_delCnt();
+	String filename = bean.getMsg_file(); 
 	
-	request.setAttribute("bean", bean);
+	
+	if(read.equals("안읽음")){
+		msgMgr.setRead(msg_no);
+	} 
 %>
 
 <!DOCTYPE html>
@@ -48,12 +55,6 @@
 			<div id="container">
 				<div id="title">
 					<h2>메세지 내용</h2>
-
-					<div id="writerInfo">
-						<span>작성자 : <a href="#"><%= fromname %></a></span> <span>작성일
-							: <span> <%= sendtime %></span>
-						</span>
-					</div>
 				</div>
 				<hr>
 				<form name="msgFrm" method="post" action="msgDelete.jsp">
@@ -64,31 +65,47 @@
 						</tr>
 						<tr>
 							<td class="tableTitle">보낸사람</td>
-							<td><%= toname %></td>
+							<td><%= fromName %></td>
 							<td class="tableTitle">해당부서</td>
-							<td>나중에 member 추가</td>
+							<td><%= fromPartType %></td>
 						</tr>
 						<tr>
 							<td class="tableTitle">받는사람</td>
-							<td><%= fromname %></td>
+							<td><%= toName %></td>
 							<td class="tableTitle">해당부서</td>
-							<td>나중에 member 추가</td>
-						</tr>
+							<td><%= toPartType %></td></tr>
 						<tr>
 							<td class="tableTitle detail">상세내용</td>
 							<td colspan="3"><%= content %></td>
 						</tr>
+						
+						<%
+            			if(filename != null && !filename.isEmpty()){  
+						%>
+						<tr>
+							<td class="tableTitle">첨부파일</td>
+							<td colspan="3"><a id="filename"
+								href="msgFiledown.jsp?filename=<%=filename%>"><%= filename %></a></td>
+						</tr>
+						<%
+            			}
+						%>
 					</table>
 
-					<input type="hidden" name="read" value="읽음"> <input
-						type="hidden" name="msg_no" value="<%= msg_no %>"> <input
-						type="hidden" name="pageName" value="<%= pageName %>">
+					<input type="hidden" name="read" value="읽음"> 
+					<input type="hidden" name="msg_no" value="<%= msg_no %>"> 
+					<input type="hidden" name="pageName" value="<%= pageName %>">
 
 					<div id="btns">
+						<%
+						if(pageName.equals("messageInbox")){
+						%>
+						<button type="button"><a href="messageReply.jsp?fromPartType=<%= fromPartType %>&fromName=<%= fromName %>">답장하기</a></button>
+						<%
+						}
+						%>
 						<button type="button" onclick="deleteBtn()">삭제하기</button>
-						<button type="button">
-							<a href="<%= pageName %>">목록</a>
-						</button>
+						<button type="button"><a href="<%= pageName %>.jsp">목록</a></button>
 					</div>
 
 				</form>
