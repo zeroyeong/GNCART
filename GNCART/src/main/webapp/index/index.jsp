@@ -3,10 +3,10 @@
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
 <jsp:useBean id="nMgr" class="notice.NoticeMgr" />
 <jsp:useBean id="conMgr" class="familyEvent.ConMgr" />
-<jsp:useBean id="sMgr" class="schedule.ScheduleMgr" />
+<jsp:useBean id="iMgr" class="index.indexMgr" />
 <%@ page import="notice.NoticeMgr, notice.NoticeBean"%>
 <%@ page import="familyEvent.ConMgr, familyEvent.ConBean"%>
-<%@ page import="schedule.ScheduleMgr, schedule.ScheduleBean"%>
+<%@ page import="index.indexMgr, schedule.ScheduleBean"%>
 <%@ page import="java.util.*"%>
 <%
 //로그인 안했을 시 로그인 페이지로 리다이렉트 
@@ -21,8 +21,8 @@ response.setHeader("Pragma", "no-cache");
 response.setHeader("Expires", "0");
 
 // 스케줄
-ScheduleMgr scheduleMgr = new ScheduleMgr();
-Vector<ScheduleBean> scheduleList = sMgr.getScheduleList("", "");
+indexMgr indexMgr = new indexMgr();
+Vector<ScheduleBean> scheduleList = iMgr.getScheduleList("", "");
 //스케줄리스트 역순(최근순)
 Collections.sort(scheduleList, new Comparator<ScheduleBean>() {
 	//@Override 

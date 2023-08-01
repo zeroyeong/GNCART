@@ -61,7 +61,7 @@ if (part == 1) {
     <h2>업무 보고서</h2>
 
     <form action="../busWrite" method="post">
-        <button class="lineBtn" onclick="busLineBtn()">결재선</button>
+        <button type="button" class="lineBtn" onclick="busLineBtn()">결재선</button>
         <div class="lineContainer">
             <table>
                 <tr>

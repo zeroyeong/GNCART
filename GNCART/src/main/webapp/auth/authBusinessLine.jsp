@@ -59,15 +59,13 @@ if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == nu
 	</form>
 
 	<script>
-	/* authBusinessLine.jsp */
-	function busSubmit() {
-	    // Set the target of the form to the parent window (main window).
-	    document.busForm.target = "_parent";
-	    document.busForm.action = "../auth/authBusiness.jsp";
-	    document.busForm.submit();
-	    self.close();
-	}
-
+		function busSubmit() {
+			window.opener.name = "authBusiness.jsp"; // 부모창의 이름 설정
+			document.busForm.target = "authBusiness.jsp"; // 타켓을 부모창으로 설정
+			document.busForm.action = "../auth/authBusiness.jsp";
+			document.busForm.submit();
+			self.close();
+		}
 	</script>
 </body>
 
