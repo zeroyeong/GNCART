@@ -1,0 +1,40 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+
+.title{
+  padding:5px;
+  border-bottom:1px solid;
+  margin-bottom:10px;
+}
+
+.scheduleMenu{
+  display:flex;
+  justify-content:space-between;
+}
+
+.scheduleMenu button{
+  border:none;
+  padding:5px;
+  border-radius:5px;
+  font-weight:bold;
+  color:#000;
+  background-color:#eee;
+  transition:0.3s;
+}
+
+.scheduleMenu button:hover{
+  color:#fff;
+  background-color:grey;
+}
+
+.acting{
+	background-color:#11101d;
+	color:#fff;
+}
+
+.scheduleTop{
+  margin-bottom:20px;
+}

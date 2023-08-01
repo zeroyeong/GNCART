@@ -12,17 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 public class newScheduleServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		ScheduleMgr sMgr = new ScheduleMgr();
+		
 		sMgr.newSchedule(request);
 		    
-		ScheduleBean bean = sMgr.newScheduleView();
-		int SCHE_NO = bean.getSCHE_NO();
+//		ScheduleBean bean = sMgr.newScheduleView();
+//		int SCHE_NO = bean.getSCHE_NO();
+//		
+//		String url = "../../GNCART/schedule/jsp/"+"scheduleDetail.jsp?SCHE_NO="+SCHE_NO;
+//		response.sendRedirect(url);
 		
-		String url = "../../GNCART/05schedule/jsp/"+"scheduleDetail.jsp?SCHE_NO="+SCHE_NO;
-		//http://localhost:8080/GNCART/05schedule/jsp/scheduleDetail.jsp?SCHE_NO=16
-		response.sendRedirect(url);
+		response.sendRedirect("../schedule/jsp/scheduleMonth.jsp");
 	}
 
 }

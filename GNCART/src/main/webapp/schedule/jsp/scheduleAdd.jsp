@@ -5,21 +5,6 @@
     import="java.time.*"%>
 <jsp:useBean id="sMgr" class="schedule.ScheduleMgr" />
 
-<%
-	LocalDateTime date = LocalDateTime.now();
-	int year = date.getYear();
-	int day = date.getDayOfMonth();
-	String month = "";
-	
-	if(date.getMonthValue()<10){
-		month = "0"+date.getMonthValue();
-	}else{
-		month = date.getMonthValue()+"";
-	}
-	
-	String SCHE_DATE = year+"-"+month+"-"+day;
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,19 +13,39 @@
 <link rel="stylesheet" href="../../css/scheduleAdd.css?dsds">
 </head>
 <body>
+
+<%
+	LocalDateTime date = LocalDateTime.now();
+	int year=date.getYear();
+	String month="";
+	String day="";
+	
+	//date.getDayOfMonth();
+	
+	if(date.getMonthValue()<10){
+		month = "0"+date.getMonthValue();
+	}else{
+		month = date.getMonthValue()+"";
+	}
+	
+	if(date.getDayOfMonth()<10){
+		day = "0"+date.getDayOfMonth();
+	}else{
+		day = date.getDayOfMonth()+"";
+	}
+	
+	String SCHE_DATE = year+"-"+month+"-"+day;
+%>
+
 	<div class="container">
-    <!----------------------------------->
     <!----------------타이틀--------------->
-    <!----------------------------------->
 	
 	<div class="topmenu">
 		<h3 class="title">일정 추가</h3>
     	<a href="#" id="closeBtn" onclick="closeBox()">×</a>
 	</div>   
 
-    <!----------------------------------->
     <!----------------본문---------------->
-    <!----------------------------------->
 
     <div class="content">
       <form name="newSchedule" method="post" action="../../schedule/newScheduleServlet" enctype="multipart/form-data">
@@ -99,26 +104,27 @@
             <label for="sche_date_start">시작</label>
             <div class="sche_date">
               <input id="sche_date_start" name="SCHE_START_DATE" type="date" required>
-              <select id="sche_start_titme" name="SCHE_START_TIME">
-                <option value="오전 09:00">오전 09:00</option>
-                <option value="오전 09:30">오전 09:30</option>
-                <option value="오전 10:00">오전 10:00</option>
-                <option value="오전 10:30">오전 10:30</option>
-                <option value="오전 11:00">오전 11:00</option>
-                <option value="오전 11:30">오전 11:30</option>
-                <option value="오후 12:00">오후 12:00</option>
-                <option value="오후 12:30">오후 12:30</option>
-                <option value="오후 01:00">오후 01:00</option>
-                <option value="오후 01:30">오후 01:30</option>
-                <option value="오후 02:00">오후 02:00</option>
-                <option value="오후 02:30">오후 02:30</option>
-                <option value="오후 03:00">오후 03:00</option>
-                <option value="오후 03:30">오후 03:30</option>
-                <option value="오후 04:00">오후 04:00</option>
-                <option value="오후 04:30">오후 04:30</option>
-                <option value="오후 05:00">오후 05:00</option>
-                <option value="오후 04:30">오후 04:30</option>
-                <option value="오후 06:00">오후 06:00</option>
+              <select id="sche_start_titme" name="ST_NO">
+                <option>선택하세요</option>
+                <%
+               		Vector<ScheduleBean> sttimeList = sMgr.getSttimeList();
+            		
+            		if(sttimeList.isEmpty()){
+                %>
+                <option>등록된 type이 없습니다.</option>
+                <%
+            		}else{
+            			for(int i=0; i<sttimeList.size(); i++){
+            				ScheduleBean bean = new ScheduleBean();
+            				
+            				bean = sttimeList.get(i);
+            				
+            				int ST_NO = bean.getST_NO();
+            				String ST_TIME = bean.getST_TIME();
+                %>
+	              <option value="<%=ST_NO%>"><%=ST_TIME %></option>
+	            <%	}
+            	}%>
               </select>
             </div>
           </li>
@@ -126,26 +132,27 @@
             <label for="sche_date_end">종료</label>
             <div class="sche_date">
               <input id="sche_date_end" name="SCHE_END_DATE" type="date" required>
-              <select id="sche_end_time" name="SCHE_END_TIME">
-                <option value="오전 09:00">오전 09:00</option>
-                <option value="오전 09:30">오전 09:30</option>
-                <option value="오전 10:00">오전 10:00</option>
-                <option value="오전 10:30">오전 10:30</option>
-                <option value="오전 11:00">오전 11:00</option>
-                <option value="오전 11:30">오전 11:30</option>
-                <option value="오후 12:00">오후 12:00</option>
-                <option value="오후 12:30">오후 12:30</option>
-                <option value="오후 01:00">오후 01:00</option>
-                <option value="오후 01:30">오후 01:30</option>
-                <option value="오후 02:00">오후 02:00</option>
-                <option value="오후 02:30">오후 02:30</option>
-                <option value="오후 03:00">오후 03:00</option>
-                <option value="오후 03:30">오후 03:30</option>
-                <option value="오후 04:00">오후 04:00</option>
-                <option value="오후 04:30">오후 04:30</option>
-                <option value="오후 05:00">오후 05:00</option>
-                <option value="오후 04:30">오후 04:30</option>
-                <option value="오후 06:00">오후 06:00</option>
+              <select id="sche_start_titme" name="END_NO">
+                <option>선택하세요</option>
+                <%
+               		Vector<ScheduleBean> endtimeList = sMgr.getEndTimeList();
+            		
+            		if(endtimeList.isEmpty()){
+                %>
+                <option>등록된 type이 없습니다.</option>
+                <%
+            		}else{
+            			for(int i=0; i<endtimeList.size(); i++){
+            				ScheduleBean bean = new ScheduleBean();
+            				
+            				bean = endtimeList.get(i);
+            				
+            				int END_NO = bean.getEND_NO();
+            				String END_TIME = bean.getEND_TIME();
+                %>
+	              <option value="<%=END_NO%>"><%=END_TIME %></option>
+	            <%	}
+            	}%>
               </select>
             </div>
           </li>

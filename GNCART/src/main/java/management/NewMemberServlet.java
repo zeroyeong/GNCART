@@ -14,13 +14,11 @@ public class NewMemberServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		System.out.println("NewMemberServlet 입장.");
-		
 		ManagementMgr mMgr = new ManagementMgr();
 		
 		mMgr.newMember(request);
 		
-		response.sendRedirect("../08management/jsp/memberList.jsp");
+		response.sendRedirect("../management/jsp/memberList.jsp");
 //		C:\GNCART\GNCART\src\main\webapp\08management\jsp
 	}
 

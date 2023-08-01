@@ -34,9 +34,9 @@ function popup() {
 //}))
 //
 //function read(){
-//	  document.scheduleFrm.action="scheduleDetail.jsp";
-//	  document.scheduleFrm.submit();
-//  }
+	  //document.scheduleFrm.action="scheduleDetail.jsp";
+	  //document.scheduleFrm.submit();
+  //}
 
 /**********************************/
 /*************팝업 닫기************/
