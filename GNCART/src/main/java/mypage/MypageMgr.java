@@ -617,7 +617,7 @@ public class MypageMgr {
 		return end;
 	}
 
-	// WORKD_NO 찾기
+	// 출근 기록으로 WORKD_NO 찾기
 	public String workdNoFind(String start, String memNo) {
 
 		Connection con = null;
@@ -825,8 +825,8 @@ public class MypageMgr {
 		}
 		return restDay;
 	}
-	
-	//휴가 기록 삽입
+
+	// 휴가 기록 삽입
 	public void restDay(String restDay, String memNo) {
 
 		Connection con = null;
@@ -837,8 +837,7 @@ public class MypageMgr {
 			con = pool.getConnection();
 
 			sql = "INSERT INTO workday(MEM_NO, WORKD_START) VALUES("
-			+ "(select member.MEM_NO from member WHERE mem_id = ? AND mem_pw = ?),"
-			+ "(?))";
+					+ "(select member.MEM_NO from member WHERE mem_id = ? AND mem_pw = ?)," + "(?))";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, restDay);
@@ -850,5 +849,38 @@ public class MypageMgr {
 		} finally {
 			pool.freeConnection(con, pstmt);
 		}
+	}
+
+	// 퇴근 기록이 있는 WORKD_NO 찾기
+	public String workdayCheck(String end, String memNo) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = null;
+		String endNo = null;
+
+		try {
+			con = pool.getConnection();
+
+			sql = "select WORKD_NO from workday where MEM_NO = ? and WORKD_END like ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			pstmt.setString(2, "%" + end + "%");
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				endNo = rs.getString("WORKD_NO");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return endNo;
 	}
 }

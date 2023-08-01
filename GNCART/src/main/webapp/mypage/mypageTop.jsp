@@ -75,6 +75,10 @@ if (id != null && pw != null) {
 			name="workEnd2" class="nonebox"></form>
 		<form method="post" action="workday/workRest.jsp" id="workRest2"
 			name="workRest2" class="nonebox"></form>
+		<form method="post" action="workday/workStart.jsp" id="workStart3"
+			name="workStart3" class="nonebox"></form>
+		<form method="post" action="workday/workEnd.jsp" id="workEnd3"
+			name="workEnd3" class="nonebox"></form>
 
 		<button class="buttonwork" id="workStart">출근하기</button>
 

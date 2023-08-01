@@ -15,11 +15,6 @@ upBean.setMEM_ADD(request.getParameter("add4"));
 
 String add = request.getParameter("add4");
 
-String number = "[0-9]{8}";
-String email = "\\w+@\\w+\\.\\w+(\\.\\w+)?";
-String number2 = "[0-9]{10, 11}";
-String number3 = "(?=.*[a-zA-Z])(?=.*\\d).{2,20}";
-
 if (id != null && upBean != null && add.length() > 6) {
 
 	pMgr.updateAdd(upBean, id);

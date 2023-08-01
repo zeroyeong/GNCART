@@ -4,6 +4,7 @@
 <jsp:useBean id="pMgr" class="mypage.MypageMgr" />
 
 <%
+//휴가 기록 있으면 mysql에 있는 workday의 AUTHLS_NO에 값을 넣는 jsp
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html; charset=UTF-8");
 

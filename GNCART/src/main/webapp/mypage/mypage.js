@@ -224,9 +224,9 @@ workRest1.onclick = function() {
 
 //근태 확인 하기
 workStart1.onclick = function() {
-	document.workdate.submit();
+	window.open("workday/workdayCheck.jsp", "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
 }
 //근태 확인 하기
 workEnd1.onclick = function() {
-	document.querySelector('#workdate').style.display = "block";
+	window.open("workday/workdayCheck.jsp", "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
 }
