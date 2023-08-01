@@ -34,7 +34,7 @@ public class MemberMgr {
         try {
             con = pool.getConnection();
 
-            sql = "SELECT*FROM member a JOIN level b ON a.LE_NO=b.LE_NO WHERE MEM_ID = ? AND MEM_PW = ?";
+            sql = "SELECT a.*, b.LE_LEVEL, p.part_type FROM member a JOIN level b ON a.LE_NO = b.LE_NO JOIN part p ON a.PART_NO = p.PART_NO WHERE MEM_ID = ? AND MEM_PW = ?";
  
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, id);
@@ -60,6 +60,7 @@ public class MemberMgr {
                 int partNo = rs.getInt("PART_NO");
                 int leNo = rs.getInt("LE_NO");
                 String leLevel = rs.getString("LE_LEVEL");
+                String parttype = rs.getString("part_type");
                 
                 session.setAttribute("memNo", memNo);
                 session.setAttribute("memId", memId);
@@ -77,6 +78,7 @@ public class MemberMgr {
                 session.setAttribute("partNo", partNo);
                 session.setAttribute("leNo", leNo);
                 session.setAttribute("leLevel", leLevel);
+                session.setAttribute("parttype", parttype);
                 
                 acNum=acNo;
             }
