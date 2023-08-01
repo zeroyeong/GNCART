@@ -34,7 +34,7 @@ public class MemberMgr {
         try {
             con = pool.getConnection();
 
-            sql = "SELECT*FROM member a JOIN LEVEL b ON a.LE_NO=b.LE_NO WHERE MEM_ID = ? AND MEM_PW = ?";
+            sql = "SELECT*FROM member a JOIN level b ON a.LE_NO=b.LE_NO WHERE MEM_ID = ? AND MEM_PW = ?";
  
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, id);

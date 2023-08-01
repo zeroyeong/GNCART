@@ -40,6 +40,10 @@ if (part == 1) {
 	PartValue = "전체부서";
 }
 %>
+<%//결재선 선택값가져오기
+ String teamLeader = request.getParameter("line1");
+ String manager = request.getParameter("line2");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -47,7 +51,7 @@ if (part == 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>업무 보고서</title>
-    <link rel="stylesheet" href="../css/authWork.css">
+    <link rel="stylesheet" href="../css/authBusiness.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
@@ -57,16 +61,25 @@ if (part == 1) {
     <h2>업무 보고서</h2>
 
     <form action="../busWrite" method="post">
-        <button class="lineBtn" onclick="lineBtn()">결재선</button>
+        <button class="lineBtn" onclick="busLineBtn()">결재선</button>
         <div class="lineContainer">
             <table>
                 <tr>
-                    <th><span>팀장</span></th>
-                    <th><span>부장</span></th>
+					<th><span>팀장</span> 
+					<% if (teamLeader != null) {
+					%> <span><%= teamLeader %></span> <% 
+					} %>
+					</th>
+
+					<th><span>부장</span>
+					<% if (manager != null) {
+					%> <span><%= manager %></span> <% 
+					} %>
+					</th>
                 </tr>
                 <tr>
-                    <th><img src="../images/stamp1.png" alt="팀장 도장"></th>
-                    <th><img src="../images/stamp2.png" alt="부장 도장"></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </table>
         </div>

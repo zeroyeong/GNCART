@@ -110,7 +110,7 @@
                         <div class="modal-content">
                             <div class="modal-close" onclick="hideModal()">&#10006;</div>
                             <button class="modalBtn" type="button" onclick="btnClick('vacation')">휴가</button>
-                            <button class="modalBtn" type="button" onclick="btnClick('work')">업무</button>
+                            <button class="modalBtn" type="button" onclick="btnClick('business')">업무</button>
                         </div>
                     </div>
               </div>

@@ -1,13 +1,22 @@
-/*authVacation */
-function lineBtn() {
+/*authVacation*/
+function vacLineBtn() {
 
-var popupUrl = "authLine.jsp";
+var popupUrl = "authVacationLine.jsp";
 var popupOptions = "width=500,height=400,scrollbars=yes";
 
 window.open(popupUrl, "Line 팝업", popupOptions);
 }
   
-/*auth */
+/*authBusiness*/  
+function busLineBtn() {
+    var popupUrl = "authBusinessLine.jsp";
+    var popupOptions = "width=500,height=400,scrollbars=yes";
+
+    window.open(popupUrl, "LinePopup", popupOptions);
+}
+
+  
+/*auth*/
 var modalBackground = document.getElementById('modalBackground');
 function showModal() {
     modalBackground.style.display = 'block';
@@ -24,8 +33,8 @@ function btnClick(option) {
         var windowOptions = "width=800,height=800,scrollbars=yes,resizable=yes";
 
         window.open(url, "_blank", windowOptions);
-    } else if (option === 'work') {
-        var url = "authWork.jsp";
+    } else if (option === 'business') {
+        var url = "authBusiness.jsp";
         var windowOptions = "width=800,height=800,scrollbars=yes,resizable=yes";
 
         window.open(url, "_blank", windowOptions);

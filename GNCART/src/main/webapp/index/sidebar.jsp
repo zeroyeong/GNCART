@@ -61,7 +61,7 @@
       </li>
        <li>
         <a href="../message/messageInbox.jsp">
-          <i class='bx bx-info-circle icon'></i>
+          <i class='bx bxs-message-dots'></i>
           <span class="links_name">Message</span>
         </a>
       </li>

@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
-<jsp:useBean id="sMgr" class="schedule.ScheduleMgr" />
+<jsp:useBean id="nMgr" class="notice.NoticeMgr" />
 <jsp:useBean id="conMgr" class="familyEvent.ConMgr" />
-<%@ page import="familyEvent.ConMgr" import="familyEvent.ConBean"%>
-<%@ page import="schedule.ScheduleMgr" import="schedule.ScheduleBean"%>
+<jsp:useBean id="sMgr" class="schedule.ScheduleMgr" />
+<%@ page import="notice.NoticeMgr, notice.NoticeBean"%>
+<%@ page import="familyEvent.ConMgr, familyEvent.ConBean"%>
+<%@ page import="schedule.ScheduleMgr, schedule.ScheduleBean"%>
 <%@ page import="java.util.*"%>
 <%
 //로그인 안했을 시 로그인 페이지로 리다이렉트 
@@ -19,19 +21,30 @@ response.setHeader("Pragma", "no-cache");
 response.setHeader("Expires", "0");
 
 // 스케줄
-ScheduleMgr schedulList = new ScheduleMgr();
+ScheduleMgr scheduleMgr = new ScheduleMgr();
 Vector<ScheduleBean> scheduleList = sMgr.getScheduleList("", "");
-
-//스케줄리스트 역순(최근순으로 보여지게)
+//스케줄리스트 역순(최근순)
 Collections.sort(scheduleList, new Comparator<ScheduleBean>() {
-	//@Override
+	//@Override 
 	public int compare(ScheduleBean schedule1, ScheduleBean schedule2) {
 		return schedule2.getSCHE_START_DATE().compareTo(schedule1.getSCHE_START_DATE());
 	}
 });
 
-Vector<ConBean> blist = null;
-blist = conMgr.getBoardList();
+//경조사
+ConMgr ConMgr = new ConMgr();
+Vector<ConBean> conList = conMgr.getBoardList();
+//경조사 리스트 역순(최근순)
+Collections.sort(conList, new Comparator<ConBean>() {
+	//@Override 
+	public int compare(ConBean con1, ConBean con2) {
+		return Integer.compare(con2.getCon_no(), con1.getCon_no());
+	}
+});
+
+//공지사항
+NoticeMgr noticeMgr = new NoticeMgr();
+Vector<NoticeBean> notList = noticeMgr.getBoardList();
 %>
 
 <!DOCTYPE html>
@@ -41,7 +54,7 @@ blist = conMgr.getBoardList();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
-<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/index.css?112331">
 <!--boxIcons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -61,9 +74,26 @@ blist = conMgr.getBoardList();
 				<div class="box">
 					<div class="right-side">
 						<div class="box-topic">
-							<a href="#">공지사항</a>
+							<a href="../notice/notice.jsp">공지사항</a>
 						</div>
-						<div class="indicator"></div>
+						<%
+						int numNotToDisplay = Math.min(notList.size(), 8);
+						if (numNotToDisplay > 0) {
+							for (int i = 0; i < numNotToDisplay; i++) {
+								NoticeBean not = notList.get(i);
+						%>
+						<div class="indexList">
+							<a href="../notice/notice.jsp"> <%=not.getNOT_TITLE()%>
+							</a>
+						</div>
+						<%
+						}
+						} else {
+						%>
+						<div>공지사항 알림이 없습니다.</div>
+						<%
+						}
+						%>
 					</div>
 				</div>
 
@@ -73,8 +103,9 @@ blist = conMgr.getBoardList();
 							<a href="#">자유게시판</a>
 						</div>
 						<div class="indicator">
-							<p>123123123123</p>
-
+							<div class="indexList">
+								<a>알림이 없습니다.</a> <br> <a>알림이 없습니다.</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -82,31 +113,26 @@ blist = conMgr.getBoardList();
 				<div class="box">
 					<div class="right-side">
 						<div class="box-topic">
-							<a href="#">경조사알림</a>
+							<a href="../familyEvent/condolences.jsp">경조사</a>
 						</div>
-						<div class="indicator">
-							<table class="details">
-								<%
-								int numConToDisplay = Math.min(blist.size(), 9);
-								if (numConToDisplay > 0) {
-									for (int i = 0; i < numConToDisplay; i++) {
-										ConBean con = blist.get(i);
-								%>
-								<tr onclick="window.location='../familyEvent/condolences.jsp';">
-									<td><%=con.getCon_title()%></td>
-									<td><%=con.getMem_name()%></td>
-									<td><%=con.getCon_regdate()%></td>
-								</tr>
-								<%
-								}
-								} else {
-								%>
-								<p>스케줄이 없습니다.</p>
-								<%
-								}
-								%>
-							</table>
+						<%
+						int numConToDisplay = Math.min(conList.size(), 8);
+						if (numConToDisplay > 0) {
+							for (int i = 0; i < numConToDisplay; i++) {
+								ConBean con = conList.get(i);
+						%>
+						<div class="indexList">
+							<a href="../familyEvent/condolences.jsp"> <%=con.getCon_title()%>
+							</a>
 						</div>
+						<%
+						}
+						} else {
+						%>
+						<div>알림이 없습니다.</div>
+						<%
+						}
+						%>
 					</div>
 				</div>
 
@@ -173,7 +199,7 @@ blist = conMgr.getBoardList();
 						<%
 						} else {
 						%>
-						<p>스케줄이 없습니다.</p>
+						<p>알림이 없습니다.</p>
 						<%
 						}
 						%>
@@ -185,31 +211,7 @@ blist = conMgr.getBoardList();
 						<a href="#">행사사진</a>
 					</div>
 					<ul class="picture-details">
-						<li><a href="#"> <img src="images/p1.jpg" alt=""> <span
-								class="product">행사1</span>
-						</a></li>
-						<li><a href="#"> <img src="images/p2.jpg" alt=""> <span
-								class="product">행사1</span>
-						</a></li>
-						<li><a href="#"> <img src="images/p3.jpg" alt=""> <span
-								class="product">행사1</span>
-						</a></li>
-						<li><a href="#"> <img src="images/p4.jpg" alt=""> <span
-								class="product">행사1</span>
-						</a></li>
-						<li><a href="#"> <img src="images/p5.jpg" alt=""> <span
-								class="product">행사1</span>
-						</a></li>
-						<li><a href="#"> <img src="images/p6.jpg" alt=""> <span
-								class="product">행사1</span>
-						</a></li>
 
-						<li><a href="#"> <img src="images/p7.jpg" alt=""> <span
-								class="product">행사</span>
-						</a></li>
-						<li><a href="#"> <img src="images/p8.jpg" alt=""> <span
-								class="product">행사1</span>
-						</a></li>
 					</ul>
 				</div>
 			</div>

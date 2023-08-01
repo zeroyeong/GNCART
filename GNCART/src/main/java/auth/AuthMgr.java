@@ -161,4 +161,59 @@ public class AuthMgr {
 		return vlist;
 	}
 		   	   
+	// 팀장 목록
+	public ArrayList<String> getTeamLeaders() {
+		ArrayList<String> teamLeaders = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+
+		try {
+			con = pool.getConnection();
+
+			sql = "SELECT*FROM member a JOIN level b ON a.LE_NO=b.LE_NO WHERE LE_LEVEL = '팀장'";
+
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String teamLeader = rs.getString("MEM_NAME");
+				teamLeaders.add(teamLeader);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return teamLeaders;
+	}
+
+	//부장 목록
+	public ArrayList<String> getManagers() {
+		ArrayList<String> managers = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+
+		try {
+			con = pool.getConnection();
+
+			sql = "SELECT*FROM member a JOIN level b ON a.LE_NO=b.LE_NO WHERE LE_LEVEL = '부장'";
+
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String manager = rs.getString("MEM_NAME");
+				managers.add(manager);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return managers;
+	}
 }
