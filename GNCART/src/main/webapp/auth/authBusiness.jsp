@@ -9,36 +9,9 @@
 request.setCharacterEncoding("UTF-8");
 
 String Name = (String)session.getAttribute("memName");
-int le = (int)session.getAttribute("leNo");
-int part = (int)session.getAttribute("partNo");
 int No = (int)session.getAttribute("memNo");
-
-String leValue = "";
-
-if (le == 1) {
-	leValue ="사원";
-} else if (le == 2) {
-	leValue ="대리";
-} else if (le == 3) {
-	leValue = "팀장";
-} else { 
-	leValue = "부장";
-}
-String PartValue = "";
-
-if (part == 1) {
-	PartValue ="경영지원팀";
-} else if (part == 2) {
-	PartValue = "개발팀";
-} else if (part == 3) {
-	PartValue = "홍보팀";
-} else if (part == 4) {
-	PartValue = "영업팀";
-} else if (part == 5) {
-	PartValue = "서비스지원팀";
-} else {
-	PartValue = "전체부서";
-}
+String leLevel = (String)session.getAttribute("leLevel");
+String parttype = (String)session.getAttribute("parttype");
 %>
 <%//결재선 선택값가져오기
  String teamLeader = request.getParameter("line1");
@@ -65,17 +38,17 @@ if (part == 1) {
         <div class="lineContainer">
             <table>
                 <tr>
-					<th><span>팀장</span> 
-					<% if (teamLeader != null) {
-					%> <span><%= teamLeader %></span> <% 
-					} %>
-					</th>
+               <th><span>팀장</span> 
+               <% if (teamLeader != null) {
+               %><input type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"><%= teamLeader %></input><% 
+               } %>
+               </th>
 
-					<th><span>부장</span>
-					<% if (manager != null) {
-					%> <span><%= manager %></span> <% 
-					} %>
-					</th>
+               <th><span>부장</span>
+               <% if (manager != null) {
+               %><input type="hidden" name="LINE_SECOND" value="<%= manager %>"><%= manager %></input><% 
+               } %>
+               </th>
                 </tr>
                 <tr>
                     <th></th>
@@ -96,11 +69,11 @@ if (part == 1) {
             </tr>
             <tr>
                 <td><label for="position">직급</label></td>
-                <td><input type="text"  value="<%=leValue%>" readonly></td>
+                <td><input type="text"  value="<%=leLevel%>" readonly></td>
             </tr>
             <tr>
                 <td><label for="department">소속 부서</label></td>
-                <td><input type="text"  value="<%=PartValue%>" readonly></td>
+                <td><input type="text"  value="<%=parttype%>" readonly></td>
             </tr>
             <tr>
                 <td><label for="WORK_DETAIL">업무 내용</label></td>

@@ -22,7 +22,7 @@ public class AuthVacServlet extends HttpServlet {
 	    //BoardMgr 클래스에 정의된 insertBoard() 메서드를 호출한다.
 	    //매개변수를 request(요청) 객체 로 하여, insertBoard() 메서드 안에서 파라미터를 처리 할 수 있다.
 	    aMgr.insertVAC(request);
-	    
+	    aMgr.insertLine(request);
 	    //응답 시 list.jsp 페이지로 이동한다.
 	    response.sendRedirect("auth/auth.jsp");
 	}
