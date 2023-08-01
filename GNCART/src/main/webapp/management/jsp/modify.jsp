@@ -4,7 +4,7 @@
     import="java.util.Vector"%>
     	
 <jsp:useBean id="mMgr" class="management.ManagementMgr"/>
-
+ 
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -13,7 +13,7 @@
 	int MEM_NO = Integer.parseInt(request.getParameter("MEM_NO"));
 	String nowPage = request.getParameter("nowPage");
 	
-	ManagementBean bean = (ManagementBean) session.getAttribute("bean");
+	ManagementBean bean = (ManagementBean) session.getAttribute("bean"); 
 	
 	String MEM_NAME=bean.getMEM_NAME();
 	String MEM_ID=bean.getMEM_ID();

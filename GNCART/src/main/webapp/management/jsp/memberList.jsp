@@ -13,7 +13,7 @@
 	if(request.getParameter("keyWord")!=null){
 		keyWord=request.getParameter("keyWord");
 		keyField=request.getParameter("keyField");
-	}
+	} 
 	
 	/*-----새로고침을 위한 listFrm (hidden input)-----*/
 	if(request.getParameter("reload")!=null){

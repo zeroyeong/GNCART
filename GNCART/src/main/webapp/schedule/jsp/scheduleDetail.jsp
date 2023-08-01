@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%
+<% 
 
 	int SCHE_NO = Integer.parseInt(request.getParameter("SCHE_NO"));
 	

@@ -3,7 +3,7 @@
     import="schedule.ScheduleBean"
     import="java.util.*"%>
 <jsp:useBean id="sMgr" class="schedule.ScheduleMgr" />
-
+ 
 <%
 	int SCHE_NO = Integer.parseInt(request.getParameter("SCHE_NO"));
 

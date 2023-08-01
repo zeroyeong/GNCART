@@ -4,7 +4,7 @@
 	2. css 수정하기 (calendar 표와 list표 화면작아질 때 flex-direction:colums)
 	3. monthArea css수정하기 (화면 작아질 때 flex-wrep)
 
- -->
+ --> 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"

@@ -3,7 +3,7 @@
 	1. page nation : 한 페이지당 3개월씩 나오도록 해결하기
 	2. 진정..... 12월의 표를 각각 호출해야 하는가....... 
 	
- -->
+ --> 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
@@ -173,7 +173,7 @@
 		            <td>일정</td>
 		          </tr>
 		        </thead>
-		        <tbody>
+		        <tbody> 
 		        
 				<%
 					Vector<ScheduleBean> blist = sMgr.getScheduleList(calYear, 3);

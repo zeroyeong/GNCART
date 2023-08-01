@@ -21,5 +21,5 @@ public class NewMemberServlet extends HttpServlet {
 		response.sendRedirect("../management/jsp/memberList.jsp");
 //		C:\GNCART\GNCART\src\main\webapp\08management\jsp
 	}
-
+ 
 }

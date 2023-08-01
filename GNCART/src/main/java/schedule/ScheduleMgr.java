@@ -25,13 +25,13 @@ public class ScheduleMgr {
 			e.printStackTrace();
 		}
 	}
-	/*___________일정 리스트____________*/
+	/*___________일정 리스트____________*/  
 	public Vector<ScheduleBean> getScheduleList(int calYear, int calMonth){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		
-		String sql = null;
+		 
+		String sql = null; 
 		
 		Vector<ScheduleBean> vlist = new Vector<ScheduleBean>();
 		

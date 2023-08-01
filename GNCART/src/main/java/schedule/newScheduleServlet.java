@@ -28,4 +28,4 @@ public class newScheduleServlet extends HttpServlet {
 		response.sendRedirect("../schedule/jsp/scheduleMonth.jsp");
 	}
 
-}
+} 

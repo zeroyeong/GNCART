@@ -4,7 +4,7 @@
 <%@page import="management.ManagementBean" %>
 <jsp:useBean id="mMgr" class="management.ManagementMgr"/>
 
-<%
+<% 
 	request.setCharacterEncoding("UTF-8");
 
 // 	System.out.println("---------------read 입장!---------------");
@@ -132,7 +132,7 @@
 	              <td><%=MEM_DATE %></td>
 	            </tr>
 	            <tr>
-	              <td>부서</td>
+	              <td>부서</td> 
 	              <td><%=PART_TYPE %></td>
 	              <td>직위</td>
 	              <td><%=LE_LEVEL %></td>

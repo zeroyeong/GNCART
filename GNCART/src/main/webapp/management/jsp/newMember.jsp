@@ -4,7 +4,7 @@
     import="java.util.Vector"%>
     	
 <jsp:useBean id="mMgr" class="management.ManagementMgr"/>
-
+ 
 <%--
  //로그인 안했을 시 로그인 페이지로 리다이렉트 
  if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
@@ -175,7 +175,7 @@
 		          <td>휴대전화</td>
 		          <td><input name="MEM_PHONE" type="text" placeholder="-포함해서 입력"></td>
 		        </tr>
-		        <tr>
+		        <tr> 
 		          <td>자택주소</td>
 		          <td><input name="MEM_ADD" type="text"></td>
 		        </tr>

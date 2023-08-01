@@ -12,7 +12,7 @@ public class ScheduleBean {
 	String SCHE_DETAIL;  //상세내용
 	String SCHE_FILE; //첨부파일
 	
-	/*___________참조테이블 변수 선언__________*/
+	/*___________참조테이블 변수 선언__________*/ 
 	int MEM_NO; //작성자
 	String MEM_NAME;
 	

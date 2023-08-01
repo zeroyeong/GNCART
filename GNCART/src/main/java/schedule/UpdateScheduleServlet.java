@@ -40,6 +40,6 @@ public class UpdateScheduleServlet extends HttpServlet {
 		String url = "../../GNCART/05schedule/jsp/"+"shceduleDetail.jsp?SCHE_NO="+upBean.getSCHE_NO();
 		
 		response.sendRedirect(url);
-	}
+	} 
 
 }
