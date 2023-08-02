@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>GNC:ART - 일정추가</title>
-<link rel="stylesheet" href="../../css/scheduleAdd.css?dsds">
+<link rel="stylesheet" href="../../css/scheduleUpdate.css?Sdss">
 </head>
 <body>
  
@@ -38,21 +38,20 @@
 %>
 
 	<div class="container">
-    <!----------------타이틀--------------->
-	
-	<div class="topmenu">
-		<h3 class="title">일정 추가</h3>
+    <!----------------타이틀---------------> 
+	<div class="top">
+	    <h3 class="title">일정 내용</h3>
     	<a href="#" id="closeBtn" onclick="closeBox()">×</a>
-	</div>   
-
+	</div>
+		
     <!----------------본문---------------->
-
-    <div class="content">
+    <div class="content"> 
       <form name="newSchedule" method="post" action="../../schedule/newScheduleServlet" enctype="multipart/form-data">
-        <ul>
-          <li>
-            <label for="sche_type">일정종류</label>
-            <select id="sche_type" name="TYPE_NO">
+        <table>
+          <tr>
+            <td>일정종류</td>
+            <td>
+               <select id="sche_type" name="TYPE_NO">
             	<option>선택</option>
             	<%
             	Vector<ScheduleBean> typeList = sMgr.getTypeList();
@@ -72,14 +71,18 @@
 	            <%	}
             	}%>
             </select>
-          </li>
-          <li>
-            <label for="sche_title">일정 제목</label>
-            <input type="text" id="sche_title" name="SCHE_NAME" required>
-          </li>
-          <li>
-            <label for="sceh_part">해당 부서</label>
-            <select id="sceh_part" name="PART_NO">
+            </td>
+          </tr>
+          <tr>
+            <td>일정 제목</td>
+            <td>
+              <input type="text" id="sche_title" name="SCHE_NAME" required>
+            </td>
+          </tr>
+          <tr>
+            <td>해당 부서</td>
+            <td>
+              <select id="sche_part" name="PART_NO">
 	            <option>선택</option>
               <%
             		Vector<ScheduleBean> partList = sMgr.getPartList();
@@ -98,12 +101,14 @@
 	              <option value="<%=PART_NO%>"><%=PART_TYPE %></option>
 	            <%	}
             	}%>
-            </select>
-          </li>
-          <li>
-            <label for="sche_date_start">시작</label>
-            <div class="sche_date">
-              <input id="sche_date_start" name="SCHE_START_DATE" type="date" required>
+            	</select>
+              </td>
+          </tr>
+          <tr>
+            <td>시작</td>
+            <td>
+            	<div class="time">
+		            <input id="sche_date_start" name="SCHE_START_DATE" type="date" required>
               <select id="sche_start_titme" name="ST_NO">
                 <option>선택하세요</option>
                 <%
@@ -126,13 +131,15 @@
 	            <%	}
             	}%>
               </select>
-            </div>
-          </li>
-          <li>
-            <label for="sche_date_end">종료</label>
-            <div class="sche_date">
-              <input id="sche_date_end" name="SCHE_END_DATE" type="date" required>
-              <select id="sche_start_titme" name="END_NO">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>종료</td>
+            <td>
+            	<div class="time">
+		            <input id="sche_date_end" name="SCHE_END_DATE" type="date" required>
+              <select id="sche_end_titme" name="END_NO">
                 <option>선택하세요</option>
                 <%
                		Vector<ScheduleBean> endtimeList = sMgr.getEndTimeList();
@@ -154,25 +161,28 @@
 	            <%	}
             	}%>
               </select>
-            </div>
-          </li>
-          <li>
-            <label for="sche_detail">내용</label>
-            <textarea id="sche_detail" name="SCHE_DETAIL"></textarea>
-          </li>
-          <li>
-            <label for="file">첨부파일</label>
-            <input type="file" id="file" name="SCHE_FILE">
-          </li>
-        </ul>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>내용</td>
+            <td>
+              <textarea id="sche_detail" name="SCHE_DETAIL"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>첨부파일</td>
+           		<td>
+                <input type="file" id="file" name="SCHE_FILE">
+              </td>
+          </tr>
+        </table>
+        
         <!-- submit을 위한 hidden input - MEM_NO + SCHE_DATE -->
         <input type="hidden" value="1" name="MEM_NO"> <!-- value의 1은 관리자사용자인 김사장을 뜻한다. -->
         <input type="hidden" value="<%=SCHE_DATE %>" name="SCHE_DATE">
-
-        <!----------------------------------->
+	        
         <!----------------버튼---------------->
-        <!----------------------------------->
-      
         <div class="button">
           <input type="button" value="저장" onclick="check()">
           <input type="reset" value="취소" onclick="closeBox()">
@@ -187,33 +197,42 @@
   
 	<script src="../script/popup.js"></script>
 	<script>
-		function check(){
-			const title = document.getElementById('sche_title').value;
-			const type = document.getElementById('sche_type').value;
-			const part = document.getElementById('sceh_part').value;
-			const start_date = document.getElementById('sche_date_start').value;
-			const end_date = document.getElementById('sche_date_end').value;
-			
-			if(title == "" || type =="선택" || part == "선택" || start_date =="" || end_date == ""){
-				if(type == "선택"){
-					alert("추가할 일정의 종류를 선택해 주세요.");
-				}
-				else if(title == ""){
-					alert("추가할 일정의 제목을 입력해 주세요.");
-				}
-				else if(part == "선택"){
-					alert("추가할 일정의 해당 부서를 선택해 주세요.");
-				}
-				else if(start_date == ""){
-					alert("추가할 일정의 시작날짜를 입력해 주세요.");
-				}
-				else if(end_date == ""){
-					alert("추가할 일정의 종료날짜를 입력해 주세요.");
-				}
-			}else{
-				document.newSchedule.submit();
+	function check(){
+		const type = document.getElementById('sche_type').value;
+		const title = document.getElementById('sche_title').value;
+		const part = document.getElementById('sche_part').value;
+		const stDay = document.getElementById('sche_date_start').value;
+		const stTime = document.getElementById('sche_start_titme').value;
+		const endDay = document.getElementById('sche_date_end').value;
+		const endTime = document.getElementById('sche_end_titme').value;
+		
+		if(type =="선택" || title == "" || part == "선택" || stDay =="" || endDay == ""
+				|| stDay>endDay || (stDay == endDay && stTime > endTime)){
+			if(type == "선택"){
+				alert("추가할 일정의 종류를 선택해 주세요.");
 			}
-		}
+			else if(title == ""){
+				alert("추가할 일정의 제목을 입력해 주세요.");
+			}
+			else if(part == "선택"){
+				alert("추가할 일정의 해당 부서를 선택해 주세요.");
+			}
+			else if(stDay == ""){
+				alert("추가할 일정의 시작날짜를 입력해 주세요.");
+			}
+			else if(endDay == ""){
+				alert("추가할 일정의 종료날짜를 입력해 주세요.");
+			}
+			else if(stDay>endDay){
+				alert("일정의 종료날짜 또는 시작날짜가 잘못되었습니다.")
+			}
+			else if(stDay == endDay && stTime > endTime){
+				alert("선택한 시간설정이 잘못되었습니다.")
+			}
+		}else{
+			document.newSchedule.submit();
+		}	
+	}
 	</script>
 </body>
 </html>

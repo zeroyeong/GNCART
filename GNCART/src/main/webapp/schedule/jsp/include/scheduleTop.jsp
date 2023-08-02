@@ -46,7 +46,7 @@
 	  }
 	  
 	  function addSchedule() {
-	    openCenter("scheduleAdd.jsp","",550,630);
+	    openCenter("scheduleAdd.jsp","",550,560);
 	  }
 	  
 	  /*_________페이지별 링크 이동_________*/

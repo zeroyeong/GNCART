@@ -19,13 +19,13 @@ public class newScheduleServlet extends HttpServlet {
 		
 		sMgr.newSchedule(request);
 		    
-//		ScheduleBean bean = sMgr.newScheduleView();
-//		int SCHE_NO = bean.getSCHE_NO();
-//		
-//		String url = "../../GNCART/schedule/jsp/"+"scheduleDetail.jsp?SCHE_NO="+SCHE_NO;
-//		response.sendRedirect(url);
+		ScheduleBean bean = sMgr.newScheduleView();
+		int SCHE_NO = bean.getSCHE_NO();
 		
-		response.sendRedirect("../schedule/jsp/scheduleMonth.jsp");
+		String url = "../../GNCART/schedule/jsp/"+"scheduleDetail.jsp?SCHE_NO="+SCHE_NO;
+		response.sendRedirect(url);
+		
+//		response.sendRedirect("../schedule/jsp/scheduleMonth.jsp");
 	}
 
 } 

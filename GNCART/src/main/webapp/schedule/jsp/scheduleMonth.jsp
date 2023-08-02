@@ -252,7 +252,7 @@
 		document.getElementById('readF').submit();
 	}
 	function popup(){
-		openCenter('', 'popup', 550,500);
+		openCenter('', 'popup', 550,560);
 		document.getElementById('readF').target='popup';
 		document.getElementById('readF').submit();
 	}

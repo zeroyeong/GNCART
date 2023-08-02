@@ -46,6 +46,13 @@
 	session.setAttribute("bean", bean); // 수정을 위해서 session에 bean 정보 저장
 %>
 
+<script>
+	function down(SCHE_FILE){
+		document.downFrm.SCHE_FILE.value = SCHE_FILE;
+		document.downFrm.submit();
+	}
+</script>
+
 	<div class="container">
     <!----------------------------------->
     <!----------------타이틀--------------->
@@ -103,20 +110,27 @@
            	%>
           </tr>
           <tr>
-            <td>첨부파일</td> <!-- 파일이 있으면 내보내고 null이라면 - 를 대신 출력해라 -->
+            <td>첨부파일</td> <!-- 파일이 있으면 내보내고 null이라면 문장을 대신 출력해라 -->
            	<%
-           		if(SCHE_FILE != null){%>
-           		<td><a href="javascript:download(<%=SCHE_FILE%>)"></a></td>
+           		if(SCHE_FILE != null && !SCHE_FILE.equals("")){%>
+           		<td><a href="javascript:down(<%=SCHE_FILE%>)"><%=SCHE_FILE %></a></td>
            	<%
            		}else{
            	%>
-           		<td>-</td>
+           		<td>등록된 파일이 없습니다.</td>
            	<%
            		}
            	%>
           </tr>
         </table>
-        <input type="hidden" name="SCHE_NO" value="<%=SCHE_NO %>"> <!-- 수정을 위한 SCHE_NO / hidden input -->
+        
+        <!-- 수정을 위한 SCHE_NO / hidden input -->
+        <input type="hidden" name="SCHE_NO" value="<%=SCHE_NO %>">
+        
+        <!-- file 다운을 위한 hidden form -->
+        <form name="downFrm" action="download.jsp" method="post">
+        	<input type="hidden" name="SCHE_FILE">
+        </form> 
 
         <!----------------------------------->
         <!----------------버튼---------------->
