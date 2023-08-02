@@ -66,6 +66,7 @@ int cnt = 1;
 										<th>받는사람</th>
 										<th>제목</th>
 										<th>보낸시간</th>
+										<th>확인여부</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -74,6 +75,7 @@ int cnt = 1;
 										<th>받는사람</th>
 										<th>제목</th>
 										<th>보낸시간</th>
+										<th>확인여부</th>
 									</tr>
 								</tfoot>
 
@@ -83,6 +85,7 @@ int cnt = 1;
 										<td>김말쑥</td>
 										<td><a href="#">누구누구 결혼식</a></td>
 										<td>2023/12/25</td>
+										<td>2023-12-25</td>
 									</tr>
 
 									<%												
@@ -96,6 +99,8 @@ int cnt = 1;
 											String msg_toParyType = bean.getMsg_toPartType();
 											String msg_toName = bean.getMsg_toName();
 											String msg_sendTime = bean.getMsg_sendTime();
+											String msg_readTime = bean.getMsg_readTime();
+											String msg_read = bean.getMsg_read();
 											int msg_showcheck = bean.getMsg_showCheck();
 											
 											// 0이면 둘다 보이고 1이면 보낸사람이 지운상태 2이면 받은사람이 지운상태
@@ -106,6 +111,17 @@ int cnt = 1;
 										<td><%= msg_toParyType %> <%= msg_toName %></td>
 										<td><a id="" href="messageDetail.jsp?msg_no=<%=msg_no%>&pageName=<%=pageName%>"><%=msg_title%></a></td>
 										<td><%=msg_sendTime%></td>
+										<% 
+										if(msg_read.equals("안읽음")){
+										%>
+										<td><%= msg_read %></td>
+										<%											
+										} else {
+										%>
+										<td><%= msg_readTime %></td>
+										<%
+										} //else
+										%>
 									</tr>
 									<%
 									cnt++;

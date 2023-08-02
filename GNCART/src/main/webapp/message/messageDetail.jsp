@@ -23,8 +23,8 @@
 	int delCnt = bean.getMsg_delCnt();
 	String filename = bean.getMsg_file(); 
 	
-	
-	if(read.equals("안읽음")){
+	//받은 메일함에서 열때
+	if(pageName.endsWith("messageInbox") && read.equals("안읽음")){
 		msgMgr.setRead(msg_no);
 	} 
 %>

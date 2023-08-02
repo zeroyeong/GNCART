@@ -70,6 +70,7 @@ public class MsgMgr {
 				bean.setMsg_fromPartType(rs.getString("msg_fromparttype"));
 				bean.setMsg_fromName(rs.getString("msg_fromname"));
 				bean.setMsg_sendTime(rs.getString("msg_sendtime"));
+				bean.setMsg_readTime(rs.getString("msg_readtime"));
 				bean.setMsg_read(rs.getString("msg_read"));
 				bean.setMsg_delCnt(rs.getInt("msg_delcnt"));
 				bean.setMsg_showCheck(rs.getInt("msg_showcheck"));
@@ -111,6 +112,7 @@ public class MsgMgr {
 				bean.setMsg_toPartType(rs.getString("msg_toparttype"));
 				bean.setMsg_toName(rs.getString("msg_toname"));
 				bean.setMsg_sendTime(rs.getString("msg_sendtime"));
+				bean.setMsg_readTime(rs.getString("msg_readtime"));
 				bean.setMsg_read(rs.getString("msg_read"));
 				bean.setMsg_delCnt(rs.getInt("msg_delcnt"));
 				bean.setMsg_showCheck(rs.getInt("msg_showcheck"));
