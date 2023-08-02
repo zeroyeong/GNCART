@@ -74,10 +74,11 @@ int memNo = (int)session.getAttribute("memNo");
 						</tr>
 						<tr>
 							<td class="tableTitle"><label for="type">일정 종류</label></td>
-							<td><select id="type" name="type" value="">
-									<option>결혼식</option>
-									<option>장례식</option>
-									<option>출산</option>
+							<td><select id="type" name="type">
+									<option value="결혼식">결혼식</option>
+									<option value="출산">출산</option>
+									<option value="돌잔치">돌잔치</option>
+									<option value="장례식">장례식</option>
 							</select></td>
 							<td class="tableTitle"><label for="part">부서 / 이름</label></td>
 							<td>
@@ -150,6 +151,7 @@ int memNo = (int)session.getAttribute("memNo");
 							</td>
 						</tr>
 
+						<input type="hidden" id="typeSelect" value="<%= type %>">
 						<!-- 페이지 넘버를 넘겨주기 위한 히든 -->
 						<input type="hidden" name="con_no" value="<%=con_no%>">
 						<input type="hidden" id="addressName" name="map">
@@ -170,7 +172,7 @@ int memNo = (int)session.getAttribute("memNo");
 		</div>
 	</section>
 	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-	<script src="../script/condolencesRevise.js"></script>
+	<script src="../script/condolencesRevise.js?asdf"></script>
 	<script src="../script/indexScript.js"></script>
 </body>
 </html>

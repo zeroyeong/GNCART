@@ -1,3 +1,11 @@
+var type = document.getElementById("type");
+var typeSelect = document.getElementById("typeSelect");
+
+for(var i=0; i<type.options.length; i++){
+	if(type.options[i].value == typeSelect.value){
+		type.options[i].selected = true;
+	}
+}
 
 function mapSearch() {
 			
@@ -33,7 +41,8 @@ function deleteMap(){
 		locationId.value = "";
 		locationId.placeholder='지도에서 검색 해주세요';
 		
-		document.getElementsByName('filed')[0].setAttribute('id', 'filed');
+	//겹치는 아이디 변경
+	document.getElementsByName('filed')[0].setAttribute('id', 'filed');
 }
 
 function deleteFile(){
@@ -50,6 +59,7 @@ function deleteFile(){
 	console.log("delFile= " + delFile.value);
 	addfile.value = "";
 	
+	//겹치는 아이디 변경
 	document.getElementsByName('af')[0].setAttribute('id', 'af');
 }
 

@@ -61,9 +61,10 @@ if(request.getParameter("user") != null){
 						<tr>
 							<td class="tableTitle"><label for="type">일정 종류</label></td>
 							<td><select id="type" name="type">
-									<option>결혼식</option>
-									<option>장례식</option>
-									<option>출산</option>
+									<option value="결혼식">결혼식</option>
+									<option value="출산">출산</option>
+									<option value="돌잔치">돌잔치</option>
+									<option value="장례식">장례식</option>
 							</select></td>
 							<td class="tableTitle"><label for="part">부서 / 이름</label></td>
 							<td>
