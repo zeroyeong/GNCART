@@ -185,7 +185,7 @@
         <!----------------버튼---------------->
         <div class="button">
           <input type="button" value="저장" onclick="check()">
-          <input type="reset" value="취소" onclick="closeBox()">
+          <input type="reset" value="취소"">
         </div>
       </form>
     </div>

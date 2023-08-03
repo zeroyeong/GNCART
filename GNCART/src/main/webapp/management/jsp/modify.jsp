@@ -87,20 +87,29 @@
           </div>
 
           <form name="updateFrm" method="post" action="../../management/MemberUpdateServlet">
-          
-          <!-- submit에 MEM_NO 값을 넘기기 위한 hidden input -->
-          <input type="hidden" value="<%=MEM_NO%>">
+
               <table>
 		        <tr>
 		          <td rowspan="4" class="mem-img">
 		          	<%
-		          		if(MEM_IMG==null || MEM_IMG==""){%>
-		          			<img src="../images/profile.jpg" name="MEM_IMG">
+		          		if(MEM_IMG != null){%>
+		          			<div id="fileArea">
+			          			<img src="../images/<%=MEM_IMG %>" name="MEM_IMG">
+			          			<input type="hidden" name="MEM_IMG" value="<%=MEM_IMG %>">
+			          			<input type="button" value="삭제" onclick="delFile()">
+		          			</div>
+		          			
+		          			<div id="fileInput" style="display:none;">
+			          			<img src="../filestorage/profile.jpg">
+			          			<input type="file" name="MEM_IMG">
+		          			</div>
 		          		<%}else{%>
-		          			<img src="../filestorage/<%=MEM_IMG %>">
-		          		<%}
-		          	%>
-		          	<input type="file" name="MEM_IMG">
+		          		
+		          			<img src="../filestorage/profile.jpg">
+		          			<input type="file" name="MEM_IMG">
+		          			
+		          		<%} %>
+		          		
 		          </td>
 		          <td>이름</td>
 		          <td><input name="MEM_NAME" type="text" value="<%=MEM_NAME%>"></td>
@@ -308,5 +317,12 @@
 </html>
 
 <script src="../../script/indexScript.js"></script>
+<script>
+/*_____파일 삭제_____*/
+function delFile(){
+	 document.getElementById('fileArea').style.display="none";
+	 document.getElementById('fileInput').style.display="block";
+}
+</script>
 </body>
 </html>

@@ -98,13 +98,14 @@ tr:last-child td input{
   width:fit-content
 }
 
-td button{
+td input[type="button"]{
   border:none;
   padding:5px;
   border-radius:5px;
+  background-color:#eee;
 }
 
-td button:hover, td button:focus{
+td input[type="button"]:hover, td input[type="button"]:focus{
   background-color:gray;
   color:#fff;
 }

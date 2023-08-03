@@ -1,13 +1,18 @@
 package schedule;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDateTime;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -128,16 +133,16 @@ public class ScheduleMgr {
 	/*_____________일정 등록 scheduleAdd.jsp_____________*/
 	
 	//파일 업로드 관련 설정 작성
-	private static final String  SAVEFOLDER = "C:/GNCART/GNCART/src/main/webapp/05management/filestorage";
+	private static final String  SAVEFOLDER = "C:/GNCART/GNCART/GNCART/src/main/webapp/schedule/filestorage";
 	private static final String ENCTYPE = "UTF-8";
-	private static int MAXSIZE = 5*1024*1024;
+	private static int MAXSIZE = 10*1024*1024; //용량 초과의 경우 사이트연결불가 화면이 뜸~!
 	
 	public void newSchedule(HttpServletRequest req) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		Connection con = null; //연결객체
+		PreparedStatement pstmt = null; //쿼리처리객체
+		ResultSet rs = null;  //결과값 담는 객체
 		
-		String sql = null;
+		String sql = null; //쿼리문 저장 변수	
 		
 		MultipartRequest multi = null; //파일 업로드 위한 객체
 		
@@ -152,7 +157,8 @@ public class ScheduleMgr {
 				file.mkdirs();
 			}
 			
-			multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCTYPE, new DefaultFileRenamePolicy());
+			multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCTYPE,
+					new DefaultFileRenamePolicy());
 			
 			if(multi.getFilesystemName("SCHE_FILE")!=null) {
 				SCHE_FILE = multi.getFilesystemName("SCHE_FILE");
@@ -169,7 +175,7 @@ public class ScheduleMgr {
 			pstmt.setString(3, multi.getParameter("SCHE_START_DATE"));
 			pstmt.setString(4, multi.getParameter("SCHE_END_DATE"));
 			pstmt.setString(5, multi.getParameter("SCHE_DETAIL"));
-			pstmt.setString(6, multi.getParameter("SCHE_FILE"));
+			pstmt.setString(6, SCHE_FILE);
 			pstmt.setInt(7, Integer.parseInt(multi.getParameter("ST_NO")));
 			pstmt.setInt(8, Integer.parseInt(multi.getParameter("END_NO")));
 			pstmt.setInt(9, Integer.parseInt(multi.getParameter("MEM_NO")));
@@ -212,36 +218,120 @@ public class ScheduleMgr {
 	}
 	
 	/*___________일정 수정 updateSchedule.jsp____________*/
-	public void updateSchedule(ScheduleBean bean) {
+	public void updateSchedule(HttpServletRequest req, HttpServletResponse res) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		
 		String sql = null;
+		
+		MultipartRequest multi = null; //파일 업로드 위한 객체
+		String SCHE_FILE = null; //파일이름 변수	
 		
 		try {
 			con = pool.getConnection();
 			
-			sql = "update schedule set SCHE_NAME=?, SCHE_START_DATE=?,SCHE_END_DATE=?,\r\n"
-				  + "SCHE_DETAIL=?, SCHE_FILE=?, ST_NO=?, END_NO=?, TYPE_NO=?, PART_NO=?\r\n"
-				  + "where SCHE_NO=?";
+			File file = new File(SAVEFOLDER);
+			
+			if(!file.exists()) {
+				file.mkdirs();
+			}
+			
+			multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCTYPE,
+					new DefaultFileRenamePolicy());
+			
+			if(multi.getFilesystemName("SCHE_FILE")!=null) {
+				SCHE_FILE = multi.getFilesystemName("SCHE_FILE");
+			}
+			
+			sql = "update schedule set SCHE_NAME=?, SCHE_START_DATE=?,SCHE_END_DATE=?, SCHE_DETAIL=?, SCHE_FILE=?, ST_NO=?, END_NO=?, TYPE_NO=?, PART_NO=? where SCHE_NO=?";
 			
 			pstmt=con.prepareStatement(sql);
 			
-			pstmt.setString(1, bean.getSCHE_NAME());
-			pstmt.setString(2, bean.getSCHE_START_DATE());
-			pstmt.setString(3, bean.getSCHE_END_DATE());
-			pstmt.setString(4, bean.getSCHE_DETAIL());
-			pstmt.setString(5, bean.getSCHE_FILE());
-			pstmt.setInt(6, bean.getST_NO());
-			pstmt.setInt(7,  bean.getEND_NO());
-			pstmt.setInt(8, bean.getTYPE_NO());
-			pstmt.setInt(9, bean.getPART_NO());
+			pstmt.setString(1, multi.getParameter("SCHE_NAME"));
+			pstmt.setString(2, multi.getParameter("SCHE_START_DATE"));
+			pstmt.setString(3, multi.getParameter("SCHE_END_DATE"));
+			pstmt.setString(4, multi.getParameter("SCHE_DETAIL"));
+			pstmt.setString(5, SCHE_FILE);
+			pstmt.setInt(6, Integer.parseInt(multi.getParameter("ST_NO")));
+			pstmt.setInt(7, Integer.parseInt(multi.getParameter("END_NO")));
+			pstmt.setInt(8, Integer.parseInt(multi.getParameter("TYPE_NO")));
+			pstmt.setInt(9,Integer.parseInt( multi.getParameter("PART_NO")));
+			pstmt.setInt(10,Integer.parseInt( multi.getParameter("SCHE_NO")));
 			
-			rs=pstmt.executeQuery();
+			pstmt.executeUpdate();
+			System.out.println("쿼리 끝");
+			
+			res.sendRedirect("http://localhost:8080/GNCART/schedule/jsp/scheduleDetail.jsp?SCHE_NO="+multi.getParameter("SCHE_NO"));
+			
+//		}catch(IOExeption ie){
+//			ie.printStackTrace();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			pool.freeConnection(con, pstmt, rs);
+			pool.freeConnection(con, pstmt);
+		}
+	}
+	
+	/*___________파일 수정___________*/
+
+	
+	/*___________파일 다운로드___________*/
+	public void downLoad(HttpServletRequest req, HttpServletResponse res, JspWriter out, PageContext pageContext) {
+		try {//요청객체에 있는 filename 파라미터를 바아서 변수에 저장
+			String filename=req.getParameter("SCHE_FILE");
+			
+			//file 객체 생성, filename이 한글일 경우 깨지지않게 하기위해
+			//UtilMgr클래스의 con()메서드 호출하여 결과값을 담는다.
+			//BoarMgr 클래스 상단에 있는 savefolder 경로와 file구분자, filename을 저장.
+			File file=new File(UtilMgr.con(SAVEFOLDER+File.separator+filename));
+			
+			//file.length()는 파일의 크기를 리턴하며, 단위는 byte임
+			byte b[]=new byte[(int)file.length()];
+			
+			//res.setHeader() 메서드를 이용해서 response(응답) 객체의 header에 text를 추가.
+			//첫번재 인수가 key, 두번째 인수가 value이다.
+			res.setHeader("Accept-Ranges", "bytes");
+			
+			//req.getHeader() 메서드를 이용해서 요청객체의 클라이언트 브라우저 정보를 strClient변수에 저장
+			String strClient = req.getHeader("User-Agent");
+			
+			//strClient 변수에 저장된 브라우저 정보를 indexOf 메서드로 검색
+			//브라우저 정보에 MSIE가 true이면 ms사의 브라우자, false면 다른 브라우저로 인식
+			//브라우저의 버전과 정보를 구분해서 각각 res(응답객체)의 header와 contentType을 설정한다.
+			
+			if(strClient.indexOf("MSIE6.0")!=-1) {
+				//indexOf() 메서드를 사용하여 일치하는 값이 없으면 -1을 반환한다.
+				//이 조건문에서는 true상황, 즉 일치하는 값이 있는 경우 아래 내용을 수행한다.
+				
+				res.setContentType("application/smnet;charset=UTF-8");
+				res.setHeader("Content-Disposition", "filename="+filename+";");
+			}else {//indedxOf()메서드 실행결과 일치하는 값이 없으면 아래 내용 수행
+				res.setContentType("application/smnet;charset=UTF-8");
+				res.setHeader("Content-Disposition", "attachment;filename="+filename+";");
+			}
+			
+			out.clear(); //out.clear() : out객체의 모든 컨텐츠 지우기
+			out=pageContext.pushBody(); //pageContext.pushBody(): jsp페이지 정보 저장
+			
+			if(file.isFile()) {
+				//file.isFile() 메서드로 file객체에 있는 sacefolder경로와 filename이 일치하면 true
+				//BufferredInputStream 객체를 생성하고, FileInputStream을 이용하여 file을 읽어들여 저장한다.
+				BufferedInputStream fin=new BufferedInputStream(new FileInputStream(file));
+				//BufferredOutputStream 객체를 생성하여 응답시 출력을 한다.
+				BufferedOutputStream outs = new BufferedOutputStream(res.getOutputStream());
+				
+				int read=0;
+				
+				while((read=fin.read(b))!=-1) {
+					outs.write(b,0,read);
+				}
+				
+				outs.close();
+				
+				fin.close();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

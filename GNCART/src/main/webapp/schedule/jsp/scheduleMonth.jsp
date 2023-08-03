@@ -274,6 +274,7 @@
 	
 	function nextMonth(){
 		document.nextMonthFrm.submit();
+		
 	}
 	
 	/*______월 클릭시 class변환______*/

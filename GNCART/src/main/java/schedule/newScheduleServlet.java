@@ -24,8 +24,6 @@ public class newScheduleServlet extends HttpServlet {
 		
 		String url = "../../GNCART/schedule/jsp/"+"scheduleDetail.jsp?SCHE_NO="+SCHE_NO;
 		response.sendRedirect(url);
-		
-//		response.sendRedirect("../schedule/jsp/scheduleMonth.jsp");
 	}
 
 } 
