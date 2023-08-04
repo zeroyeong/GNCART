@@ -2,41 +2,115 @@
 function vacLineBtn() {
 
 var popupUrl = "authVacationLine.jsp";
-var popupOptions = "width=500,height=400,scrollbars=yes";
 
-window.open(popupUrl, "Line 팝업", popupOptions);
+var _width = '400';
+var _height = '400';
+
+var _left = Math.ceil(( window.screen.width - _width )/2);
+var _top = Math.ceil(( window.screen.height - _height )/2);
+
+window.open(popupUrl, "Line 팝업", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
 }
-  
-/*authBusiness*/  
+
+/*authBusiness*/
 function busLineBtn() {
-    var popupUrl = "authBusinessLine.jsp";
-    var popupOptions = "width=500,height=400,scrollbars=yes";
+var popupUrl = "authBusinessLine.jsp";
+var _width = '400';
+var _height = '400';
 
-    window.open(popupUrl, "LinePopup", popupOptions);
+var _left = Math.ceil(( window.screen.width - _width )/2);
+var _top = Math.ceil(( window.screen.height - _height )/2);
+
+window.open(popupUrl, "LinePopup", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
 }
 
-  
-/*auth*/
+/*authVacation,authBusiness*/
+function chkLine() {
+var first = document.getElementById("LINE_FIRST").value.trim();
+var second = document.getElementById("LINE_SECOND").value.trim();
+
+if (first === "" || second === "") {
+alert("결재선을 지정해주세요");
+return false;
+}
+return true;
+}
+
+/*authBusinessLine*/
+function busSubmit() {
+window.opener.name = "authBusiness.jsp"; // 부모창의 이름 설정
+document.busForm.target = "authBusiness.jsp"; // 타켓을 부모창으로 설정
+document.busForm.action = "../auth/authBusiness.jsp";
+document.busForm.submit();
+self.close();
+}
+
+/*authVacationLine*/
+function vacSubmit() {
+window.opener.name = "authVacation.jsp"; // 부모창의 이름 설정
+document.vacForm.target = "authVacation.jsp"; // 타켓을 부모창으로 설정
+document.vacForm.action = "../auth/authVacation.jsp";
+document.vacForm.submit();
+self.close();
+}
+
+/*auth modal*/
 var modalBackground = document.getElementById('modalBackground');
 function showModal() {
-    modalBackground.style.display = 'block';
+modalBackground.style.display = 'block';
 }
 
 function hideModal() {
-    modalBackground.style.display = 'none';
+modalBackground.style.display = 'none';
 }
 
+/*휴가,업무 창 */
 function btnClick(option) {
-    if (option === 'vacation') {
-   
-        var url = "authVacation.jsp";
-        var windowOptions = "width=800,height=800,scrollbars=yes,resizable=yes";
+if (option === 'vacation') {
 
-        window.open(url, "_blank", windowOptions);
-    } else if (option === 'business') {
-        var url = "authBusiness.jsp";
-        var windowOptions = "width=800,height=800,scrollbars=yes,resizable=yes";
+var url = "authVacation.jsp";
+var _width = '800';
+var _height = '800';
 
-        window.open(url, "_blank", windowOptions);
-    }
+var _left = Math.ceil(( window.screen.width - _width )/2);
+var _top = Math.ceil(( window.screen.height - _height )/2);
+
+window.open(url, "_blank", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+} else if (option === 'business') {
+
+var url = "authBusiness.jsp";
+var _width = '800';
+var _height = '800';
+
+var _left = Math.ceil(( window.screen.width - _width )/2);
+var _top = Math.ceil(( window.screen.height - _height )/2);
+
+window.open(url, "_blank", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+
+}
+}
+
+/*viewPopup*/
+function vacView(DOC_NO) {
+
+var _width = '800';
+var _height = '800';
+
+var _left = Math.ceil(( window.screen.width - _width )/2);
+var _top = Math.ceil(( window.screen.height - _height )/2);
+
+window.open("authVacationView.jsp?DOC_NO=" + DOC_NO, "_blank",
+'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+}
+
+function busView(DOC_NO){
+
+var _width = '800';
+var _height = '800';
+
+var _left = Math.ceil(( window.screen.width - _width )/2);
+var _top = Math.ceil(( window.screen.height - _height )/2);
+
+window.open("authBusinessView.jsp?DOC_NO=" + DOC_NO, "_blank",
+'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
 }

@@ -15,37 +15,37 @@ import notice.NoticeBean;
 public class AuthWriteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-		    throws ServletException, IOException {
+			throws ServletException, IOException {
 
-			request.setCharacterEncoding("UTF-8");
-			response.setContentType("text/html; charset=UTF-8");
-		    
-		    PrintWriter out = response.getWriter();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 
-		    String action = request.getParameter("action");
-		    
-		    AuthMgr aMgr = new AuthMgr();
-		    
-		    
-		    if ("vacWrite".equals(action)) {
-		    	
-				out.println("<script>");
-				out.println("alert('결재신청이 완료되었습니다');");
-				out.println("window.close();");
-				out.println("window.opener.location.reload();"); 
-				out.println("</script>");
-				
-		    	aMgr.insertVAC(request);
-		    	
-		    } else if ("busWrite".equals(action)) {
-		    	
-				out.println("<script>");
-				out.println("alert('결재신청이 완료되었습니다');");
-				out.println("window.close();");
-				out.println("window.opener.location.reload();");
-				out.println("</script>");
-				
-		    	aMgr.insertBUS(request);
-		    } 
-		}
+		PrintWriter out = response.getWriter();
+
+		String action = request.getParameter("action");
+
+		AuthMgr aMgr = new AuthMgr();
+
+
+		if ("vacWrite".equals(action)) {
+
+			out.println("<script>");
+			out.println("alert('결재신청이 완료되었습니다');");
+			out.println("window.close();");
+			out.println("window.opener.location.reload();"); 
+			out.println("</script>");
+
+			aMgr.insertVAC(request);
+
+		} else if ("busWrite".equals(action)) {
+
+			out.println("<script>");
+			out.println("alert('결재신청이 완료되었습니다');");
+			out.println("window.close();");
+			out.println("window.opener.location.reload();");
+			out.println("</script>");
+
+			aMgr.insertBUS(request);
+		} 
+	}
 }

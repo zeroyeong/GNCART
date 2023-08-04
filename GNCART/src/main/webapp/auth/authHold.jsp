@@ -7,8 +7,9 @@
 <%
   if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");
+
+  int leNo = (int)session.getAttribute("leNo"); 
 %>
-<% int leNo = (int)session.getAttribute("leNo"); %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,7 +23,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
- 
 <body>
   <!-- sidebar include -->
   <jsp:include page="../index/sidebar.jsp" flush="false" />
@@ -62,13 +62,14 @@
                   </tfoot>
                   <tbody>
                   <%
-                  Vector<AuthBean> vlist = null; 
-                  vlist = aMgr.getAuthList();
-                  if (vlist.isEmpty()) {
-                	  out.println("등록된 게시글이 없습니다.");
-                  } else {
+	                  Vector<AuthBean> vlist = null; 
+	                  vlist = aMgr.getAuthList();
+	                  if (vlist.isEmpty()) {
+	                	  out.println("등록된 게시글이 없습니다.");
+	                  } else {
                   %>
-				<%    for (int i=0; i<vlist.size(); i++) { 
+				  <%    
+					  for (int i=0; i<vlist.size(); i++) { 
                       AuthBean bean = vlist.get(i);
                       int DOC_NO = bean.getDOC_NO();
                       String DOC_NAME = bean.getDOC_NAME();
@@ -82,13 +83,13 @@
                       
                       if (leNo == 3) {
                       if (DOC_STATES == 0) {
-                  %>
+				  %>
                       <tr>
                           <td><%=DOC_NO %></td>
                           <%if (DOC_TYPE == 1) {%>
-                          <td><a href="javascript:VACview('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
+                          <td><a href="javascript:vacView('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
                           <% } else if (DOC_TYPE == 2) { %>
-                          <td><a href="javascript:BUSview('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
+                          <td><a href="javascript:busView('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
                           <% } %>
                           <td><%=MEM_NAME %></td>
                           <%if(DOC_STATES == 0) {%>
@@ -109,12 +110,12 @@
                   <%} else if (leNo == 4) {
                   	if (DOC_STATES == 1) {
                   %>
-                                        <tr>
+					  <tr>
                           <td><%=DOC_NO %></td>
                           <%if (DOC_TYPE == 1) {%>
-                          <td><a href="javascript:VACview('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
+                          <td><a href="javascript:vacView('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
                           <% } else if (DOC_TYPE == 2) { %>
-                          <td><a href="javascript:BUSview('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
+                          <td><a href="javascript:busView('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
                           <% } %>
                           <td><%=MEM_NAME %></td>
                           <%if(DOC_STATES == 0) {%>
@@ -157,26 +158,6 @@
 	<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 	<script src="../script/authScript.js"></script>
 	<script src="../script/notice.js"></script>
-	<script>
-	function VACview(DOC_NO) {
-	    const width = 800;
-	    const height = 800;
-	    const left = (window.screen.width - width) / 2;
-	    const top = (window.screen.height - height) / 2;
-
-	    const popupOptions = "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top;
-	    window.open("authVacationView.jsp?DOC_NO=" + DOC_NO, "_blank", popupOptions);
-	}
-	function BUSview(DOC_NO){
-		const width = 800;
-	    const height = 800;
-	    const left = (window.screen.width - width) / 2;
-	    const top = (window.screen.height - height) / 2;
-
-	    const popupOptions = "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top;
-	    window.open("authBusinessView.jsp?DOC_NO=" + DOC_NO, "_blank", popupOptions);
-	}
-	</script>
 </body>
 
 </html>

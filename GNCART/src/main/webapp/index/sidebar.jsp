@@ -74,4 +74,4 @@
     </ul>
   </div>
   
-  <script src="../script/indexScript.js"></script>
+<script src="../script/indexScript.js"></script>

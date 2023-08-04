@@ -6,28 +6,29 @@
 <%
   if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");
-%>
-<%
-request.setCharacterEncoding("UTF-8");
-int DOC_NO = Integer.parseInt(request.getParameter("DOC_NO"));
-AuthBean bean = aMgr.getAuth(DOC_NO);
-String DOC_NAME = bean.getDOC_NAME();
-String MEM_NAME = bean.getMEM_NAME();
-String PART_TYPE = bean.getPART_TYPE();
-String LE_LEVEL = bean.getLE_LEVEL();
-String BUS_DETAIL = bean.getBUS_DETAIL();
-String BUS_SPECIAL = bean.getBUS_SPECIAL();
-int LINE_NO = bean.getLINE_NO();
-String LINE_FIRST = bean.getLINE_FIRST();
-String LINE_SECOND = bean.getLINE_SECOND();
-int DOC_APPTURN = bean.getDOC_APPTURN();
-String MEM_ID = bean.getMEM_ID();
-int VAC_NO = bean.getVAC_NO();
-int BUS_NO = bean.getBUS_NO();
 
-String Name = (String)session.getAttribute("memName");
-String ID = (String)session.getAttribute("memId");
-
+	request.setCharacterEncoding("UTF-8");
+	int DOC_NO = Integer.parseInt(request.getParameter("DOC_NO"));
+	AuthBean bean = aMgr.getAuth(DOC_NO);
+	String DOC_NAME = bean.getDOC_NAME();
+	String MEM_NAME = bean.getMEM_NAME();
+	String PART_TYPE = bean.getPART_TYPE();
+	String LE_LEVEL = bean.getLE_LEVEL();
+	String BUS_DETAIL = bean.getBUS_DETAIL();
+	String BUS_SPECIAL = bean.getBUS_SPECIAL();
+	int LINE_NO = bean.getLINE_NO();
+	String LINE_FIRST = bean.getLINE_FIRST();
+	String LINE_SECOND = bean.getLINE_SECOND();
+	int DOC_APPTURN = bean.getDOC_APPTURN();
+	String MEM_ID = bean.getMEM_ID();
+	int VAC_NO = bean.getVAC_NO();
+	int BUS_NO = bean.getBUS_NO();
+	
+	String Name = (String)session.getAttribute("memName");
+	String ID = (String)session.getAttribute("memId");
+	
+	boolean firstApproved = aMgr.firstApproved(LINE_NO);
+	boolean secondApproved = aMgr.secondApproved(LINE_NO);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -36,7 +37,7 @@ String ID = (String)session.getAttribute("memId");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>업무 보고서</title>
-    <link rel="stylesheet" href="../css/authBusiness.css?123">
+    <link rel="stylesheet" href="../css/authBusiness.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
@@ -46,6 +47,30 @@ String ID = (String)session.getAttribute("memId");
     <h2>업무 보고서</h2>
 
     <form action="../authServlet" method="post">
+    <div class="lineContainer">
+          <table>
+            <tr>
+               <th><span>팀장</span> 
+ 			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST"><%=LINE_FIRST%>
+                </th>
+
+               <th><span>부장</span>
+  			 	<input id="LINE_SECOND" type="hidden" name="LINE_SECOND"><%=LINE_SECOND%>
+               </th>
+         	   	<tr>
+ 	   			<% if (firstApproved) { %>
+                	<th><img src="../images/stamp1.png"></th>
+                 <% } else { %>
+                 <th></th>
+                 <% } %>
+				<% if (secondApproved) { %>
+                	<th><img src="../images/stamp2.png"></th>
+                 <% } else { %>
+                 <th></th>
+                 <% } %>
+                </tr>
+            </table>
+        </div>
         <table>
             <tr>
                 <th>항목</th>

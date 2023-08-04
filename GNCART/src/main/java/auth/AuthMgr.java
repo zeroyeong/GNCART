@@ -59,7 +59,7 @@ public class AuthMgr {
 			pstmt.setString(5, req.getParameter("VAC_DETAIL"));
 
 			pstmt.executeUpdate();
-			
+
 			sql = "select max(LINE_NO) from authline";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -76,7 +76,7 @@ public class AuthMgr {
 			pstmt.setString(3, req.getParameter("LINE_SECOND"));
 
 			pstmt.executeUpdate();
-			
+
 			sql = "select max(DOC_NO) from authdocument";	
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -130,7 +130,7 @@ public class AuthMgr {
 			pstmt.setString(3, req.getParameter("BUS_SPECIAL"));
 
 			pstmt.executeUpdate();
-			
+
 			sql = "select max(LINE_NO) from authline";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -270,7 +270,7 @@ public class AuthMgr {
 		String sql = null; 
 
 		int LINE_NO = 0;
-		
+
 		try {
 			con = pool.getConnection();
 			sql = "select max(LINE_NO) from authline";
@@ -289,14 +289,14 @@ public class AuthMgr {
 			pstmt.setString(3, req.getParameter("LINE_SECOND"));
 
 			pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
 	}
-	
+
 	public AuthBean getAuth(int DOC_NO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -306,21 +306,21 @@ public class AuthMgr {
 
 		try {
 			con = pool.getConnection();
-		    sql = "SELECT ad.DOC_NO, ad.DOC_NAME, ad.DOC_TYPE, ad.DOC_STATES, ad.DOC_REGDATE, ad.DOC_APPDATE, ad.DOC_APPTURN,"
-		            + " m.MEM_NO, m.MEM_NAME, m.MEM_ID,"
-		            + " av.VAC_NO, av.VAC_SDATE, av.VAC_EDATE, av.VAC_REASON, av.VAC_DETAIL,"
-		            + " ab.BUS_NO, ab.BUS_DETAIL, ab.BUS_SPECIAL,"
-		            + " al.LINE_NO, al.LINE_FIRST, al.LINE_FIRST_APPDATE, al.LINE_SECOND, al.LINE_SECOND_APPDATE,"
-		            + " l.LE_LEVEL, p.part_type"
-		            + " FROM AUTHDOCUMENT ad"
-		            + " JOIN MEMBER m ON ad.MEM_NO = m.MEM_NO"
-		            + " LEFT JOIN AUTHVACATION av ON ad.VAC_NO = av.VAC_NO"
-		            + " LEFT JOIN AUTHBUSINESS ab ON ad.BUS_NO = ab.BUS_NO"
-		            + " JOIN AUTHLINE al ON ad.LINE_NO = al.LINE_NO"
-		            + " JOIN `LEVEL` l ON m.LE_NO = l.LE_NO"
-		            + " JOIN `PART` p ON m.PART_NO = p.part_no"
-		            + " WHERE ad.DOC_NO = ?";
-			
+			sql = "SELECT ad.DOC_NO, ad.DOC_NAME, ad.DOC_TYPE, ad.DOC_STATES, ad.DOC_REGDATE, ad.DOC_APPDATE, ad.DOC_APPTURN,"
+					+ " m.MEM_NO, m.MEM_NAME, m.MEM_ID,"
+					+ " av.VAC_NO, av.VAC_SDATE, av.VAC_EDATE, av.VAC_REASON, av.VAC_DETAIL,"
+					+ " ab.BUS_NO, ab.BUS_DETAIL, ab.BUS_SPECIAL,"
+					+ " al.LINE_NO, al.LINE_FIRST, al.LINE_FIRST_APPDATE, al.LINE_SECOND, al.LINE_SECOND_APPDATE,"
+					+ " l.LE_LEVEL, p.part_type"
+					+ " FROM AUTHDOCUMENT ad"
+					+ " JOIN MEMBER m ON ad.MEM_NO = m.MEM_NO"
+					+ " LEFT JOIN AUTHVACATION av ON ad.VAC_NO = av.VAC_NO"
+					+ " LEFT JOIN AUTHBUSINESS ab ON ad.BUS_NO = ab.BUS_NO"
+					+ " JOIN AUTHLINE al ON ad.LINE_NO = al.LINE_NO"
+					+ " JOIN `LEVEL` l ON m.LE_NO = l.LE_NO"
+					+ " JOIN `PART` p ON m.PART_NO = p.part_no"
+					+ " WHERE ad.DOC_NO = ?";
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, DOC_NO);
 			rs = pstmt.executeQuery();
@@ -344,7 +344,7 @@ public class AuthMgr {
 				bean.setVAC_NO(rs.getInt("VAC_NO"));
 				bean.setMEM_ID(rs.getString("MEM_ID"));		
 				bean.setBUS_NO(rs.getInt("BUS_NO"));
-				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -353,115 +353,115 @@ public class AuthMgr {
 
 		return bean;
 	}
-	
+
 	public void AuthFirst(int LINE_NO) {
-	    Connection con = null;
-	    PreparedStatement pstmt = null;
-	    String sql = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
 
-	    try {
-	        con = pool.getConnection();
+		try {
+			con = pool.getConnection();
 
-	        sql = "update authline set LINE_FIRST_APPDATE=? where LINE_NO=?";
-	        pstmt = con.prepareStatement(sql);
+			sql = "update authline set LINE_FIRST_APPDATE=? where LINE_NO=?";
+			pstmt = con.prepareStatement(sql);
 
-	        LocalDateTime now = LocalDateTime.now();
-	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	        String formattedNow = now.format(formatter);
+			LocalDateTime now = LocalDateTime.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String formattedNow = now.format(formatter);
 
-	        pstmt.setString(1, formattedNow);
-	        pstmt.setInt(2, LINE_NO);
-	        pstmt.executeUpdate();
-	        
-	        pstmt.close();
-	        pstmt = null;
+			pstmt.setString(1, formattedNow);
+			pstmt.setInt(2, LINE_NO);
+			pstmt.executeUpdate();
 
-	        sql = "update authdocument set DOC_APPTURN=?,DOC_STATES =? where DOC_NO=?";
-	        pstmt = con.prepareStatement(sql);
-	        
-	        pstmt.setInt(1, 1);
-	        pstmt.setInt(2, 1);
-	        pstmt.setInt(3, LINE_NO);
-	        pstmt.executeUpdate();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        try {
-	            if (pstmt != null) {
-	                pstmt.close();
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	        pool.freeConnection(con);
-	    }
+			pstmt.close();
+			pstmt = null;
+
+			sql = "update authdocument set DOC_APPTURN=?,DOC_STATES =? where DOC_NO=?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, 1);
+			pstmt.setInt(2, 1);
+			pstmt.setInt(3, LINE_NO);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			pool.freeConnection(con);
+		}
 	}	
 	public void AuthSecond(int LINE_NO) {
-	    Connection con = null;
-	    PreparedStatement pstmt = null;
-	    String sql = null;
-	    
-	    try {
-	        con = pool.getConnection();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
 
-	        sql = "update authline set LINE_SECOND_APPDATE=? where LINE_NO=?";
+		try {
+			con = pool.getConnection();
 
-	        pstmt = con.prepareStatement(sql);
+			sql = "update authline set LINE_SECOND_APPDATE=? where LINE_NO=?";
 
-	        LocalDateTime now = LocalDateTime.now();
+			pstmt = con.prepareStatement(sql);
 
-	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	        String formattedNow = now.format(formatter);
+			LocalDateTime now = LocalDateTime.now();
 
-	        pstmt.setString(1, formattedNow);
-	        pstmt.setInt(2, LINE_NO);
-	        pstmt.executeUpdate();
-	        
-	        pstmt.close();
-	        pstmt = null;
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String formattedNow = now.format(formatter);
 
-	        sql = "update authdocument set DOC_APPTURN=?,DOC_APPDATE=?,DOC_STATES=? where DOC_NO=?";
-	        pstmt = con.prepareStatement(sql);
-	        
-	        pstmt.setInt(1, 2);
-	        pstmt.setString(2, formattedNow);
-	        pstmt.setInt(3, 3);
-	        pstmt.setInt(4, LINE_NO);
-	        pstmt.executeUpdate();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        try {
-	            if (pstmt != null) {
-	                pstmt.close();
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	        pool.freeConnection(con);
-	    }
+			pstmt.setString(1, formattedNow);
+			pstmt.setInt(2, LINE_NO);
+			pstmt.executeUpdate();
+
+			pstmt.close();
+			pstmt = null;
+
+			sql = "update authdocument set DOC_APPTURN=?,DOC_APPDATE=?,DOC_STATES=? where DOC_NO=?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, 2);
+			pstmt.setString(2, formattedNow);
+			pstmt.setInt(3, 3);
+			pstmt.setInt(4, LINE_NO);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			pool.freeConnection(con);
+		}
 	}	
 	public void AuthReject(int DOC_NO) {
-	    Connection con = null;
-	    PreparedStatement pstmt = null;
-	    String sql = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
 
-	    int states = 2;
+		int states = 2;
 
-	    try {
-	        con = pool.getConnection();
-	        sql = "update authdocument set DOC_STATES=? where DOC_NO=?";
+		try {
+			con = pool.getConnection();
+			sql = "update authdocument set DOC_STATES=? where DOC_NO=?";
 
-	        pstmt = con.prepareStatement(sql);
-	        pstmt.setInt(1, states);
-	        pstmt.setInt(2, DOC_NO);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, states);
+			pstmt.setInt(2, DOC_NO);
 
-	        pstmt.executeUpdate();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        pool.freeConnection(con, pstmt);
-	    }
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
 	}
 	public void vacDelete(int LINE_NO, int VAC_NO) {
 
@@ -485,7 +485,7 @@ public class AuthMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, LINE_NO);
 			pstmt.executeUpdate();
-			
+
 			sql = "select * from authvacation where VAC_NO = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, VAC_NO);
@@ -496,7 +496,7 @@ public class AuthMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, VAC_NO);
 			pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -525,7 +525,7 @@ public class AuthMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, LINE_NO);
 			pstmt.executeUpdate();
-			
+
 			sql = "select * from authbusiness where BUS_NO = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, BUS_NO);
@@ -536,7 +536,7 @@ public class AuthMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, BUS_NO);
 			pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -544,4 +544,83 @@ public class AuthMgr {
 		}
 	}
 
+	// 첫 번째 결재자의 승인 여부를 판단
+	public boolean firstApproved(int LINE_NO) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+
+		boolean firstApproved = false;
+
+		try {
+			con = pool.getConnection();
+			sql = "SELECT LINE_FIRST_APPDATE FROM authline WHERE LINE_NO = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, LINE_NO);
+			ResultSet rs = pstmt.executeQuery();
+
+			// 첫 번째 결재자의 승인 여부를 판단하는 조건
+			if (rs.next()) {
+				String lineFirstAppDate = rs.getString("LINE_FIRST_APPDATE");
+				firstApproved = (lineFirstAppDate != null); // 첫 번째 결재자의 승인일자가 NULL이 아니면 승인된 것으로 판단
+			}
+
+			pstmt.close();
+			pstmt = null;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			pool.freeConnection(con);
+		}
+
+		return firstApproved;
+	}
+
+	// 두 번째 결재자의 승인 여부를 판단
+	public boolean secondApproved(int LINE_NO) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+
+		boolean secondApproved = false;
+
+		try {
+			con = pool.getConnection();
+			sql = "SELECT LINE_SECOND_APPDATE FROM authline WHERE LINE_NO = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, LINE_NO);
+			ResultSet rs = pstmt.executeQuery();
+
+			// 두번째 결재자의 승인 여부를 판단하는 조건
+			if (rs.next()) {
+				String lineFirstAppDate = rs.getString("LINE_SECOND_APPDATE");
+				secondApproved = (lineFirstAppDate != null); // 두번째 결재자의 승인일자가 NULL이 아니면 승인된 것으로 판단
+			}
+
+			pstmt.close();
+			pstmt = null;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			pool.freeConnection(con);
+		}
+
+		return secondApproved;
+	}
 }

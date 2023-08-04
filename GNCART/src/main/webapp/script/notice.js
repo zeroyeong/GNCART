@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     $('#example').DataTable({
         "language": {
             "decimal":        "",
@@ -18,6 +18,8 @@ $(document).ready(function () {
                 "last":       "마지막",
                 "next":       "다음",
                 "previous":   "이전"
-            }}
+            }
+        },
+        "order": [[0, "desc"]] // 첫 번째 열을 내림차순으로 정렬
     });
 });

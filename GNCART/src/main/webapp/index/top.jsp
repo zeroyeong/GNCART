@@ -9,9 +9,20 @@
 	</div>
 
 	<div class="profile-details">
-		<a href="#"><img
-			src="../images/<%=session.getAttribute("memImg")%>" alt="" /></a> <span
-			class="admin_name"><%=session.getAttribute("leLevel")%> <%=session.getAttribute("memName")%></span>
+		<a href="#"><img src="../images/<%=session.getAttribute("memImg")%>" alt="" /></a>
+		<span class="admin_name"><%=session.getAttribute("leLevel")%> <%=session.getAttribute("memName")%></span>
 	</div>
 </nav>
 
+<script>
+/*직급으로 결재신청 숨기기*/
+document.addEventListener("DOMContentLoaded", function() {
+	
+	var userLevel = <%= session.getAttribute("leNo") %>;
+    var authHoldLink = document.querySelector('a[href="../auth/authHold.jsp"]').parentNode;
+
+    if (userLevel === 1 || userLevel === 2) {
+        authHoldLink.style.display = "none";
+    }
+});
+</script>

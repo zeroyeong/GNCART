@@ -4,8 +4,8 @@
 <%@ page import="auth.AuthMgr"%>
 <%@ page import="java.util.*"%>
 <%
-if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
-	response.sendRedirect("../login.jsp");
+	if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+		response.sendRedirect("../login.jsp");
 %>
 
 <!DOCTYPE html>
@@ -27,15 +27,15 @@ if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == nu
 		<label for="line1">결재자 팀장</label> 
 		<select name="line1">
 			<%
-			AuthMgr authMgr = new AuthMgr();
-			ArrayList<String> teamLeaders = authMgr.getTeamLeaders();
-			for (String teamLeader : teamLeaders) {
-			%>
-
-			<option value="<%=teamLeader%>"><%=teamLeader%></option>
-
+				AuthMgr authMgr = new AuthMgr();
+				ArrayList<String> teamLeaders = authMgr.getTeamLeaders();
+				for (String teamLeader : teamLeaders) {
+				%>
+	
+				<option value="<%=teamLeader%>"><%=teamLeader%></option>
+	
 			<%
-			}
+				}
 			%>
 		</select> 
 		
@@ -44,11 +44,11 @@ if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == nu
 		<label for="line2">결재자 부장</label>
 		 <select name="line2">
 			<%
-			ArrayList<String> managers = authMgr.getManagers();
-			for (String manager : managers) {
+				ArrayList<String> managers = authMgr.getManagers();
+				for (String manager : managers) {
 			%>
 
-			<option value="<%=manager%>"><%=manager%></option>
+				<option value="<%=manager%>"><%=manager%></option>
 
 			<%
 			}
@@ -58,15 +58,7 @@ if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == nu
 		<button class="submitBtn" type="submit" onclick="busSubmit()">지정</button>
 	</form>
 
-	<script>
-		function busSubmit() {
-			window.opener.name = "authBusiness.jsp"; // 부모창의 이름 설정
-			document.busForm.target = "authBusiness.jsp"; // 타켓을 부모창으로 설정
-			document.busForm.action = "../auth/authBusiness.jsp";
-			document.busForm.submit();
-			self.close();
-		}
-	</script>
+	<script src="../script/authScript.js"></script>
 </body>
 
 </html>

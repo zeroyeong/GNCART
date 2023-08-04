@@ -31,7 +31,7 @@ public class AuthBean {
 	private String LINE_FIRST_APPDATE;
 	private String LINE_SECOND;
 	private String LINE_SECOND_APPDATE;
-	
+
 	/*getter,setter*/
 	public int getDOC_NO() {
 		return DOC_NO;
@@ -183,6 +183,6 @@ public class AuthBean {
 	public void setLINE_SECOND_APPDATE(String lINE_SECOND_APPDATE) {
 		LINE_SECOND_APPDATE = lINE_SECOND_APPDATE;
 	}
-	
+
 
 }

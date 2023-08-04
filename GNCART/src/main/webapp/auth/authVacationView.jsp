@@ -12,36 +12,37 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-int DOC_NO = Integer.parseInt(request.getParameter("DOC_NO"));
-AuthBean bean = aMgr.getAuth(DOC_NO);
-String DOC_NAME = bean.getDOC_NAME();
-String MEM_NAME = bean.getMEM_NAME();
-String PART_TYPE = bean.getPART_TYPE();
-String LE_LEVEL = bean.getLE_LEVEL();
-String VAC_SDATE = bean.getVAC_SDATE();
-String VAC_EDATE = bean.getVAC_EDATE();
-int VAC_REASON = bean.getVAC_REASON();
-String VAC_DETAIL = bean.getVAC_DETAIL();
-int LINE_NO = bean.getLINE_NO();
-String LINE_FIRST = bean.getLINE_FIRST();
-String LINE_SECOND = bean.getLINE_SECOND();
-int DOC_APPTURN = bean.getDOC_APPTURN();
-int VAC_NO = bean.getVAC_NO();
-String MEM_ID = bean.getMEM_ID();
-int BUS_NO = bean.getBUS_NO();
-
-String Name = (String)session.getAttribute("memName");
-String ID = (String)session.getAttribute("memId");
-
+	int DOC_NO = Integer.parseInt(request.getParameter("DOC_NO"));
+	AuthBean bean = aMgr.getAuth(DOC_NO);
+	String DOC_NAME = bean.getDOC_NAME();
+	String MEM_NAME = bean.getMEM_NAME();
+	String PART_TYPE = bean.getPART_TYPE();
+	String LE_LEVEL = bean.getLE_LEVEL();
+	String VAC_SDATE = bean.getVAC_SDATE();
+	String VAC_EDATE = bean.getVAC_EDATE();
+	int VAC_REASON = bean.getVAC_REASON();
+	String VAC_DETAIL = bean.getVAC_DETAIL();
+	int LINE_NO = bean.getLINE_NO();
+	String LINE_FIRST = bean.getLINE_FIRST();
+	String LINE_SECOND = bean.getLINE_SECOND();
+	int DOC_APPTURN = bean.getDOC_APPTURN();
+	int VAC_NO = bean.getVAC_NO();
+	String MEM_ID = bean.getMEM_ID();
+	int BUS_NO = bean.getBUS_NO();
+	
+	String Name = (String)session.getAttribute("memName");
+	String ID = (String)session.getAttribute("memId");
+	
+	boolean firstApproved = aMgr.firstApproved(LINE_NO);
+	boolean secondApproved = aMgr.secondApproved(LINE_NO);
 %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>휴가 신청서</title>
-<link rel="stylesheet" href="../css/authVacation.css?123">
+<link rel="stylesheet" href="../css/authVacation.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"
 	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
 	crossorigin="anonymous"></script>
@@ -52,6 +53,31 @@ String ID = (String)session.getAttribute("memId");
 	<h2>휴가 신청서</h2>
 
 	<form method="post" action="../authServlet">
+	<div class="lineContainer">
+          <table>
+            <tr>
+               <th>
+                 <span>팀장</span> 
+ 			     <input id="LINE_FIRST" type="hidden" name="LINE_FIRST"><%=LINE_FIRST%>
+                </th>
+               <th>
+                 <span>부장</span>
+  			     <input id="LINE_SECOND" type="hidden" name="LINE_SECOND"><%=LINE_SECOND%>
+               </th>
+         	   	<tr>
+ 	   			<% if (firstApproved) { %>
+                	<th><img src="../images/stamp1.png"></th>
+                 <% } else { %>
+                 <th></th>
+                 <% } %>
+				<% if (secondApproved) { %>
+                	<th><img src="../images/stamp2.png"></th>
+                 <% } else { %>
+                 <th></th>
+                 <% } %>
+                </tr>
+            </table>
+        </div>
 		<table>
 			<tr>
 				<th>항목</th>
@@ -95,6 +121,7 @@ String ID = (String)session.getAttribute("memId");
 				<td colspan="3"><textarea name="VAC_DETAIL" rows="10" cols="50" readonly><%=VAC_DETAIL %></textarea></td>
 			</tr>
 		</table>
+		
 		<br>
 		
 		<input type="hidden" name="LINE_NO" value="<%=LINE_NO %>">
@@ -114,9 +141,8 @@ String ID = (String)session.getAttribute("memId");
  		<button class="submitBtn" type="submit" name="action" value="reject">반려</button>
  		<%} %>
  		</div>
- 		
 	</form>
-
+	
 	<script src="../script/authScript.js"></script>	
 </body>
 

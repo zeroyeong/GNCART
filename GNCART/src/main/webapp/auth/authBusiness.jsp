@@ -2,45 +2,43 @@
     pageEncoding="UTF-8"%>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 <%
-  if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+	if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");
-%>
-<%
-request.setCharacterEncoding("UTF-8");
 
-String Name = (String)session.getAttribute("memName");
-int No = (int)session.getAttribute("memNo");
-String leLevel = (String)session.getAttribute("leLevel");
-String parttype = (String)session.getAttribute("parttype");
-%>
-<%//결재선 선택값가져오기
- String teamLeader = request.getParameter("line1");
- String manager = request.getParameter("line2");
+	request.setCharacterEncoding("UTF-8");
+	
+	String Name = (String)session.getAttribute("memName");
+	int No = (int)session.getAttribute("memNo");
+	String leLevel = (String)session.getAttribute("leLevel");
+	String parttype = (String)session.getAttribute("parttype");
+
+	//결재선 선택값가져오기
+	String teamLeader = request.getParameter("line1");
+    String manager = request.getParameter("line2");
 %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>업무 보고서</title>
-    <link rel="stylesheet" href="../css/authBusiness.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.js"
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>업무 보고서</title>
+	<link rel="stylesheet" href="../css/authBusiness.css">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
     <h2>업무 보고서</h2>
 
-    <form action="../authWrite" method="post" onsubmit="return chkLine();">
+    <form action="../authWrite" method="post" onsubmit="return chkLine()">
         <button type="button" class="lineBtn" onclick="busLineBtn()">결재선</button>
         <div class="lineContainer">
             <table>
             <tr>
                <th><span>팀장</span> 
 				<% if (teamLeader != null) { %>
- 			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"> <%=teamLeader %>
+ 			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"> 
+ 			    <%=teamLeader %>
 				<% } else { %>
  			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="">
 				<% } %>
@@ -48,7 +46,8 @@ String parttype = (String)session.getAttribute("parttype");
 
                <th><span>부장</span>
 				<% if (manager != null) { %>
-  			 	<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="<%= manager %>"> <%=manager %>
+  			 	<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="<%= manager %>"> 
+  			 	<%=manager %>
 				<% } else { %>
     			<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="">
 				<% } %>
@@ -94,18 +93,6 @@ String parttype = (String)session.getAttribute("parttype");
     </form>
 
     <script src="../script/authScript.js"></script>
-    <script>
-    function chkLine() {
-        var first = document.getElementById("LINE_FIRST").value.trim();
-        var second = document.getElementById("LINE_SECOND").value.trim();
-
-        if (first === "" || second === "") {
-            alert("결재선을 지정해주세요");
-            return false;
-        }
-        return true;
-    }
-    </script>
 </body>
 
 </html>
