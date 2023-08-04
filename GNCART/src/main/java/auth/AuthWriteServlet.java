@@ -32,6 +32,7 @@ public class AuthWriteServlet extends HttpServlet {
 				out.println("<script>");
 				out.println("alert('결재신청이 완료되었습니다');");
 				out.println("window.close();");
+				out.println("window.opener.location.reload();"); 
 				out.println("</script>");
 				
 		    	aMgr.insertVAC(request);
@@ -41,6 +42,7 @@ public class AuthWriteServlet extends HttpServlet {
 				out.println("<script>");
 				out.println("alert('결재신청이 완료되었습니다');");
 				out.println("window.close();");
+				out.println("window.opener.location.reload();");
 				out.println("</script>");
 				
 		    	aMgr.insertBUS(request);
