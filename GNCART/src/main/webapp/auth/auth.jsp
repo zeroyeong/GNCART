@@ -77,12 +77,17 @@
                       String DOC_REGDATE = bean.getDOC_REGDATE();
                       String DOC_APPDATE = bean.getDOC_APPDATE(); 
                       String MEM_ID = bean.getMEM_ID();
+                      int DOC_TYPE = bean.getDOC_TYPE();
                       
                       if(MEM_ID.equals(memId)) {
                   %>
                       <tr>
                           <td><%=DOC_NO %></td>
-                          <td><%=DOC_NAME %></td>
+                          <%if (DOC_TYPE == 1) {%>
+                          <td><a href="javascript:VACview('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
+                          <% } else if (DOC_TYPE == 2) { %>
+                          <td><a href="javascript:BUSview('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
+                          <% } %>
                           <td><%=MEM_NAME %></td>
                           <%if(DOC_STATES == 0) {%>
                         	  <td>대기</td>
@@ -96,6 +101,8 @@
                           <td><%=DOC_REGDATE %></td>
                           <%if(DOC_APPDATE == null) {%>
                           	  <td>결재대기중</td>
+                          <%} else {%>
+                          	  <td><%=DOC_APPDATE %></td>
                           <%} %>
                       </tr>
                       <%} %>
@@ -119,6 +126,9 @@
   </div>
   </div>
   </section>
+  
+  <form name="VACviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
+  <form name="BUSviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
 
     <script src="../script/indexScript.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -126,6 +136,26 @@
 	<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 	<script src="../script/authScript.js"></script>
 	<script src="../script/notice.js"></script>
+	<script>
+	function VACview(DOC_NO) {
+	    const width = 800;
+	    const height = 800;
+	    const left = (window.screen.width - width) / 2;
+	    const top = (window.screen.height - height) / 2;
+
+	    const popupOptions = "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top;
+	    window.open("authVacationView.jsp?DOC_NO=" + DOC_NO, "_blank", popupOptions);
+	}
+	function BUSview(DOC_NO){
+		const width = 800;
+	    const height = 800;
+	    const left = (window.screen.width - width) / 2;
+	    const top = (window.screen.height - height) / 2;
+
+	    const popupOptions = "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top;
+	    window.open("authBusinessView.jsp?DOC_NO=" + DOC_NO, "_blank", popupOptions);
+	}
+	</script>
 </body>
 
 </html>

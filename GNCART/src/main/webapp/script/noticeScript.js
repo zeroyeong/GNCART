@@ -34,23 +34,6 @@ function down(NOT_FILENAME){
     var currentDateInput = document.getElementById('currentDateInput');
     currentDateInput.value = getCurrentDate();
     
-	function writeNOT() {
-    	  var title = document.getElementById("not_title").value;
-    	  var content = document.getElementById("not_content").value;
-
-    	  if (title.trim() === "") {
-    	    alert("제목을 입력해주세요");
-    	    document.getElementById("not_title").focus();
-    	    return false;
-    	  }
-
-    	  if (content.trim() === "") {
-    	    alert("내용을 입력해주세요");
-    	    document.getElementById("not_content").focus();
-    	    return false;
-    	  }
-    	  return true;
-    	}
     function findFile(){
     	$("#file").on('change',function(){
     	  var name = $("#file").val();

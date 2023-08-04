@@ -48,7 +48,7 @@
 				<hr>
 
 				<form method="post" action="../noticeWrite"
-					enctype="multipart/form-data" onsubmit="return writeNOT();">
+					enctype="multipart/form-data">
 					<table>
 						<tr>
 							<td class="tableTitle"><label>작성자</label></td>
@@ -78,13 +78,13 @@
 						<tr>
 							<td class="tableTitle"><label>제목</label></td>
 							<td colspan="3"><input type="text" id="not_title"
-								name="NOT_TITLE"></td>
+								name="NOT_TITLE" required></td>
 							<!--작성자 이름 나오게-->
 						</tr>
 						<tr>
 							<td class="tableTitle detail"><label>상세 내용</label></td>
 							<td colspan="3"><textarea id="not_content"
-									name="NOT_CONTENT"></textarea></td>
+									name="NOT_CONTENT" required></textarea></td>
 						</tr>
 						<tr>
 							<td class="tableTitle">첨부 파일</td>

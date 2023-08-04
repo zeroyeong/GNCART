@@ -36,21 +36,25 @@ String parttype = (String)session.getAttribute("parttype");
 <body>
    <h2>휴가 신청서</h2>
 
-   <form method="post" action="../vacWrite">
+   <form method="post" action="../authWrite" onsubmit="return chkLine();">
       <button type="button" class="lineBtn" onclick="vacLineBtn()">결재선</button>
       <div class="lineContainer">
          <table>
             <tr>
                <th><span>팀장</span> 
-               <% if (teamLeader != null) {
-               %><input type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"><%= teamLeader %></input><% 
-               } %>
+				<% if (teamLeader != null) { %>
+ 			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"> <%=teamLeader %>
+				<% } else { %>
+ 			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="">
+				<% } %>
                </th>
 
                <th><span>부장</span>
-               <% if (manager != null) {
-               %><input type="hidden" name="LINE_SECOND" value="<%= manager %>"><%= manager %></input><% 
-               } %>
+				<% if (manager != null) { %>
+  			 	<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="<%= manager %>"> <%=manager %>
+				<% } else { %>
+    			<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="">
+				<% } %>
                </th>
             <tr>
                <th></th>
@@ -99,15 +103,29 @@ String parttype = (String)session.getAttribute("parttype");
          </tr>
          <tr>
             <td><label for="AUTH_PP">상세 사유</label></td>
-            <td colspan="3"><textarea name="VAC_DETAIL" rows="10" cols="50"></textarea></td>
+            <td colspan="3"><textarea name="VAC_DETAIL" rows="10" cols="50" required></textarea></td>
          </tr>
       </table>
       <br>
-
-      <button class="submitBtn" type="submit">작성완료</button>
+      
+      <div style="text-align: center">
+      <button class="submitBtn" type="submit" name="action" value="vacWrite">작성</button>
+      </div>
    </form>
 
    <script src="../script/authScript.js"></script>
+   <script>
+   function chkLine() {
+       var first = document.getElementById("LINE_FIRST").value.trim();
+       var second = document.getElementById("LINE_SECOND").value.trim();
+
+       if (first === "" || second === "") {
+           alert("결재선을 지정해주세요");
+           return false;
+       }
+       return true;
+   }
+   </script>
 </body>
 
 </html>
