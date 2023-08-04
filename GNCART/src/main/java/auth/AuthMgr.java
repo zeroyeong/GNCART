@@ -195,6 +195,7 @@ public class AuthMgr {
 				bean.setDOC_STATES(rs.getInt("DOC_STATES"));
 				bean.setDOC_REGDATE(rs.getString("DOC_REGDATE"));
 				bean.setDOC_APPDATE(rs.getString("DOC_APPDATE"));
+				bean.setDOC_APPTURN(rs.getInt("DOC_APPTURN"));
 				vlist.add(bean);
 			}
 		} catch (Exception e) {
@@ -375,11 +376,12 @@ public class AuthMgr {
 	        pstmt.close();
 	        pstmt = null;
 
-	        sql = "update authdocument set DOC_APPTURN=? where DOC_NO=?";
+	        sql = "update authdocument set DOC_APPTURN=?,DOC_STATES =? where DOC_NO=?";
 	        pstmt = con.prepareStatement(sql);
 	        
 	        pstmt.setInt(1, 1);
-	        pstmt.setInt(2, LINE_NO);
+	        pstmt.setInt(2, 1);
+	        pstmt.setInt(3, LINE_NO);
 	        pstmt.executeUpdate();
 	    } catch (Exception e) {
 	        e.printStackTrace();

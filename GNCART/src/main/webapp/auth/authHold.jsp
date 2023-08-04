@@ -8,6 +8,7 @@
   if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");
 %>
+<% int leNo = (int)session.getAttribute("leNo"); %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -76,7 +77,10 @@
                       String DOC_REGDATE = bean.getDOC_REGDATE();
                       String DOC_APPDATE = bean.getDOC_APPDATE(); 
                       int DOC_TYPE = bean.getDOC_TYPE();
+                      int DOC_APPTURN = bean.getDOC_APPTURN();
                       
+                      
+                      if (leNo == 3) {
                       if (DOC_STATES == 0) {
                   %>
                       <tr>
@@ -89,9 +93,9 @@
                           <td><%=MEM_NAME %></td>
                           <%if(DOC_STATES == 0) {%>
                         	  <td>대기</td>
-                          <%} else if(DOC_STATES == 1) {%>
+                          <%} else if(DOC_STATES == 1 || DOC_APPTURN == 1) {%>
                           	  <td>승인</td>
-                          <%} else if(DOC_STATES == 2) {%>
+                          <%} else if(DOC_STATES == 2) { %>
                           	  <td>반려</td>
                           <%} else { %>
                           	  <td>종결</td>
@@ -102,8 +106,35 @@
                           <%} %>
                       </tr>
                       <%} %>
-                  <%} %>
-              <%} %>
+                  <%} else if (leNo == 4) {
+                  	if (DOC_STATES == 1) {
+                  %>
+                                        <tr>
+                          <td><%=DOC_NO %></td>
+                          <%if (DOC_TYPE == 1) {%>
+                          <td><a href="javascript:VACview('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
+                          <% } else if (DOC_TYPE == 2) { %>
+                          <td><a href="javascript:BUSview('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
+                          <% } %>
+                          <td><%=MEM_NAME %></td>
+                          <%if(DOC_STATES == 0) {%>
+                        	  <td>대기</td>
+                          <%} else if(DOC_STATES == 1 || DOC_APPTURN == 1) {%>
+                          	  <td>승인</td>
+                          <%} else if(DOC_STATES == 2) { %>
+                          	  <td>반려</td>
+                          <%} else { %>
+                          	  <td>종결</td>
+                          <%} %>
+                          <td><%=DOC_REGDATE %></td>
+                          <%if(DOC_APPDATE == null) {%>
+                          	  <td>결재대기중</td>
+                          <%} %>
+                      </tr>
+                      <%} %>
+           		   <%} %>
+               <%}%>
+         	 <%}%>
                   </tbody>
               </table>
               <div id="btns">
