@@ -15,20 +15,12 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class UpdateScheduleServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("서블릿 진입");
 
 		request.setCharacterEncoding("UTF-8");
 
 		ScheduleMgr sMgr = new ScheduleMgr();
 		
 		sMgr.updateSchedule(request, response);
-//
-//		sMgr.updateSchedule(request, response);
-//		int SCHE_NO = Integer.parseInt(request.getParameter("number"));
-//		String url = "../../GNCART/schedule/jsp/"+"shceduleDetail.jsp?SCHE_NO="+SCHE_NO;
-//		
-//		response.sendRedirect(url);
 	} 
 
 }

@@ -112,7 +112,7 @@
           <tr>
             <td>첨부파일</td> <!-- 파일이 있으면 내보내고 null이라면 문장을 대신 출력해라 -->
            	<%
-           		if(SCHE_FILE != null && !SCHE_FILE.equals("")){%>
+           		if(SCHE_FILE != null){%>
            		<td><a href="javascript:down(<%=SCHE_FILE%>)"><%=SCHE_FILE %></a></td>
            	<%
            		}else{
@@ -138,7 +138,7 @@
 
         <div class="button">
           <input type="button" value="수정" onclick="update()">
-          <input type="button" value="삭제">
+          <input type="button" value="삭제" onclick="delSchedule()">
         </div>
     </div>
   </div>
@@ -151,6 +151,10 @@
   <script>
   	function update(){
   		location.href="updateSchedule.jsp?SCHE_NO=<%=SCHE_NO%>";
+  	}
+  	
+  	function delSchedule(){
+  		location.href="delSchedule.jsp?SCHE_NO=<%=SCHE_NO%>";
   	}
   </script>
 </body>

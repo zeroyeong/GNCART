@@ -13,7 +13,7 @@
 
     <div class="scheduleMenu">
       <div class="linkBtn">
-        <button onclick="month()" class="acting">월간일정</button>
+        <button onclick="month()">월간일정</button>
         <button onclick="year()">연간일정</button>
         <button onclick="week()">주간일정</button>
       </div>
@@ -34,7 +34,7 @@
 	  btn.forEach(t => t.classList.remove('acting'));
 	  target.classList.add('acting');
 	}))
-
+	
 	/*_________일정등록 팝업_________*/
 	
 	function openCenter(doc,win,w,h){

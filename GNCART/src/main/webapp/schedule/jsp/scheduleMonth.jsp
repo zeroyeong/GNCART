@@ -1,11 +1,3 @@
-<!-- 
-
-	1. 새로고침 해결하기 (script)
-	2. css 수정하기 (calendar 표와 list표 화면작아질 때 flex-direction:colums)
-	3. monthArea css수정하기 (화면 작아질 때 flex-wrep)
-
- --> 
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     
@@ -27,7 +19,7 @@
   <link rel="stylesheet" href="include/scheduleTop.css">
   
   <!-- 현재파일 css -->
-  <link rel="stylesheet" href="../../css/scheduleMonth.css?ssddds">
+  <link rel="stylesheet" href="../../css/scheduleMonth.css">
   
 </head>
 
@@ -89,10 +81,10 @@
 			
 		    <div class="calenderTitle">
 		      <div class="yearArea">
-		        <div class="prevYear" onclick="prevYear()">◁ <%=prevYear %>년</div>
-		        <h3><%=calYear %>년</h3>
-		        <div class="nextYear" onclick="nextYear()"><%=nextYear %>년 ▷</div>
-		      </div>
+	          <button class="prevYear" onclick="prevYear()">◁ <span><%=prevYear %>년</span></button>
+	          <h3><%=calYear %>년</h3>
+	          <button class="nextYear" onclick="nextYear()"><span><%=nextYear %>년</span> ▷</button>
+        </div>
 		      <div class="monthArea">
 		          <input type="button" value="1">
 		          <input type="button" value="2">
@@ -110,14 +102,14 @@
 		    </div>
 		    
 		    <div class="content">
-		      <div class="calender">
+		      <div class="calendar">
 		        <table>
 		          <thead>
 		            <tr class="tableHead">
-		              <td onclick="prevMonth()"> ◁ </td>
-		              <td colspan="5"><%=calMonth %>월</td>
-		              <td onclick="nextMonth()"> ▷ </td>
-		            </tr>
+	                <td onclick="prevMonth()" class="prevMonth"> ◁ </td>
+	                <td colspan="5"><%=calMonth %>월</td>
+	                <td onclick="nextMonth()" class="nextMonth"> ▷ </td>
+              	</tr>
 		            <tr>
 		              <td>SUN</td>
 		              <td>MON</td>
@@ -230,9 +222,6 @@
 <!-- index js -->
 <script src="../../script/indexScript.js"></script>
 
-<!-- include js -->
-<script src="include/scheduleTop.js"></script>
-
 <script>
 	function openCenter(doc,win,w,h){
 	  var left=(screen.availWidth-w)/2; //왼쪽 좌표
@@ -287,7 +276,7 @@
 	    
 		monthArea.forEach(t => {
 			t.classList.remove('active');
-
+			
 			if(t.value == <%=calMonth%>){
 	 			t.classList.add('active');
 			}

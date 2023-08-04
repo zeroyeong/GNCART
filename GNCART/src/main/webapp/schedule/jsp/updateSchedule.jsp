@@ -228,18 +228,20 @@
 						<tr>
 							<td>첨부파일</td>
 							<td>
-								<div id="fileInput" style="display:none;">
-									<input type="file" name="SCHE_FILE">
-								</div>
 								<%
-									if(SCHE_FILE != null){
+									if(SCHE_FILE != null && !SCHE_FILE.equals("")){
 								%>
+								<div id="fileInput" style="display:none;">
+									<input type="file" name="SCHE_FILE2">
+								</div>
 								<div id="fileArea">
-									<input name="SCHE_FILE" value="<%=SCHE_FILE%>"> <input type="button" value="삭제" onclick="delFile()">
+									<input name="SCHE_FILE1" value="<%=SCHE_FILE%>" id="file1"> <input type="button" value="삭제" onclick="delFile()">
+									<input type="file" name="SCHE_FILE1" value="<%=SCHE_FILE%>" id="file1" style="display:none;">
+					
 								</div>
 								<%
 									} else{%>
-									<input type="file" name="SCHE_FILE">
+									<input type="file" name="SCHE_FILE3">
 								<%	
 									} 
 								%>
@@ -306,7 +308,10 @@ function check(){
  function delFile(){
 	 document.getElementById('fileArea').style.display="none";
 	 document.getElementById('fileInput').style.display="block";
-}
+	 document.getElementById('file1').value="";
+}	 
+
+
  
 </script>
 </body>

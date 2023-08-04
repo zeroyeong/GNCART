@@ -133,7 +133,7 @@ public class ScheduleMgr {
 	/*_____________일정 등록 scheduleAdd.jsp_____________*/
 	
 	//파일 업로드 관련 설정 작성
-	private static final String  SAVEFOLDER = "C:/GNCART/GNCART/GNCART/src/main/webapp/schedule/filestorage";
+	private static final String  SAVEFOLDER = "C:Users/Administrator/git/GNCART/GNCART/src/main/webapp/filestorage";
 	private static final String ENCTYPE = "UTF-8";
 	private static int MAXSIZE = 10*1024*1024; //용량 초과의 경우 사이트연결불가 화면이 뜸~!
 	
@@ -239,9 +239,16 @@ public class ScheduleMgr {
 			multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCTYPE,
 					new DefaultFileRenamePolicy());
 			
-			if(multi.getFilesystemName("SCHE_FILE")!=null) {
-				SCHE_FILE = multi.getFilesystemName("SCHE_FILE");
+			if(multi.getParameter("SCHE_FILE1") != null && !multi.getParameter("SCHE_FILE1").equals("")) {
+				SCHE_FILE = multi.getParameter("SCHE_FILE1");
+			}else {
+				if(multi.getParameter("SCHE_FILE1") == null) {
+					SCHE_FILE = multi.getFilesystemName("SCHE_FILE3");
+				} else if(multi.getParameter("SCHE_FILE1") == ""){
+					SCHE_FILE = multi.getFilesystemName("SCHE_FILE2");
+				}
 			}
+			
 			
 			sql = "update schedule set SCHE_NAME=?, SCHE_START_DATE=?,SCHE_END_DATE=?, SCHE_DETAIL=?, SCHE_FILE=?, ST_NO=?, END_NO=?, TYPE_NO=?, PART_NO=? where SCHE_NO=?";
 			
@@ -259,12 +266,9 @@ public class ScheduleMgr {
 			pstmt.setInt(10,Integer.parseInt( multi.getParameter("SCHE_NO")));
 			
 			pstmt.executeUpdate();
-			System.out.println("쿼리 끝");
 			
 			res.sendRedirect("http://localhost:8080/GNCART/schedule/jsp/scheduleDetail.jsp?SCHE_NO="+multi.getParameter("SCHE_NO"));
-			
-//		}catch(IOExeption ie){
-//			ie.printStackTrace();
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -272,7 +276,43 @@ public class ScheduleMgr {
 		}
 	}
 	
-	/*___________파일 수정___________*/
+	/*___________게시물 삭제___________*/
+	public void delSchedule(int SCHE_NO) {
+		Connection con = null;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = null;
+		
+		ResultSet rs = null;
+		
+		try {
+			con=pool.getConnection();
+			sql="select SCHE_FILE from schedule where SCHE_NO=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, SCHE_NO);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next() && rs.getString(1) != null) {
+				if(! rs.getString(1).equals("")) {
+					File file = new File(SAVEFOLDER + "/" + rs.getString(1));
+					if(file.exists())
+						UtilMgr.delete(SAVEFOLDER+"/"+rs.getString(1));
+				}
+			}
+			
+			sql = "delete from schedule where SCHE_NO=?";
+			
+			pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, SCHE_NO);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+	}
+	
 
 	
 	/*___________파일 다운로드___________*/

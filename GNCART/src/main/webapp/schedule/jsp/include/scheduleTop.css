@@ -4,34 +4,39 @@
   box-sizing:border-box;
 }
 
-.title{
+.scheduleTop .title{
   padding:5px;
   border-bottom:1px solid;
   margin-bottom:10px;
 }
 
-.scheduleMenu{
+.scheduleTop .scheduleMenu{
   display:flex;
   justify-content:space-between;
 }
 
-.scheduleMenu button{
+.scheduleTop .scheduleMenu button{
   border:none;
   padding:5px;
   border-radius:5px;
+  font-size:0.9em;
   font-weight:bold;
-  color:#000;
+  color:#333;
   background-color:#eee;
   transition:0.3s;
 }
 
-.scheduleMenu button:hover{
+.scheduleTop .scheduleMenu button:hover{
   color:#fff;
   background-color:grey;
 }
 
-.acting{
-	background-color:#11101d;
+.scheduleTop .scheduleMenu .linkBtn button{
+	margin-right:5px;
+}
+
+.scheduleTop .scheduleMenu .linkBtn .acting{
+	background-color:#333;
 	color:#fff;
 }
 

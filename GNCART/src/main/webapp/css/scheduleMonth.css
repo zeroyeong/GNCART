@@ -1,142 +1,214 @@
-*{
-  margin:0px;
-  padding:0px;
-  box-sizing:border-box;
-}
-a{
-  text-decoration:none;
-  color:#11101d;
-}
-
-.container{
-  margin:20px;
-  background-color:#fff;
-  padding:30px;
-  border:3px solid #eee;
-  border-radius:20px;
+/* 변수 선언 */
+:root {
+  /* color */
+  --main-color: #333;
+  --hover-color: grey;
+  --basic-color: #eee;
+  --background-color: lightgrey;
+  --white-color: #fff;
 }
 
-/*________________________________*/
-
-.calenderTitle{
-  border:3px solid #eee;
-  padding:10px 20px;
+/* css 기본설정 */
+* {
+  padding: 0px;
+  margin: 0px;
+  color: var(--main-color);
+  box-sizing: border-box;
 }
 
-.yearArea, .monthArea{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:5px 0;
+a {
+  text-decoration: none;
 }
 
-.yearArea{
-  border-bottom:1px solid grey;
+ul {
+  list-style: none;
 }
 
-.prevYear, .nextYear{
-  font-size:0.85em;
-  color:grey;
+input[type="button"] {
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
 }
 
-.monthArea input{
-  font-size:0.95em;
-  display:inline-block;
-  padding:3px 15px;
-  text-align:center;
-  border-radius:5px;
-  transition:0.3s;
-  border:none;
+button {
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
 }
 
-.monthArea input:hover{
-  background:grey;
-  color:#fff;
-  font-weight:bold;
+/* CONTAINER */
+.container {
+  background-color: var(--white-color);
+  border: 3px solid var(--basic-color);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px;
 }
 
-.active{
-  background:#11101d;
-  color:#fff;
-  font-weight:bold;
+/* include btn */
+.scheduleTop .scheduleMenu .linkBtn button:first-child {
+  background-color: var(--hover-color);
+  color: var(--white-color);
 }
 
-/*________________________________*/
-
-.content{
-  width:100%;
-  margin-top:20px;
-  display:flex;
-  justify-content:space-between;
+/* YEAR & MONTH BAR */
+.container .calenderTitle {
+  border: 3px solid var(--basic-color);
+  padding: 10px 20px 5px;
+  margin-bottom: 20px;
 }
 
-.calender{
-	width:39%;
+.container .calenderTitle .yearArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--main-color);
+  padding-bottom: 5px;
+  margin-bottom: 7px;
 }
 
-.list{
-	width:59%;
-}
-/*________________________________*/
-
-.calender, .list{
-  border:3px solid #eee;
-}
-
-/*________________________________*/
-
-.content table{
-  width:100%;
+.container .calenderTitle .yearArea .prevYear,
+.container .calenderTitle .yearArea .nextYear,
+.container .calenderTitle .yearArea .prevYear span,
+.container .calenderTitle .yearArea .nextYear span {
+  font-size: 0.9em;
+  color: var(--hover-color);
 }
 
-.content table, .content td{
-  border-collapse:collapse;
+.container .calenderTitle .monthArea {
+  display: flex;
+  justify-content: space-between;
 }
 
-.content td{
-  padding:8px;
+.container .calenderTitle .monthArea input {
+  padding: 3px 10px;
+  background: var(--background-color);
+  color: var(--white-color);
+  border-radius: 5px;
+  transition: 0.3s;
+
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 
-.content thead{
-  background:#11101d;
-  color:#fff;
-  font-weight:bold;
-  text-align:center;
+.container .calenderTitle .monthArea input:last-child {
+  margin-right: 0;
 }
 
-.tableHead td{
-  background:#fff;
-  color:#11101d;
-  font-size:1.1em;
+.container .calenderTitle .monthArea input:hover {
+  background-color: var(--hover-color);
 }
 
-/*________________________________*/
-
-.calender td{
-	text-align:center;
+.container .calenderTitle .monthArea input.active {
+  background-color: var(--main-color);
 }
 
-.calendar tbody tr td:first-child{
-	color:red;
+/* CALENDAR & SCHEDULE LIST TABLE */
+.container .content {
+  display: flex;
+  justify-content: space-between;
 }
 
-.calendar tbody tr td:last-child{
-	color:blud;
+.container .content .calendar,
+.container .content .list {
+  border: 3px solid var(--basic-color);
 }
 
-/*________________________________*/
-
-.list td:first-child{
-  width:35%;
-  text-align:center;
+.container .content .calendar table,
+.container .content .list table {
+  width: 100%;
 }
 
-.list tbody td{
-  font-size:0.95em;
+.container .content .calendar {
+  width: 35%;
+  margin-right: 10px;
+  height: fit-content;
 }
 
-@media screen and (max-width:800){
-	.content{
-		flex-direction:columns;
-	}
+.container .content .list {
+  width: 65%;
+}
+
+table,
+td,
+th {
+  border-collapse: collapse;
+}
+
+thead td {
+  text-align: center;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+thead tr:first-child td {
+  background-color: var(--white-color);
+  color: var(--main-color);
+  padding: 10px;
+}
+
+thead tr:last-child td {
+  padding: 5px 0;
+}
+
+tbody td {
+  padding: 5px 0;
+  font-size: 0.9em;
+}
+
+.container .content .calendar table td {
+  width: calc(100% / 7);
+  text-align: center;
+}
+
+.container .content .calendar table tbody tr td:first-child {
+  color: rgb(255, 0, 0);
+}
+
+.container .content .calendar table tbody tr td:last-child {
+  color: blue;
+}
+
+.container .content .list table tbody tr td:first-child {
+  width: 40%;
+  text-align: center;
+}
+
+.container .content .list table tbody tr td:last-child {
+  width: 60%;
+  text-align: left;
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  .container .calenderTitle .yearArea .prevYear span,
+  .container .calenderTitle .yearArea .nextYear span {
+    display: none;
+  }
+
+  .container .calenderTitle .monthArea {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .container .content {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .container .content .calendar,
+  .container .content .list {
+    width: 100%;
+  }
+
+  .container .content .calendar {
+    margin-bottom: 20px;
+  }
+
+  .container .content .calendar table thead .prevMonth,
+  .container .content .calendar table thead .nextMonth {
+    font-size: 0.9em;
+  }
 }

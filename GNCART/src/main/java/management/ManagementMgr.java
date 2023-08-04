@@ -150,7 +150,7 @@ public class ManagementMgr {
 	
 	
 	//파일 업로드 관련 설정 작성
-	private static final String  SAVEFOLDER = "C:/GNCART/GNCART/src/main/webapp/08management/filestorage";
+	private static final String  SAVEFOLDER = "C:Users/Administrator/git/GNCART/GNCART/src/main/webapp/filestorage";
 	private static final String ENCTYPE = "UTF-8";
 	private static int MAXSIZE = 5*1024*1024;
 	
