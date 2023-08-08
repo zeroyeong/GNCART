@@ -1,0 +1,31 @@
+/* Member Top */
+.memberTop {
+  margin-bottom: 20px;
+}
+
+.memberTop .title {
+  padding: 5px;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+.memberTop .memberMenu {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.memberTop .memberMenu button {
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: var(--main-color);
+  background-color: var(--basic-color);
+  transition: 0.3s;
+}
+
+.memberTop .memberMenu button:hover {
+  color: var(--white-color);
+  background-color: var(--hover-color);
+}

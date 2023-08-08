@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #333;
+}
+
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 350px;
+  padding: 20px;
+
+  border: 3px solid #eee;
+  border-radius: 20px;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.container > p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container span {
+  border-bottom: 1px solid #333;
+  color: #515255;
+  font-weight: bold;
+}
+
+/* true 일때 */
+.container .yes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .yes p {
+  margin-right: 10px;
+}
+
+.container .yes input {
+  border: none;
+  background-color: #eee;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.container .yes input:hover {
+  background-color: grey;
+  font-weight: bold;
+  color: white;
+}
+
+/* false 일때 */
+
+.container .no {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .no label,
+.container .no input {
+  display: inline-block;
+}
+
+.container .no label {
+  width: 15%;
+  text-align: center;
+}
+
+.container .no input[type="text"] {
+  width: 60%;
+  padding: 5px;
+  font-size: 1em;
+}
+
+.container .no input[type="submit"] {
+  width: 20%;
+  padding: 5px;
+  font-size: 0.8em;
+  border: none;
+  border-radius: 5px;
+  background-color: #eee;
+}
+
+.container .no input[type="submit"]:hover {
+  background-color: grey;
+  color: #fff;
+  font-weight: bold;
+}

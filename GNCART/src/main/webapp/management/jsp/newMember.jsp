@@ -4,17 +4,6 @@
     import="java.util.Vector"%>
     	
 <jsp:useBean id="mMgr" class="management.ManagementMgr"/>
- 
-<%--
- //로그인 안했을 시 로그인 페이지로 리다이렉트 
- if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
-    response.sendRedirect("../../login.jsp");
-
- // 캐시 설정
- response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate" ); 
- response.setHeader("Pragma", "no-cache" ); 
- response.setHeader("Expires", "0" ); 
---%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -208,9 +197,12 @@
 	        
 	        <!-- AP_NO 기본값 설정을 위한 hidden input -->
 	        <input type="hidden" name="AP_NO" value="1">
+	        
+	        <!-- [중복확인] 버튼을 눌렀나 확인하는 hidden input -->
+	        <input type="hidden" name="check" id="checkId">
 	
 	        <div class="buttons">
-	          <input type="button" value="저장" onclick="check()"/>
+	          <input type="button" value="저장" onclick="window.check()"/>
 	          <input type="reset" value="재입력" />
 	          <input type="button" value="리스트" onclick="memberList()"/>
 	        </div>
@@ -221,57 +213,43 @@
 
   <script src="../../script/indexScript.js"></script>
   <script>
+  console.log(document.getElementById('checkId').value);
   function idCheck(id){
 	  const frm = document.newFrm;
-	  
 	  if(id == ""){
 		  alert("아이디를 입력해 주세요.");
 		  frm.MEM_ID.focus();
 		  return;
 	  }
-	  
 	  url = "idCheck.jsp?MEM_ID="+id;
-	  window.open(url, "IDCheck", "width=300, height=150");
+	  window.open(url, "IDCheck", "width=380, height=200");
   }
   
-	function check(){
+  function check(){
 		const name = document.getElementById('name').value;
 		const id = document.getElementById('id').value;
 		const pw = document.getElementById('pw').value;
 		const date = document.getElementById('date').value;
 		const part = document.getElementById('part').value;
 		const level = document.getElementById('level').value;
+		const checkId = document.getElementById('checkId').value;
 		
-		console.log(name);
-		console.log(id);
-		console.log(pw);
-		console.log(date);
-		console.log(part);
-		console.log(level);
-		
-		console.log(name=="");
-		
-		if(name == "" || id == "" || pw == "" || date == "" || part == "선택" || level == "선택"){
-
+		if(name == "" || id == "" || pw == "" || date == "" || part == "선택" || level == "선택" || checkId != "true"){
 			if(name == ""){
 				alert("사용자의 이름을 입력해 주세요.");
-			}
-			else if(id == ""){
+			} else if(id == ""){
 				alert("사용자의 ID를 입력해 주세요.");
-			}
-			else if(pw == ""){
+			} else if(pw == ""){
 				alert("사용자의 비밀번호를 입력해 주세요.");
-			}
-			else if(date == ""){
+			} else if(date == ""){
 				alert("사용자의 입사일을 입력해 주세요.");
-			}
-			else if(part == ""){
+			} else if(part == "선택"){
 				alert("사용자의 부서를 선택해 주세요.");
-			}
-			else if(level == ""){
+			} else if(level == "선택"){
 				alert("사용자의 직급을 선택해 주세요.");
+			} else if(checkId != "true"){
+				alert("ID의 중복확인을 해주세요.");
 			}
-			
 		}else{
 			document.newFrm.submit();
 		}
