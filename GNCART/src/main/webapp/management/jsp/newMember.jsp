@@ -24,10 +24,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GNC:ART</title>
   <link rel="stylesheet" href="../../css/index.css">
-  <link rel="stylesheet" href="../../css/newMember.css">
+
   <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>	
   <!--boxIcons CDN Link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+    <!-- 현재 파일의 css -->
+	  <link rel="stylesheet" href="../../css/newMember.css?ohoho">
+	
+	<!-- 현재 파일 - includeTop css -->
+	<link rel="stylesheet" href="include/include.css?alo">
+	
 </head>
 
 <body>
@@ -41,77 +48,66 @@
 
     <!--_______________본문시작_______________-->  	
 	<div class="home-content">
-		<div id="container">
-        	
-        	<!--            페이지 타이틀            -->
-        	<div class="title">
-        		<h2>관리자 페이지</h2>
-        		
-        		<div class="btns">
-        			<a href="memberList.jsp">사용자 조회</a>
-        			<a href="newMember.jsp">사용자 추가</a>
-        		</div>
-        		
-        		<div class="smallTitle">
-        			<h3>사용자 추가</h3>
-        		</div>
-        	</div>
-        	
-        	<div class="content">
-          <div class="caution">
-            <p>- 프로필 사진 권장 최대 사이즈는 330*330px (10MB 미만)입니다.</p>
-          </div>
+       <div class="member">
+      	 <!-- management include top -->		
+    		 <jsp:include page="include/includeTop.jsp" />
+      	<div class="pageTitle">
+	        <h3>사용자 추가</h3>
+      	</div>
 
-          <form name="newFrm" method="post" action="../../management/NewMemberServlet" enctype="multipart/form-data">
-              <table>
-		        <tr>
-		          <td rowspan="4" class="mem-img">
-					<input type="file" name="MEM_IMG">
-				  </td>
-		          <td class="secondTd">이름</td>
-		          <td><input name="MEM_NAME" type="text" required id="name"></td>
-		        </tr>
-		        <tr>
-		          <td>ID</td>
-		          <td><input name="MEM_ID" type="text" required id="id"></td>
-		        </tr>
-		        <tr>
-		          <td>비밀번호</td>
-		          <td><input name="MEM_PW" type="text" required id="pw"></td>
-		        </tr>
-		        <tr>
-		          <td>계정구분</td>
-		          <td>
-			          <input type="radio" name="AC_NO" value="1" checked><span>일반사용자</span>
-			          &nbsp;&nbsp; 
-			          <input type="radio" name="AC_NO" value="2"><span>관리자사용자</span>
-		          </td>
-		        </tr>
-		      </table>
-
-		      <table>
-<!-- 		        <tr> -->
-<!-- 		          <td class="firtstTd">사번</td> -->
-<!-- 		          <td><input name="MEM_NO" readonly type="text"></td> -->
-<!-- 		        </tr> -->
-		        <tr>
-		          <td>근로형태</td>
-		          <td>
-			          <input type="radio" name="WORK_NO" value="1" checked><span>정규직</span>
-			          &nbsp;&nbsp; 
-			          <input type="radio" name="WORK_NO" value="2"><span>계약직</span>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td>입사일</td>
-		          <td><input name="MEM_DATE" type="text" id="date" required placeholder="-포함해서 입력 ex) 2023-07-17"></td>
-		        </tr>
-		        <tr>
-		          <td>소속부서</td>
-		          <td>
-		          	<select name="PART_NO"  id="part">
-		          		<option>선택</option>
-			          	<%
+	      <form class="memberViewTable" name="newFrm" method="post" action="../../management/NewMemberServlet" enctype="multipart/form-data">
+	        <p>- 프로필 사진 권장 최대 사이즈는 330*330px (10MB 미만)입니다.</p>
+	        <table>
+	          <tr>
+	            <td rowspan="4">
+	              <input type="file" name="MEM_IMG">
+	            </td>
+	            <td>이름</td>
+	            <td><input type="text" name="MEM_NAME" id="name" /></td>
+	          </tr>
+	          <tr>
+	            <td>ID</td>
+	            <td>
+	            	<input type="text" name="MEM_ID" id="id"/>
+	            	<input type="button" value="중복확인" onclick="idCheck(this.form.MEM_ID.value)">
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>비밀번호</td>
+	            <td><input type="text" name="MEM_PW" id="pw" /></td>
+	          </tr>
+	          <tr>
+	            <td>계정구분</td>
+	            <td>
+	              <div class="actype">
+	                <input type="radio" name="AC_NO" value="1" checked /> 일반사용자
+	                &nbsp;&nbsp;
+	                <input type="radio" name="AC_NO" value="2" /> 관리자사용자
+	              </div>
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>근로형태</td>
+	            <td colspan="2">
+	              <div class="workType">
+	                <input type="radio" name="WORK_NO" value="1" checked /> 정규직
+	                &nbsp;&nbsp;
+	                <input type="radio" name="WORK_NO" value="2" /> 계약직
+	              </div>
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>입사일</td>
+	            <td colspan="2">
+	              <input type="text" name="MEM_DATE" id="date" />
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>소속부서</td>
+	            <td colspan="2">
+	              <select name="PART_NO" id="part">
+	                <option selected>선택</option>
+	                <%
 							Vector<ManagementBean> partlist = mMgr.getPartList();
 							
 							if(partlist.isEmpty()){
@@ -133,15 +129,15 @@
 								}
 							}
 						%>
-		          	</select>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td>직위</td>
-		          <td>
-		          	<select name="LE_NO" id="level">
-		          		<option>선택</option>
-			          	<%
+	              </select>
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>직위</td>
+	            <td colspan="2">
+	              <select name="LE_NO" id="level">
+	                <option selected>선택</option>
+	                <%
 							Vector<ManagementBean> lelist = mMgr.getLevelList();
 							
 							if(lelist.isEmpty()){
@@ -160,50 +156,84 @@
 								}
 							}
 						%>
-		          	</select>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td>내선번호</td>
-		          <td><input name="MEM_TEL" type="text"></td>
-		        </tr>
-		        <tr>
-		          <td>이메일</td>
-		          <td><input name="MEM_MAIL" type="text" type="email"></td>
-		        </tr>
-		        <tr>
-		          <td>휴대전화</td>
-		          <td><input name="MEM_PHONE" type="text" placeholder="-포함해서 입력"></td>
-		        </tr>
-		        <tr> 
-		          <td>자택주소</td>
-		          <td><input name="MEM_ADD" type="text"></td>
-		        </tr>
-		        <tr>
-		          <td>생년월일</td>
-		          <td><input name="MEM_BIRTH" type="text" type="text"  placeholder="-포함해서 입력 ex) 1998-01-01"></td>
-		        </tr>
-		        <tr>
-		          <td>기타정보</td>
-		          <td><textarea name="MEM_AND"></textarea></td>
-		        </tr>
-		      </table>
-
-            <div class='button'>
-              <input type="button" value="저장" onclick="check()">
-              <input type="reset" value="재입력">
-              <input type="button" value="리스트" onclick="javascript:location.href='memberList.jsp">
-            </div>
-            <!-- acposition 테이블을 위한 hidden input -->
-            <input type="hidden" name="AP_NO" value="1">
-          </form>
-        </div> 
-	     </div>     
+	              </select>
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>내선번호</td>
+	            <td colspan="2">
+	              <input type="text" name="MEM_TEL" />
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>이메일</td>
+	            <td colspan="2">
+	              <input name="MEM_MAIL" type="text" type="email" />
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>휴대전화</td>
+	            <td colspan="2">
+	              <input
+	                name="MEM_PHONE"
+	                type="text"
+	                placeholder="-포함해서 입력"
+	              />
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>자택주소</td>
+	            <td colspan="2">
+	              <input name="MEM_ADD" type="text" />
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>생년월일</td>
+	            <td colspan="2">
+	              <input
+	                name="MEM_BIRTH"
+	                type="text"
+	                type="text"
+	                placeholder="-포함해서 입력 ex) 1998-01-01"
+	              />
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>기타정보</td>
+	            <td colspan="2">
+	              <textarea name="MEM_AND"></textarea>
+	            </td>
+	          </tr>
+	        </table>
+	        
+	        <!-- AP_NO 기본값 설정을 위한 hidden input -->
+	        <input type="hidden" name="AP_NO" value="1">
+	
+	        <div class="buttons">
+	          <input type="button" value="저장" onclick="check()"/>
+	          <input type="reset" value="재입력" />
+	          <input type="button" value="리스트" onclick="memberList()"/>
+	        </div>
+	      </form>
+    </div>
 	</div>
   </section>
 
   <script src="../../script/indexScript.js"></script>
   <script>
+  function idCheck(id){
+	  const frm = document.newFrm;
+	  
+	  if(id == ""){
+		  alert("아이디를 입력해 주세요.");
+		  frm.MEM_ID.focus();
+		  return;
+	  }
+	  
+	  url = "idCheck.jsp?MEM_ID="+id;
+	  window.open(url, "IDCheck", "width=300, height=150");
+  }
+  
 	function check(){
 		const name = document.getElementById('name').value;
 		const id = document.getElementById('id').value;
@@ -246,8 +276,11 @@
 			document.newFrm.submit();
 		}
 	}
+	
+	function memberList(){
+  		location.href="memberList.jsp"
+  	}
 </script>
-  </script>
 </body>
 
 </html>

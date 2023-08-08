@@ -1,160 +1,204 @@
-/**************************/
-/*********전체설정*********/
-/**************************/
+/* 변수 선언 */
+:root {
+  /* color */
+  --main-color: #333;
+  --hover-color: grey;
+  --basic-color: #eee;
+  --table-hover-color: #eee;
+  --background-color: lightgrey;
+  --white-color: #fff;
 
-*{
-  margin:0px;
-  padding:0px;
-  box-sizing:border-box;
-}
-a{
-  text-decoration:none;
-  color:#11101d;
-}
-ul{
-  list-style:none;
+  --search-border-color: grey;
 }
 
-#container{
-  margin:20px;
-  background-color:#fff;
-  padding:30px;
-  padding-bottom:70px;
-  border:3px solid #eee;
-  border-radius:20px;
+/* css 기본설정 */
+* {
+  padding: 0px;
+  margin: 0px;
+  color: var(--main-color);
+  box-sizing: border-box;
 }
 
-/*********************/
-/****페이지 타이틀****/
-/*********************/
-
-.title{
-  padding-top:5px;
-  margin-bottom:20px;
-}
-.title h2{
-  border-bottom:1px solid gray;
-  padding-bottom:5px;
+a {
+  text-decoration: none;
 }
 
-.btns{
-  margin-top:15px;
+ul {
+  list-style: none;
 }
 
-.btns a{
-  margin-right:10px;
-  background-color:#eee;
-  padding:5px;
-  border-radius:5px;
-  font-size:0.9em;
-  font-weight:bold;
+input[type="button"] {
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+/* member */
+.member {
+  background-color: var(--white-color);
+  border: 3px solid var(--basic-color);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px;
+}
+
+/* Page Title - 제목 */
+.pageTitle {
+  border: 3px solid var(--basic-color);
+  background-color: var(--white-color);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+/*   position: sticky; */
+/*   top: 80px; */
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pageTitle h3 {
+  width: 70%;
+  text-align: center;
+}
+
+/* Page Title - buttons */
+.pageTitle .buttons {
+  width: 15%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pageTitle .buttons input[type="button"] {
+  background-color: var(--basic-color);
+  border-radius: 5px;
+
+  display: inline-block;
+  width: 65px;
+  padding: 7px 0;
+  font-size: 0.9em;
+
+  margin-left: 10px;
+
   transition: 0.3s;
 }
 
-.btns a:hover{
-  background-color:gray;
-  color:#fff;
+.pageTitle .buttons input[type="button"]:hover {
+  background-color: var(--hover-color);
+  color: var(--white-color);
+  font-weight: bold;
 }
 
-/**************************/
-/******페이지 소제목*******/
-/**************************/
-
-.smallTitle{
-  border:3px solid #eee;
-  padding:10px;
-  margin:20px 0;
-  text-align:center;
+/* Member View Table - memberTable */
+.memberViewTable table {
+  margin-bottom: 20px;
 }
 
-/**************************/
-/******페이지   본문*******/
-/**************************/
-.content{
-  width:100%;
-  border-top:2px solid #11101d;
-  border-bottom:2px solid #11101d;
-  padding:10px 0;
-  padding-bottom:60px;
+table,
+td {
+  border-collapse: collapse;
 }
 
-/*-----------------USER-INFO--------------*/
-
-table, td{
-  border-collapse:collapse;
+table {
+  width: 100%;
 }
 
-table{
-  width:80%;
-  margin:20px auto;
+td {
+  padding: 10px;
 }
 
-td{
-  padding:10px;
-  border-top:1px solid gray;
-  border-bottom:1px solid gray;
+tr {
+  border-top: 1px solid var(--hover-color);
+  border-bottom: 1px solid var(--hover-color);
 }
 
-img{
-	width:150px;
+tr:first-child {
+  border-top: none;
+  border-bottom: 2px solid var(--hover-color);
 }
 
-td:first-child, td:nth-child(3){
-  width:20%;
-  text-align:center;
-  background-color:#eee;
-  font-weight:bold;
+tr:last-child {
+  border-bottom: 2px solid var(--hover-color);
 }
 
-tr:last-child td:first-child{
-  background-color:#fff;
+.memberTable tr td:first-child,
+.memberTable tr td:nth-child(3) {
+  background-color: var(--table-hover-color);
+  text-align: center;
+  font-weight: bold;
+  width: 15%;
 }
 
-.user-imgT{
-  width:100%;
+.memberTable tr td:nth-child(2),
+.memberTable tr:last-child {
+  width: 35%;
 }
 
-.user-imgT td{
-  background-color:#fff;
-  text-align:center;
-  border:none;
-  padding:0;
+.memberViewTable .memberTable tr:first-child td img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
-.downBtn{
-  font-size:0.8em;
-  margin-left:150px;  
+.memberTable tr:first-child td {
+  background-color: transparent;
 }
 
-/*-----------------BUTTON--------------*/
-
-.button{
-  width:100%;
+.memberTable tr:last-child td:first-child {
+  background-color: transparent;
 }
 
-.button a{
-  float:right;
-  height:35px;
-  width:60px;
-  text-align:center;
-  line-height:35px;
-  font-size:0.8em;
-  
-  margin-right:10px;
-
-  border:none;
-  background-color:#eee;
-  border-radius:5px;
-
-  transition:0.3s;
+/* MemberViewTable - workInfo */
+.workInfo thead tr:first-child {
+  border-bottom: none;
 }
 
-.button a:first-child{
-  margin-right:0;
+.workInfo thead tr:last-child {
+  border-top: none;
 }
 
-.button a:hover{
-  background-color:gray;
-  font-weight:bold;
-  color:#fff;
+.workInfo thead tr:first-child td {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.workInfo tbody tr:first-child td {
+  font-weight: bold;
+  background-color: var(--table-hover-color);
+}
+
+.workInfo tbody tr td:first-child {
+  font-weight: bold;
+  background-color: var(--table-hover-color);
+}
+
+.workInfo tbody td {
+  text-align: center;
+}
+
+.workInfo td {
+  width: calc(100% / 13);
+}
+
+/* memberViewTable - workInfo - button */
+.memberViewTable .workInfo thead tr:last-child button {
+  display: inline-block;
+  background-color: var(--basic-color);
+  font-size: 0.9em;
+  padding: 5px;
+  border-radius: 5px;
+  float: right;
+  transition: 0.3s;
+}
+
+.memberViewTable .workInfo thead tr:last-child button:hover {
+  background-color: var(--hover-color);
+  color: var(--white-color);
+  font-weight: bold;
 }

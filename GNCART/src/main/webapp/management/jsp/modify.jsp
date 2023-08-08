@@ -8,12 +8,10 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	System.out.println("---------------modify 입장!---------------");
-	
 	int MEM_NO = Integer.parseInt(request.getParameter("MEM_NO"));
 	String nowPage = request.getParameter("nowPage");
 	
-	ManagementBean bean = (ManagementBean) session.getAttribute("bean"); 
+	ManagementBean bean = mMgr.getMember(MEM_NO);
 	
 	String MEM_NAME=bean.getMEM_NAME();
 	String MEM_ID=bean.getMEM_ID();
@@ -50,10 +48,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GNC:ART</title>
   <link rel="stylesheet" href="../../css/index.css">
-  <link rel="stylesheet" href="../../css/modify.css">
+  
   <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>	
   <!--boxIcons CDN Link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+    <!-- 현재 파일의 css -->
+	  <link rel="stylesheet" href="../../css/modify.css?ddllss">
+	
+	<!-- 현재 파일 - includeTop css -->
+	<link rel="stylesheet" href="include/include.css?alods">
 </head>
 
 <body>
@@ -65,50 +69,37 @@
     <jsp:include page="../../index/top.jsp" flush="false" />
   <!--_______________본문시작_______________-->  	
 	<div class="home-content">
-		<div id="container">
-        	
-        	<!--            페이지 타이틀            -->
-        	<div class="title">
-        		<h2>관리자 페이지</h2>
-        		
-        		<div class="btns">
-        			<a href="memberList.jsp">사용자 조회</a>
-        			<a href="newMember.jsp">사용자 추가</a>
-        		</div>
-        		
-        		<div class="smallTitle">
-        			<h3>사용자 수정</h3>
-        		</div>
-        	</div>
-        	
-        	<div class="content">
-          <div class="caution">
-            <p>- 프로필 사진 권장 최대 사이즈는 330*330px (10MB 미만)입니다.</p>
-          </div>
+		<div class="member">
+     	 <!-- management include top -->		
+   		 <jsp:include page="include/includeTop.jsp" />
 
-          <form name="updateFrm" method="post" action="../../management/MemberUpdateServlet">
+      	<div class="pageTitle">
+	        <h3>사용자 수정</h3>
+      	</div>
 
-              <table>
+        <form class="memberViewTable" name="updateFrm" method="post" action="../../MemberUpdateServlet" enctype="multipart/form-data">
+					
+					<p>- 프로필 사진 권장 최대 사이즈는 330*330px (10MB 미만)입니다.</p>
+          
+          <table>
 		        <tr>
-		          <td rowspan="4" class="mem-img">
+		          <td rowspan="4">
 		          	<%
-		          		if(MEM_IMG != null){%>
-		          			<div id="fileArea">
-			          			<img src="../images/<%=MEM_IMG %>" name="MEM_IMG">
-			          			<input type="hidden" name="MEM_IMG" value="<%=MEM_IMG %>">
-			          			<input type="button" value="삭제" onclick="delFile()">
-		          			</div>
-		          			
+		          		if(MEM_IMG != null && !MEM_IMG.equals("")){%>
 		          			<div id="fileInput" style="display:none;">
-			          			<img src="../filestorage/profile.jpg">
-			          			<input type="file" name="MEM_IMG">
-		          			</div>
-		          		<%}else{%>
-		          		
-		          			<img src="../filestorage/profile.jpg">
-		          			<input type="file" name="MEM_IMG">
-		          			
-		          		<%} %>
+									<input type="file" name="MEM_IMG2">
+								</div>
+								<div id="fileArea">
+									<input name="MEM_IMG1" value="<%=MEM_IMG%>" id="file1"> <input type="button" value="삭제" onclick="delFile()">
+									<input type="file" name="MEM_IMG1" value="<%=MEM_IMG%>" id="file1" style="display:none;">
+					
+								</div>
+								<%
+									} else{%>
+									<input type="file" name="MEM_IMG3">
+								<%	
+									} 
+								%>
 		          		
 		          </td>
 		          <td>이름</td>
@@ -138,11 +129,8 @@
 			        <%} %>
 		          </td>
 		        </tr>
-		      </table>
-
-		      <table>
 		        <tr>
-		          <td class="firtstTd">사번</td>
+		          <td>사번</td>
 		          <td><input name="MEM_NO" readonly type="text" value="<%=MEM_NO%>"></td>
 		        </tr>
 		        <tr>
@@ -204,7 +192,7 @@
 		        <tr>
 		          <td>소속부서</td>
 		          <td>
-		          	<select name="PART_NO">
+		          	<select name="PART_NO" id="part">
 		          		<option>선택</option>
 			          	<%
 							Vector<ManagementBean> partlist = mMgr.getPartList();
@@ -241,7 +229,7 @@
 		        <tr>
 		          <td>직위</td>
 		          <td>
-		          	<select name="LE_NO">
+		          	<select name="LE_NO" id="level">
 		          		<option>선택</option>
 			          	<%
 				          	Vector<ManagementBean> lelist = mMgr.getLevelList();
@@ -296,33 +284,52 @@
 		        <tr>
 		          <td>기타정보</td>
 		          <td><textarea name="MEM_AND"><%=MEM_AND%></textarea></td>
-		          <%
-		          System.out.println("수정창에서의 and = "+MEM_AND);
-		          %>
 		        </tr>
 		      </table>
+						
+						<!-- submit을 위해 MEM_NO 값을 담은 hidden input -->
+            <input type="hidden" name="MEM_NO" value="<%=MEM_NO%>">
+            <input type="hidden" name="nowPage" value="<%=nowPage %>">
 
-            <div class='button'>
-              <input type="submit" value="저장"">
-              <input type="reset" value="다시수정">
+						<!----------------버튼---------------->
+            <div class='buttons'>
+              <input type="button" value="저장" onclick="check()"/>
+	          	<input type="reset" value="다시수정" />
               <input type="button" value="뒤로" onclick="history.go(-1)">
             </div>
-            <input type="hidden" name="nowPage" value="<%=nowPage %>">
-            <input type="hidden" name="MEM_NO" value="<%=MEM_NO%>">
+
           </form>
-        </div> 
+
 	     </div>     
 	</div>
 </body>
 </html>
 
 <script src="../../script/indexScript.js"></script>
+
 <script>
+function check(){
+	const part = document.getElementById('part').value;
+	const level = document.getElementById('level').value;
+	
+	if(part == "" || level =="선택"){
+		if(part == "선택"){
+			alert("소속부서를 확인해 주세요.");
+		}
+		else if(level == ""){
+			alert("직급을 확인해 주세요.");
+		}
+	}else{
+		document.updateFrm.submit();
+	}	
+}
+
 /*_____파일 삭제_____*/
-function delFile(){
+ function delFile(){
 	 document.getElementById('fileArea').style.display="none";
 	 document.getElementById('fileInput').style.display="block";
-}
+	 document.getElementById('file1').value="";
+}	 
 </script>
 </body>
 </html>

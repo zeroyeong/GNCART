@@ -30,7 +30,6 @@
 	String MEM_BIRTH=bean.getMEM_BIRTH();
 	String MEM_AND=bean.getMEM_AND();
 	String MEM_IMG=bean.getMEM_IMG();
-// 	System.out.println("img = "+bean.getMEM_IMG());
 	String AP_TYPE=bean.getAP_TYPE();
 	
 	session.setAttribute("bean", bean);
@@ -45,10 +44,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GNC:ART</title>
   <link rel="stylesheet" href="../../css/index.css">
-  <link rel="stylesheet" href="../../css/readMember.css">
+  
   <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>	
   <!--boxIcons CDN Link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+  <!-- 현재 파일의 css -->
+	<link rel="stylesheet" href="../../css/readMember.css?sdfss">
+	
+	<!-- 현재 파일 - includeTop css -->
+	<link rel="stylesheet" href="include/include.css?odd">
 	
 	<script>
 		function list(){
@@ -70,117 +75,206 @@
     <!-- top include -->
     <jsp:include page="../../index/top.jsp" flush="false" />
 	
-	<!--_______________본문시작_______________-->  	
-	<div class="home-content">
-		<div id="container">
-        	
-        	<!--            페이지 타이틀            -->
-        	<div class="title">
-        		<h2>관리자 페이지</h2>
-        		
-        		<div class="btns">
-        			<a href="memberList.jsp">사용자 조회</a>
-        			<a href="newMember.jsp">사용자 추가</a>
-        		</div>
-        		
-        		<div class="smallTitle">
-        			<h3>사용자 : <%=MEM_NAME %></h3>
-        		</div>
-        	</div>
-        	
-        	<!-- _______________페이지 본문 시작_______________ -->
-        	<div class="content">
-			
-			  <table class="user-imgT">
-			  	<%
-          		if(MEM_IMG==null || MEM_IMG==""){%>
-          		<tr>
-	          		<td>
-	          			<img src="../images/profile.jpg" name="MEM_IMG">
-	          		</td>
-	          	</tr>
-          		<%}else{%>
-          		<tr>
-          			<td>
-          				<img src="../filestorage/<%=MEM_IMG %>">
-          			</td>
-          		</tr>
-          		<!-- 	          	<tr> -->
-<!-- 		          	<td> -->
-<%-- 	          			<input type="button" value="download" class="downBtn" onclick="down(<%=MEM_IMG%>)"> --%>
-<!-- 	          		</td> -->
-<!-- 	          	</tr> -->
-          		<%}%>
-			  </table>
-			  
-			  <!-- MEM_IMG 사진 다운을 위한 downFrm -->
-	          <form name="downFrm" action="download.jsp" method="post">
-	          	<input type="hidden" name="MEM_IMG">
-	          </form>
-	
-	          <table>
-	            <tr>
-	              <td>사번</td>
-	              <td><%=MEM_NO %></td>
-	              <td>계정상태</td>
-	              <td><%=AP_TYPE %></td>
-	            </tr>
-	            <tr>
-	              <td>생년월일</td>
-	              <td><%=MEM_BIRTH %></td>
-	              <td>입사일</td>
-	              <td><%=MEM_DATE %></td>
-	            </tr>
-	            <tr>
-	              <td>부서</td> 
-	              <td><%=PART_TYPE %></td>
-	              <td>직위</td>
-	              <td><%=LE_LEVEL %></td>
-	            </tr>
-	            <tr>
-	              <td>ID</td>
-	              <td><%=MEM_ID %></td>
-	              <td>PW</td>
-	              <td><%=MEM_PW %></td>
-	            </tr>
-	            <tr>
-	              <td>근로형태</td>
-	              <td><%=WORK_TYPE %></td>
-	              <td>내선번호</td>
-	              <td><%=MEM_TEL %></td>
-	            </tr>
-	            <tr>
-	              <td>휴대전화</td>
-	              <td><%=MEM_PHONE %></td>
-	              <td>e-mail</td>
-	              <td><%=MEM_MAIL %></td>
-	            </tr>
-	            <tr>
-	              <td>자택주소</td>
-	              <td colspan="3"><%=MEM_ADD %></td>
-	            </tr>
-	            <tr>
-	              <td>기타정보</td>
-	              <td colspan="3"><%=MEM_AND %></td>
-	            </tr>
-	            <tr>
-	              <td></td>
-	              <td></td>
-	              <td>계정구분</td>
-	              <td><%=AC_TYPE %></td>
-	            </tr>
-	          </table>
-	          <div class='button'>
-	            <a href="memberList.jsp">리스트</a>
-	            <a href="modify.jsp?nowPage=<%=nowPage %>&MEM_NO=<%=MEM_NO%>">수정</a>
-	          </div>
-	          
-	          <form name="listFrm" method="post" action="memberList.jsp">
-	          	<input type="hidden" name="nowPage" value="<%=nowPage %>">
-	          </form>
-	        </div>          
-	</div>
+	<!--_______________본문시작_______________-->
+    <div class="home-content">
+      <div class="member">
+        <!-- management include top -->
+        <jsp:include page="include/includeTop.jsp" />
+
+        <div class="pageTitle">
+          <h3>사용자 : <%=MEM_NAME%></h3>
+          <div class="buttons">
+            <input type="button" value="수정" onclick="memberUpdate()" />
+            <input type="button" value="리스트" onclick="memberList()" />
+          </div>
+        </div>
+
+        <div class="memberViewTable">
+          <table class="memberTable">
+            <tr>
+              <td colspan="4">
+                <% if(MEM_IMG != null && MEM_IMG != ""){ %>
+                <img src="../filestorage/<%=MEM_IMG %>" alt="" />
+                <% }else{ %>
+                <img src="../filestorage/profile.jpg" />
+                <% } %>
+              </td>
+            </tr>
+            <tr>
+              <td>사번</td>
+              <td><%=MEM_NO %></td>
+              <td>계정상태</td>
+              <td><%=AP_TYPE %></td>
+            </tr>
+            <tr>
+              <td>생년월일</td>
+              <td><%=MEM_BIRTH %></td>
+              <td>입사일</td>
+              <td><%=MEM_DATE %></td>
+            </tr>
+            <tr>
+              <td>부서</td>
+              <td><%=PART_TYPE %></td>
+              <td>직위</td>
+              <td><%=LE_LEVEL %></td>
+            </tr>
+            <tr>
+              <td>ID</td>
+              <td><%=MEM_ID %></td>
+              <td>PW</td>
+              <td><%=MEM_PW %></td>
+            </tr>
+            <tr>
+              <td>근로형태</td>
+              <td><%=WORK_TYPE %></td>
+              <td>내선번호</td>
+              <td><%=MEM_TEL %></td>
+            </tr>
+            <tr>
+              <td>휴대전화</td>
+              <td><%=MEM_PHONE %></td>
+              <td>e-mail</td>
+              <td><%=MEM_MAIL %></td>
+            </tr>
+            <tr>
+              <td>자택주소</td>
+              <td colspan="3"><%=MEM_ADD %></td>
+            </tr>
+            <tr>
+              <td>기타정보</td>
+              <td colspan="3"><%=MEM_AND %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>계정구분</td>
+              <td><%=AC_TYPE %></td>
+            </tr>
+          </table>
+          <div>
+            <table class="workInfo">
+              <thead>
+                <tr>
+                  <td colspan="13"><%=MEM_NAME%> 님의 근태현황</td>
+                </tr>
+                <tr>
+                  <td colspan="2">총 연차</td>
+                  <td colspan="2">15개</td>
+                  <td colspan="2">잔여 연차</td>
+                  <td colspan="2">10개</td>
+                  <td colspan="3"></td>
+                  <td colspan="2"><button>상세보기</button></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>1월</td>
+                  <td>2월</td>
+                  <td>3월</td>
+                  <td>4월</td>
+                  <td>5월</td>
+                  <td>6월</td>
+                  <td>7월</td>
+                  <td>8월</td>
+                  <td>9월</td>
+                  <td>10월</td>
+                  <td>11월</td>
+                  <td>12월</td>
+                </tr>
+                <tr>
+                  <td>지각</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>조퇴</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>병가</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>연차</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>월차</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+ 	</div>
+ </section>
 
   <script src="../../script/indexScript.js"></script>
+  
+  <script>
+  	function memberUpdate(){
+  		location.href="modify.jsp?nowPage=<%=nowPage %>&MEM_NO=<%=MEM_NO%>"
+  	}
+  	
+  	function memberList(){
+  		location.href="memberList.jsp"
+  	}
+  </script>
 </body>
 </html>

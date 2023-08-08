@@ -150,9 +150,9 @@ public class ManagementMgr {
 	
 	
 	//파일 업로드 관련 설정 작성
-	private static final String  SAVEFOLDER = "C:Users/Administrator/git/GNCART/GNCART/src/main/webapp/filestorage";
+	private static final String  SAVEFOLDER = "C:Users/Administrator/git/GNCART/GNCART/src/main/webapp/management/filestorage";
 	private static final String ENCTYPE = "UTF-8";
-	private static int MAXSIZE = 5*1024*1024;
+	private static int MAXSIZE = 10*1024*1024;
 	
 	/*_____________사용자 등록_____________*/
 	
@@ -183,9 +183,7 @@ public void newMember(HttpServletRequest req) {
 				MEM_IMG = multi.getFilesystemName("MEM_IMG");
 			}			
 			
-			sql = "insert into member(MEM_NAME, MEM_ID, MEM_PW, MEM_DATE, MEM_TEL, MEM_MAIL,"
-					+ " MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_AND, MEM_IMG,"
-					+ "AC_NO, WORK_NO, PART_NO, LE_NO, AP_NO)";
+			sql = "insert into member(MEM_NAME, MEM_ID, MEM_PW, MEM_DATE, MEM_TEL, MEM_MAIL, MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_AND, MEM_IMG, AC_NO, WORK_NO, PART_NO, LE_NO, AP_NO)";
 			sql += "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt=con.prepareStatement(sql);
@@ -213,6 +211,29 @@ public void newMember(HttpServletRequest req) {
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
+	}
+
+	/*_____________ID 중복확인_____________*/
+	public boolean checkId(String MEM_ID) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		boolean flag = false;
+		
+		try {
+			con = pool.getConnection();
+			sql = "select MEM_ID from member where MEM_ID = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, MEM_ID);
+			
+			flag = pstmt.executeQuery().next();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return flag;
 	}
 	
 	/*_____________사용자 조회_____________*/
@@ -276,60 +297,67 @@ public void newMember(HttpServletRequest req) {
 	
 	/*_____________사용자 수정_____________*/
 	
-	public void updateMember(ManagementBean bean) {
+	public void updateMember(HttpServletRequest req, HttpServletResponse res) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		
 		String sql = null;
 		
+		MultipartRequest multi = null; //파일 업로드 위한 객체
+		String MEM_IMG = null; //파일이름 변수	
+		
 		try {
-			con=pool.getConnection();
+			con = pool.getConnection();
 			
-			sql="update member set MEM_NAME=?, MEM_ID=?, MEM_PW=?, MEM_DATE=?, MEM_TEL=?,MEM_MAIL=?, MEM_PHONE=?, MEM_ADD=?,"
-					+ " MEM_BIRTH=?, MEM_AND=?, MEM_IMG=?,AC_NO=?, WORK_NO=?, PART_NO=?, LE_NO=?, AP_NO=? where MEM_NO=?";
+			File file = new File(SAVEFOLDER);
+			
+			if(!file.exists()) {
+				file.mkdirs();
+			}
+			
+			multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCTYPE,
+					new DefaultFileRenamePolicy());
+			
+			if(multi.getParameter("MEM_IMG1") != null && !multi.getParameter("MEM_IMG1").equals("")) {
+				MEM_IMG = multi.getParameter("MEM_IMG1");
+			}else {
+				if(multi.getParameter("MEM_IMG1") == null) {
+					MEM_IMG = multi.getFilesystemName("MEM_IMG3");
+				} else if(multi.getParameter("MEM_IMG1") == ""){
+					MEM_IMG = multi.getFilesystemName("MEM_IMG2");
+				}
+			}
+			
+			sql="update member set MEM_NAME=?, MEM_ID=?, MEM_PW=?, MEM_DATE=?, MEM_TEL=?, MEM_MAIL=?, MEM_PHONE=?, MEM_ADD=?, MEM_BIRTH=?, MEM_AND=?, MEM_IMG=?, AC_NO=?, WORK_NO=?, PART_NO=?, LE_NO=?, AP_NO=? where MEM_NO=?";
 			
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, bean.getMEM_NAME());
-			System.out.println("name= "+bean.getMEM_NAME());
-			pstmt.setString(2, bean.getMEM_ID());
-			System.out.println("id = "+bean.getMEM_ID());
-			pstmt.setString(3, bean.getMEM_PW());
-			System.out.println("pw= "+bean.getMEM_PW());
-			pstmt.setString(4, bean.getMEM_DATE());
-			System.out.println("date= "+bean.getMEM_DATE());
-			pstmt.setString(5, bean.getMEM_TEL());
-			System.out.println("tel= "+bean.getMEM_TEL());
-			pstmt.setString(6, bean.getMEM_MAIL());
-			System.out.println("mail= "+bean.getMEM_MAIL());
-			pstmt.setString(7, bean.getMEM_PHONE());
-			System.out.println("phone= "+bean.getMEM_PHONE());
-			pstmt.setString(8, bean.getMEM_ADD());
-			System.out.println("add= "+bean.getMEM_ADD());
-			pstmt.setString(9, bean.getMEM_BIRTH());
-			System.out.println("birth= "+bean.getMEM_BIRTH());
-			pstmt.setString(10, bean.getMEM_AND());
-			System.out.println("and= "+bean.getMEM_AND());
-			pstmt.setString(11, bean.getMEM_IMG());
-			System.out.println("img = "+bean.getMEM_IMG());
-			pstmt.setInt(12, bean.getAC_NO());
-			System.out.println("ac = "+bean.getAC_NO());
-			pstmt.setInt(13, bean.getWORK_NO());
-			System.out.println("work= "+bean.getWORK_NO());
-			pstmt.setInt(14, bean.getPART_NO());
-			System.out.println("part = "+bean.getPART_NO());
-			pstmt.setInt(15, bean.getLE_NO());
-			System.out.println("le = "+bean.getLE_NO());
-			pstmt.setInt(16, bean.getAP_NO());
-			System.out.println("ap = "+bean.getMEM_IMG());
-			pstmt.setInt(17, bean.getMEM_NO());
-			System.out.println("MEM_NO= "+bean.getMEM_NO());
+			
+			pstmt.setString(1, multi.getParameter("MEM_NAME"));
+			pstmt.setString(2, multi.getParameter("MEM_ID"));
+			pstmt.setString(3, multi.getParameter("MEM_PW"));
+			pstmt.setString(4, multi.getParameter("MEM_DATE"));
+			pstmt.setString(5, multi.getParameter("MEM_TEL"));
+			pstmt.setString(6, multi.getParameter("MEM_MAIL"));
+			pstmt.setString(7, multi.getParameter("MEM_PHONE"));
+			pstmt.setString(8, multi.getParameter("MEM_ADD"));
+			pstmt.setString(9, multi.getParameter("MEM_BIRTH"));
+			pstmt.setString(10, multi.getParameter("MEM_AND"));
+			pstmt.setString(11, MEM_IMG);
+			pstmt.setInt(12, Integer.parseInt(multi.getParameter("AC_NO")));
+			pstmt.setInt(13, Integer.parseInt(multi.getParameter("WORK_NO")));
+			pstmt.setInt(14, Integer.parseInt(multi.getParameter("PART_NO")));
+			pstmt.setInt(15, Integer.parseInt(multi.getParameter("LE_NO")));
+			pstmt.setInt(16, Integer.parseInt(multi.getParameter("AP_NO")));
+			pstmt.setInt(17, Integer.parseInt(multi.getParameter("MEM_NO")));
 			
 			pstmt.executeUpdate();
+			
+			res.sendRedirect("http://localhost:8080/GNCART/management/jsp/readMember.jsp?MEM_NO="+multi.getParameter("MEM_NO"));
 			
 		}catch(Exception e) {
 				e.printStackTrace();
 			} finally {
-				pool.freeConnection(con, pstmt, rs);
+				pool.freeConnection(con, pstmt);
 			}
 		}
 	
