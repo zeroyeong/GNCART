@@ -11,25 +11,10 @@ String pw = (String) session.getAttribute("pwKey");
 %>
 <%
 String phone = null;
-String phone0 = null;
-String phone1 = null;
-String phone2 = null;
-String phone3 = null;
 
 if (id != null && pw != null) {
 	phone = pMgr.phoneFind(id, pw);
 
-	phone0 = phone.replaceAll("[^0-9]", "");
-
-	if (phone0.length() == 11) {
-		phone1 = phone0.substring(0, 3);
-		phone2 = phone0.substring(3, 7);
-		phone3 = phone0.substring(7, 11);
-	} else {
-		phone1 = phone0.substring(0, 3);
-		phone2 = phone0.substring(3, 6);
-		phone3 = phone0.substring(6, 10);
-	}
 }
 %>
 <!-- 전화번호 -->
@@ -42,7 +27,7 @@ if (id != null && pw != null) {
 		<div class="boxtext">
 			<div class="space">
 				<div>
-					<a id="phone2"> <%=phone1%>-<%=phone2%>-<%=phone3%>
+					<a id="phone2"> <%=phone%>
 					</a>
 					<form action="mypageUpdate/updatePhone.jsp" method="post"
 						name="phone6" id="phone6">

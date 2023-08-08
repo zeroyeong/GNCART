@@ -1,21 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page
-	import="java.util.*, common.*, mypage.*, java.text.*, java.time.*,java.time.format.TextStyle"%>
-<jsp:useBean id="pMgr" class="mypage.MypageMgr" />
-
+<%@ page import="java.util.*, common.*, mypage.*, java.time.*, java.time.format.*, static java.time.temporal.ChronoUnit.DAYS"%>
+<jsp:useBean id="wMgr" class="mypage.WorkdayMgr" />
 <%
 request.setCharacterEncoding("UTF-8");
 
 String id = (String) session.getAttribute("idKey");
 String pw = (String) session.getAttribute("pwKey");
 
-String memNo = pMgr.memNoFind(id, pw);
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-List<String> listWorkday = new ArrayList<String>();
-List<String> listWorkdayStart = new ArrayList<String>();
-List<String> listWorkdayEnd = new ArrayList<String>();
-List<String> listWork = new ArrayList<String>();
+LocalDate day = LocalDate.now();
+
+String day2 = day.format(formatter);
+
+String memNo = wMgr.memNoFind(id, pw);
 
 String endDay = null;
 String endDay1 = null;
@@ -29,14 +28,10 @@ String workday = null;
 String workday2 = null;
 
 String endNo = null;
-String startNo = null;
+String workdNo = null;
+String workdVacNo = null;
 
-DateFormat day = new SimpleDateFormat("yyyy-MM-dd");
-
-Calendar cal1 = Calendar.getInstance();
-Calendar cal2 = Calendar.getInstance();
-
-cal1.add(Calendar.MONTH, -1); //저번 달
+String vacReason = null;
 %>
 <!DOCTYPE html>
 
@@ -62,23 +57,22 @@ cal1.add(Calendar.MONTH, -1); //저번 달
 			</tr>
 		</thead>
 		<%
-		cal2.add(Calendar.DATE, 0);
-		startNo = pMgr.workdNoFind(day.format(cal2.getTime()), memNo);
+		workdNo = wMgr.workdNoStartFind(day2, memNo);
 
-		if (startNo != null) {
-			if (pMgr.workdEndFind(startNo) != null) {
-				endDay = pMgr.workdEndFind(startNo);
+		if (workdNo != null) {
+			if (wMgr.workdEndFind(workdNo) != null) {
+				endDay = wMgr.workdEndFind(workdNo);
 				endDay1 = endDay.substring(0, 10);
 				endDay2 = endDay.substring(11, 19);
 				endDay3 = endDay.substring(11, 13);
 
-				startDay = pMgr.workdStartFind(startNo).substring(11, 19);
+				startDay = wMgr.workdStartFind(workdNo).substring(11, 19);
 				startDay2 = startDay.substring(0, 2);
 				} else {
-				endDay1 = day.format(cal2.getTime()).substring(0, 10);
+				endDay1 = day2;
 				endDay2 = "-- : -- : --";
 
-				startDay = pMgr.workdStartFind(startNo).substring(11, 19);
+				startDay = wMgr.workdStartFind(workdNo).substring(11, 19);
 				startDay2 = startDay.substring(0, 2);
 			}
 			
@@ -104,8 +98,7 @@ cal1.add(Calendar.MONTH, -1); //저번 달
 				}
 			}
 		} else {
-			endDay = day.format(cal2.getTime());
-			endDay1 = endDay.substring(0,10);
+			endDay1 = day2;
 		}
 		%>
 		<tr>
@@ -116,44 +109,74 @@ cal1.add(Calendar.MONTH, -1); //저번 달
 			<td><%=workday2%></td>
 		</tr>
 		<%
-		for (int i = 0; i < cal1.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
-			cal2.add(Calendar.DATE, -1);
-			endNo = pMgr.workdayCheck(day.format(cal2.getTime()), memNo);
-
-			if (endNo != null) {
-				endDay = pMgr.workdEndFind(endNo);
+		for (int i = 1; i <= day.minusMonths(1).lengthOfMonth(); i++) {
+			String day5 = day.minusDays(i).format(formatter);
+			endNo = wMgr.workdNoEndFind(day5, memNo);
+			
+			workdVacNo = wMgr.workdVacNoFind(day5, memNo);
+			
+			if(workdVacNo != null) {
+				vacReason = wMgr.vacReasonFind(workdVacNo);
+				
+				switch(Integer.parseInt(vacReason)) {
+			    	case 1: vacReason="월차";
+						break;
+				    case 2: vacReason="연차";
+						break;
+				    case 3: vacReason="병가";
+						break;
+				    case 4: vacReason="기타";
+						break;
+				}
+				
+				endDay1 = day5;
+				endDay2 = "-- : -- : --";
+				
+				startDay = "-- : -- : --";
+				%>
+				<tr>
+					<td><%=endDay1%></td>
+					<td><%=startDay%></td>
+					<td><%=endDay2%></td>
+					<td><%=vacReason%></td>
+					<td><%=vacReason%></td>
+				</tr>
+				<%
+			}
+			else if (endNo != null) {
+				endDay = wMgr.workdEndFind(endNo);
 				endDay1 = endDay.substring(0, 10);
 				endDay2 = endDay.substring(11, 19);
 				endDay3 = endDay.substring(11, 13);
-
-				startDay = pMgr.workdStartFind(endNo).substring(11, 19);
+	
+				startDay = wMgr.workdStartFind(endNo).substring(11, 19);
 				startDay2 = startDay.substring(0, 2);
-
+	
 				if (Integer.parseInt(startDay2) < 9) {
 			workday = "출근";
 				} else {
 			workday = "지각";
 				}
-				
+					
 				if (Integer.parseInt(endDay3) < 17) {
 			workday2 = "조퇴";
 				} else {
 			workday2 = "퇴근";
 				}
-		%>
-		<tr>
-			<td><%=endDay1%></td>
-			<td><%=startDay%></td>
-			<td><%=endDay2%></td>
-			<td><%=workday%></td>
-			<td><%=workday2%></td>
-		</tr>
-		<%
+				%>
+				<tr>
+					<td><%=endDay1%></td>
+					<td><%=startDay%></td>
+					<td><%=endDay2%></td>
+					<td><%=workday%></td>
+					<td><%=workday2%></td>
+				</tr>
+				<%
 			}
 		}
 		%>
 	</table>
 </body>
 
-<script type="text/javascript" src="mypage.js?ver=1.31"></script>
+<script type="text/javascript" src="mypage.js?ver=1"></script>
 </html>

@@ -45,10 +45,16 @@ public class MypageBean {
 			AUTH_NOW,
 			
 			AUTHLN_NO,
-			AUTHLN_PER
+			AUTHLN_PER,
+			
+			VAC_NO,
+			VAC_SDATE,
+			VAC_EDATE,
+			VAC_REASON,
+			VAC_DETAIL,
+			DOC_NO
 			;
 
-	
 	public String getWORKD_NO() {
 		return WORKD_NO;
 	}
@@ -183,6 +189,30 @@ public class MypageBean {
 
 	public String getAUTHLN_PER() {
 		return AUTHLN_PER;
+	}
+	
+	public String getVAC_NO() {
+		return VAC_NO;
+	}
+
+	public String getVAC_SDATE() {
+		return VAC_SDATE;
+	}
+
+	public String getVAC_EDATE() {
+		return VAC_EDATE;
+	}
+
+	public String getVAC_REASON() {
+		return VAC_REASON;
+	}
+
+	public String getVAC_DETAIL() {
+		return VAC_DETAIL;
+	}
+
+	public String getDOC_NO() {
+		return DOC_NO;
 	}
 
 	
@@ -322,4 +352,28 @@ public class MypageBean {
 		AUTHLN_PER = aUTHLN_PER;
 	}
 	
+	public void setVAC_NO(String vAC_NO) {
+		VAC_NO = vAC_NO;
+	}
+	
+	public void setVAC_SDATE(String vAC_SDATE) {
+		VAC_SDATE = vAC_SDATE;
+	}
+	
+	public void setVAC_EDATE(String vAC_EDATE) {
+		VAC_EDATE = vAC_EDATE;
+	}
+	
+	public void setVAC_REASON(String vAC_REASON) {
+		VAC_REASON = vAC_REASON;
+	}
+	
+	public void setVAC_DETAIL(String vAC_DETAIL) {
+		VAC_DETAIL = vAC_DETAIL;
+	}
+	
+	public void setDOC_NO(String dOC_NO) {
+		DOC_NO = dOC_NO;
+	}
+
 }

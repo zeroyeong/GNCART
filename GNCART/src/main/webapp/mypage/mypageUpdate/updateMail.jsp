@@ -24,6 +24,12 @@ if (id != null && upBean != null && mail.matches(email)) {
 	String url = "http://localhost:8080/GNCART/mypage/mypageMain.jsp";
 
 	response.sendRedirect(url);
+} else if (mail == null || mail == ""){
+	%>
+	<script>
+		history.back();
+	</script>
+	<%	
 } else {
 %>
 <script>

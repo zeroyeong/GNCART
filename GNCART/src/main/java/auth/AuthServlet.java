@@ -64,13 +64,10 @@ public class AuthServlet extends HttpServlet {
 
 		} else if ("second".equals(action)) {
 
-			out.println("<script>");
-			out.println("alert('승인처리가 완료되었습니다');");
-			out.println("window.close();");
-			out.println("window.opener.location.reload();"); 
-			out.println("</script>");
-
 			aMgr.AuthSecond(lineNo);
+			
+			String vacNo2 = request.getParameter("VAC_NO");
+			response.sendRedirect("mypage/workday/workRest.jsp?VAC_NO="+vacNo2);
 
 		} else if ("reject".equals(action)) {
 

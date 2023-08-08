@@ -212,21 +212,18 @@ workEnd.onclick = function() {
 	document.workEnd2.submit();
 }
 
-//퇴근 업데이트
+//퇴근 업데이트 후 근태 확인하기
 workEnd1.onclick = function() {
 	document.workEnd2.submit();
+	window.open("workday/workdayCheck.jsp", "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
 }
 
 //휴가 취소 하기
-workRest1.onclick = function() {
-	document.workRest2.submit();
+workRestCancel1.onclick = function() {
+	document.workRestCancel2.submit();
 }
 
-//근태 확인 하기
+//근태 확인하기
 workStart1.onclick = function() {
-	window.open("workday/workdayCheck.jsp", "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
-}
-//근태 확인 하기
-workEnd1.onclick = function() {
 	window.open("workday/workdayCheck.jsp", "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
 }

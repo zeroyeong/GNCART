@@ -22,6 +22,12 @@ if (id != null && upBean != null && add.length() > 6) {
 	String url = "http://localhost:8080/GNCART/mypage/mypageMain.jsp";
 
 	response.sendRedirect(url);
+} else if (add == null || add == ""){
+	%>
+	<script>
+		history.back();
+	</script>
+	<%	
 } else {
 %>
 <script>

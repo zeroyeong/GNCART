@@ -1,43 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, common.*, mypage.*, java.text.*"%>
-<jsp:useBean id="pMgr" class="mypage.MypageMgr" />
+<%@ page
+	import="java.util.*, common.*, mypage.*, java.time.*, java.time.format.*, static java.time.temporal.ChronoUnit.DAYS"%>
+<jsp:useBean id="wMgr" class="mypage.WorkdayMgr" />
 
 <%
+//휴가 기록 있으면 mysql에 있는 workday의 AUTHLS_NO에 값을 넣는 jsp
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html; charset=UTF-8");
 
 String id = (String) session.getAttribute("idKey");
 String pw = (String) session.getAttribute("pwKey");
 
-String memNo = pMgr.memNoFind(id, pw);
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-Date date = new Date();
-SimpleDateFormat day = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+LocalDate day = LocalDate.now();
 
-String start1 = day.format(date);
+String day2 = day.format(formatter);
 
-if (id != null && pw != null && start1 != null) { //id, pw, 오늘 날짜의 데이터가 있다면
+String memNo = wMgr.memNoFind(id, pw);
 
-	String start2 = start1.substring(0, 10);
+String vacNo = request.getParameter("VAC_NO");
 
-	String authlsNo = pMgr.authlsNoFind(start2, memNo);
+String sdate = null;
+String edate = null;
 
-	if (authlsNo != null) { //휴가 기록이 있다면
-		String workdNo = pMgr.workdNoFind(start2, memNo);
+long days = 0;
 
-		pMgr.workRestStart(start1, workdNo);
+if (vacNo != null) {
+	sdate = wMgr.vacSdateFind(vacNo);
+	edate = wMgr.vacEdateFind(vacNo);
 
-		String url = "http://localhost:8080/GNCART/mypage/mypageMain.jsp";
+	LocalDate sdate1 = LocalDate.parse(sdate, formatter);
+	LocalDate edate1 = LocalDate.parse(edate, formatter);
 
-		response.sendRedirect(url);
-	} //휴가 기록이 있다면 if 종료 else문 안씀
-} //데이터가 있다면 if문 종료
-else { //데이터가 있다면의 else문 시작
-%>
-<script>
-	history.back();
-</script>
-<%
+	days = DAYS.between(sdate1, edate1);
+
+	for (int i = 0; i <= (int) days; i++) {
+		String start = sdate1.plusDays(i).format(formatter);
+
+		wMgr.workdayVac(start, vacNo, memNo);
+	}
 }
 %>
+<script>
+	alert('승인처리가 완료되었습니다');
+	window.close();
+	window.opener.location.reload();
+
+	//String vacNo2 = request.getParameter("VAC_NO");
+	//response.sendRedirect("mypage/workday/workRest.jsp?VAC_NO="+vacNo2);
+</script>

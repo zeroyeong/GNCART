@@ -12,20 +12,8 @@ String pw = (String) session.getAttribute("pwKey");
 <%
 String birth = null;
 
-String birth0 = null;
-
-String birth1 = null;
-String birth2 = null;
-String birth3 = null;
-
 if (id != null && pw != null) {
 	birth = pMgr.birthFind(id, pw);
-
-	birth0 = birth.replaceAll("[^0-9]", "");
-
-	birth1 = birth0.substring(0,4);
-	birth2 = birth0.substring(4,6);
-	birth3 = birth0.substring(6,8);
 }
 %>
 <!-- 생년월일 -->
@@ -39,7 +27,7 @@ if (id != null && pw != null) {
 			<div class="space">
 				<div>
 					<a id="birth2">
-						<%=birth1%>-<%=birth2%>-<%=birth3%>
+						<%=birth%>
 					</a>
 					<form action="mypageUpdate/updateBirth.jsp" method="post"
 						name="birth6" id="birth6">

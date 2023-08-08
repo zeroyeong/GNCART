@@ -78,5 +78,5 @@ String pw = (String) session.getAttribute("pwKey");
 
 </body>
 
-<script type="text/javascript" src="mypage.js?ver=1"></script>
+<script type="text/javascript" src="mypage.js?ver=2"></script>
 </html>

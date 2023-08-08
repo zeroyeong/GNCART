@@ -38,6 +38,12 @@ if (id != null && upBean != null && birth.matches(number) && birth0.length() == 
 	String url = "http://localhost:8080/GNCART/mypage/mypageMain.jsp";
 
 	response.sendRedirect(url);
+} else if (birth == null || birth == ""){
+	%>
+	<script>
+		history.back();
+	</script>
+	<%	
 } else {
 %>
 <script>
