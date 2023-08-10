@@ -55,7 +55,7 @@ public class replyDAO {
 		}
 		return list;
 	}
-	
+	   
 	public int getNext() {
 		System.out.println("reply 필드");
 		String SQL="select reply FROM reply ORDER BY reply DESC";

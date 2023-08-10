@@ -100,6 +100,6 @@
 	 <input type="hidden" name="nowPage" value="<%=nowPage %>">
 	 <input type='hidden' name="num" value="<%=num%>">
 	</form> 
-	</div>
+	</div>  
 </body>
 </html>

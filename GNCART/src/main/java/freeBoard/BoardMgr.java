@@ -36,7 +36,7 @@ public class BoardMgr {
 			e.printStackTrace();
 		}
 	}
-
+   
 	// 게시판 리스트
 	public Vector<BoardBean> getBoardList() {
 		

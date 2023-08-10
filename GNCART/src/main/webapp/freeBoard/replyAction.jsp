@@ -21,7 +21,7 @@
 		request.setCharacterEncoding("UTF-8");
 		
 	
-		int MEM_NO=1;	
+		int MEM_NO=1;   	
 	
 		int FREE_NO=1;
 		if(request.getParameter("FREE_NO")!=null){

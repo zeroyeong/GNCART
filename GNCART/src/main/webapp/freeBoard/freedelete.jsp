@@ -27,4 +27,4 @@
 <body>
 	<input type="hidden" name="FREE_NO" value="<%=FREE_NO%>">
 </body>
-</html>
+</html>  

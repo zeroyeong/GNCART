@@ -20,7 +20,7 @@ public class BoardBean {
 		PART_NO = pART_NO;
 		this.replyDate = replyDate;
 	}
-
+    
 	private int MEM_NO;
 	private int FREE_NO;
 	private String FREE_TITLE;//게시물 제목 변수

@@ -27,7 +27,7 @@ function down(FREE_FILENAME){
     	    return false;
     	  }
     	  return true;
-    	}
+    	}   
         function getCurrentDate() {
       var currentDate = new Date();
       var year = currentDate.getFullYear();

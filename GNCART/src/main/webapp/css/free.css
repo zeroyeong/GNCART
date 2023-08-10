@@ -108,7 +108,7 @@ ul {
 }
 .none input[type=text] {
     outline: none;
-}
+}   
 .none textarea {
     border: none;
     overflow: auto;
