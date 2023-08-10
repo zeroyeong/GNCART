@@ -1,4 +1,4 @@
-//사이드바 축소,확대
+//사이드바 슬라이드
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
 sidebarBtn.onclick = function () {
@@ -95,3 +95,84 @@ $(document).click(function (event) {
         dropdown.slideUp("fast");
     }
 });
+
+// 웹소켓 실시간 알림
+var alertSocket;
+
+var alertSocket = new WebSocket('ws://localhost:8080/GNCART/alertWebSocket');
+
+alertSocket.onopen = function(event) {
+
+    console.log('알림웹소켓 연결');
+
+};
+
+alertSocket.onmessage = function(event) {
+    var message = event.data;
+    addAlert(message);
+};
+
+alertSocket.onclose = function(event) {
+    console.log('알림웹소켓 닫힘');
+};
+
+function sendNewDocumentAlert(recipientId) {
+    var message = "NewDocument:" + recipientId;
+    alertSocket.send(message);
+}
+
+function sendDocumentApprovedAlert(recipientId) {
+    var message = "DocumentApproved:" + recipientId;
+    alertSocket.send(message);
+}
+
+// 결재 신청 알림 보내기
+function sendNewDocumentAlert(recipientId) {
+    var message = "NewDocument:" + recipientId;
+    sendAlert(message);
+}
+
+// 결재 승인 알림 보내기
+function sendDocumentApprovedAlert(recipientId) {
+    var message = "DocumentApproved:" + recipientId;
+    sendAlert(message);
+}
+
+// 새로운 알림 메시지를 생성하여 목록에 추가하는 함수
+function addAlert(message) {
+    var newAlert = document.createElement('li');
+
+    // 알림 메시지에 시간 정보 추가
+    var now = new Date();
+    var timeString = now.toLocaleTimeString();
+    newAlert.textContent = "[" + timeString + "] " + message;
+
+    var dropdown = document.querySelector('.alertBell-dropdown ul');
+    dropdown.insertBefore(newAlert, dropdown.firstChild); // 새로운 알림을 위로 추가
+
+    // 알림 아이콘 뱃지 업데이트
+    updateAlertBadge();
+}
+
+// 알림 아이콘 뱃지 업데이트 함수
+function updateAlertBadge() {
+    var badge = document.querySelector('.bx-bell[data-count]');
+    var count = parseInt(badge.getAttribute('data-count')) + 1;
+    badge.setAttribute('data-count', count);
+}
+
+// 알림 삭제 기능 추가
+function deleteAlert(element) {
+    var dropdown = document.querySelector('.alertBell-dropdown ul');
+    dropdown.removeChild(element);
+}
+
+// 알림드롭박스 토글
+function alertToggle() {
+    var dropdown = document.querySelector('.alertBell-dropdown');
+    dropdown.classList.toggle('active');
+
+    // 알림 아이콘 뱃지 초기화
+    var alertIcon = document.querySelector('.alert-icon');
+    alertIcon.querySelector('i[data-count]').setAttribute('data-count', '0');
+}

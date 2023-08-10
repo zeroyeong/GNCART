@@ -4,8 +4,10 @@
 <jsp:useBean id="nMgr" class="notice.NoticeMgr" />
 <jsp:useBean id="conMgr" class="familyEvent.ConMgr" />
 <jsp:useBean id="iMgr" class="index.indexMgr" />
+<jsp:useBean id="bMgr" class="freeBoard.BoardMgr" />
 <%@ page import="notice.NoticeMgr, notice.NoticeBean"%>
 <%@ page import="familyEvent.ConMgr, familyEvent.ConBean"%>
+<%@ page import="freeBoard.BoardMgr, freeBoard.BoardBean"%>
 <%@ page import="index.indexMgr, schedule.ScheduleBean"%>
 <%@ page import="java.util.*"%>
 <%
@@ -45,6 +47,10 @@ Collections.sort(conList, new Comparator<ConBean>() {
 //공지사항
 NoticeMgr noticeMgr = new NoticeMgr();
 Vector<NoticeBean> notList = noticeMgr.getBoardList();
+
+//자유게시판
+BoardMgr boardMgr = new BoardMgr();
+Vector<BoardBean> boardList = boardMgr.getBoardList();
 %>
 
 <!DOCTYPE html>
@@ -54,7 +60,7 @@ Vector<NoticeBean> notList = noticeMgr.getBoardList();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
-<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/index.css?123u123">
 <!--boxIcons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -103,9 +109,24 @@ Vector<NoticeBean> notList = noticeMgr.getBoardList();
 							<a href="#">자유게시판</a>
 						</div>
 						<div class="indicator">
+							<%
+							int numFreeToDisplay = Math.min(boardList.size(), 8);
+							if (numFreeToDisplay > 0) {
+								for (int i = 0; i < numFreeToDisplay; i++) {
+									BoardBean free = boardList.get(i);
+							%>
 							<div class="indexList">
-								<a>알림이 없습니다.</a> <br> <a>알림이 없습니다.</a>
+								<a href="../freeBoard/free.jsp"> <%=free.getFREE_TITLE()%>
+								</a>
 							</div>
+							<%
+							}
+							} else {
+							%>
+							<div>게시판 알림이 없습니다.</div>
+							<%
+							}
+							%>
 						</div>
 					</div>
 				</div>
@@ -211,13 +232,13 @@ Vector<NoticeBean> notList = noticeMgr.getBoardList();
 						<a href="#">행사사진</a>
 					</div>
 					<ul class="picture-details">
-
+						<p>알림이 없습니다.</p>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</section>
-  
+
 </body>
 
 </html>
