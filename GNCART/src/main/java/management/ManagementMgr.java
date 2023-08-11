@@ -32,7 +32,7 @@ public class ManagementMgr {
 
 	/*___________전체사원 리스트____________*/
 	
-	public Vector<ManagementBean> getMemberList(String keyField, String keyWord, int start, int end){
+	public Vector<ManagementBean> getMemberList(String keyField, String keyWord){
 		
 		//keyField : 페이지 하단 form인 searchFrm의 select 태그
 		//keyWord : 페이지 하단 form인 searchFrm의 input 태그
@@ -56,12 +56,10 @@ public class ManagementMgr {
 						+ "JOIN part d ON a.PART_NO=d.PART_NO\r\n"
 						+ "JOIN level e ON a.LE_NO=e.LE_NO\r\n"
 						+ "JOIN acposition f ON a.AP_NO=f.AP_NO\r\n";
-				sql+="ORDER BY MEM_NO asc limit ?, ? ";
+				sql+="ORDER BY MEM_NO asc";
 				
 				pstmt=con.prepareStatement(sql);
-				
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, end);
+
 				
 			} else { //keyWord값이 있는 경우
 				sql="SELECT*FROM member a\r\n"
@@ -71,12 +69,10 @@ public class ManagementMgr {
 						+ "JOIN level e ON a.LE_NO=e.LE_NO\r\n"
 						+ "JOIN acposition f ON a.AP_NO=f.AP_NO\r\n"
 						+ "where "+keyField+" like ? ";
-				sql+="ORDER BY MEM_NO asc limit ?, ? ";
+				sql+="ORDER BY MEM_NO asc";
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%"+keyWord+"%");
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, end);
 			}
 			rs=pstmt.executeQuery();
 			

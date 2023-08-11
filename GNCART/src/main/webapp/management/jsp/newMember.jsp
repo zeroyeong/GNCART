@@ -49,7 +49,8 @@
 	        <table>
 	          <tr>
 	            <td rowspan="4">
-	              <input type="file" name="MEM_IMG">
+	            	<img src="../images/profile.jpg" id="memImg"/>
+	              <input type="file" name="MEM_IMG" accept="image/*" onchange="changePic(event)">
 	            </td>
 	            <td>이름</td>
 	            <td><input type="text" name="MEM_NAME" id="name" /></td>
@@ -213,7 +214,19 @@
 
   <script src="../../script/indexScript.js"></script>
   <script>
-  console.log(document.getElementById('checkId').value);
+  /*__________이미지 미리보기__________*/
+  function changePic(event) {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        let img = document.getElementById("memImg");
+        img.setAttribute("src", event.target.result);
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  
+  /*__________ID 중복확인__________*/
   function idCheck(id){
 	  const frm = document.newFrm;
 	  if(id == ""){

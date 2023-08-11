@@ -27,7 +27,7 @@ ul{
   margin-bottom:20px;
 }
 
-.yearArea, .monthArea{
+.yearArea{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -47,31 +47,48 @@ ul{
   padding:0 20px;
 }
 
-.dayList{
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:20px 0;
+/*________________________________*/
+
+table, td{
+	border-collapse:collapse;
+/* 	border:1px solid #333; */
 }
 
-.day li, .date li{
-  display:inline-block;
-  text-align:center;
-  width:100px;
-  height:100px;
-  line-height:100px;
+table{
+	width:100%;
+	margin:20px 0;
+	border-bottom:1px solid #333;
 }
 
-.day li{
-  background:#eee;
-  border-radius:50%;
+table:last-child{
+	border-bottom:1px solid transparent;
 }
 
-.list{
-  width:60%;
+td{
+	padding:15px;
 }
 
-.list li{
-  padding:10px 0;
+.col1{
+	width:15%;
+}
+
+.col2{
+	width:20%;
+}
+
+span.week{
+	padding:30px 33px;;
+	text-align: center;
+	background-color:#eee;
+	border-radius:50%;
+/* 	font-weight:bold; */
+}
+
+tr:first-child td{
+	text-align: center;
+}
+
+td:last-child,
+tr:first-child td:last-child{
+	text-align:left;
 }

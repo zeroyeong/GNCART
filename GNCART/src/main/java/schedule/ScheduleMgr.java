@@ -30,7 +30,7 @@ public class ScheduleMgr {
 			e.printStackTrace();
 		}
 	}
-	/*___________일정 리스트____________*/  
+	/*___________일정 리스트 - month + year____________*/  
 	public Vector<ScheduleBean> getScheduleList(int calYear, int calMonth){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -53,6 +53,62 @@ public class ScheduleMgr {
 				pstmt.setString(1, "%"+calYear+"-"+calMonth+"%");
 				pstmt.setString(2, "%"+calYear+"-"+calMonth+"%");
 			}
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {		
+				ScheduleBean bean = new ScheduleBean();
+				
+				bean.setSCHE_NO(rs.getInt("SCHE_NO"));
+				bean.setSCHE_NAME(rs.getString("SCHE_NAME"));
+				bean.setSCHE_START_DATE(rs.getString("SCHE_START_DATE"));
+				bean.setSCHE_END_DATE(rs.getString("SCHE_END_DATE"));
+				
+				vlist.add(bean);
+				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con,pstmt,rs);
+		}
+		return vlist;
+	}
+	
+	/*___________일정 리스트 - week____________*/  
+	public Vector<ScheduleBean> getScheduleList(int calYear, int calMonth, int calDay){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		 
+		String sql = null; 
+		
+		Vector<ScheduleBean> vlist = new Vector<ScheduleBean>();
+		
+		try {
+			con=pool.getConnection();
+			
+			sql="SELECT*FROM schedule WHERE SCHE_START_DATE LIKE ? OR SCHE_END_DATE LIKE ?";
+			pstmt = con.prepareStatement(sql);
+			
+			String month="";
+			String day="";
+			
+			if(calMonth < 10) {
+				month = "0" + calMonth;
+			}else{
+				month = calMonth + "";
+			}
+			
+			if(calDay < 10){
+				day = "0" + calDay;
+			}else{
+				day = calDay + "";
+			}
+				
+			
+			pstmt.setString(1, "%" + calYear + "-" + month + "-" + day + "%" );
+			pstmt.setString(2, "%" + calYear + "-" + month + "-" + day + "%" );
+			
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()) {		

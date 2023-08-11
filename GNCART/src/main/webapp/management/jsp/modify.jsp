@@ -87,8 +87,9 @@
 		          	<%
 		          		if(MEM_IMG != null && !MEM_IMG.equals("")){%>
 		          			<div id="fileInput" style="display:none;">
-									<input type="file" name="MEM_IMG2">
-								</div>
+		          				<img src="../images/profile.jpg" id="memImg">
+											<input type="file" name="MEM_IMG2" accept="image/*" onchange="changePic(event)">
+										</div>
 								<div id="fileArea">
 									<input name="MEM_IMG1" value="<%=MEM_IMG%>" id="file1"> <input type="button" value="삭제" onclick="delFile()">
 									<input type="file" name="MEM_IMG1" value="<%=MEM_IMG%>" id="file1" style="display:none;">
@@ -308,6 +309,19 @@
 <script src="../../script/indexScript.js"></script>
 
 <script>
+/*__________이미지 미리보기__________*/
+function changePic(event) {
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+      let img = document.getElementById("memImg");
+      img.setAttribute("src", event.target.result);
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+/*__________submit__________*/
 function check(){
 	const part = document.getElementById('part').value;
 	const level = document.getElementById('level').value;

@@ -27,32 +27,6 @@
 	/*------------------레코드 수 계산--------------------*/
 	
 	int totalRecord=mMgr.getTotalCount(keyField, keyWord);
-		
-	/*----------현재페이지와 블럭, 페이징 계산을 위한----------*/
-	
-	int start=0; //sql 쿼리문을 위한 변수
-	int end=20; // sql 쿼리문을 위한 변수
-	
-	
-	int nowPage=1;
-	int nowBlock=1;
-	
-	int numPerPage=20;
-	int pagePerBlock=15; //블럭당 페이지수
-	
-	if(request.getParameter("nowPage")!=null){
-		nowPage=Integer.parseInt(request.getParameter("nowPage"));
-	}
-	
-	int totalPage = (int)Math.ceil((double) totalRecord / numPerPage);
-	int totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);
-
-	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
-	
-	start = (nowPage * numPerPage)-numPerPage;
-	end = numPerPage;
-	
-	int listSize=0; //현재 읽어온 게시물 수
 %>
 
 <!DOCTYPE html>
@@ -67,7 +41,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <!-- 현재 파일의 css -->
-<link rel="stylesheet" href="../../css/management.css?dhdh">
+<link rel="stylesheet" href="../../css/management.css?asdasdad">
 
 <!-- 현재 파일 - includeTop css -->
 <link rel="stylesheet" href="include/include.css?oohh">
@@ -104,6 +78,20 @@
 
         <div class="memberListTable">
           <table>
+          <colgroup>
+	         	<col class="col1">
+					  <col class="col2">
+					  <col class="col3">
+					  <col class="col4">
+					  <col class="col5">
+					  <col class="col6">
+					  <col class="col7">
+					  <col class="col8">
+					  <col class="col9">
+					  <col class="col10">
+					  <col class="col11">
+					  <col class="col12">
+          </colgroup>
             <thead>
               <tr>
                 <td></td>
@@ -123,10 +111,7 @@
             <tbody>
             
             <%
-	            Vector<ManagementBean> vlist = mMgr.getMemberList(keyField, keyWord, start, end);
-				
-							listSize = vlist.size();
-							
+	            Vector<ManagementBean> vlist = mMgr.getMemberList(keyField, keyWord);
 							if(vlist.isEmpty()){
             %>
             
@@ -137,8 +122,8 @@
             <%
         						}else{
         							
-        							for(int i=0; i<numPerPage; i++){
-        								if(i==listSize) break;
+        							for(int i=0; i<vlist.size(); i++){
+        								if(i==vlist.size()) break;
         								
         								ManagementBean bean = new ManagementBean();
         								bean = vlist.get(i);
@@ -165,16 +150,16 @@
                 <td>
                   <input type="radio" name="MEM_NO" value="<%=MEM_NO%>" onclick="update(<%=MEM_NO %>)" />
                 </td>
+                <td onclick="read(<%=MEM_NO%>)"><%=MEM_NO %></td>
                 <td onclick="read(<%=MEM_NO%>)"><%=MEM_NAME %></td>
-                <td onclick="read(<%=MEM_NO%>)"><%=MEM_ID %></td>
-                <td onclick="read(<%=MEM_NO%>)"><%=MEM_PW %></td>
+                <td onclick="read(<%=MEM_NO%>)"><%=MEM_DATE %></td>
                 <td onclick="read(<%=MEM_NO%>)"><%=WORK_TYPE %></td>
-                <td onclick="read(<%=MEM_NO%>)"><%=MEM_TEL %></td>
-                <td onclick="read(<%=MEM_NO%>)"><%=MEM_PHONE %></td>
                 <td onclick="read(<%=MEM_NO%>)"><%=PART_TYPE %></td>
                 <td onclick="read(<%=MEM_NO%>)"><%=LE_LEVEL %></td>
-                <td onclick="read(<%=MEM_NO%>)"><%=MEM_NO %></td>
-                <td onclick="read(<%=MEM_NO%>)"><%=MEM_DATE %></td>
+                <td onclick="read(<%=MEM_NO%>)"><%=MEM_TEL %></td>
+                <td onclick="read(<%=MEM_NO%>)"><%=MEM_PHONE %></td>
+                <td onclick="read(<%=MEM_NO%>)"><%=MEM_ID %></td>
+                <td onclick="read(<%=MEM_NO%>)"><%=MEM_PW %></td>
                 <td onclick="read(<%=MEM_NO%>)"><%=AP_TYPE %></td>
               </tr>
               
@@ -188,28 +173,7 @@
         <div class="tableInfo">
           <div class="empty"></div>
 
-          <div class="pagenation">
-						
-					<!-- 페이징 및 블럭 처리 Start--> 
-					<%
-		   				  int pageStart = (nowBlock -1)*pagePerBlock + 1 ; //하단 페이지 시작번호
-		   				  int pageEnd = ((pageStart + pagePerBlock ) <= totalPage) ?  (pageStart + pagePerBlock): totalPage+1; 
-		   				  //하단 페이지 끝번호
-		   				  if(totalPage !=0){
-		    			  	if (nowBlock > 1) {%>
-		    			  		<a href="javascript:block('<%=nowBlock-1%>')">prev...</a><%}%>&nbsp; 
-		    			  		<%for ( ; pageStart < pageEnd; pageStart++){%>
-		     			     	<a href="javascript:pageing('<%=pageStart %>')"> 
-		     					<%if(pageStart==nowPage) {%><font color="blue"> <%}%>
-		     					[<%=pageStart %>] 
-		     					<%if(pageStart==nowPage) {%></font> <%}%></a> 
-		    					<%}//for%>&nbsp; 
-		    					<%if (totalBlock > nowBlock ) {%>
-		    					<a href="javascript:block('<%=nowBlock+1%>')">.....next</a>
-		    			<%}%>&nbsp;  
-		   			<%}%>
-	 				<!-- 페이징 및 블럭 처리 End-->
-
+          <div id="pagenation">
 					</div>
 
 					<!--           searchFrm : 검색              -->
@@ -238,7 +202,6 @@
        		
        		<form name="readFrm" method="get">
        			<input type="hidden" name="MEM_NO"> 
-						<input type="hidden" name="nowPage" value="<%=nowPage%>">
        		</form>
        	
 	       	<form id="updateF" method="get">
@@ -252,6 +215,7 @@
 	</section>
 
 <script src="../../script/indexScript.js"></script>
+<script src="../script/pagenation.js"></script>
 
 <script>
 /*----------사용자 조회로 이동----------*/
@@ -309,11 +273,6 @@ function pageing(page) {
 	document.readFrm.nowPage.value = page;
 	document.readFrm.submit();
 }
-
-function block(value){
-	 document.readFrm.nowPage.value=<%=pagePerBlock%>*(value-1)+1;
-	 document.readFrm.submit();
-} 
 
 /*------ updateF submit -------*/
 

@@ -93,6 +93,7 @@
           <table class="memberTable">
             <tr>
               <td colspan="4">
+              <img src=>
                 <% if(MEM_IMG != null && MEM_IMG != ""){ %>
                 <img src="../filestorage/<%=MEM_IMG %>" alt="" />
                 <% }else{ %>
@@ -213,21 +214,6 @@
                   <td>-</td>
                 </tr>
                 <tr>
-                  <td>병가</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                </tr>
-                <tr>
                   <td>연차</td>
                   <td>-</td>
                   <td>-</td>
@@ -244,6 +230,21 @@
                 </tr>
                 <tr>
                   <td>월차</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>기타</td>
                   <td>-</td>
                   <td>-</td>
                   <td>-</td>

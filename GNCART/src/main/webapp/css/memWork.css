@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background-color: #eee;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+body {
+  background: #999;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+/*________________________________________________*/
+
+.container {
+  margin: auto;
+  width: 500px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  margin-bottom: 20px;
+}
+
+.title h3 {
+  padding-bottom: 5px;
+}
+
+.title button {
+  background-color: transparent;
+  font-size: 1.7em;
+  padding: 0;
+}
+
+.calBox {
+  border: 3px solid #eee;
+  padding: 10px;
+}
+
+.calBox .cal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  margin-bottom: 5px;
+}
+
+.calBox .cal > button {
+  background-color: transparent;
+  color: #909090;
+}
+
+.calBox .month {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*________________________________________________*/
+
+.content {
+  margin-top: 20px;
+}
+
+table,
+td {
+  border-collapse: collapse;
+  /* border: 1px solid #333; */
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  padding: 5px;
+}
+
+tr {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+thead tr {
+  border: none;
+  background-color: #909090;
+}
+
+thead tr td {
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+tbody tr:first-child {
+  border: none;
+}
+
+tbody tr:last-child {
+  border-bottom: 2px solid #333;
+}
