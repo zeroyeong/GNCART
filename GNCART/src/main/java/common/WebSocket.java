@@ -53,9 +53,11 @@ public class WebSocket{
 		    if (toSession == null || !toSession.isOpen()) {
 		        // 유효하지 않은 대상 사용자에 대한 처리
 		    	// 대상 사용자의 세션이 끊어진 경우에 대한 처리
+		    	System.out.println("여기들어옴");
 		     	chatMgr.insertChat(cbean);
 		        return;
 		    }		
+			chatMgr.insertChat(cbean);
 	    	toSession.getBasicRemote().sendText(type + "/" + toPartType +"/"+ toName + "/" + content);   
 	    }
 	}
