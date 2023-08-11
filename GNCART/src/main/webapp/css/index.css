@@ -1,7 +1,5 @@
 /* Googlefont Poppins CDN Link */
-@import
-	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
-	;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
 	margin: 0;
@@ -264,6 +262,7 @@ nav .profile-details img {
 	width: 40px;
 	border-radius: 6px;
 	object-fit: cover;
+	vertical-align: baseline !important
 }
 
 nav .profile-details .admin_name {

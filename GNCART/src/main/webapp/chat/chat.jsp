@@ -77,7 +77,7 @@ if (request.getParameter("openPop") != null) {
 				ManagementBean mbean = userList.get(i);
 				String userPartType = mbean.getPART_TYPE();
 				String userName = mbean.getMEM_NAME();
-				if(!userPartType.equals(fromPartType) && !userName.equals(fromName)){
+				if(!userName.equals(fromName)){
 			%>
 			<hr>
 			<p ondblclick="dblclick('<%=userPartType%>','<%=userName%>')"><%=userPartType%> / <%=userName%></p>
@@ -95,7 +95,7 @@ if (request.getParameter("openPop") != null) {
 				ManagementBean mbean = userList.get(i);
 				String userPartType = mbean.getPART_TYPE();
 				String userName = mbean.getMEM_NAME();
-				if(!userPartType.equals(fromPartType) && !userName.equals(fromName)){
+				if(!userName.equals(fromName)){
 			%>
 			<hr>
 			<p ondblclick="dblclick('<%=userPartType%>','<%=userName%>')"><%=userPartType%> / <%=userName%></p>
