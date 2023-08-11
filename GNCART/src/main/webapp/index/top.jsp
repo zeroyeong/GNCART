@@ -7,7 +7,7 @@
 <jsp:useBean id="chatMgr" class="chat.ChatMgr" /> 	
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
 
- <link rel="stylesheet" href="../css/chat.css">
+<link rel="stylesheet" href="../css/chat.css">
 
 <nav>
 	<div class="alert-icon">
@@ -16,9 +16,6 @@
 		<i class='bx bx-bell' data-count="0" onclick="alertToggle()"></i>
 		<div class="alertBell-dropdown">
 			<ul id="alertList">
-				<li>3</li>
-				<li>3</li>
-				<li>3</li>
 			</ul>
 		</div>
 	</div>
