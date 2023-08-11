@@ -1,0 +1,256 @@
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.chat-room {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    padding: 15px 15px;
+    width: 410px;
+    height: 500px;
+    overflow: auto; 
+}
+
+.chat-room p {
+    border-radius: 1.15rem;
+    line-height: 1.25;
+    max-width: 75%;
+    padding: 0.5rem 0.875rem;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.chat-room p::before,
+.chat-room p::after {
+    bottom: -0.1rem;
+    content: "";
+    height: 1rem;
+    position: absolute;
+}
+
+/* 상대방 */
+.chat-room p.from-them {
+    align-items: flex-start;
+    background-color: #e5e5ea;
+    color: #000;
+    width: fit-content;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.chat-room p.from-them::after {
+    background-color: #fff;
+    border-bottom-right-radius: 0.5rem;
+    left: 20px;
+    transform: translate(-30px, -2px);
+    width: 10px;
+}
+
+.chat-room p.from-them::before {
+    border-bottom-right-radius: 0.8rem 0.7rem;
+    border-left: 1rem solid #e5e5ea;
+    left: -0.35rem;
+    transform: translate(0, -0.1rem);
+}
+
+/* 나 */
+.chat-room p.from-me {
+    align-self: flex-end;
+    background-color: #248bf5;
+    color: #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.chat-room p.from-me::after {
+    background-color: #fff;
+    border-bottom-left-radius: 0.5rem;
+    right: -40px;
+    transform: translate(-30px, -2px);
+    width: 10px;
+}
+
+.chat-room p.from-me::before {
+    border-bottom-left-radius: 0.8rem 0.7rem;
+    border-right: 1rem solid #248bf5;
+    right: -0.35rem;
+    transform: translate(0, -0.1rem);
+}
+
+.chatPop {
+    position: absolute;
+    z-index: 2;
+    border: 1px solid #11101d;
+    top: 80px;
+    right: 5px;
+    transition: all 0.7s ease;
+    display: none;
+}
+
+.chatTop {
+    background-color: #11101d;
+    color: #fff;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.chatPop .chatTop p {
+    margin-left: 25%;
+    font-size: 18px;
+}
+
+.chatbox {
+    display: flex;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.chatbox input {
+    width: 90%;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+.chatBtn {
+    height: 50px;
+    width: 55px;
+    background-color: #11101d;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+
+}
+
+.chatBtn:hover {
+    background: #4070f4;
+}
+
+.searchBox {
+    display: flex;
+    background-color: #fff;
+    padding: 10px;
+
+}
+
+.searchBox input {
+    width: 90%;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+.searchBtn {
+    height: 50px;
+    width: 55px;
+    background-color: #11101d;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+
+}
+
+.searchBtn:hover {
+    background: #4070f4;
+}
+
+/* 추가 */
+.chat-list {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+
+    width: 410px;
+    height: 500px;
+    overflow: auto;
+}
+
+.chat-list p {
+    line-height: 45px;
+    text-align: center;
+
+    /* 글자 drag 막기 */
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* 글자 drag 막기 */
+}
+
+.chat-list hr {
+    margin-right: 5px;
+}
+
+.chat-list p:hover {
+    background-color: #11101d;
+    color: #fff;
+    cursor: pointer;
+}
+
+.listChatPop {
+    position: absolute;
+    top: 80px;
+    right: 417px;
+    z-index: 2;
+    border: 1px solid #11101d;
+    transition: all 0.7s ease;
+    display: block;
+}
+
+.listChatTop {
+    background-color: #11101d;
+    color: #fff;
+    padding: 11.5px;
+    display: flex;
+    align-items: center;
+}
+
+.listChatPop .listChatTop p {
+    margin-left: 38%;
+    font-size: 18px;
+}
+
+.listChatPop .listChatTop a {
+    margin-left: auto;
+
+}
+
+.chatIcon {
+    color: #11101d;
+    height: 35px;
+    font-size: 38px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.chatPopIcon {
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.chatPopIcon:hover {
+    background-color: #ccc;
+    border-radius: 25%;
+    color: #11101d;
+}
+
+.slider {
+    display: none;
+}
+
+.slider.active {
+    display: block;
+}

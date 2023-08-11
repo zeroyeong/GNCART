@@ -61,7 +61,6 @@ public class BoardMgr {
 				bean.setMEM_NO(rs.getInt("MEM_NO"));
 				bean.setFREE_NO(rs.getInt("FREE_NO"));
 				bean.setFREE_TITLE(rs.getString("FREE_TITLE"));
-				System.out.println("boardmgr getboardlist freetitle="+rs.getString("FREE_TITLE"));
 				bean.setFREE_HIT(rs.getInt("FREE_HIT"));
 				bean.setFREE_DATE(rs.getString("FREE_DATE"));
 				bean.setMEM_NAME(rs.getString("MEM_NAME"));
