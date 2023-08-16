@@ -12,7 +12,7 @@
   <meta charset="UTF-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GNC:ART</title>
-  <link rel="stylesheet" href="../../css/index.css">
+  <link rel="stylesheet" href="../css/index.css">
   <!--Boxicons CDN Link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="include/scheduleTop.css">
   
   <!-- 현재파일 css -->
-  <link rel="stylesheet" href="../../css/scheduleWeek.css?dsfsf">
+  <link rel="stylesheet" href="../css/scheduleWeek.css?dsfsf">
   
 </head>
 
@@ -116,12 +116,12 @@
 <body>
 	
   <!-- sidebar include -->
-  <jsp:include page="../../index/sidebar.jsp" flush="false" />
+  <jsp:include page="../index/sidebar.jsp" flush="false" />
 
   <section class="home-section">
   
     <!-- top include -->
-    <jsp:include page="../../index/top.jsp" flush="false" />
+    <jsp:include page="../index/top.jsp" flush="false" />
 	
 
     <!--home-content-->  	
@@ -250,7 +250,7 @@
     </div>
   </section>
 <!-- index js -->
-<script src="../../script/indexScript.js"></script>
+<script src="../script/indexScript.js"></script>
    
 </body>
 </html>
@@ -293,27 +293,27 @@
 	let tArray = [...table];
 	
 	let start = 0;
-	let end = 6 - firstDay;
+	let end = 7 - firstDay;
 	let array1 = tArray.slice(start, end);
 
-	start = end + 1;
-	end = start + 6;
+	start = end;
+	end = start + 7;
 	let array2 = tArray.slice(start, end);
 
-	start = end + 1;
-	end = start + 6;
+	start = end;
+	end = start + 7;
 	let array3 = tArray.slice(start, end);
 
-	start = end + 1;
-	end = start + 6;
+	start = end;
+	end = start + 7;
 	let array4 = tArray.slice(start, end);
 	
-	start = end + 1;
-	end = start + 6;
+	start = end;
+	end = start + 7;
 	let array5 = tArray.slice(start, end);
 	
-	start = end + 1; 
-	end = start + 6;
+	start = end;
+	end = start + 7;
 	let array6 = tArray.slice(start, end);
 	
 	let array = [array1, array2, array3, array4, array5, array6]

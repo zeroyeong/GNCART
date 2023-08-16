@@ -323,7 +323,7 @@ public class ScheduleMgr {
 			
 			pstmt.executeUpdate();
 			
-			res.sendRedirect("http://localhost:8080/GNCART/schedule/jsp/scheduleDetail.jsp?SCHE_NO="+multi.getParameter("SCHE_NO"));
+			res.sendRedirect("http://localhost:8080/GNCART/schedule/scheduleDetail.jsp?SCHE_NO="+multi.getParameter("SCHE_NO"));
 
 		}catch(Exception e) {
 			e.printStackTrace();

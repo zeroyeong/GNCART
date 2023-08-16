@@ -35,26 +35,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GNC:ART</title>
-  <link rel="stylesheet" href="../../css/index.css">
+  <link rel="stylesheet" href="../css/index.css">
   <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>	
   <!--boxIcons CDN Link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <!-- 현재 파일의 css -->
-<link rel="stylesheet" href="../../css/management.css?asdasdad">
+<link rel="stylesheet" href="../css/management.css">
 
 <!-- 현재 파일 - includeTop css -->
-<link rel="stylesheet" href="include/include.css?oohh">
+<link rel="stylesheet" href="include/include.css">
 
 </head>
 
 <body>
   <!-- slide bar include -->
-  <jsp:include page="../../index/sidebar.jsp" flush="false" />
+  <jsp:include page="../index/sidebar.jsp" flush="false" />
   
   <section class="home-section">
     <!-- top include -->
-    <jsp:include page="../../index/top.jsp" flush="false" />
+    <jsp:include page="../index/top.jsp" flush="false" />
 	
 	<!--_______________본문시작_______________-->  	
 	<div class="home-content">
@@ -214,8 +214,8 @@
 	</div>
 	</section>
 
-<script src="../../script/indexScript.js"></script>
-<script src="../script/pagenation.js"></script>
+<script src="../script/indexScript.js"></script>
+<script src="script/pagenation.js"></script>
 
 <script>
 /*----------사용자 조회로 이동----------*/

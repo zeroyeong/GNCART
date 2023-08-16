@@ -11,12 +11,12 @@ import="schedule.ScheduleBean"%>
 <meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
-<link rel="stylesheet" href="../../css/index.css">
+<link rel="stylesheet" href="../css/index.css">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <!-- 현재 페이지 css --> 
-<link rel="stylesheet" href="../../css/scheduleYear.css?sdsfdd">
+<link rel="stylesheet" href="../css/scheduleYear.css?sdsfdd">
 
 <!-- include css -->
 <link rel="stylesheet" href="include/scheduleTop.css">
@@ -44,11 +44,11 @@ nextYear = calYear +1;
 <body>
 
 <!-- sidebar include -->
-<jsp:include page="../../index/sidebar.jsp" flush="false" />
+<jsp:include page="../index/sidebar.jsp" flush="false" />
 
 <section class="home-section">
 <!-- top include -->
-<jsp:include page="../../index/top.jsp" flush="false" />
+<jsp:include page="../index/top.jsp" flush="false" />
 
 
 <!--home-content-->
@@ -602,10 +602,10 @@ nextYear = calYear +1;
 </section>
 
 <!-- index js -->
-<script src="../../script/indexScript.js"></script>
+<script src="../script/indexScript.js"></script>
 
 <!-- 현재페이지 page nation -->
-<script src="../script/pagenation.js"></script>
+<script src="script/pagenation.js"></script>
 
 <script>
 	function openCenter(doc,win,w,h){

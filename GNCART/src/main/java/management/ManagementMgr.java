@@ -152,7 +152,7 @@ public class ManagementMgr {
 	
 	/*_____________사용자 등록_____________*/
 	
-public void newMember(HttpServletRequest req) {
+	public void newMember(HttpServletRequest req) {
 		Connection con = null; //연결객체
 		PreparedStatement pstmt = null; //쿼리처리객체
 		ResultSet rs = null;  //결과값 담는 객체
@@ -348,7 +348,7 @@ public void newMember(HttpServletRequest req) {
 			
 			pstmt.executeUpdate();
 			
-			res.sendRedirect("http://localhost:8080/GNCART/management/jsp/readMember.jsp?MEM_NO="+multi.getParameter("MEM_NO"));
+			res.sendRedirect("http://localhost:8080/GNCART/management/readMember.jsp?MEM_NO="+multi.getParameter("MEM_NO"));
 			
 		}catch(Exception e) {
 				e.printStackTrace();

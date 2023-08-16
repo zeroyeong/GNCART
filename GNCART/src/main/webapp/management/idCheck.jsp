@@ -8,7 +8,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>ID 중복확인</title>
-<link rel="stylesheet" href="../../css/idCheck.css" />
+<link rel="stylesheet" href="../css/idCheck.css" />
 </head>
 
 <%

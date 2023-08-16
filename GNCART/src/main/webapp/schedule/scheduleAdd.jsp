@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8"> 
 <title>GNC:ART - 일정추가</title> 
-<link rel="stylesheet" href="../../css/scheduleUpdate.css?Sdss">
+<link rel="stylesheet" href="../css/scheduleUpdate.css?Sdss">
 </head>
 <body>
  
@@ -46,7 +46,7 @@
 		
     <!----------------본문---------------->
     <div class="content"> 
-      <form name="newSchedule" method="post" action="../../schedule/newScheduleServlet" enctype="multipart/form-data">
+      <form name="newSchedule" method="post" action="../schedule/newScheduleServlet" enctype="multipart/form-data">
         <table>
           <tr>
             <td>일정종류</td>
@@ -207,7 +207,7 @@
 		const endTime = document.getElementById('sche_end_titme').value;
 		
 		if(type =="선택" || title == "" || part == "선택" || stDay =="" || endDay == ""
-				|| stDay>endDay || (stDay == endDay && stTime > endTime)){
+				|| stTime == "선택하세요" || stTime == "선택하세요" || stDay>endDay || (stDay == endDay && stTime > endTime)){
 			if(type == "선택"){
 				alert("추가할 일정의 종류를 선택해 주세요.");
 			}
@@ -222,6 +222,12 @@
 			}
 			else if(endDay == ""){
 				alert("추가할 일정의 종료날짜를 입력해 주세요.");
+			}
+			else if(stTime == "선택하세요"){
+				alert("추가할 일정의 시작시간을 선택해 주세요.");
+			}
+			else if(endTime == "선택하세요"){
+				alert("추가할 일정의 종료시간을 선택해 주세요.");
 			}
 			else if(stDay>endDay){
 				alert("일정의 종료날짜 또는 시작날짜가 잘못되었습니다.")

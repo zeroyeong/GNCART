@@ -22,7 +22,8 @@ public class newScheduleServlet extends HttpServlet {
 		ScheduleBean bean = sMgr.newScheduleView();
 		int SCHE_NO = bean.getSCHE_NO();
 		
-		String url = "../../GNCART/schedule/jsp/"+"scheduleDetail.jsp?SCHE_NO="+SCHE_NO;
+		String url = "http://localhost:8080/GNCART/schedule/scheduleDetail.jsp?SCHE_NO="+SCHE_NO;
+
 		response.sendRedirect(url);
 	}
 

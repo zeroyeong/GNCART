@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8"> 
 <title>GNC:ART - 일정수정</title>
-<link rel="stylesheet" href="../../css/scheduleUpdate.css">
+<link rel="stylesheet" href="../css/scheduleUpdate.css">
 </head>
 <body>  
 
@@ -44,7 +44,7 @@
 			
 		<!----------------본문---------------->
 		<div class="content"> 
-			<form name="updateSche" method="post" action="../../UpdateScheduleServlet" enctype="multipart/form-data">
+			<form name="updateSche" method="post" action="../UpdateScheduleServlet" enctype="multipart/form-data">
 			
 				<!-- submit에 SCHE_NO 값을 넘기기 위한 hidden input -->
 				<input type="hidden" value="<%=SCHE_NO %>" name="SCHE_NO">

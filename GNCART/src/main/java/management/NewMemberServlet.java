@@ -18,7 +18,7 @@ public class NewMemberServlet extends HttpServlet {
 		
 		mMgr.newMember(request);
 		
-		response.sendRedirect("../management/jsp/memberList.jsp");
+		response.sendRedirect("../management/memberList.jsp");
 //		C:\GNCART\GNCART\src\main\webapp\08management\jsp
 	}
  
