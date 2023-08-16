@@ -5,7 +5,7 @@ function openCenter(doc,win,w,h){
   var top=(screen.availHeight-h)/2; //위쪽 좌표
   var opt='left='+left+', top='+top+', width='+w+', height='+h; //창의 좌표값
   
-  window.open(doc,win,opt);
+  window.open(doc,win,opt); 
 }
 
 /*********팝업닫기*********/
