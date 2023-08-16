@@ -8,7 +8,7 @@ function openCenter(doc,win,w,h){
   window.open(doc,win,opt); 
 }
 
-/*********팝업닫기*********/
+/*********팝업닫기*********/ 
 function closeBox(){
   window.close();
 } 

@@ -5,7 +5,7 @@
     import="java.time.*"%>
 <jsp:useBean id="sMgr" class="schedule.ScheduleMgr" />
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8"> 
