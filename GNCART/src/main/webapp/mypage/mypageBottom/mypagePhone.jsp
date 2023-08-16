@@ -16,7 +16,7 @@ if (id != null && pw != null) {
 	phone = pMgr.phoneFind(id, pw);
 
 }
-%>
+%> 
 <!-- 전화번호 -->
 <div class="box3">
 	<div class="box4">

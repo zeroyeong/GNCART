@@ -47,4 +47,4 @@ if (vacNo != null) {
 	alert("승인처리가 완료되었습니다");
 	window.close();
 	window.opener.location.reload();
-</script>
+</script> 

@@ -36,6 +36,6 @@ else { //데이터가 있다면의 else문 시작
 <script>
 	history.back();
 </script>
-<%
+<% 
 }
 %>

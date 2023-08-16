@@ -5,7 +5,7 @@
 <!-- 내 정보 -->
 <div id="title">
 	<h2>내 정보</h2>
-
+ 
 	<div>
 		<form method="post" action="workday/workStart.jsp" id="workStart2"
 			name="workStart2" class="nonebox"></form>

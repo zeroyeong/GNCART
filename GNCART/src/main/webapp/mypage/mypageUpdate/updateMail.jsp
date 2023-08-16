@@ -37,5 +37,5 @@ if (id != null && upBean != null && mail.matches(email)) {
 	history.back();
 </script>
 <%
-}
+}   
 %>

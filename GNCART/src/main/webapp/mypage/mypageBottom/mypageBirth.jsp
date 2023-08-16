@@ -15,7 +15,7 @@ String birth = null;
 if (id != null && pw != null) {
 	birth = pMgr.birthFind(id, pw);
 }
-%>
+%> 
 <!-- 생년월일 -->
 <div class="box3">
 	<div class="box4">

@@ -52,4 +52,4 @@ if (id != null && upBean != null && birth.matches(number) && birth0.length() == 
 </script>
 <%
 }
-%>
+%> 

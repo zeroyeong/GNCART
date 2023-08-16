@@ -9,7 +9,7 @@ request.setCharacterEncoding("UTF-8");
 String id = (String) session.getAttribute("idKey");
 String pw = (String) session.getAttribute("pwKey");
 %>
-<!-- 비밀번호 -->
+<!-- 비밀번호 --> 
 <div class="box3">
 	<div class="box4">
 		<div>

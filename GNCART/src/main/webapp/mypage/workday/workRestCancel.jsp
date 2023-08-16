@@ -37,7 +37,7 @@ if (id != null && pw != null && start != null) { //id, pw, 오늘 날짜의 데�
 	long days = DAYS.between(LocalDate.parse(start, formatter), LocalDate.parse(vacEdate, formatter));
 	
 	if (workdVacNo != null) { //휴가 기록이 있다면
-		
+		 
 		if (vacSdate.equals(start)) { //휴가 시작이 오늘이라면
 			wMgr.workRestDelete(workdNo);
 			wMgr.authdoucumentDelete(workdVacNo);

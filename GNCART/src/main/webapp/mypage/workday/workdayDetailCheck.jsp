@@ -76,12 +76,6 @@ if (memNo != null) {
 }
 
 totalPage = (int)Math.ceil((double)totalWorkday / viewWorkday); //총 근태 / 보이는 근태로 하며 올림한다.
-
-
-
-System.out.println(memNo);
-System.out.println(day);
-System.out.println(viewSize);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -261,4 +255,4 @@ if ("1".equals(vacReason)) {
 	<input type="hidden" name="nowPage">
 </form>
 
-</html>
+</html> 

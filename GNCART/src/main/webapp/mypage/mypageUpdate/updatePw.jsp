@@ -37,7 +37,7 @@ if (id != null && upBean != null && pw4.matches(number)) {
 </script>
 <%
 }
-}  else if (pw4 == null || pw4  == ""){
+}  else if (pw4 == null || pw4  == ""){ 
 	%>
 	<script>
 		history.back();

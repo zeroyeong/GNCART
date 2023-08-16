@@ -15,7 +15,7 @@ String add = null;
 if(id != null && pw != null) {
 	add = pMgr.addFind(id, pw);
 }
-%>
+%> 
 <!-- 주소 -->
 <div class="box3">
 	<div class="box4">

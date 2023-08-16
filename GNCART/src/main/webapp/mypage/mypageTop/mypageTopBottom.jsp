@@ -33,7 +33,7 @@ if (id != null && pw != null) {
 
 if (workdVacNo == null) { //휴가가 없다면
 
-	if (workdNo != null) { //workdNo가 있다면
+	if (workdNo != null) { //workdNo가 있다면 
 
 		start3 = wMgr.workdStartFind(workdNo); //출근 확인
 

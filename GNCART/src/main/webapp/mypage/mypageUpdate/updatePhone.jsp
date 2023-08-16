@@ -36,7 +36,7 @@ if (phone0.length() == 11) {
 	phone4 = phone1 + "-" + phone2 + "-" + phone3;
 }
 
-upBean.setMEM_PHONE(phone4);
+upBean.setMEM_PHONE(phone4); 
 
 //수정할 내용이 담긴 데이터는 upBean 객체에 있다. (jsp 화면에서 이동해온 phone4 데이터)
 

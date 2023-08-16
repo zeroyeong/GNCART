@@ -544,4 +544,4 @@ public class MypageMgr {
 			pool.freeConnection(con, pstmt);
 		}
 	}
-}
+} 

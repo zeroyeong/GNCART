@@ -162,7 +162,7 @@
  	</div>
  </section>
 
-  <script src="../../script/indexScript.js"></script>
+  <script src="../../script/indexScript.js"></script> 
   
   <script>
   	function memberUpdate(){

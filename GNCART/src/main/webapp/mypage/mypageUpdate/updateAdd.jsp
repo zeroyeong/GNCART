@@ -36,4 +36,4 @@ if (id != null && upBean != null && add.length() > 6) {
 </script>
 <%
 }
-%>
+%> 

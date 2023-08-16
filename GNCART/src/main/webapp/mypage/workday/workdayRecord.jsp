@@ -621,4 +621,4 @@ function workDetail(){
 	window.open("../../mypage/workday/workdayDetailCheck.jsp?MEM_NO="+<%=memNo%>, "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
 }
 </script>
-</html>
+</html> 

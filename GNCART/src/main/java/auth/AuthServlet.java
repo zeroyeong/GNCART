@@ -85,7 +85,7 @@ public class AuthServlet extends HttpServlet {
 			aMgr.AuthSecond(lineNo);
 			
 			String vacNo2 = request.getParameter("VAC_NO");
-			response.sendRedirect("mypage/workday/workRest.jsp?VAC_NO="+vacNo2);
+			response.sendRedirect("mypage/workday/workRest.jsp?VAC_NO="+vacNo2); 
 		}
 	}
 }

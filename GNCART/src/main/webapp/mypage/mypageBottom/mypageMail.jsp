@@ -15,7 +15,7 @@ String mail = null;
 if (id != null && pw != null) {
 	mail = pMgr.mailFind(id, pw);
 }
-%>
+%> 
 <!-- 이메일 -->
 <div class="box3">
 	<div class="box4">

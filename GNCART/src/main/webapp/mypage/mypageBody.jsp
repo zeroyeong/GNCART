@@ -7,7 +7,7 @@ request.setCharacterEncoding("UTF-8");
 
 String id = (String) session.getAttribute("idKey");
 String pw = (String) session.getAttribute("pwKey");
-%>
+%> 
 <%
 String name = null;
 String partNo = null;

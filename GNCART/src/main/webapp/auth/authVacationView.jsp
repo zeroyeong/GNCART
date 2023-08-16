@@ -146,4 +146,4 @@
 	<script src="../script/authScript.js"></script>	
 </body>
 
-</html>
+</html> 
