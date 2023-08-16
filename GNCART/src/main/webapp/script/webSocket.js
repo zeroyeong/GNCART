@@ -5,12 +5,13 @@ var toName = document.getElementById("toName");
 var fromPartType = document.getElementById("fromPartType");
 var fromName = document.getElementById("fromName");
 
+//결재자에게
+var toLineFirst = document.getElementById("LINE_FIRST");
+var toLineSecond = document.getElementById("LINE_SECOND");
 
 //채팅 p태크 생성
 var chatRoom = document.getElementById("chatRoom");
 var sendContent = document.getElementById("sendContent"); 
-
-
 
 //유저찾기
 var searchbar = document.getElementById("searchbar");
@@ -27,9 +28,6 @@ var openPop = document.getElementById("openPop");
 var webSocket =  "";
 var url = "ws://localhost:8080/GNCART/WebSocket/" + fromPartType.value + "/" + fromName.value;
 
-
-
-
 //socket
 webSocket = new WebSocket(url);
    
@@ -39,12 +37,14 @@ webSocket.onmessage = function(event) { onMessage(event) };
 
 //열었을때
 function onOpen(event) {//hidden값으로 채팅인지 알림인지 구분하기
-	if(toName.value == ""){
-		console.log(fromName.value + " 웹소켓 접속!!");
-	}else{
-		console.log("fromName = " + fromName.value +" toName = " + toName.value + " 연결 성공!");	
-		chatRoom.scrollTop = chatRoom.scrollHeight; // 스크롤 항상 아래로
-	}	
+	if(toName != null){	
+		if(toName.value == ""){
+			console.log(fromName.value + " 웹소켓 접속!!");
+		}else{
+			console.log("fromName = " + fromName.value +" toName = " + toName.value + " 연결 성공!");	
+			chatRoom.scrollTop = chatRoom.scrollHeight; // 스크롤 항상 아래로
+		}	
+	}
 }
 
 //받을때
@@ -52,15 +52,20 @@ function onMessage(event) {
     var message = event.data;
     var messageParts = message.split("/", 4);
     var type = messageParts[0];
-    var toPartType = messageParts[1];
-    var toName = messageParts[2];
     var content = messageParts[3];
-    
-    if(type == "chat"){	
-	    handleMessage(toName,content);
-	}
-	
-    
+
+    if (type == "chat") {
+        var toPartType = messageParts[1];
+        var toName = messageParts[2];
+
+        handleMessage(toName, content);
+    }
+    else if (type == "alert") {
+        var firstName = messageParts[1];
+        var secondName = messageParts[2];
+
+        handleAlert(firstName, secondName, content);
+    }
 }
 
 function onError(event) {
@@ -119,37 +124,37 @@ function enter() {
 }
 
 //상대 정해지면 chat 창으로 이동
-if(toPartType.value != null && toPartType.value != ""){
-	listChatPop.style.display = 'none';
-	chatPop.style.display = 'block';
-
-}else{
-	listChatPop.style.display = 'block';
-	chatPop.style.display = 'none';
+if(toPartType != null){	
+	if(toPartType.value != null && toPartType.value != ""){
+		listChatPop.style.display = 'none';
+		chatPop.style.display = 'block';
+	
+	}else{
+		listChatPop.style.display = 'block';
+		chatPop.style.display = 'none';
+	}
 }
-
-
 
 /* 유저 찾기 */
 var searchk = false;
 
-
-if(searchbar.value == "" && keyWord.value != ""){
-	searchbar.value = keyWord.value;
+if(searchbar != null && keyWord != null){
+	if(searchbar.value == "" && keyWord.value != ""){
+		searchbar.value = keyWord.value;
+	}
+	
+	if(searchbar.value == ""){
+		allList.style.display = 'block';
+		searchList.style.display= 'none';
+		keyWord.value = "";
+		searchk = false;
+	}else{
+		allList.style.display = 'none';
+		searchList.style.display= 'block';
+		searchbar.value = keyWord.value;
+		searchk = true;
+	}
 }
-
-if(searchbar.value == ""){
-	allList.style.display = 'block';
-	searchList.style.display= 'none';
-	keyWord.value = "";
-	searchk = false;
-}else{
-	allList.style.display = 'none';
-	searchList.style.display= 'block';
-	searchbar.value = keyWord.value;
-	searchk = true;
-}
-
 
 function userSearch(){
 	
@@ -197,7 +202,6 @@ function toggleChat() {
 	}
 }
 
-
 //chat 옆으로 이동
 function slideChatPop() {
     var listChatPop = document.querySelector('.listChatPop');
@@ -209,16 +213,60 @@ function slideChatPop() {
     }
 }
 
+//alert 부분
+//알림
+function sendAlert(content) {
+	if(toLineFirst != null && toLineSecond != null){
+	    webSocket.send("alert" + "/" + toLineFirst.value + "/" + toLineSecond.value + "/" + content);		
+	}
+}
 
+//받을때
+function handleAlert(firstName, secondName, content) {
+    var message = firstName + content;
+    addAlert(message);
+    updateAlertBadge();//알림숫자증가
+    console.log("firstName = " +firstName);
+      console.log("secondName = " +secondName);
+        console.log("content = " +content);
+}
 
+//보내기
+function alertSend() {
+    let alertContent ="님의 결제 신청서가 도착했습니다. ";
+    sendAlert(alertContent);
+    console.log("alertSend alertSendalertSend");
+}
 
+// 새로운 알림 메시지를 생성하여 목록에 추가하는 함수
+function addAlert(message) {
+    var newAlert = document.createElement('li');
 
+    newAlert.textContent = message;
 
+    var dropdown = document.querySelector('.alertBell-dropdown ul');
+    dropdown.insertBefore(newAlert, dropdown.firstChild); // 새로운 알림을 위로 추가
+}
 
+// 알림 아이콘 뱃지 업데이트 함수
+function updateAlertBadge() {
+    var badge = document.querySelector('.bx-bell[data-count]');
+    var count = parseInt(badge.getAttribute('data-count')) + 1;
+    badge.setAttribute('data-count', count);
+}
 
+// 알림드롭박스 토글
+function alertToggle() {
+    var dropdown = document.querySelector('.alertBell-dropdown');
+    dropdown.classList.toggle('active');
 
+    // 알림 아이콘 뱃지 초기화
+    var alertIcon = document.querySelector('.alert-icon');
+    alertIcon.querySelector('i[data-count]').setAttribute('data-count', '0');
+}
 
-
-
-
-
+// 알림 삭제 기능 추가
+function deleteAlert(element) {
+    var dropdown = document.querySelector('.alertBell-dropdown ul');
+    dropdown.removeChild(element);
+}
