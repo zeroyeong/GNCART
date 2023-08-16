@@ -16,7 +16,6 @@ for (let i = 1; i <= totalPage; i++) {
 }
 
 const page = document.querySelectorAll("#pagenation button");
-console.log(page);
 
 page.forEach((t, idx) => {
   t.addEventListener("click", (e) => {
@@ -34,10 +33,7 @@ page.forEach((t, idx) => {
 
 function display(idx) {
   let start = idx * showTable; //보여줄 표 시작번호 : idx는 인덱스값이기 때문에 0부터 접근해야함.
-  console.log(start);
   let end = start + showTable; //보여줄 표 끝 번호
-  console.log(end);
-
   let array = [...table]; // querySelectorAll은 완전한 배열이 아니기때문에 배열로 만들어줌
   for (t of array) {
     t.style.display = "none";

@@ -104,10 +104,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -146,10 +146,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -188,10 +188,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -230,10 +230,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -272,10 +272,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -314,10 +314,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -356,10 +356,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -398,10 +398,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -440,10 +440,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -482,10 +482,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -524,10 +524,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}
@@ -566,10 +566,10 @@ nextYear = calYear +1;
 					String SCHE_NAME = bean.getSCHE_NAME();
 					String SCHE_START_DATE = bean.getSCHE_START_DATE();
 					String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-				<tr onclick="read(<%=SCHE_NO %>)">
-					<td><a href="#"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></a></td>
-					<td><a href="#"><%=SCHE_NAME %></a></td>
-				</tr>
+				<tr>
+			  	<td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></span></td>
+			    <td><span onclick="read(<%=SCHE_NO%>)"><%=SCHE_NAME %></span></td>
+		    </tr>
 				<%
 					}
 				}

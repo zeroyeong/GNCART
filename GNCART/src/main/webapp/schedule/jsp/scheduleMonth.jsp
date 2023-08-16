@@ -198,9 +198,9 @@
 		          			String SCHE_NAME = bean.getSCHE_NAME();
 		          			String SCHE_START_DATE = bean.getSCHE_START_DATE();
 		          			String SCHE_END_DATE = bean.getSCHE_END_DATE();%>
-			        	<tr onclick="read(<%=SCHE_NO%>)">
-			          		<td><input type="hidden" name="SCHE_NO" value="<%=SCHE_NO %>"><%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %></td>
-			          		<td><%=SCHE_NAME %></td>
+			        		<tr>
+			          		<td><a href="" onclick="read(<%=SCHE_NO%>)"> <%=SCHE_START_DATE %> ~ <%=SCHE_END_DATE %> </a></td>
+			          		<td><a href="" onclick="read(<%=SCHE_NO%>)"> <%=SCHE_NAME %> </a></td>
 			          	</tr>
 		          	<%
 		          		}

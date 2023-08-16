@@ -12,7 +12,7 @@
 <nav>
 	<div class="alert-icon">
 		<i class='bx bx-message-dots bx-flip-horizontal chatIcon' onclick="toggleChat()"></i> 
-				 <jsp:include page="../chat/chat.jsp" flush="false" />
+<%-- 				 <jsp:include page="../chat/chat.jsp" flush="false" /> --%>
 		<i class='bx bx-bell' data-count="0" onclick="alertToggle()"></i>
 		<div class="alertBell-dropdown">
 			<ul id="alertList">

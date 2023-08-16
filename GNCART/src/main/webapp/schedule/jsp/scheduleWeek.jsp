@@ -160,8 +160,10 @@
    				calDay = cal.get(Calendar.DATE); //날짜
    				lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH); //월의 마지막 날짜
    				
+   				firstDay-=1; //초기 firstDay가 for문에서 처음 값을 유지할 수 있도록!
+   				
    				for(int i=0; i < lastDay; i++){
-   					firstDay++;
+   					firstDay += 1;
    					
    					if(firstDay >=8){
    						firstDay = firstDay % 7;
@@ -201,7 +203,7 @@
 					Vector<ScheduleBean> list = sMgr.getScheduleList(calYear, calMonth, d);
 				%>
 				
-   			<table>
+   			<table id="daySchedule">
    				<colgroup>
    					<col class="col1" />
    					<col class="col2" />
@@ -227,7 +229,7 @@
 	          			String SCHE_NAME = bean.getSCHE_NAME();
 	          %>
 	          		
-          	<td><%=SCHE_NAME %></td>
+          	<td><a href="" onclick="read(<%=SCHE_NO%>)"> <%=SCHE_NAME %> </a></td>
           </tr>
           <tr>          			
    					<%		} //두번째 for문 종료
@@ -240,6 +242,10 @@
    			%>
    			
       </div>
+      
+      <form id="readF" action="scheduleDetail.jsp" onsubmit="return false;">
+	  		<input type="hidden" name="SCHE_NO" value="">
+		  </form>
 		           
     </div>
   </section>
@@ -250,6 +256,21 @@
 </html>
 
 <script>
+	/*______list 클릭시 detail 팝업______*/
+	function read(no){
+		document.getElementById('readF').SCHE_NO.value=no;
+		
+		popup();
+		
+		document.getElementById('readF').submit();
+	}
+	function popup(){
+		openCenter('', 'popup', 550,560);
+		document.getElementById('readF').target='popup';
+		document.getElementById('readF').submit();
+	}
+	
+	/*______달력 버튼클릭시의 submit______*/
 	function nextWeek(){
 		document.nextWeekFrm.submit();
 	}
@@ -257,4 +278,75 @@
 	function prevWeek(){
 		document.prevWeekFrm.submit();
 	}
+
+	/*______table 묶음______*/
+	let calYear = <%=calYear %>;
+	let calMonth = <%=calMonth %>-1;
+	
+	let firstCal = new Date(calYear, calMonth, 1);
+	let firstDay = firstCal.getDay();
+	
+	let lastCal = new Date(calYear, calMonth + 1, 0);
+	let lastDay = lastCal.getDate();
+	
+	let table = document.querySelectorAll("#daySchedule");
+	let tArray = [...table];
+	
+	let start = 0;
+	let end = 6 - firstDay;
+	let array1 = tArray.slice(start, end);
+
+	start = end + 1;
+	end = start + 6;
+	let array2 = tArray.slice(start, end);
+
+	start = end + 1;
+	end = start + 6;
+	let array3 = tArray.slice(start, end);
+
+	start = end + 1;
+	end = start + 6;
+	let array4 = tArray.slice(start, end);
+	
+	start = end + 1;
+	end = start + 6;
+	let array5 = tArray.slice(start, end);
+	
+	start = end + 1;
+	end = start + 6;
+	let array6 = tArray.slice(start, end);
+	
+	let array = [array1, array2, array3, array4, array5, array6]
+	
+	/*______table 보이고 안보이고______*/
+	for (at of tArray) {
+		  at.style.display = "none";
+		}
+	
+	if(<%=calWeek %> == 1){
+		for(a of array1){
+			a.style.display="";
+		}
+	} else if(<%=calWeek %> == 2){
+		for(a of array2){
+			a.style.display="";
+		}
+	} else if(<%=calWeek %> == 3){
+		for(a of array3){
+			a.style.display="";
+		}
+	} else if(<%=calWeek %> == 4){
+		for(a of array4){
+			a.style.display="";
+		}
+	}  else if(<%=calWeek %> == 5){
+		for(a of array5){
+			a.style.display="";
+		}
+	}  else if(<%=calWeek %> == 6){
+		for(a of array6){
+			a.style.display="";
+		}
+	}  
+	
 </script>
