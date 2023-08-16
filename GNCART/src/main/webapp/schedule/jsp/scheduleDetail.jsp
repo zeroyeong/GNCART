@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="../../css//scheduleDetail.css">
 </head>
 <body>
-
+ 
 <% 
 
 	int SCHE_NO = Integer.parseInt(request.getParameter("SCHE_NO"));
