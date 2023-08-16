@@ -226,4 +226,4 @@ workRestCancel1.onclick = function() {
 //근태 확인하기
 workStart1.onclick = function() {
 	window.open("workday/workdayCheck.jsp", "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
-} 
+}
