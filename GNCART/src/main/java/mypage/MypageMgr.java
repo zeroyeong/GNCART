@@ -360,6 +360,68 @@ public class MypageMgr {
 		}
 		return add;
 	}
+	
+	// MEM_NO로 name 찾기
+		public String memNoNameFind(String memNo) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = null;
+			String name = null;
+			try {
+				con = pool.getConnection();
+
+				sql = "select MEM_NAME from member where MEM_NO = ?";
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, memNo);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					name = rs.getString("MEM_NAME");
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return name;
+		}
+		
+		// MEM_NO로 입사일 찾기
+		public String memNoDateFind(String memNo) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = null;
+			String name = null;
+			try {
+				con = pool.getConnection();
+
+				sql = "select MEM_DATE from member where MEM_NO = ?";
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, memNo);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					name = rs.getString("MEM_DATE");
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return name;
+		}
 
 	// 전화번호 수정
 	public void updatePhone(MypageBean bean, String id) {

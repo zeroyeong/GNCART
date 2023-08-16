@@ -19,7 +19,7 @@ String start4 = null;
 String workdNo = null;
 String workdVacNo = null;
 
-int end1 = 0;
+int end1 = Integer.parseInt(start2);
 String end2 = null;
 String end3 = null;
 
@@ -27,8 +27,6 @@ if (id != null && pw != null) {
 	memNo = pMgr.memNoFind(id, pw);
 
 	workdNo = wMgr.workdNoStartFind(start1, memNo);
-
-	end1 = Integer.parseInt(start2);
 	
 	workdVacNo = wMgr.workdVacNoFind(start1, memNo);
 }
@@ -59,35 +57,32 @@ if (workdVacNo == null) { //휴가가 없다면
 			</script>
 <%
 			}
-		} 
-		else if (start1.equals(start4)) { //퇴근을 안했고 출근 기록이 있다면
-
-			if (end1 < 17) { //지금이 17시 전이라면
+		}
+		else if (end1 < 17) { //퇴근을 안했고 지금이 17시 전이라면
 %>
-				<script>
-					//출근 나오기
-					document.querySelector('#workStart').style.display = "none";
-					document.querySelector('#workStart1').style.display = "block";
-					document.querySelector('#workEnd').style.display = "none";
-					document.querySelector('#workEnd1').style.display = "none";
-					document.querySelector('#workRest1').style.display = "none";
-				</script>
+			<script>
+				//출근 나오기
+				document.querySelector('#workStart').style.display = "none";
+				document.querySelector('#workStart1').style.display = "block";
+				document.querySelector('#workEnd').style.display = "none";
+				document.querySelector('#workEnd1').style.display = "none";
+				document.querySelector('#workRest1').style.display = "none";
+			</script>
 <%
-			} 
-			else { //17시 이후라면
-%>
-				<script>
-					//퇴근하기 나오기
-					document.querySelector('#workStart').style.display = "none";
-					document.querySelector('#workStart1').style.display = "none";
-					document.querySelector('#workEnd').style.display = "block";
-					document.querySelector('#workEnd1').style.display = "none";
-					document.querySelector('#workRest1').style.display = "none";
-				</script>
-<%
-			}
 		} 
-	} 
+		else if (end1 >= 17) { //17시 이후라면
+%>
+			<script>
+				//퇴근하기 나오기
+				document.querySelector('#workStart').style.display = "none";
+				document.querySelector('#workStart1').style.display = "none";
+				document.querySelector('#workEnd').style.display = "block";
+				document.querySelector('#workEnd1').style.display = "none";
+				document.querySelector('#workRest1').style.display = "none";
+			</script>
+<%
+		}
+	}
 } 
 else { 
 %>
@@ -97,7 +92,7 @@ else {
 		document.querySelector('#workStart1').style.display = "none";
 		document.querySelector('#workEnd').style.display = "none";
 		document.querySelector('#workEnd1').style.display = "none";
-		document.querySelector('#workRest1').style.display = "block";
+		document.querySelector('#workRestCancel1').style.display = "block";
 	</script>
 <%
 }

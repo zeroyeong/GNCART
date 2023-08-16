@@ -3,6 +3,7 @@ package mypage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 import common.DBConnectionMgr;
 
@@ -49,6 +50,37 @@ public class WorkdayMgr {
 		}
 		return memNo;
 	}
+	
+	// memNo 찾기
+		public String memDateFind(String id, String pw) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = null;
+			String memNo = null;
+			try {
+				con = pool.getConnection();
+
+				sql = "select MEM_DATE from member where MEM_ID = ? and MEM_PW = ?";
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, pw);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					memNo = rs.getString("MEM_DATE");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return memNo;
+		}
 
 	// 출근하기
 	public void workStart(String start, String memNo) {
@@ -409,6 +441,38 @@ public class WorkdayMgr {
 		}
 		return workdVacNo;
 	}
+	
+	// workday VAC_NO를 WORKD_NO로 찾기
+		public String workdNoVacNoFind(String workdNo) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = null;
+			String workdVacNo = null;
+
+			try {
+				con = pool.getConnection();
+
+				sql = "select VAC_NO from workday where WORKD_NO = ?";
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, workdNo);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					workdVacNo = rs.getString("VAC_NO");
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return workdVacNo;
+		}
 
 	// workday에서 휴가 삭제하기
 	public void workRestDelete(String workdNo) {
@@ -526,4 +590,112 @@ public class WorkdayMgr {
 			pool.freeConnection(con, pstmt);
 		}
 	}
+
+	// workday WORKD_NO 값 전부 가져오기
+	public Vector<MypageBean> workdNoTotal(String start, String memNo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = null;
+
+		Vector<MypageBean> vlist = new Vector<MypageBean>();
+
+		try {
+			con = pool.getConnection();
+
+			sql = "select * from workday where WORKD_START like ? and MEM_NO = ? order by WORKD_START ASC";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + start + "%");
+			pstmt.setString(2, memNo);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				MypageBean bean = new MypageBean();
+				bean.setWORKD_NO(rs.getString("WORKD_NO"));
+
+				vlist.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return vlist;
+	}
+
+	// workday WORKD_START 값 전부 가져오기
+	public Vector<MypageBean> workdStartTotal(String memNo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = null;
+
+		Vector<MypageBean> vlist = new Vector<MypageBean>();
+
+		try {
+			con = pool.getConnection();
+
+			sql = "select * from workday where MEM_NO = ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				MypageBean bean = new MypageBean();
+				bean.setWORKD_START(rs.getString("WORKD_START"));
+
+				vlist.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return vlist;
+	}
+	
+	//게시판 리스트
+		public Vector<MypageBean> workdayList(int start, int end, String memNo, String workdStart) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			String sql = null;
+			
+			Vector<MypageBean> vlist = new Vector<MypageBean>();
+			
+			try {
+				con = pool.getConnection();
+				sql = "select * from workday where MEM_NO=? and WORKD_START LIKE ? order by WORKD_START asc LIMIT ?, ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, memNo);
+				pstmt.setString(2, "%" + workdStart + "%");
+				pstmt.setInt(3, start);
+				pstmt.setInt(4, end);
+				
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					MypageBean bean = new MypageBean();
+					bean.setWORKD_NO(rs.getString("WORKD_NO"));
+					bean.setWORKD_START(rs.getString("WORKD_START"));
+					bean.setWORKD_END(rs.getString("WORKD_END"));
+					bean.setVAC_NO(rs.getString("VAC_NO"));
+
+					vlist.add(bean);
+				}
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return vlist;
+		}
 }

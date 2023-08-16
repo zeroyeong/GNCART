@@ -13,12 +13,14 @@ String pw = (String) session.getAttribute("pwKey");
 String memNo = wMgr.memNoFind(id, pw);
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 String start = LocalDateTime.now().format(formatter);
+String start2 = LocalDateTime.now().format(formatter2);
 
 if (id != null && pw != null && start != null) { //id, pw, 오늘 날짜의 데이터가 있다면
 
-	String workdNo = wMgr.workdNoStartFind(start, memNo);
+	String workdNo = wMgr.workdNoStartFind(start2, memNo);
 
 	if (workdNo != null) { //출근 기록이 있어서 WORKD_NO가 있다면
 

@@ -59,8 +59,8 @@ String vacReason = null;
 		<%
 		workdNo = wMgr.workdNoStartFind(day2, memNo);
 
-		if (workdNo != null) {
-			if (wMgr.workdEndFind(workdNo) != null) {
+		if (workdNo != null) { //출근 기록 확인
+			if (wMgr.workdEndFind(workdNo) != null) { // 퇴근 기록 있으면
 				endDay = wMgr.workdEndFind(workdNo);
 				endDay1 = endDay.substring(0, 10);
 				endDay2 = endDay.substring(11, 19);
@@ -68,7 +68,7 @@ String vacReason = null;
 
 				startDay = wMgr.workdStartFind(workdNo).substring(11, 19);
 				startDay2 = startDay.substring(0, 2);
-				} else {
+				} else if (wMgr.workdEndFind(workdNo) == null) { //퇴근 기록 없으면
 				endDay1 = day2;
 				endDay2 = "-- : -- : --";
 
@@ -76,28 +76,28 @@ String vacReason = null;
 				startDay2 = startDay.substring(0, 2);
 			}
 			
-			if (Integer.parseInt(startDay2) < 9) {
+			if (Integer.parseInt(startDay2) < 9) { //출근 시간이 9시 전이면
 				workday = "출근";
 				workday2 = "--";
-				if (endDay != null) {
-					if (Integer.parseInt(endDay3) < 17) {
+				if (endDay != null) { //퇴근 기록 있으면
+					if (Integer.parseInt(endDay3) < 17) { //퇴근 시간이 17시 전이면
 						workday2 = "조퇴";
-					} else {
+					} else { //퇴근 시간이 17시 이후면
 						workday2 = "퇴근";
 					}
 				}
-			} else {
+			} else if (Integer.parseInt(startDay2) >= 9){ //출근 시간이 9시 이후면
 				workday = "지각";
 				workday2 = "--";
-				if (endDay3 != null) {
-					if (Integer.parseInt(endDay3) < 17) {
+				if (endDay != null) { //퇴근 기록이 있으면
+					if (Integer.parseInt(endDay3) < 17) { //퇴근 시간이 17시 전이면
 						workday2 = "조퇴";
-					} else {
+					} else if(Integer.parseInt(endDay3) >= 17) { //퇴근 시간이 17시 이후면
 						workday2 = "퇴근";
 					}
 				}
 			}
-		} else {
+		} else if (workdNo == null){ //출근 기록이 없으면
 			endDay1 = day2;
 		}
 		%>
@@ -142,8 +142,7 @@ String vacReason = null;
 					<td><%=vacReason%></td>
 				</tr>
 				<%
-			}
-			else if (endNo != null) {
+			} else if (endNo != null) {
 				endDay = wMgr.workdEndFind(endNo);
 				endDay1 = endDay.substring(0, 10);
 				endDay2 = endDay.substring(11, 19);
@@ -154,13 +153,13 @@ String vacReason = null;
 	
 				if (Integer.parseInt(startDay2) < 9) {
 			workday = "출근";
-				} else {
+				} else if (Integer.parseInt(startDay2) >= 9) {
 			workday = "지각";
 				}
 					
 				if (Integer.parseInt(endDay3) < 17) {
 			workday2 = "조퇴";
-				} else {
+				} else if (Integer.parseInt(endDay3) >= 17) {
 			workday2 = "퇴근";
 				}
 				%>

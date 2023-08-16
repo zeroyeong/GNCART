@@ -44,10 +44,7 @@ if (vacNo != null) {
 }
 %>
 <script>
-	alert('승인처리가 완료되었습니다');
+	alert("승인처리가 완료되었습니다");
 	window.close();
 	window.opener.location.reload();
-
-	//String vacNo2 = request.getParameter("VAC_NO");
-	//response.sendRedirect("mypage/workday/workRest.jsp?VAC_NO="+vacNo2);
 </script>
