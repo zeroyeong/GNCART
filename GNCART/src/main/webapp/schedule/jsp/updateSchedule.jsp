@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>GNC:ART - 일정수정</title>
 <link rel="stylesheet" href="../../css/scheduleUpdate.css">
 </head>

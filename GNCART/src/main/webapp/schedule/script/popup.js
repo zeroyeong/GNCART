@@ -11,4 +11,4 @@ function openCenter(doc,win,w,h){
 /*********팝업닫기*********/
 function closeBox(){
   window.close();
-}
+} 
