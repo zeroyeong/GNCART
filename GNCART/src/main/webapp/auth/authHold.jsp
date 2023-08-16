@@ -2,13 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ page import="auth.AuthBean"%>
 <%@ page import="java.util.Vector"%>
+<jsp:useBean id="alertMgr" class="alert.AlertMgr" />
 <jsp:useBean id="aMgr" class="auth.AuthMgr" />
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 <%
-  if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
-    response.sendRedirect("../login.jsp");
+if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+	response.sendRedirect("../login.jsp");
 
-  int leNo = (int)session.getAttribute("leNo"); 
+int leNo = (int) session.getAttribute("leNo");
+
+int alertNo = 0;
+
+if (request.getParameter("alertNo") != null && Integer.parseInt(request.getParameter("alertNo")) != 0) {
+	alertNo = Integer.parseInt(request.getParameter("alertNo"));
+	alertMgr.updateAlert(alertNo);
+}
 %>
 <!DOCTYPE html>
 <html lang="ko">

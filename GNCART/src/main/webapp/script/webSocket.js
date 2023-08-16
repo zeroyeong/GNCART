@@ -213,35 +213,31 @@ function slideChatPop() {
     }
 }
 
+
 //alert 부분
 //알림
 function sendAlert(content) {
-	if(toLineFirst != null && toLineSecond != null){
-	    webSocket.send("alert" + "/" + toLineFirst.value + "/" + toLineSecond.value + "/" + content);		
-	}
+    if (toLineFirst != null && toLineSecond != null) {
+        webSocket.send("alert" + "/" + toLineFirst.value + "/" + toLineSecond.value + "/" + content);
+    }
 }
 
 //받을때
 function handleAlert(firstName, secondName, content) {
     var message = firstName + content;
     addAlert(message);
-    updateAlertBadge();//알림숫자증가
-    console.log("firstName = " +firstName);
-      console.log("secondName = " +secondName);
-        console.log("content = " +content);
+    updateAlertBadge();
 }
 
 //보내기
 function alertSend() {
-    let alertContent ="님의 결제 신청서가 도착했습니다. ";
+    let alertContent = "님의 결재문서가 있습니다";
     sendAlert(alertContent);
-    console.log("alertSend alertSendalertSend");
 }
 
 // 새로운 알림 메시지를 생성하여 목록에 추가하는 함수
 function addAlert(message) {
     var newAlert = document.createElement('li');
-
     newAlert.textContent = message;
 
     var dropdown = document.querySelector('.alertBell-dropdown ul');
@@ -250,23 +246,12 @@ function addAlert(message) {
 
 // 알림 아이콘 뱃지 업데이트 함수
 function updateAlertBadge() {
-    var badge = document.querySelector('.bx-bell[data-count]');
-    var count = parseInt(badge.getAttribute('data-count')) + 1;
-    badge.setAttribute('data-count', count);
-}
+    var redIcon = document.querySelector(".redIcon");
+    var alertList = document.getElementById("alertList");
 
-// 알림드롭박스 토글
-function alertToggle() {
-    var dropdown = document.querySelector('.alertBell-dropdown');
-    dropdown.classList.toggle('active');
-
-    // 알림 아이콘 뱃지 초기화
-    var alertIcon = document.querySelector('.alert-icon');
-    alertIcon.querySelector('i[data-count]').setAttribute('data-count', '0');
-}
-
-// 알림 삭제 기능 추가
-function deleteAlert(element) {
-    var dropdown = document.querySelector('.alertBell-dropdown ul');
-    dropdown.removeChild(element);
+    if (redIcon != null && alertList != null && alertList.children.length > 0) {
+        redIcon.style.display = "block";
+    } else {
+        redIcon.style.display = "none";
+    }
 }
