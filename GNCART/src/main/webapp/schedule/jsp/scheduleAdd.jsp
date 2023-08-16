@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GNC:ART - 일정추가</title>
+<title>GNC:ART - 일정추가</title> 
 <link rel="stylesheet" href="../../css/scheduleUpdate.css?Sdss">
 </head>
 <body>

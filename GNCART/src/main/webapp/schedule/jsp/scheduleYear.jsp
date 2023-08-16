@@ -15,7 +15,7 @@ import="schedule.ScheduleBean"%>
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-<!-- 현재 페이지 css -->
+<!-- 현재 페이지 css --> 
 <link rel="stylesheet" href="../../css/scheduleYear.css?sdsfdd">
 
 <!-- include css -->

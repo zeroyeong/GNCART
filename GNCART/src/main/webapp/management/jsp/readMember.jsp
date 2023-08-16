@@ -229,7 +229,7 @@
                   <td>-</td>
                 </tr>
                 <tr>
-                  <td>월차</td>
+                  <td>월차</td> 
                   <td>-</td>
                   <td>-</td>
                   <td>-</td>

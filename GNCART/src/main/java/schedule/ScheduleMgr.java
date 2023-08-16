@@ -65,7 +65,7 @@ public class ScheduleMgr {
 				
 				vlist.add(bean);
 				
-			}
+			} 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

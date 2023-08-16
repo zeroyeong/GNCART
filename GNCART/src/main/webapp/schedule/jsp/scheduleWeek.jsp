@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GNC:ART</title>
   <link rel="stylesheet" href="../../css/index.css">
@@ -312,7 +312,7 @@
 	end = start + 6;
 	let array5 = tArray.slice(start, end);
 	
-	start = end + 1;
+	start = end + 1; 
 	end = start + 6;
 	let array6 = tArray.slice(start, end);
 	

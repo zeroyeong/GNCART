@@ -11,7 +11,7 @@
 <title>GNC:ART - 일정수정</title>
 <link rel="stylesheet" href="../../css/scheduleUpdate.css">
 </head>
-<body>
+<body> 
 
 	<%
 		int SCHE_NO = Integer.parseInt(request.getParameter("SCHE_NO"));

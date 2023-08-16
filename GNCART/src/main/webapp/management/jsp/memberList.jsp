@@ -3,7 +3,7 @@
     import="management.ManagementBean"
     import="java.util.Vector"%>
 
-<jsp:useBean id="mMgr" class="management.ManagementMgr"/>
+<jsp:useBean id="mMgr" class="management.ManagementMgr"/> 
 
 <%
 	/*------------페이지 하단 searchFrm input-------------*/
