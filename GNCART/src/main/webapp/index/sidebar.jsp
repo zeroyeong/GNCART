@@ -38,7 +38,7 @@
         </a>
       </li>
       <li>
-        <a href="../schedule/jsp/scheduleMonth.jsp">
+        <a href="../schedule/scheduleMonth.jsp">
           <i class='bx bx-calendar-check icon'></i>
           <span class="links_name">회사일정</span>
         </a>

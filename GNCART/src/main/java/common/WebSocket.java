@@ -11,10 +11,10 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import chat.ChatBean;
-import chat.ChatMgr;
 import alert.AlertBean;
 import alert.AlertMgr;
+import chat.ChatBean;
+import chat.ChatMgr;
 
 @ServerEndpoint("/WebSocket/{fromPartType}/{fromName}")
 public class WebSocket{
@@ -37,8 +37,7 @@ public class WebSocket{
 		if(type.equals("alert")) {
 			String toLineFirst = parts[1];
 			String toLineSecond = parts[2];
-			System.out.println("toLineFirst = " + toLineFirst);
-			System.out.println("toLineSecond = " + toLineSecond);
+	
 			//소켓에 들어와있는 유저찾는 
 			Session toSession1 = userSessions.get(toLineFirst);
 			Session toSession2 = userSessions.get(toLineSecond);
@@ -73,7 +72,7 @@ public class WebSocket{
 				abean.setALERT_STATE("안읽음");
 				
 				alertMgr.insertAlert(abean);
-				System.out.println("33333");
+	
 			}else {
 				//db저장
 				abean.setALERT_FROM(toLineFirst);

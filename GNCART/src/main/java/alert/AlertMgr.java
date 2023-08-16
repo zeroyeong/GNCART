@@ -45,16 +45,16 @@ public class AlertMgr {
 		} finally {
 			pool.freeConnection(con, pstmt);
 		}
-		
+
 		PKkeySort();
 	}
-	
+
 	public Vector<AlertBean> checkAlert(String myName) {
 		Connection con = null; 
 		PreparedStatement pstmt = null; 
 		ResultSet rs = null;
 		String sql = null; 
-		
+
 		Vector<AlertBean> alist = new Vector<AlertBean>();
 
 		try {
@@ -82,7 +82,7 @@ public class AlertMgr {
 		}
 		return alist;
 	}
-	
+
 	public void updateAlert(int alertNo) {
 
 		Connection con = null;
@@ -105,7 +105,7 @@ public class AlertMgr {
 			pool.freeConnection(con, pstmt);
 		}
 	}
-	
+
 	public void PKkeySort() {
 
 		Connection con = null;

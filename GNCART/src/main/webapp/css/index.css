@@ -228,13 +228,24 @@
 }
 
 /* 알림 목록 스타일 */
-.alertBell-dropdown ul li {
+.alertBell-dropdown ul {
+	padding: 0;
+	margin: 0;
 	list-style: none;
+}
+
+.alertBell-dropdown ul li {
 	border-bottom: 1px solid #ccc;
 	cursor: pointer;
 	line-height: 40px;
-	font-size: 20px;
+	font-size: 15px;
 	color: #11101d;
+	font-weight: bold;
+	padding: 0 5px;
+}
+
+.alertBell-dropdown ul li:last-child {
+	border-bottom: none;
 }
 
 .alertBell-dropdown ul li a {

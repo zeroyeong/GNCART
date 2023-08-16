@@ -109,10 +109,13 @@
       <br>
       
       <div style="text-align: center">
-      <button class="submitBtn" type="submit" name="action" value="vacWrite">작성</button>
+      <button class="submitBtn" type="submit" name="action" value="vacWrite" onclick="alertSend()">작성</button>
       </div>
+      
+        <input type="hidden" id="fromPartType" name="fromPartType" value="<%=parttype%>">
+		<input type="hidden" id="fromName" name="fromName" value="<%=Name%>"> 
    </form>
-
+   <script src="../script/webSocket.js"></script>
    <script src="../script/authScript.js"></script>
 </body>
 

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
+<%@ page import="auth.AuthMgr"%>
+<%@ page import="java.util.*"%>
 <%
 	if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");
