@@ -24,7 +24,7 @@ public class NoticeMgr {
 
 	private DBConnectionMgr pool;
 	//파일 업로드 관련 설정 작성
-	private static final String  SAVEFOLDER = "C:/GNCART/GNCART/src/main/webapp/filestorage";
+	private static final String  SAVEFOLDER = "C:/GNCART/GNCART/GNCART/src/main/webapp/filestorage";
 	private static final String ENCTYPE = "UTF-8";
 	private static int MAXSIZE = 5*1024*1024;
 
@@ -60,7 +60,7 @@ public class NoticeMgr {
 				bean.setMEM_NO(rs.getInt("MEM_NO"));
 				bean.setMEM_NAME(rs.getString("MEM_NAME"));
 				bean.setNOTSUB_NO(rs.getInt("NOTSUB_NO"));
-				bean.setNOT_SUB(rs.getString("NOT_SUB")); //
+				bean.setNOT_SUB(rs.getString("NOT_SUB")); 
 				bean.setMEM_ID(rs.getString("MEM_ID"));
 				vlist.add(bean);
 			}

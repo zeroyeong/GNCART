@@ -1,21 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
-<%
-	request.setCharacterEncoding("UTF-8");
-
-	String Name = (String)session.getAttribute("memName");
-	Integer No = (Integer)session.getAttribute("memNo");
-	
-	if(No == null) {
-%>
-<script>
-	alert("로그인이 되어있지않습니다.");
-	window.location.href = "../login.jsp";
-</script>
-<%
-	return;
-	}
+<% 	
+request.setCharacterEncoding("UTF-8");
+String Name = (String)session.getAttribute("memName");
+Integer No = (Integer)session.getAttribute("memNo"); 
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -24,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/noticeWrite.css?111">
+<link rel="stylesheet" href="../css/noticeWrite.css?123">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -42,13 +31,13 @@
 		<div class="home-content">
 			<div id="container">
 				<div id="title">
-					<h2>공지사항</h2>
+					<h2>행사사진</h2>
 				</div>
 
 				<hr>
 
-				<form method="post" action="../noticeWrite"
-					enctype="multipart/form-data">
+				<form method="post" action="../eventWrite"
+					enctype="multipart/form-data" onsubmit="return notfile();">
 					<table>
 						<tr>
 							<td class="tableTitle"><label>작성자</label></td>
@@ -59,11 +48,11 @@
 							<!--작성일 나오게-->
 						</tr>
 						<tr>
-							<td class="tableTitle"><label>말머리</label></td>
-							<td><select name="NOTSUB_NO">
-									<option value="1">공지</option>
-									<option value="2">긴급</option>
-									<option value="3">필독</option>
+							<td class="tableTitle"><label>행사종류</label></td>
+							<td><select name="EVENTSUB_NO">
+									<option value="1">부서행사</option>
+									<option value="2">사내행사</option>
+									<option value="3">사외행사</option>
 							</select></td>
 							<td class="tableTitle"><label>해당부서</label></td>
 							<td><select name="PART_NO">
@@ -77,30 +66,31 @@
 						</tr>
 						<tr>
 							<td class="tableTitle"><label>제목</label></td>
-							<td colspan="3"><input type="text" id="not_title"
-								name="NOT_TITLE" required></td>
+							<td colspan="3"><input type="text"name="EVENT_TITLE" required></td>
 							<!--작성자 이름 나오게-->
 						</tr>
 						<tr>
 							<td class="tableTitle detail"><label>상세 내용</label></td>
-							<td colspan="3"><textarea id="not_content"
-									name="NOT_CONTENT" required></textarea></td>
+							<td colspan="3"><textarea name="EVENT_CONTENT" required></textarea></td>
 						</tr>
 						<tr>
 							<td class="tableTitle">첨부 파일</td>
 							<td colspan="3">
 								<div class="addbox">
-									<input id="filename" placeholder="첨부파일" readonly> <label
-										for="file">파일찾기</label> <input type="file" id="file"
-										name="NOT_FILENAME" onclick="findFile()">
+								<input id="filename1" placeholder="첨부파일" readonly> <label
+								for="file1">파일찾기</label> <input type="file" id="file1"
+								name="EVENT_FILENAME1" onchange="findFile(1)">
+								<a onclick="fileplus()"><label>+</label></a>
+
 								</div>
+								
 							</td>
 						</tr>
 					</table>
-					<div id="btns">
+					<div id="btns">	
 						<input type="submit" value="등록하기" style="text-align: center">
 						<button>
-							<a href="notice.jsp">뒤로가기</a>
+							<a href="event.jsp">뒤로가기</a>
 						</button>
 					</div>
 				</form>
@@ -109,6 +99,6 @@
 
 	<script src="../script/indexScript.js"></script>
 	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-	<script src="../script/noticeScript.js"></script>
+	<script src="../script/eventScript.js?123"></script>
 </body>
 </html>

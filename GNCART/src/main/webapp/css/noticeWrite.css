@@ -153,7 +153,6 @@ td input,select{
 #btns > button[type="submit"]:hover{
   color:#11101d;
 }
-
 .addbox #filename {
     display: inline-block;
     height: 40px;
@@ -163,8 +162,43 @@ td input,select{
     width: 78%;
     color: #999999;
 }
-
-.addbox #kakaoField {
+.addbox #filename1 {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+.addbox #filename2 {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+.addbox #filename3 {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+.addbox #filename4 {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+.addbox #filename5 {
     display: inline-block;
     height: 40px;
     padding: 0 10px;

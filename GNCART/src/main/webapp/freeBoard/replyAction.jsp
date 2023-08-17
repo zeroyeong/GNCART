@@ -29,8 +29,8 @@
 		}
 	
 		String MEM_NAME=null;
-		if(session.getAttribute("MEM_NAME")!=null){
-			MEM_NAME=(String)session.getAttribute("MEM_NAME");
+		if(session.getAttribute("memName")!=null){
+			MEM_NAME=(String)session.getAttribute("memName");
 		}
 		if(MEM_NAME==null){
 			PrintWriter script=response.getWriter();
