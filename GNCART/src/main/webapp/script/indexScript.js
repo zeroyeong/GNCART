@@ -1,4 +1,4 @@
-//sidebar
+// 사이드바 토글
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
 
@@ -9,7 +9,7 @@ sidebarBtn.onclick = function () {
     } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 };
 
-//달력//
+//달력
 window.onload = function () { buildCalendar(); }    // 웹 페이지가 로드되면 buildCalendar 실행
 
 let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달로 초기화
@@ -86,7 +86,7 @@ function leftPad(value) {
     return value;
 }
 
-// "결재" 메뉴를 클릭하면 드롭다운 메뉴를 스르륵 나타내거나 감추는 함수
+// "결재" 클릭하면 드롭다운
 $(".dropAuth").click(function (event) {
     event.preventDefault();
     $(".dropdown").slideToggle("fast");
