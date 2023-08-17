@@ -175,6 +175,48 @@ if (memNo != null) {
 			}
 		}
 		if (vac1 != 0) {
+			rest[0] = Integer.toString(vac1);
+		}
+		if (yearVac1 != 0) {
+			yearVac[0] = Integer.toString(yearVac1);
+		}
+		if (monthVac1 != 0) {
+			monthVac[0] = Integer.toString(monthVac1);
+		}
+		if (workEndEarly1 != 0) {
+			workEndEarly[0] = Integer.toString(workEndEarly1);
+		}
+		if (workStartLate1 != 0) {
+			workStartLate[0] = Integer.toString(workStartLate1);
+		}
+		break;
+
+	case 2 :
+		if ("1".equals(vacReason)) {
+			monthVac1++;
+			useVac++;
+		} else if ("2".equals(vacReason)) {
+			yearVac1++;
+			useVac++;
+		} else if ("3".equals(vacReason)) {
+			vac1++;
+			useVac++;
+		} else if ("4".equals(vacReason)) {
+			vac1++;
+			useVac++;
+		} else if (start != null && end != null) {
+			if (Integer.parseInt(start.substring(11, 13)) < 9) {
+				if (Integer.parseInt(end.substring(11, 13)) < 17) {
+					workEndEarly1++;
+				}
+			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
+				workStartLate1++;
+				if (Integer.parseInt(end.substring(11, 13)) < 17) {
+					workEndEarly1++;
+				}
+			}
+		}
+		if (vac1 != 0) {
 			rest[1] = Integer.toString(vac1);
 		}
 		if (yearVac1 != 0) {
@@ -191,7 +233,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 2 :
+	case 3 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -233,7 +275,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 3 :
+	case 4 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -275,7 +317,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 4 :
+	case 5 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -317,7 +359,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 5 :
+	case 6 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -359,7 +401,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 6 :
+	case 7 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -401,7 +443,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 7 :
+	case 8 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -443,7 +485,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 8 :
+	case 9 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -485,7 +527,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 9 :
+	case 10 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -527,7 +569,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 10 :
+	case 11 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -569,7 +611,7 @@ if (memNo != null) {
 		}
 		break;
 
-	case 11 :
+	case 12 :
 		if ("1".equals(vacReason)) {
 			monthVac1++;
 			useVac++;
@@ -608,48 +650,6 @@ if (memNo != null) {
 		}
 		if (workStartLate1 != 0) {
 			workStartLate[11] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 12 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[12] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[12] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[12] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[12] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[12] = Integer.toString(workStartLate1);
 		}
 		break;
 		}
@@ -780,12 +780,12 @@ if (memNo != null) {
 }
 %>
 
-<form name="prevYearFrm" action="../../management/jsp/readMember.jsp">
+<form name="prevYearFrm" action="readMember.jsp">
 	<input type="hidden" name="calYear" value=<%=calYear - 1%>> <input
 		type="hidden" name="MEM_NO" value=<%=memNo%>> <input
 		type="hidden" name="nowPage" value=<%=nowPage%>>
 </form>
-<form name="nextYearFrm" action="../../management/jsp/readMember.jsp">
+<form name="nextYearFrm" action="readMember.jsp">
 	<input type="hidden" name="calYear" value=<%=calYear + 1%>> <input
 		type="hidden" name="MEM_NO" value=<%=memNo%>> <input
 		type="hidden" name="nowPage" value=<%=nowPage%>>
@@ -801,7 +801,7 @@ if (memNo != null) {
 	}
 
 	function workDetail() {
-		window.open("../../mypage/workday/workdayDetailCheck.jsp?MEM_NO="+<%=memNo%>, "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
+		window.open("../mypage/workday/workdayDetailCheck.jsp?MEM_NO="+<%=memNo%>, "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
 	}
 </script>
 </html>

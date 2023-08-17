@@ -1,8 +1,15 @@
 package mypage;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import common.DBConnectionMgr;
 
@@ -51,40 +58,8 @@ public class MypageMgr {
 		return name;
 	}
 
-	// partNo 찾기
-	public String partNoFind(String id, String pw) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		String sql = null;
-		String partNo = null;
-		try {
-			con = pool.getConnection();
-
-			sql = "select PART_NO from member where MEM_ID = ? and MEM_PW = ?";
-
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				partNo = rs.getString("PART_NO");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			pool.freeConnection(con, pstmt, rs);
-		}
-		return partNo;
-	}
-
 	// partType 찾기
-	public String partTypeFind(String partNo) {
+	public String partTypeFind(String id, String pw) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -95,10 +70,11 @@ public class MypageMgr {
 		try {
 			con = pool.getConnection();
 
-			sql = "select PART_TYPE from part where PART_NO = ?";
+			sql = "SELECT * FROM member a JOIN part b ON a.PART_NO=b.PART_NO WHERE MEM_ID=? AND MEM_PW=?";
 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, partNo);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
 
 			rs = pstmt.executeQuery();
 
@@ -114,39 +90,8 @@ public class MypageMgr {
 		return partType;
 	}
 
-	// leNo 찾기
-	public String leNoFind(String id, String pw) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		String sql = null;
-		String leNo = null;
-		try {
-			con = pool.getConnection();
-
-			sql = "select LE_NO from member where MEM_ID = ? and MEM_PW = ?";
-
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				leNo = rs.getString("LE_NO");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			pool.freeConnection(con, pstmt, rs);
-		}
-		return leNo;
-	}
-
 	// level 찾기
-	public String levelFind(String leNo) {
+	public String levelFind(String id, String pw) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -157,10 +102,11 @@ public class MypageMgr {
 		try {
 			con = pool.getConnection();
 
-			sql = "select LE_LEVEL from level where LE_NO = ?";
+			sql = "SELECT * FROM member a JOIN level b ON a.LE_NO=b.LE_NO WHERE MEM_ID=? AND MEM_PW=?";
 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, leNo);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
 
 			rs = pstmt.executeQuery();
 
@@ -361,6 +307,38 @@ public class MypageMgr {
 		return add;
 	}
 	
+	// img 찾기
+		public String imgFind(String id, String pw) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = null;
+			String name = null;
+			try {
+				con = pool.getConnection();
+
+				sql = "select MEM_IMG from member where MEM_ID = ? and MEM_PW = ?";
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, pw);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					name = rs.getString("MEM_IMG");
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return name;
+		}
+	
 	// MEM_NO로 name 찾기
 		public String memNoNameFind(String memNo) {
 
@@ -544,4 +522,53 @@ public class MypageMgr {
 			pool.freeConnection(con, pstmt);
 		}
 	}
+	
+	//SAVEFOLDER, ENCTYPE, MAXSIZE 지정
+	private static final String  SAVEFOLDER = "C:\\Users\\Administrator\\git\\GNCART\\GNCART\\GNCART\\src\\main\\webapp\\management\\filestorage";
+	private static final String ENCTYPE = "UTF-8";
+	private static int MAXSIZE = 10*1024*1024;
+	
+	//img 수정
+	public void updateImg(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = null;
+		
+		MultipartRequest multi = null; //이미지 업로드 위한 객체
+		
+		String img = null; //이미지 이름	
+		
+		try {
+			con = pool.getConnection();
+			
+			File file = new File(SAVEFOLDER);
+			
+			if(!file.exists()) {
+				file.mkdirs();
+			}
+			
+			multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCTYPE,
+					new DefaultFileRenamePolicy());
+			
+			if(multi.getFilesystemName("file") != null) {
+				img = multi.getFilesystemName("file");
+			}
+			
+			sql="update member set MEM_IMG = ? where MEM_ID = ?";
+			
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, img);
+			pstmt.setString(2, (String) session.getAttribute("idKey"));
+			
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt);
+			}
+		}
 } 

@@ -16,21 +16,49 @@ String leNo = null;
 String level = null;
 String memNo = null;
 String date = null;
+String img = null;
 
 if (id != null & pw != null) {
 	name = pMgr.nameFind(id, pw);
-	partNo = pMgr.partNoFind(id, pw);
-	partType = pMgr.partTypeFind(partNo);
-	leNo = pMgr.leNoFind(id, pw);
-	level = pMgr.levelFind(leNo);
+	partType = pMgr.partTypeFind(id, pw);
+	level = pMgr.levelFind(id, pw);
 	memNo = pMgr.memNoFind(id, pw);
 	date = pMgr.dateFind(id, pw);
+	img = pMgr.imgFind(id, pw);
 }
 %>
 <!-- 아이디 이름 소속 직위 -->
-<div id="boximg">
-	<img src="../images/profile.jpg">
+<form action="../UpdateImgServlet" method="post" enctype="multipart/form-data">
+	<input type="file" class="nonebox" id="file" name="file" accept="image/*" onchange="changePic(event)">
+	<input type="submit" class="nonebox" id="submit">
+</form>
+
+<div id="boximg" class="imgbutton">
+	<% if (img != null) {%>
+	<input type="image" src="../management/filestorage/<%=img %>" id="img" class="imgbutton" onclick="img()">
+	<%} else {%>
+	<input type="image" src="../images/profile.jpg" id="img" class="imgbutton" onclick="img()">
+	<%} %>
 </div>
+
+<script>
+	function img() {
+		document.getElementById('file').click();
+	}
+	
+	function changePic(event) {
+		var reader = new FileReader();
+
+		reader.onload = function (event) {
+			let img = document.getElementById("img");
+			img.setAttribute("src", event.target.result);
+		};
+
+	      reader.readAsDataURL(event.target.files[0]);
+	      
+	      document.getElementById('submit').click();
+	    }
+</script>
 
 <div class="inlineblock">
 

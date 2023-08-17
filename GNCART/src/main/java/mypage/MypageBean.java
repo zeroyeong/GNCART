@@ -19,6 +19,7 @@ public class MypageBean {
 			MEM_ADD,
 			MEM_BIRTH,
 			MEM_AND,
+			MEM_IMG,
 			
 			AC_NO,
 			AC_TYPE,
@@ -109,6 +110,10 @@ public class MypageBean {
 
 	public String getMEM_AND() {
 		return MEM_AND;
+	}
+	
+	public String getMEM_IMG() {
+		return MEM_IMG;
 	}
 
 	public String getAC_NO() {
@@ -270,6 +275,10 @@ public class MypageBean {
 
 	public void setMEM_AND(String mEM_AND) {
 		MEM_AND = mEM_AND;
+	}
+	
+	public void setMEM_IMG(String mEM_IMG) {
+		MEM_IMG = mEM_IMG;
 	}
 
 	public void setAC_NO(String aC_NO) {

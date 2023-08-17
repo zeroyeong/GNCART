@@ -55,6 +55,15 @@
 	margin: 25px 15px 0px 25px;
 }
 
+.imgbutton {
+	background-color:transparent;
+	border : 0px solid transparent;
+	border-radius: 50%;
+	margin: 25px 15px 0px 25px;
+		width: 170px;
+	height: 170px;
+}
+
 .inlineblock {
 	display: inline-block;
 }

@@ -29,7 +29,7 @@ String pw = (String) session.getAttribute("pwKey");
 					<form action="mypageUpdate/updatePw.jsp" method="post" name="pwd7"
 						id="pwd7">
 						<input class="nonebox" name="pwd4" id="pwd4"
-							placeholder="바꾸고 싶은 비밀번호를 입력하세요."
+							placeholder="영어와 숫자를 입력해주세요."
 							style="width: 220px; margin-bottom: 5px;" maxlength="20"
 							type="password"></input>
 						<input class="nonebox" name="pwd5"

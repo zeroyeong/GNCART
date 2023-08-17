@@ -19,7 +19,7 @@ String pw = (String) session.getAttribute("pwKey");
 <title>GNC:ART</title>
 <!--css-->
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/mypage.css?ver=3">
+<link rel="stylesheet" href="../css/mypage.css?ver=1.4">
 <!--Boxicons css-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
