@@ -1,7 +1,5 @@
 /* Googlefont Poppins CDN Link */
-@import
-	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
-	;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
 	margin: 0;
@@ -12,7 +10,7 @@
 
 h1 {
 	text-align: center;
-	margin-top: 40px;
+	margin-top: 20px;
 	margin-bottom: 20px;
 	color: #11101d;
 }
@@ -26,13 +24,18 @@ form {
 label {
 	font-weight: bold;
 	color: #11101d;
+	margin-left: 15px;
 }
 
 input[type="text"], select {
-	padding: 7px;
-	border: 1px solid #ddd;
+	padding: 10px;
+	border: 2px solid #ddd;
+	margin: 10px 0px 15px 10px;
 	border-radius: 5px;
-	width: 100%;
+	font-weight: bold;
+	font-size: 15px;
+	color: #11101d;
+	width: 95%;
 }
 
 .submitBtn {
@@ -44,7 +47,7 @@ input[type="text"], select {
 	font-size: 16px;
 	border-radius: 5px;
 	display: block;
-	margin: 50px auto;
+	margin: 22px auto;
 }
 
 .submitBtn:hover {

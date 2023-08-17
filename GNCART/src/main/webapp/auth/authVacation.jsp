@@ -5,9 +5,8 @@
 <%@ page import="java.util.*"%>
 <%
 	if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
-	  response.sendRedirect("../login.jsp");
-%>
-<%
+	response.sendRedirect("../login.jsp");
+
 	request.setCharacterEncoding("UTF-8");
 	
 	String Name = (String)session.getAttribute("memName");
@@ -36,32 +35,34 @@
 
    <form method="post" action="../authWrite" onsubmit="return chkLine()">
       <button type="button" class="lineBtn" onclick="vacLineBtn()">결재선</button>
-      <div class="lineContainer">
-         <table>
-            <tr>
-               <th><span>팀장</span> 
-				<% if (teamLeader != null) { %>
- 			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="<%= teamLeader %>">
- 			    <%=teamLeader %>
-				<% } else { %>
- 			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="">
-				<% } %>
-               </th>
-
-               <th><span>부장</span>
-				<% if (manager != null) { %>
-  			 	<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="<%= manager %>"> 
-  			 	<%=manager %>
-				<% } else { %>
-    			<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="">
-				<% } %>
-               </th>
-            <tr>
-               <th></th>
-               <th></th>
-            </tr>
-         </table>
-      </div>
+		<div class="lineContainer">
+			<table>
+				<tr>
+					<% if (!"팀장".equals(leLevel)) { %>
+					<th><span>팀장</span>
+					<% if (teamLeader != null) { %> 
+					<input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"> <%=teamLeader %>
+					 <% } else { %> 
+					<input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="">
+					<% } %>
+					</th>
+					<% } %>
+					<th><span>부장</span>
+					<% if (manager != null) { %> 
+					<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="<%= manager %>"> <%=manager %> 
+					<% } else { %> 
+					<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="">
+					<% } %>
+					</th>
+				</tr>
+				<tr>
+					<% if (!"팀장".equals(leLevel)) { %>
+					<th></th>
+					<%} %>
+					<th></th>
+				</tr>
+			</table>
+		</div>
       <table>
          <tr>
             <th>항목</th>
@@ -91,13 +92,16 @@
             <td colspan="3">
                <div class="radio-group">
                   <input type="radio" name="VAC_REASON" value="1" required>
-                  <label for="vacation_reason1">월차</label> <input type="radio"
-                     name="VAC_REASON" value="2" required> <label
-                     for="vacation_reason2">연차</label> <input type="radio"
-                     name="VAC_REASON" value="3" required> <label
-                     for="vacation_reason3">병가</label> <input type="radio"
-                     name="VAC_REASON" value="4" required> <label
-                     for="vacation_reason4">기타</label>
+                  <label for="vacation_reason1">월차</label> 
+                  
+                  <input type="radio" name="VAC_REASON" value="2" required> 
+                  <label for="vacation_reason2">연차</label> 
+                  
+                  <input type="radio" name="VAC_REASON" value="3" required> 
+                  <label for="vacation_reason3">병가</label> 
+                  
+                  <input type="radio" name="VAC_REASON" value="4" required> 
+                  <label for="vacation_reason4">기타</label>
                </div>
             </td>
          </tr>
@@ -111,7 +115,6 @@
       <div style="text-align: center">
       <button class="submitBtn" type="submit" name="action" value="vacWrite" onclick="alertSend()">작성</button>
       </div>
-      
         <input type="hidden" id="fromPartType" name="fromPartType" value="<%=parttype%>">
 		<input type="hidden" id="fromName" name="fromName" value="<%=Name%>"> 
    </form>

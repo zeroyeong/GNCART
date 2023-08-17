@@ -64,9 +64,9 @@
 	                  if (vlist.isEmpty()) {
 	                	  out.println("등록된 게시글이 없습니다.");
 	                  } else {
-                	  String memId = (String)session.getAttribute("memId");
+                	 	 String memId = (String)session.getAttribute("memId");
                   %>
-				 <%    
+				  <%    
 				  	  for (int i=0; i<vlist.size(); i++) { 
                       AuthBean bean = vlist.get(i);
                       int DOC_NO = bean.getDOC_NO();

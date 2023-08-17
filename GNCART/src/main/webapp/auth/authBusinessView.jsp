@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<jsp:useBean id="mMgr" class="login.MemberMgr"/>
+	pageEncoding="UTF-8"%>
+<jsp:useBean id="mMgr" class="login.MemberMgr" />
 <%@ page import="auth.AuthBean"%>
 <jsp:useBean id="aMgr" class="auth.AuthMgr" />
 <%

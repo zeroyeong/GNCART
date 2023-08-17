@@ -255,3 +255,14 @@ function updateAlertBadge() {
         redIcon.style.display = "none";
     }
 }
+
+//알림드롭박스 토글
+function alertToggle() {
+    var redIcon = document.querySelector('.redIcon'); 
+    var dropdown = document.querySelector('.alertBell-dropdown');
+    
+	//redIcon이 block일때만 active
+    if (redIcon.style.display === "block") {
+        dropdown.classList.toggle('active');
+    }
+}

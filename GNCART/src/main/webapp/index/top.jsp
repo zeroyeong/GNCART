@@ -4,8 +4,8 @@
 <%@page import="chat.ChatBean"%>
 <%@page import="alert.AlertBean"%>
 <%@page import="management.ManagementBean"%>
-<jsp:useBean id="chatMgr" class="chat.ChatMgr" /> 
-<jsp:useBean id="alertMgr" class="alert.AlertMgr" />	
+<jsp:useBean id="chatMgr" class="chat.ChatMgr" />
+<jsp:useBean id="alertMgr" class="alert.AlertMgr" />
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
 <%
 Vector<AlertBean> alist = new Vector<AlertBean>();
@@ -14,15 +14,14 @@ int alertNo = 0;
 String fromName = "";
 String massege = "";
 
-String myName = (String)session.getAttribute("memName");
+String myName = (String) session.getAttribute("memName");
 %>
 
 <link rel="stylesheet" href="../css/chat.css">
 
 <nav>
 	<div class="alert-icon">
-		<i class='bx bx-message-dots bx-flip-horizontal chatIcon'
-			onclick="toggleChat()"></i>
+		<i class='bx bx-message-dots bx-flip-horizontal chatIcon' onclick="toggleChat()"></i>
 		<jsp:include page="../chat/chat.jsp" flush="false" />
 		<i class='bx bx-bell' onclick="alertToggle()"></i>
 		<div class="redIcon"></div>
@@ -46,12 +45,12 @@ String myName = (String)session.getAttribute("memName");
 	</div>
 
 	<div class="profile-details">
-		<a href="#"><img src="../images/<%=session.getAttribute("memImg")%>" alt="" /></a> 
+		<a href="#"><img src="../images/profile.jpg" alt="" /></a> 
 		<span class="admin_name"><%=session.getAttribute("leLevel")%> <%=session.getAttribute("memName")%></span>
 	</div>
 </nav>
 
-<script src="../script/webSocket.js"></script>    
+<script src="../script/webSocket.js?qq"></script>    
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>     
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
@@ -73,14 +72,4 @@ document.addEventListener("DOMContentLoaded", function() {
 		redIcon.style.display = "block";
 	}
 });
-//알림드롭박스 토글
-function alertToggle() {
-    var redIcon = document.querySelector('.redIcon'); 
-    var dropdown = document.querySelector('.alertBell-dropdown');
-    
-	//redIcon이 block일때만 active
-    if (redIcon.style.display === "block") {
-        dropdown.classList.toggle('active');
-    }
-}
 </script>
