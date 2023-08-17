@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">  
 <title>GNC:ART - 상세일정</title>
-<link rel="stylesheet" href="../css//scheduleDetail.css">
+<link rel="stylesheet" href="../css/scheduleAdd.css">
 </head>
 <body>
  

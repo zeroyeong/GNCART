@@ -1,111 +1,207 @@
-*{
-  margin:0px;
-  padding:0px;
-  box-sizing:border-box;
-}
-a{
-  text-decoration:none;
-  color:#11101d;
-}
-ul{
-  list-style:none;
+/* 변수 선언 */
+:root {
+  /* 전체 color */
+  --allfontColor: #333;
+  --allBorderColor: #333;
+  --allTheadColor: #333;
+  --borderColor: #eee;
+  --bodyColor: #b9b9b9;
+  --trHoverColor: rgba(103, 103, 105, 0.288);
+  --backColor: #fff;
+  --blackColor: #333;
+  --whiteColor: #fff;
+  --grayColor: rgb(123, 126, 131);
+  --redColor: rgb(216, 50, 50);
+  --blueColor: rgb(46, 79, 224);
+
+  /* 전체 padding + margin */
+  --allMargin: 20px;
+  --allPadding: 30px;
+  --allBottomMargin: 20px;
+  --allRightMargin: 15px;
+  --tablePadding: 7px 5px;
+  --buttonMargin: 0 5px 5px;
+
+  /* 전체 button */
+  --buttonBorderRadius: 5px;
+  --bottonColor: rgba(103, 103, 105, 0.288);
+  --buttonHoverColor: rgba(103, 103, 105, 0.767);
+  --buttonActiveColor: rgb(103, 103, 105);
+  --buttonPadding: 5px;
+
+  /* 전체 size */
+  --allfontSize: 1em;
+  --smallFontSize: 0.9em;
+  --largeFontSize: 1.25em;
+  --talbeTitleSize: 1.1em;
+
+  /* calendarTitle */
+  --titlePadding: 10px 20px;
+  --titlePaddingMonth: 10px 20px 5px;
+  --bottomPadding: 5px;
+  --bottomMargin: 10px;
+  --monthWidth: 35px;
+  --monthPadding: 5px;
+
+  /* pagination */
+  --pageLiMargin: 5px;
+  --pageLiPadding: 5px;
+  --pageAPadding: 0 3px;
+  --pageColor: rgb(123, 126, 131);
+  --pageActiveColor: #333;
+  --pageActiveBorderColor: #333;
 }
 
-.container{
-  margin:20px;
-  background-color:#fff;
-  padding:30px;
-  border:3px solid #eee;
-  border-radius:20px;
+/* 페이지 전체 공통 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--allfontColor);
+  border-color: var(--allBorderColor);
+  font-family: sans-serif;
+  font-size: var(--allfontSize);
 }
 
-/*________________________________*/
-
-.calenderTitle{
-  border:3px solid #eee;
-  padding:10px 20px;
-  margin-bottom:20px;
+a {
+  text-decoration: none;
 }
 
-.yearArea, .monthArea{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:5px 0;
+ul {
+  list-style: none;
 }
 
-.prevYear, .nextYear{
-  font-size:0.85em;
-  color:grey;
+button {
+  background-color: transparent;
+  border: none;
 }
 
-/*________________________________*/
-
-table{
-  min-width:1200px;
-  margin:0 auto;
-  margin-bottom:20px;
+input[type="button"] {
+  background-color: transparent;
+  border: none;
 }
 
-table, td{
+table,
+td,
+th {
   border-collapse: collapse;
 }
 
-thead td{
-  text-align:center;
-  font-weight:bold;
-  font-size:1.1em;
-  background-color:#11101d;
-  color:#fff;
-  padding:5px;
+/* 시작 */
+
+body {
+  background-color: var(--bodyColor);
 }
 
-.tableHead td{
-  background-color:#fff;
-  color:#11101d;
+.container {
+  margin: var(--allMargin);
+  padding: var(--allPadding);
+  background-color: var(--backColor);
+  border: 3px solid var(--borderColor);
+  border-radius: 20px;
 }
 
-tbody td{
-  padding:8px;
-  font-size:0.95em;
+/* calenderTitle */
+.calenderTitle {
+  border: 3px solid var(--borderColor);
+  padding: var(--titlePadding);
+  margin-bottom: var(--allBottomMargin);
 }
 
-td:first-child{
-  text-align:center;
-  width:40%;
+/* calenderTitle - yearArea */
+.calenderTitle .yearArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-tbody tr:last-child{
-  border-bottom:2px solid #11101d;
+.calenderTitle .yearArea button,
+.calenderTitle .yearArea button span {
+  color: var(--grayColor);
+  font-size: var(--smallFontSize);
 }
 
-/*________________________________*/
-
-#pagenation{
-	display:flex;
-	justify-content:center;
-	align-items:center;
+.calenderTitle .yearArea h3 {
+  font-size: var(--largeFontSize);
 }
 
-#pagenation button{
-	border:none;
-	background-color:transparent;
-	text-align:center;
-	padding:3px;
-	width:20px;
-	font-size:0.9em;
-	margin:5px;
-	border:1px solid #fff;
+/* content */
+.content {
+  width: 80%;
+  margin: 0 auto;
 }
 
-#pagenation button.active{
-	color:blue;
-	border-bottom:1px solid blue;
+/* content - monthSchedule */
+.content table.MonthSchedule {
+  width: 100%;
 }
 
-@media screen and (max-width: 1200px){
-	table{
-	min-width:10%;
-	width:100%;
-	}
+.content table.MonthSchedule .col1 {
+  width: 40%;
+}
+
+.content table.MonthSchedule td {
+  text-align: center;
+  padding: var(--tablePadding);
+}
+
+.content table.MonthSchedule tbody td:last-child {
+  text-align: left;
+}
+
+.content table.MonthSchedule thead td {
+  background-color: var(--allTheadColor);
+  color: var(--whiteColor);
+  font-weight: bold;
+}
+
+.content table.MonthSchedule thead tr.tableHead td {
+  background-color: var(--whiteColor);
+  color: var(--allfontColor);
+  font-size: var(--talbeTitleSize);
+}
+
+.content table.MonthSchedule tbody tr:last-child td {
+  border-bottom: 2px solid var(--allBorderColor);
+}
+
+.content table.MonthSchedule {
+  margin-bottom: var(--allBottomMargin);
+}
+
+/* content - pagination */
+.content #pagenation {
+  display: flex;
+  justify-content: center;
+}
+
+.content #pagenation li {
+  margin: var(--pageLiMargin);
+  padding: var(--pageLiPadding);
+}
+
+.content #pagenation li a {
+  text-align: center;
+  color: var(--pageColor);
+  padding: var(--pageAPadding);
+}
+
+.content #pagenation li.active a {
+  font-weight: bold;
+  color: var(--pageActiveColor);
+  border-bottom: 2px solid var(--pageActiveBorderColor);
+}
+
+@media screen and (max-width: 850px) {
+  .content {
+    width: 100%;
+  }
+
+  .calenderTitle .yearArea {
+    justify-content: space-around;
+  }
+
+  .calenderTitle .yearArea button span {
+    display: none;
+  }
 }

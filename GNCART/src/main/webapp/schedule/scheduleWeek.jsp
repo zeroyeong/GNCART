@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="include/scheduleTop.css">
   
   <!-- 현재파일 css -->
-  <link rel="stylesheet" href="../css/scheduleWeek.css?dsfsf">
+  <link rel="stylesheet" href="../css/scheduleWeek.css?pppoo">
   
 </head>
 
@@ -211,7 +211,7 @@
    				</colgroup>
    				<tr>
    					<td rowspan="<%=list.size() %>">
-   						<span class="week"><%=week %></span>
+   						<h3><%=week %></h3>
    					</td>
    					<td rowspan="<%=list.size() %>"><%=date %></td>
    					<%
@@ -241,12 +241,13 @@
    				} //첫번째 for문 종료
    			%>
    			
-      </div>
+      	</div>
       
-      <form id="readF" action="scheduleDetail.jsp" onsubmit="return false;">
-	  		<input type="hidden" name="SCHE_NO" value="">
-		  </form>
+	      <form id="readF" action="scheduleDetail.jsp" onsubmit="return false;">
+		  		<input type="hidden" name="SCHE_NO" value="">
+			  </form>
 		           
+    	</div> <!-- container 종료 -->
     </div>
   </section>
 <!-- index js -->

@@ -16,10 +16,10 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
   <!-- include css -->
-  <link rel="stylesheet" href="include/scheduleTop.css">
+  <link rel="stylesheet" href="include/scheduleTop.css?ppooo">
   
   <!-- 현재파일 css -->
-  <link rel="stylesheet" href="../css/scheduleMonth.css">
+  <link rel="stylesheet" href="../css/scheduleMonth.css?aaqqpp">
   
 </head>
 
@@ -241,7 +241,7 @@
 		document.getElementById('readF').submit();
 	}
 	function popup(){
-		openCenter('', 'popup', 550,560);
+		openCenter('', 'popup', 590,600);
 		document.getElementById('readF').target='popup';
 		document.getElementById('readF').submit();
 	}

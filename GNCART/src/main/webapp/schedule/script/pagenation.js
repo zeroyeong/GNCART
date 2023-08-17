@@ -6,16 +6,16 @@ const table = document.querySelectorAll(".MonthSchedule"); //표 리스트
 const totalPage = Math.ceil(totalTable / showTable); //전체 페이지 수 (Math.ceil로 무조건 소수점 올림)
 const pages = document.getElementById("pagenation"); //페이지 버튼이 생성될 공간
 
-// 페이지 버튼 생성     
+// 페이지 버튼 생성
 
 for (let i = 1; i <= totalPage; i++) {
   let btn = document.createElement("button");
-  btn.innerHTML = i;
+  btn.innerHTML = `<li><a href="">${i}</a></li>`;
 
   pages.appendChild(btn);
 }
 
-const page = document.querySelectorAll("#pagenation button");
+const page = document.querySelectorAll("#pagenation li");
 
 page.forEach((t, idx) => {
   t.addEventListener("click", (e) => {

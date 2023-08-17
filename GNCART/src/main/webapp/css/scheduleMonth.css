@@ -1,132 +1,70 @@
 /* 변수 선언 */
 :root {
-  /* color */
-  --main-color: #333;
-  --hover-color: grey;
-  --basic-color: #eee;
-  --background-color: lightgrey;
-  --white-color: #fff;
+  /* 전체 color */
+  --allfontColor: #333;
+  --allBorderColor: #333;
+  --allTheadColor: #333;
+  --borderColor: #eee;
+  --bodyColor: #b9b9b9;
+  --trHoverColor: rgba(103, 103, 105, 0.288);
+  --backColor: #fff;
+  --blackColor: #333;
+  --whiteColor: #fff;
+  --grayColor: rgb(123, 126, 131);
+  --redColor: rgb(216, 50, 50);
+  --blueColor: rgb(46, 79, 224);
+
+  /* 전체 padding + margin */
+  --allMargin: 20px;
+  --allPadding: 30px;
+  --allBottomMargin: 20px;
+  --allRightMargin: 15px;
+  --tablePadding: 7px 5px;
+  --buttonMargin: 0 5px 5px;
+
+  /* 전체 button */
+  --buttonBorderRadius: 5px;
+  --bottonColor: rgba(103, 103, 105, 0.288);
+  --buttonHoverColor: rgba(103, 103, 105, 0.767);
+  --buttonActiveColor: rgb(103, 103, 105);
+
+  /* 전체 size */
+  --allfontSize: 1em;
+  --smallFontSize: 0.9em;
+  --largeFontSize: 1.25em;
+  --talbeTitleSize: 1.1em;
+
+  /* calendarTitle */
+  --titlePadding: 10px 20px 5px;
+  --bottomPadding: 5px;
+  --bottomMargin: 10px;
+  --monthWidth: 35px;
+  --monthPadding: 5px;
 }
 
-/* css 기본설정 */
+/* 페이지 전체 공통 설정 */
 * {
-  padding: 0px;
-  margin: 0px;
-  color: var(--main-color);
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  color: var(--allfontColor);
+  border-color: var(--allBorderColor);
+  font-family: sans-serif;
+  font-size: var(--allfontSize);
 }
 
 a {
   text-decoration: none;
 }
 
-ul {
-  list-style: none;
+button {
+  background-color: transparent;
+  border: none;
 }
 
 input[type="button"] {
-  border: none;
   background-color: transparent;
-  font-size: 1em;
-}
-
-button {
   border: none;
-  background-color: transparent;
-  font-size: 1em;
-}
-
-/* CONTAINER */
-.container {
-  background-color: var(--white-color);
-  border: 3px solid var(--basic-color);
-  border-radius: 20px;
-  padding: 30px;
-  margin: 20px;
-}
-
-/* include btn */
-.scheduleTop .scheduleMenu .linkBtn button:first-child {
-  background-color: var(--hover-color);
-  color: var(--white-color);
-}
-
-/* YEAR & MONTH BAR */
-.container .calenderTitle {
-  border: 3px solid var(--basic-color);
-  padding: 10px 20px 5px;
-  margin-bottom: 20px;
-}
-
-.container .calenderTitle .yearArea {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-bottom: 1px solid var(--main-color);
-  padding-bottom: 5px;
-  margin-bottom: 7px;
-}
-
-.container .calenderTitle .yearArea .prevYear,
-.container .calenderTitle .yearArea .nextYear,
-.container .calenderTitle .yearArea .prevYear span,
-.container .calenderTitle .yearArea .nextYear span {
-  font-size: 0.9em;
-  color: var(--hover-color);
-}
-
-.container .calenderTitle .monthArea {
-  display: flex;
-  justify-content: space-between;
-}
-
-.container .calenderTitle .monthArea input {
-  padding: 3px 10px;
-  background: var(--background-color);
-  color: var(--white-color);
-  border-radius: 5px;
-  transition: 0.3s;
-
-  margin-right: 10px;
-  margin-bottom: 5px;
-}
-
-.container .calenderTitle .monthArea input:last-child {
-  margin-right: 0;
-}
-
-.container .calenderTitle .monthArea input:hover {
-  background-color: var(--hover-color);
-}
-
-.container .calenderTitle .monthArea input.active {
-  background-color: var(--main-color);
-}
-
-/* CALENDAR & SCHEDULE LIST TABLE */
-.container .content {
-  display: flex;
-  justify-content: space-between;
-}
-
-.container .content .calendar,
-.container .content .list {
-  border: 3px solid var(--basic-color);
-}
-
-.container .content .calendar table,
-.container .content .list table {
-  width: 100%;
-}
-
-.container .content .calendar {
-  width: 35%;
-  margin-right: 10px;
-  height: fit-content;
-}
-
-.container .content .list {
-  width: 65%;
 }
 
 table,
@@ -135,56 +73,162 @@ th {
   border-collapse: collapse;
 }
 
-thead td {
+/* 시작 */
+
+body {
+  background-color: var(--bodyColor);
+}
+
+.container {
+  margin: var(--allMargin);
+  padding: var(--allPadding);
+  background-color: var(--backColor);
+  border: 3px solid var(--borderColor);
+  border-radius: 20px;
+}
+
+/* calenderTitle */
+.calenderTitle {
+  border: 3px solid var(--borderColor);
+  padding: var(--titlePadding);
+  margin-bottom: var(--allBottomMargin);
+}
+
+/* calenderTitle - yearArea */
+.calenderTitle .yearArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid;
+  padding-bottom: var(--bottomPadding);
+  margin-bottom: var(--bottomMargin);
+}
+
+.calenderTitle .yearArea button,
+.calenderTitle .yearArea button span {
+  color: var(--grayColor);
+  font-size: var(--smallFontSize);
+}
+
+.calenderTitle .yearArea h3 {
+  font-size: var(--largeFontSize);
+}
+
+/* calenderTitle - monthArea */
+.calenderTitle .monthArea {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calenderTitle .monthArea input[type="button"] {
+  display: inline-block;
   text-align: center;
-  background-color: var(--main-color);
-  color: var(--white-color);
+  width: var(--monthWidth);
+  padding: var(--monthPadding);
+  margin: var(--buttonMargin);
+  border-radius: var(--buttonBorderRadius);
+  background-color: var(--bottonColor);
+  color: var(--whiteColor);
+  transition: 0.3s;
+}
+
+.calenderTitle .monthArea input[type="button"]:hover {
+  background-color: var(--buttonHoverColor);
   font-weight: bold;
-  font-size: 1.1em;
 }
 
-thead tr:first-child td {
-  background-color: var(--white-color);
-  color: var(--main-color);
-  padding: 10px;
+.calenderTitle .monthArea input[type="button"].active {
+  background-color: var(--buttonActiveColor);
 }
 
-thead tr:last-child td {
-  padding: 5px 0;
+/* content */
+.content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-tbody td {
-  padding: 5px 0;
-  font-size: 0.9em;
+/* content - calendar */
+.content .calendar {
+  width: 35%;
+  height: fit-content;
+  border: 3px solid var(--borderColor);
+  margin-right: var(--allRightMargin);
 }
 
-.container .content .calendar table td {
+.content .calendar table {
+  width: 100%;
+  height: fit-content;
+}
+
+.content .calendar table td {
+  text-align: center;
+  padding: var(--tablePadding);
   width: calc(100% / 7);
+}
+
+.content .calendar table thead td {
+  background-color: var(--allTheadColor);
+  color: var(--whiteColor);
+  font-weight: bold;
+}
+
+.content .calendar table thead tr.tableHead td {
+  background-color: var(--whiteColor);
+  color: var(--allfontColor);
+  font-size: var(--talbeTitleSize);
+}
+
+.content .calendar table tbody td:first-child {
+  color: var(--redColor);
+}
+
+.content .calendar table tbody td:nth-child(7) {
+  color: var(--blueColor);
+}
+
+/* content - list */
+.content .list {
+  width: 65%;
+  height: fit-content;
+  border: 3px solid var(--borderColor);
+}
+
+.content .list table {
+  width: 100%;
+}
+
+.content .list table td {
+  padding: var(--tablePadding);
+}
+
+.content .list table thead td {
+  background-color: var(--allTheadColor);
+  color: var(--whiteColor);
+  font-weight: bold;
   text-align: center;
 }
 
-.container .content .calendar table tbody tr td:first-child {
-  color: rgb(255, 0, 0);
+.content .list table thead tr.tableHead td {
+  background-color: var(--whiteColor);
+  color: var(--allfontColor);
+  font-size: var(--talbeTitleSize);
 }
 
-.container .content .calendar table tbody tr td:last-child {
-  color: blue;
-}
-
-.container .content .list table tbody tr td:first-child {
+.content .list table .date td {
   width: 40%;
+}
+
+.content .list table td:first-child {
   text-align: center;
 }
 
-.container .content .list table tbody tr td:last-child {
-  width: 60%;
-  text-align: left;
-  padding-left: 5px;
+.content .list table tbody tr:hover {
+  background-color: var(--trHoverColor);
 }
 
-@media screen and (max-width: 800px) {
-  .container .calenderTitle .yearArea .prevYear span,
-  .container .calenderTitle .yearArea .nextYear span {
+@media screen and (max-width: 880px) {
+  .container .calenderTitle .yearArea button span {
     display: none;
   }
 
@@ -198,17 +242,12 @@ tbody td {
     justify-content: center;
   }
 
+  .container .content .calendar {
+    margin-bottom: var(--allBottomMargin);
+  }
+
   .container .content .calendar,
   .container .content .list {
     width: 100%;
-  }
-
-  .container .content .calendar {
-    margin-bottom: 20px;
-  }
-
-  .container .content .calendar table thead .prevMonth,
-  .container .content .calendar table thead .nextMonth {
-    font-size: 0.9em;
   }
 }

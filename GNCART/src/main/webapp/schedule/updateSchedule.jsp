@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8"> 
 <title>GNC:ART - 일정수정</title>
-<link rel="stylesheet" href="../css/scheduleUpdate.css">
+<link rel="stylesheet" href="../css/scheduleAdd.css">
 </head>
 <body>  
 

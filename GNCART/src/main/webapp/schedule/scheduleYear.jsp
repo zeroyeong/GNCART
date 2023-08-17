@@ -16,7 +16,7 @@ import="schedule.ScheduleBean"%>
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <!-- 현재 페이지 css --> 
-<link rel="stylesheet" href="../css/scheduleYear.css?sdsfdd">
+<link rel="stylesheet" href="../css/scheduleYear.css">
 
 <!-- include css -->
 <link rel="stylesheet" href="include/scheduleTop.css">
@@ -61,9 +61,12 @@ nextYear = calYear +1;
 	<form name="dateFrm" action="scheduleYear.jsp" method="post" onsubmit="return false;">
 		<div class="calenderTitle">
 			<div class="yearArea">
-				<div class="prevYear" onclick="prevYear()"> ◁ <%=prevYear %>년</div>
+				<button class="prevYear" onclick="prevYear()"> ◁ <span><%=prevYear %>년</span>
+          </button>
 				<h3><%=calYear %>년</h3>
-				<div class="nextYear" onclick="nextYear()"><%=nextYear %>년 ▷ </div>
+				<button class="nextYear" onclick="nextYear()">
+            <span><%=nextYear %>년</span> ▷
+          </button>
 				
 				<!-- submit을 위한 hidden input -->
 				<input type="hidden" id="input1" name="calYear" value="1234">
@@ -74,6 +77,10 @@ nextYear = calYear +1;
 	<div class="content">
 	
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">1월</td>
@@ -116,6 +123,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">2월</td>
@@ -158,6 +169,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">3월</td>
@@ -200,6 +215,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">4월</td>
@@ -242,6 +261,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">5월</td>
@@ -284,6 +307,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">6월</td>
@@ -326,6 +353,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">7월</td>
@@ -368,6 +399,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">8월</td>
@@ -410,6 +445,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">9월</td>
@@ -452,6 +491,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">10월</td>
@@ -494,6 +537,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">11월</td>
@@ -536,6 +583,10 @@ nextYear = calYear +1;
 		</table>
 		
 		<table class="MonthSchedule">
+          <colgroup>
+            <col class="col1" />
+            <col class="col2" />
+          </colgroup>
 			<thead>
 				<tr class="tableHead">
 				<td colspan="2">12월</td>
@@ -578,10 +629,9 @@ nextYear = calYear +1;
 		</table>
 	
 	
-		<!-- page nation -->
-		<div id="pagenation">
+		 <!-- page nation -->
+     <ul id="pagenation"></ul>
 		</div>
-	</div> 
 	
 	<!-- 일정 조회를 위한 hidden form -->
 	<form id="readF" action="scheduleDetail.jsp" onsubmit="return false;">

@@ -10,11 +10,15 @@
 <head>
 <meta charset="UTF-8"> 
 <title>GNC:ART - 일정추가</title> 
-<link rel="stylesheet" href="../css/scheduleUpdate.css?Sdss">
+<link rel="stylesheet" href="../css/scheduleAdd.css">
 </head>
 <body>
  
-<%
+	<%
+	request.setCharacterEncoding("UTF-8");
+	
+// 	int MEM_NO = (int)session.getAttribute("MEM_NO");
+	
 	LocalDateTime date = LocalDateTime.now();
 	int year=date.getYear();
 	String month="";
@@ -179,7 +183,7 @@
         </table>
         
         <!-- submit을 위한 hidden input - MEM_NO + SCHE_DATE -->
-        <input type="hidden" value="1" name="MEM_NO"> <!-- value의 1은 관리자사용자인 김사장을 뜻한다. -->
+        <input type="hidden" value="1" name="MEM_NO">
         <input type="hidden" value="<%=SCHE_DATE %>" name="SCHE_DATE">
 	        
         <!----------------버튼---------------->
@@ -195,7 +199,6 @@
   <!---------------스크립트-------------->
   <!----------------------------------->
   
-	<script src="../script/popup.js"></script>
 	<script>
 	function check(){
 		const type = document.getElementById('sche_type').value;
@@ -239,6 +242,11 @@
 			document.newSchedule.submit();
 		}	
 	}
+
+	/*********팝업닫기*********/ 
+	function closeBox(){
+	  window.close();
+	} 
 	</script>
 </body>
 </html>

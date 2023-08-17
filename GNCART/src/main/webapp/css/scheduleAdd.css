@@ -1,127 +1,220 @@
-@charset "UTF-8";
+/* 변수 선언 */
+:root {
+  /* 전체 color */
+  --allfontColor: #333;
+  --allBorderColor: #333;
+  --allTheadColor: #333;
+  --borderColor: #eee;
+  --bodyColor: #b9b9b948;
+  --trHoverColor: rgba(103, 103, 105, 0.288);
+  --backColor: #fff;
+  --blackColor: #333;
+  --whiteColor: #fff;
+  --grayColor: rgb(123, 126, 131);
+  --redColor: rgb(216, 50, 50);
+  --blueColor: rgb(46, 79, 224);
 
-*{
-  margin:0px;
-  padding:0px;
-  box-sizing:border-box;
-}
-a{
-  text-decoration:none;
-  color:#000;
-}
-ul{
-  list-style:none;
-}
-body{
-  background: #f5f5f5;
-}
+  /* 전체 padding + margin */
+  --allMargin: 20px;
+  --allPadding: 30px;
+  --allBottomMargin: 20px;
+  --allRightMargin: 15px;
+  --tablePadding: 7px 5px;
 
-/**********************************/
-/***************전체***************/
-/**********************************/
+  /* 전체 button */
+  --buttonWidth: 70px;
+  --buttonBorderRadius: 5px;
+  --buttonColor: rgba(103, 103, 105, 0.158);
+  --buttonHoverColor: rgba(103, 103, 105, 0.767);
+  --buttonActiveColor: rgb(103, 103, 105);
+  --buttonPadding: 5px;
+  --buttonMargin: 0 5px 5px;
+  --buttonTransition: 0.3s;
 
-.container{
-  width:500px;
-  margin:20px auto;
-  padding:30px;
-  background-color:#fff;
-  border:3px solid #eee;
-  border-radius:20px;
-}
+  /* 전체 input / select / textarea */
+  --inputPadding: 5px;
+  --inputBorder: 1px solid rgb(146, 146, 146);
+  --inputBorderRadius: 3px;
+  --textAreaHeight: 100px;
 
-/**********************************/
-/**********타이틀 + X 버튼************/
-/**********************************/
+  /* 전체 size */
+  --allfontSize: 1em;
+  --smallFontSize: 0.9em;
+  --largeFontSize: 1.25em;
+  --talbeTitleSize: 1.1em;
+  --popupWSize: 550px;
 
-.topmenu{
-	display:flex;
-	justify-content:space-between;
-	padding-bottom:5px;
-  	margin-bottom:10px;
-  	border-bottom:1px solid #000;
-}
+  /* calendarTitle */
+  --titlePadding: 10px 20px;
+  --titlePaddingMonth: 10px 20px 5px;
+  --bottomPadding: 5px;
+  --bottomMargin: 10px;
+  --monthWidth: 35px;
+  --monthPadding: 5px;
 
-#closeBtn{
-  text-align:center;
-  font-size:2em;
-  color:black;
-  margin-top:-10px;
-}
-
-/**********************************/
-/***************본문***************/
-/**********************************/
-
-ul{
-  display:flex;
-  flex-direction:column;
-  margin-bottom:20px;
-}
-
-li{
-  height:30px;
-  line-height:30px;
-  margin-bottom:10px;
+  /* pagination */
+  --pageLiMargin: 5px;
+  --pageLiPadding: 5px;
+  --pageAPadding: 0 3px;
+  --pageColor: rgb(123, 126, 131);
+  --pageActiveColor: #333;
+  --pageActiveBorderColor: #333;
 }
 
-li label{
-  float:left;
-  width:100px;
+/* 페이지 전체 공통 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--allfontColor);
+  border-color: var(--allBorderColor);
+  font-family: sans-serif;
+  font-size: var(--allfontSize);
 }
 
-li select, input, textarea{
-  width:330px;
-  height:30px;
-  float:right;
-  padding:5px;
+a {
+  text-decoration: none;
 }
 
-li:nth-child(6){
-  height:100px;
+ul {
+  list-style: none;
 }
 
-li textarea{
-  height:100px;
+button {
+  background-color: transparent;
+  border: none;
 }
 
-.sche_date{
-  float:right;
-  width:330px;
-  display:flex;
-  justify-content:space-between;
+input[type="button"],
+input[type="reset"] {
+  background-color: transparent;
+  border: none;
 }
 
-.sche_date input{
-  margin-right:10px;
+table,
+td,
+th {
+  border-collapse: collapse;
 }
 
-/**********************************/
-/***************버튼***************/
-/**********************************/
-
-.button{
-  display:flex;
-  justify-content:center;
+select,
+input {
+  font-size: var(--smallFontSize);
 }
 
-.button input{
-  display:inline-block;
-  width:80px;
-  height:30px;
-  background-color:#eee;
-  color:#000;
-  border:transparent;
-  border-radius:5px;
-  transition:0.3s;
+/* 시작 */
+
+body {
+  background-color: var(--bodyColor);
 }
 
-.button input:first-child{
-  margin-right:10px;
+.container {
+  width: var(--popupWSize);
+  margin: var(--allMargin);
+  padding: var(--allPadding);
+  background-color: var(--backColor);
+  border: 3px solid var(--borderColor);
+  border-radius: 20px;
 }
 
-.button input:hover{
-  background-color:#000;
-  color:#fff;
-  font-weight:bold;
+/* top */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--allBorderColor);
+  padding-bottom: var(--bottomPadding);
+  margin-bottom: var(--bottomMargin);
 }
 
+.top .title {
+  font-size: var(--largeFontSize);
+}
+
+.top #closeBtn {
+  font-size: var(--largeFontSize);
+  font-weight: bolder;
+}
+
+/* content */
+.content {
+  width: 100%;
+}
+
+/* content - table */
+
+.content table {
+  width: 100%;
+  margin-bottom: var(--bottomMargin);
+}
+
+.content table td {
+  padding: var(--tablePadding);
+}
+
+.content table .col1 {
+  width: 20%;
+}
+
+.content table td > select,
+.content table td > input,
+.content table td > textarea {
+  width: 100%;
+}
+
+.content table td select,
+.content table td input,
+.content table td textarea {
+  padding: var(--inputPadding);
+  border: var(--inputBorder);
+  border-radius: var(--inputBorderRadius);
+}
+
+.content table td input[type="file"] {
+  border-color: transparent;
+  width: 50%;
+}
+
+.content table td .time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content table td .time select,
+.content table td .time input {
+  width: 50%;
+}
+
+.content table td .time input {
+  margin-right: var(--allRightMargin);
+}
+
+.content table td textarea {
+  height: var(--textAreaHeight);
+  font-size: small;
+}
+
+/* content - button */
+.content .button {
+  display: flex;
+  justify-content: center;
+}
+
+.content .button input {
+  width: var(--buttonWidth);
+  padding: var(--buttonPadding);
+  background-color: var(--buttonColor);
+  border-radius: var(--buttonBorderRadius);
+  transition: var(--buttonTransition);
+}
+
+.content .button input:first-child {
+  margin-right: var(--allRightMargin);
+}
+
+.content .button input:hover {
+  background-color: var(--buttonHoverColor);
+  color: var(--whiteColor);
+  font-weight: bold;
+}
