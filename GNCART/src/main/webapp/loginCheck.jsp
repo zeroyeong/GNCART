@@ -18,17 +18,9 @@
 	    session.setAttribute("idKey",id);
 	    session.setAttribute("pwKey",pw);
 		
-	    //관리자 페이지로 로그인 	
-	    if(mMgr.acNum == 2){
-	    	msg = "관리자 로그인 성공";
-	        url = "management/managementIndex/jsp/managementIndex.jsp";
-	    }
+    	msg = "로그인에 성공";
+		url = "index/index.jsp";
 	    
-	    //일반로그인
-	    else{
-	    	msg = "로그인에 성공";
-			url = "index/index.jsp";
-	    }
 	  }
 %>
 <!DOCTYPE html>

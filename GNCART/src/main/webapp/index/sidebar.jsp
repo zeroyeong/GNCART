@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>	
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<%
+    int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
+%>
   <!--sidebar-->
   <div class="sidebar">
     <div class="logo-details">
@@ -65,6 +68,19 @@
           <span class="links_name">Message</span>
         </a>
       </li>
+      <!-- 관리자로그인시 매니지먼트생성 -->
+      <%
+      if(acNo == 2){ 
+	  %>
+      <li>
+        <a href="../management/memberList.jsp">
+          <i class="bx bx-cog"></i>
+          <span class="links_name">Management</span>
+        </a>
+      </li>
+ 	  <%
+ 	  }
+      %>
       <li class="log_out">
         <a href="../logOut.jsp">
           <i class="bx bx-log-out"></i>

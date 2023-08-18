@@ -57,6 +57,8 @@ Vector<BoardBean> boardList = boardMgr.getBoardList();
 //행사사진
 EventMgr eventMgr = new EventMgr();
 Vector<EventBean> eventList = eventMgr.getBoardList("","",0,1);
+
+//관리자일경ㅇ
 %>
 
 <!DOCTYPE html>
@@ -66,7 +68,7 @@ Vector<EventBean> eventList = eventMgr.getBoardList("","",0,1);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
-<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/index.css?qwe">
 <!--boxIcons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>

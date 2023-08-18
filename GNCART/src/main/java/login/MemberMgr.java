@@ -19,7 +19,6 @@ public class MemberMgr {
 			e.printStackTrace();
 		}
 	}
-	public int acNum = 0;
 
 	// 로그인 처리
 	public boolean loginMember(String id, String pw, HttpServletRequest request) {
@@ -79,8 +78,6 @@ public class MemberMgr {
 				session.setAttribute("leNo", leNo);
 				session.setAttribute("leLevel", leLevel);
 				session.setAttribute("parttype", parttype);
-
-				acNum=acNo;
 			}
 
 			session.setMaxInactiveInterval(-1);
