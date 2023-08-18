@@ -42,6 +42,7 @@ if (request.getParameter("calYear") != null) {
 }
 
 String day = Integer.toString(calYear);
+String day0 = null;
 
 long days = 0;
 long days2 = 0;
@@ -134,524 +135,67 @@ if (memNo != null) {
 	int workStartLate1 = 0;
 	int workEndEarly1 = 0;
 
-	vlist = wMgr.workdNoTotal(day, memNo);
+	for (int i = 1; i < 13; i++) {
+		String ii = Integer.toString(i);
+		
+		if (ii.length() < 2) {
+			ii = "0" + ii;
+		}
 
-	for (int i = 0; i < vlist.size(); i++) {
+		day0 = day + "-" + ii;
 
-		MypageBean bean = vlist.get(i);
+		vlist = wMgr.workdNoTotal(day0, memNo);
 
-		String workdNo = bean.getWORKD_NO();
+		for (int j = 0; j < vlist.size(); j++) {
 
-		String start = wMgr.workdStartFind(workdNo);
-		String end = wMgr.workdEndFind(workdNo);
-		String workdVacNo = wMgr.workdNoVacNoFind(workdNo);
-		String vacReason = wMgr.vacReasonFind(workdVacNo);
+	MypageBean bean = vlist.get(j);
 
-		switch (Integer.parseInt(start.substring(5, 7))) {
+	String workdNo = bean.getWORKD_NO();
 
-	case 1 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
+	String start = wMgr.workdStartFind(workdNo);
+	String end = wMgr.workdEndFind(workdNo);
+	String workdVacNo = wMgr.workdNoVacNoFind(workdNo);
+	String vacReason = wMgr.vacReasonFind(workdVacNo);
+
+	if ("1".equals(vacReason)) {
+		monthVac1++;
+		useVac++;
+	} else if ("2".equals(vacReason)) {
+		yearVac1++;
+		useVac++;
+	} else if ("3".equals(vacReason)) {
+		vac1++;
+		useVac++;
+	} else if ("4".equals(vacReason)) {
+		vac1++;
+		useVac++;
+	} else if (start != null && end != null) {
+		if (Integer.parseInt(start.substring(11, 13)) < 9) {
+			if (Integer.parseInt(end.substring(11, 13)) < 17) {
+				workEndEarly1++;
+			}
+		} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
+			workStartLate1++;
+			if (Integer.parseInt(end.substring(11, 13)) < 17) {
+				workEndEarly1++;
 			}
 		}
-		if (vac1 != 0) {
-			rest[0] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[0] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[0] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[0] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[0] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 2 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[1] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[1] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[1] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[1] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[1] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 3 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[2] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[2] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[2] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[2] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[2] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 4 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[3] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[3] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[3] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[3] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[3] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 5 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[4] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[4] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[4] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[4] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[4] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 6 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[5] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[5] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[5] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[5] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[5] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 7 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[6] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[6] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[6] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[6] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[6] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 8 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[7] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[7] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[7] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[7] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[7] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 9 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[8] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[8] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[8] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[8] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[8] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 10 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[9] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[9] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[9] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[9] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[9] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 11 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[10] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[10] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[10] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[10] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[10] = Integer.toString(workStartLate1);
-		}
-		break;
-
-	case 12 :
-		if ("1".equals(vacReason)) {
-			monthVac1++;
-			useVac++;
-		} else if ("2".equals(vacReason)) {
-			yearVac1++;
-			useVac++;
-		} else if ("3".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if ("4".equals(vacReason)) {
-			vac1++;
-			useVac++;
-		} else if (start != null && end != null) {
-			if (Integer.parseInt(start.substring(11, 13)) < 9) {
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
-				workStartLate1++;
-				if (Integer.parseInt(end.substring(11, 13)) < 17) {
-					workEndEarly1++;
-				}
-			}
-		}
-		if (vac1 != 0) {
-			rest[11] = Integer.toString(vac1);
-		}
-		if (yearVac1 != 0) {
-			yearVac[11] = Integer.toString(yearVac1);
-		}
-		if (monthVac1 != 0) {
-			monthVac[11] = Integer.toString(monthVac1);
-		}
-		if (workEndEarly1 != 0) {
-			workEndEarly[11] = Integer.toString(workEndEarly1);
-		}
-		if (workStartLate1 != 0) {
-			workStartLate[11] = Integer.toString(workStartLate1);
-		}
-		break;
+	}
+	if (vac1 != 0) {
+		rest[i - 1] = Integer.toString(vac1);
+	}
+	if (yearVac1 != 0) {
+		yearVac[i - 1] = Integer.toString(yearVac1);
+	}
+	if (monthVac1 != 0) {
+		monthVac[i - 1] = Integer.toString(monthVac1);
+	}
+	if (workEndEarly1 != 0) {
+		workEndEarly[i - 1] = Integer.toString(workEndEarly1);
+	}
+	if (workStartLate1 != 0) {
+		workStartLate[i - 1] = Integer.toString(workStartLate1);
+	}
 		}
 	}
 
@@ -781,14 +325,14 @@ if (memNo != null) {
 %>
 
 <form name="prevYearFrm" action="readMember.jsp">
-	<input type="hidden" name="calYear" value=<%=calYear - 1%>> <input
-		type="hidden" name="MEM_NO" value=<%=memNo%>> <input
-		type="hidden" name="nowPage" value=<%=nowPage%>>
+	<input type="hidden" name="calYear" value=<%=calYear - 1%>>
+	<input type="hidden" name="MEM_NO" value=<%=memNo%>>
+	<input type="hidden" name="nowPage" value=<%=nowPage%>>
 </form>
 <form name="nextYearFrm" action="readMember.jsp">
-	<input type="hidden" name="calYear" value=<%=calYear + 1%>> <input
-		type="hidden" name="MEM_NO" value=<%=memNo%>> <input
-		type="hidden" name="nowPage" value=<%=nowPage%>>
+	<input type="hidden" name="calYear" value=<%=calYear + 1%>>
+	<input type="hidden" name="MEM_NO" value=<%=memNo%>>
+	<input type="hidden" name="nowPage" value=<%=nowPage%>>
 </form>
 
 <script>
@@ -801,7 +345,7 @@ if (memNo != null) {
 	}
 
 	function workDetail() {
-		window.open("../mypage/workday/workdayDetailCheck.jsp?MEM_NO="+<%=memNo%>, "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
+		window.open("../mypage/workday/workdayDetailCheck.jsp?MEM_NO=" + <%=memNo%>, "window_name", "width=540, height=570, location=no, status=no, scrollbars=yes");
 	}
 </script>
 </html>

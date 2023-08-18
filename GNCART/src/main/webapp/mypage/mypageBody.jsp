@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, common.*, mypage.*"%>
+<%@ page import="java.util.*, common.*, mypage.*, java.io.File"%>
 <jsp:useBean id="pMgr" class="mypage.MypageMgr" />
 <%
 request.setCharacterEncoding("UTF-8");
@@ -10,9 +10,7 @@ String pw = (String) session.getAttribute("pwKey");
 %> 
 <%
 String name = null;
-String partNo = null;
 String partType = null;
-String leNo = null;
 String level = null;
 String memNo = null;
 String date = null;
@@ -26,15 +24,24 @@ if (id != null & pw != null) {
 	date = pMgr.dateFind(id, pw);
 	img = pMgr.imgFind(id, pw);
 }
+
+String check = null;
+if (img != null) {
+File file = new File("C:/GNCART/GNCART/GNCART/src/main/webapp/management/filestorage/"+img);
+
+if(file.exists() ){ //파일 유무 확인
+	check = "check";
+}
+}
 %>
 <!-- 아이디 이름 소속 직위 -->
-<form action="../UpdateImgServlet" method="post" enctype="multipart/form-data">
-	<input type="file" class="nonebox" id="file" name="file" accept="image/*" onchange="changePic(event)">
+<form action="../UpdateImgServlet?img=<%=img %>" method="post" enctype="multipart/form-data">
+	<input type="file" class="nonebox" id="file" name="file" accept="image/*" onchange="change()">
 	<input type="submit" class="nonebox" id="submit">
 </form>
 
 <div id="boximg" class="imgbutton">
-	<% if (img != null) {%>
+	<% if (img != null && check == "check") {%>
 	<input type="image" src="../management/filestorage/<%=img %>" id="img" class="imgbutton" onclick="img()">
 	<%} else {%>
 	<input type="image" src="../images/profile.jpg" id="img" class="imgbutton" onclick="img()">
@@ -46,18 +53,9 @@ if (id != null & pw != null) {
 		document.getElementById('file').click();
 	}
 	
-	function changePic(event) {
-		var reader = new FileReader();
-
-		reader.onload = function (event) {
-			let img = document.getElementById("img");
-			img.setAttribute("src", event.target.result);
-		};
-
-	      reader.readAsDataURL(event.target.files[0]);
-	      
-	      document.getElementById('submit').click();
-	    }
+	function change() {
+		document.getElementById('submit').click();
+	}
 </script>
 
 <div class="inlineblock">

@@ -524,7 +524,7 @@ public class MypageMgr {
 	}
 	
 	//SAVEFOLDER, ENCTYPE, MAXSIZE 지정
-	private static final String  SAVEFOLDER = "C:\\Users\\Administrator\\git\\GNCART\\GNCART\\GNCART\\src\\main\\webapp\\management\\filestorage";
+	private static final String  SAVEFOLDER = "C:/GNCART/GNCART/GNCART/src/main/webapp/management/filestorage";
 	private static final String ENCTYPE = "UTF-8";
 	private static int MAXSIZE = 10*1024*1024;
 	
@@ -539,7 +539,7 @@ public class MypageMgr {
 		
 		MultipartRequest multi = null; //이미지 업로드 위한 객체
 		
-		String img = null; //이미지 이름	
+		String img = null; //이미지 이름
 		
 		try {
 			con = pool.getConnection();

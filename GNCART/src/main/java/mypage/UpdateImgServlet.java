@@ -1,5 +1,6 @@
 package mypage;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,18 @@ public class UpdateImgServlet extends HttpServlet {
 		
 		pMgr.updateImg(request);
 		
-		response.sendRedirect("mypage/mypageMain.jsp");
+		String img = request.getParameter("img");
+		
+		File file = new File("C:\\Users\\Administrator\\git\\GNCART\\GNCART\\GNCART\\src\\main\\webapp\\management\\filestorage\\"+img);
+	    
+		if(file.exists() ){ //파일 유무 확인
+			if(file.delete()){ //파일 삭제
+				response.sendRedirect("mypage/mypageMain.jsp");
+			}else{ //삭제 실패
+				response.sendRedirect("mypage/mypageMain.jsp");
+			}
+		}else{ //파일 없으면
+			response.sendRedirect("mypage/mypageMain.jsp");
+		}
 	}
-
 }
