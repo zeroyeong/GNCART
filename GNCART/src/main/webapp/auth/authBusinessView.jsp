@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
+<%@ page import="auth.AuthMgr"%>
+<%@ page import="java.util.*"%>
 <%@ page import="auth.AuthBean"%>
 <jsp:useBean id="aMgr" class="auth.AuthMgr" />
 <%
@@ -27,6 +29,8 @@
 	String Name = (String)session.getAttribute("memName");
 	String ID = (String)session.getAttribute("memId");
 	
+	String leLevel = (String)session.getAttribute("leLevel");
+	
 	boolean firstApproved = aMgr.firstApproved(LINE_NO);
 	boolean secondApproved = aMgr.secondApproved(LINE_NO);
 %>
@@ -39,7 +43,8 @@
     <title>업무 보고서</title>
     <link rel="stylesheet" href="../css/authBusiness.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"
-        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" 
+        crossorigin="anonymous"></script>
 
 </head>
 
@@ -48,28 +53,37 @@
 
     <form action="../authServlet" method="post">
     <div class="lineContainer">
+        <% if (!"부장".equals(leLevel)) { %>
           <table>
             <tr>
+               <% if (!"팀장".equals(leLevel)) { %>
                <th><span>팀장</span> 
- 			    <input id="LINE_FIRST" type="hidden" name="LINE_FIRST"><%=LINE_FIRST%>
-                </th>
-
+ 			   <input id="LINE_FIRST" type="hidden" name="LINE_FIRST"><%=LINE_FIRST%>
+               </th>
+	   		   <% } %>
+	   		   
                <th><span>부장</span>
   			 	<input id="LINE_SECOND" type="hidden" name="LINE_SECOND"><%=LINE_SECOND%>
                </th>
-         	   	<tr>
- 	   			<% if (firstApproved) { %>
-                	<th><img src="../images/stamp1.png"></th>
-                 <% } else { %>
-                 <th></th>
-                 <% } %>
-				<% if (secondApproved) { %>
-                	<th><img src="../images/stamp2.png"></th>
-                 <% } else { %>
-                 <th></th>
-                 <% } %>
-                </tr>
+            </tr>
+            
+       	   	<tr>
+       	   	<% if (!"팀장".equals(leLevel)) { %>
+ 	   	       <% if (firstApproved) { %>
+                <th><img src="../images/stamp1.png"></th>
+               <% } else { %>
+               <th></th>
+               <% } %>
+               <% } %>
+               
+			   <% if (secondApproved) { %>
+                <th><img src="../images/stamp2.png"></th>
+               <% } else { %>
+               <th></th>
+               <% } %>
+            </tr>
             </table>
+       <% } %>
         </div>
         <table>
             <tr>
@@ -107,15 +121,13 @@
 
 		<div style="text-align: center">
 		<%if (MEM_ID.equals(ID)) { %>
- 		<button class="submitBtn" type="submit" name="action" value="busdelete">삭제</button>
+ 			<button class="submitBtn" type="submit" name="action" value="vacdelete">삭제</button>
  		<%} %>
- 		<%if (Name.equals(LINE_FIRST) && DOC_APPTURN == 0) { %>
- 		<button class="submitBtn" type="submit" name="action" value="first">승인</button>
- 		<button class="submitBtn" type="submit" name="action" value="reject">반려</button>
- 		<%} else if(Name.equals(LINE_SECOND) && DOC_APPTURN == 1) {%>
- 		<button class="submitBtn" type="submit" name="action" value="second">승인</button>
- 		<button class="submitBtn" type="submit" name="action" value="reject">반려</button>
- 		<%} %>
+		
+ 		<%if ((Name.equals(LINE_FIRST) && DOC_APPTURN == 0) || (Name.equals(LINE_SECOND) && DOC_APPTURN == 1) || "부장".equals(leLevel)) { %>
+ 			<button class="submitBtn" type="submit" name="action" value="first">승인</button>
+ 			<button class="submitBtn" type="submit" name="action" value="reject">반려</button>
+ 		<% } %>
  		</div>
     </form>
 

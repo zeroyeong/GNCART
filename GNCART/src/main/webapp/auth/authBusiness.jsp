@@ -42,7 +42,7 @@
 					<th><span>팀장</span>
 					<% if (teamLeader != null) { %> 
 					<input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"> <%=teamLeader %>
-					 <% } else { %> 
+					<% } else { %> 
 					<input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="">
 					<% } %>
 					</th>

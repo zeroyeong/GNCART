@@ -220,7 +220,10 @@ function slideChatPop() {
 function sendAlert(content) {
     if (toLineFirst != null && toLineSecond != null) {
         webSocket.send("alert" + "/" + toLineFirst.value + "/" + toLineSecond.value + "/" + content);
-    }
+    }else{
+		webSocket.send("alert" + "/" + "temp" + "/" + toLineSecond.value + "/" + content);
+	}
+	console.log("들어옴");
 }
 
 //받을때

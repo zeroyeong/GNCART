@@ -116,7 +116,7 @@ if (request.getParameter("alertNo") != null && Integer.parseInt(request.getParam
                       </tr>
                       <%} %>
                   <%} else if (leNo == 4) {
-                  	if (DOC_STATES == 1) {
+                  	if (DOC_STATES == 1 || DOC_STATES == 0) {
                   %>
 					  <tr>
                           <td><%=DOC_NO %></td>
@@ -147,9 +147,9 @@ if (request.getParameter("alertNo") != null && Integer.parseInt(request.getParam
                   </tbody>
               </table>
               <div id="btns">
-              	<button><a href="authHold.jsp">대기</a></button>
-              	<button><a href="authApproval.jsp">승인</a></button>
-              	<button><a href="authReturn.jsp">반려</a></button>
+              	<a href="authHold.jsp"><button>대기</button></a>
+              	<a href="authApproval.jsp"><button>승인</button></a>
+              	<a href="authReturn.jsp"><button>반려</button></a>
               </div>
           </div>
       </div>

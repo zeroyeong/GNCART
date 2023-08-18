@@ -37,7 +37,7 @@ public class WebSocket{
 		if(type.equals("alert")) {
 			String toLineFirst = parts[1];
 			String toLineSecond = parts[2];
-	
+
 			//소켓에 들어와있는 유저찾는 
 			Session toSession1 = userSessions.get(toLineFirst);
 			Session toSession2 = userSessions.get(toLineSecond);
@@ -45,45 +45,71 @@ public class WebSocket{
 			AlertMgr alertMgr = new AlertMgr();
 			AlertBean abean = new AlertBean();
 			int alertNum = 0;
-			if (toSession1 == null || !toSession1.isOpen()) {
-				//db 저장		
-				abean.setALERT_FROM(fromName);
-				abean.setALERT_TO(toLineFirst);
-				abean.setALERT_MESSAGE(content);
-				abean.setALERT_STATE("안읽음");
-				
-				alertMgr.insertAlert(abean);
-				alertNum = alertMgr.getAlertNum();
 
+			if(toLineFirst.equals("temp")) {
+				System.out.println("temp로 둘어옴");
+				if (toSession2 == null || !toSession2.isOpen()) {
+					//db 저장		
+					abean.setALERT_FROM(fromName);
+					abean.setALERT_TO(toLineSecond);
+					abean.setALERT_MESSAGE(content);
+					abean.setALERT_STATE("안읽음");
+
+					alertMgr.insertAlert(abean);
+					alertNum = alertMgr.getAlertNum();
+
+				}else {
+					abean.setALERT_FROM(fromName);
+					abean.setALERT_TO(toLineSecond);
+					abean.setALERT_MESSAGE(content);
+					abean.setALERT_STATE("안읽음");
+
+					alertMgr.insertAlert(abean);
+					alertNum = alertMgr.getAlertNum();
+					System.out.println("asdfsdf");
+					toSession2.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineSecond + "/" + content + "/" + alertNum); 
+				}
 			}else {
-				abean.setALERT_FROM(fromName);
-				abean.setALERT_TO(toLineFirst);
-				abean.setALERT_MESSAGE(content);
-				abean.setALERT_STATE("안읽음");
-				
-				alertMgr.insertAlert(abean);
-				alertNum = alertMgr.getAlertNum();
-				toSession1.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineFirst + "/" + content + "/" + alertNum); 
-			}
-			if (toSession2 == null || !toSession2.isOpen()) {
-				//db 저장
-				abean.setALERT_FROM(toLineFirst);
-				abean.setALERT_TO(toLineSecond);
-				abean.setALERT_MESSAGE(content);
-				abean.setALERT_STATE("안읽음");
-				
-				alertMgr.insertAlert(abean);
-				alertNum = alertMgr.getAlertNum();
-			}else {
-				//db저장
-				abean.setALERT_FROM(toLineFirst);
-				abean.setALERT_TO(toLineSecond);
-				abean.setALERT_MESSAGE(content);
-				abean.setALERT_STATE("안읽음");
-				
-				alertMgr.insertAlert(abean);
-				alertNum = alertMgr.getAlertNum();
-				toSession2.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineFirst + "/" + content + "/" + alertNum); 
+				if (toSession1 == null || !toSession1.isOpen()) {
+					//db 저장		
+					abean.setALERT_FROM(fromName);
+					abean.setALERT_TO(toLineFirst);
+					abean.setALERT_MESSAGE(content);
+					abean.setALERT_STATE("안읽음");
+
+					alertMgr.insertAlert(abean);
+					alertNum = alertMgr.getAlertNum();
+
+				}else {
+					abean.setALERT_FROM(fromName);
+					abean.setALERT_TO(toLineFirst);
+					abean.setALERT_MESSAGE(content);
+					abean.setALERT_STATE("안읽음");
+
+					alertMgr.insertAlert(abean);
+					alertNum = alertMgr.getAlertNum();
+					toSession1.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineFirst + "/" + content + "/" + alertNum); 
+				}
+				if (toSession2 == null || !toSession2.isOpen()) {
+					//db 저장
+					abean.setALERT_FROM(toLineFirst);
+					abean.setALERT_TO(toLineSecond);
+					abean.setALERT_MESSAGE(content);
+					abean.setALERT_STATE("안읽음");
+
+					alertMgr.insertAlert(abean);
+					alertNum = alertMgr.getAlertNum();
+				}else {
+					//db저장
+					abean.setALERT_FROM(toLineFirst);
+					abean.setALERT_TO(toLineSecond);
+					abean.setALERT_MESSAGE(content);
+					abean.setALERT_STATE("안읽음");
+
+					alertMgr.insertAlert(abean);
+					alertNum = alertMgr.getAlertNum();
+					toSession2.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineFirst + "/" + content + "/" + alertNum); 
+				}
 			}
 		}
 
