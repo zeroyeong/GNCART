@@ -50,7 +50,7 @@ function onOpen(event) {//hidden값으로 채팅인지 알림인지 구분하기
 //받을때
 function onMessage(event) {
     var message = event.data;
-    var messageParts = message.split("/", 4);
+    var messageParts = message.split("/", 5);
     var type = messageParts[0];
     var content = messageParts[3];
 
@@ -63,8 +63,9 @@ function onMessage(event) {
     else if (type == "alert") {
         var firstName = messageParts[1];
         var secondName = messageParts[2];
+        var alertNum = messageParts[4];
 
-        handleAlert(firstName, secondName, content);
+        handleAlert(firstName, secondName, content, alertNum);
     }
 }
 
@@ -223,9 +224,9 @@ function sendAlert(content) {
 }
 
 //받을때
-function handleAlert(firstName, secondName, content) {
+function handleAlert(firstName, secondName, content, alertNum) {
     var message = firstName + content;
-    addAlert(message);
+    addAlert(message, alertNum);
     updateAlertBadge();
 }
 
@@ -236,12 +237,14 @@ function alertSend() {
 }
 
 // 새로운 알림 메시지를 생성하여 목록에 추가하는 함수
-function addAlert(message) {
-    var newAlert = document.createElement('li');
-    newAlert.textContent = message;
-
-    var dropdown = document.querySelector('.alertBell-dropdown ul');
-    dropdown.insertBefore(newAlert, dropdown.firstChild); // 새로운 알림을 위로 추가
+function addAlert(message, alertNum) {
+    var dropdown = document.querySelector("#alertList");
+    var url = document.createElement("a");
+    url.href = "../auth/authHold.jsp?alertNo=" + alertNum;
+    var li = document.createElement("li");
+    li.textContent = message;
+    url.appendChild(li);
+    dropdown.insertBefore(url, dropdown.firstChild);
 }
 
 // 알림 아이콘 뱃지 업데이트 함수

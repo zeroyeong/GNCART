@@ -32,7 +32,7 @@
         </a>
       </li>
       <li>
-        <a href="../event/eventList.jsp">
+        <a href="../event/event.jsp">
           <i class='bx bxs-balloon icon'></i>
           <span class="links_name">행사사진</span>
         </a>

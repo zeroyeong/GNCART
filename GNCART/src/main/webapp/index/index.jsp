@@ -5,10 +5,12 @@
 <jsp:useBean id="conMgr" class="familyEvent.ConMgr" />
 <jsp:useBean id="iMgr" class="index.indexMgr" />
 <jsp:useBean id="bMgr" class="freeBoard.BoardMgr" />
+<jsp:useBean id="eMgr" class="event.EventMgr" />
 <%@ page import="notice.NoticeMgr, notice.NoticeBean"%>
 <%@ page import="familyEvent.ConMgr, familyEvent.ConBean"%>
 <%@ page import="freeBoard.BoardMgr, freeBoard.BoardBean"%>
 <%@ page import="index.indexMgr, schedule.ScheduleBean"%>
+<%@ page import="event.EventMgr, event.EventBean"%>
 <%@ page import="java.util.*"%>
 <%
 //로그인 안했을 시 로그인 페이지로 리다이렉트 
@@ -51,6 +53,10 @@ Vector<NoticeBean> notList = noticeMgr.getBoardList();
 //자유게시판
 BoardMgr boardMgr = new BoardMgr();
 Vector<BoardBean> boardList = boardMgr.getBoardList();
+
+//행사사진
+EventMgr eventMgr = new EventMgr();
+Vector<EventBean> eventList = eventMgr.getBoardList("","",0,1);
 %>
 
 <!DOCTYPE html>
@@ -88,8 +94,7 @@ Vector<BoardBean> boardList = boardMgr.getBoardList();
 								NoticeBean not = notList.get(i);
 						%>
 						<div class="indexList">
-							<a href="../notice/notice.jsp"> <%=not.getNOT_TITLE()%>
-							</a>
+							<a href="../notice/notice.jsp"><%=not.getNOT_TITLE()%></a>
 						</div>
 						<%
 						}
@@ -115,8 +120,7 @@ Vector<BoardBean> boardList = boardMgr.getBoardList();
 									BoardBean free = boardList.get(i);
 							%>
 							<div class="indexList">
-								<a href="../freeBoard/free.jsp"> <%=free.getFREE_TITLE()%>
-								</a>
+								<a href="../freeBoard/free.jsp"><%=free.getFREE_TITLE()%></a>
 							</div>
 							<%
 							}
@@ -142,8 +146,7 @@ Vector<BoardBean> boardList = boardMgr.getBoardList();
 								ConBean con = conList.get(i);
 						%>
 						<div class="indexList">
-							<a href="../familyEvent/condolences.jsp"> <%=con.getCon_title()%>
-							</a>
+							<a href="../familyEvent/condolences.jsp"><%=con.getCon_title()%></a>
 						</div>
 						<%
 						}
@@ -183,7 +186,7 @@ Vector<BoardBean> boardList = boardMgr.getBoardList();
 			<div class="board-boxes">
 				<div class="schedule-box">
 					<div class="box-topic">
-						<a href="../schedule/jsp/scheduleMonth.jsp">회사일정</a>
+						<a href="../schedule/scheduleMonth.jsp">회사일정</a>
 					</div>
 					<div class="schedule-details">
 						<%
@@ -204,8 +207,7 @@ Vector<BoardBean> boardList = boardMgr.getBoardList();
 								for (int i = 0; i < numToDisplay; i++) {
 									ScheduleBean schedule = scheduleList.get(i);
 								%>
-								<tr
-									onclick="window.location='../schedule/jsp/scheduleMonth.jsp';">
+								<tr onclick="window.location='../schedule/jsp/scheduleMonth.jsp';">
 									<td><%=schedule.getSCHE_NO()%></td>
 									<td><%=schedule.getSCHE_NAME()%></td>
 									<td><%=schedule.getSCHE_START_DATE()%></td>
@@ -228,11 +230,27 @@ Vector<BoardBean> boardList = boardMgr.getBoardList();
 
 				<div class="picture-box">
 					<div class="box-topic">
-						<a href="#">행사사진</a>
+						<a href="../event/event.jsp">행사사진</a>
 					</div>
-					<ul class="picture-details">
-						<p>알림이 없습니다.</p>
-					</ul>
+					<%
+					int numEveToDisplay = Math.min(eventList.size(), 8);
+					if (numEveToDisplay > 0) {
+						for (int i = 0; i < numEveToDisplay; i++) {
+							EventBean event = eventList.get(i);
+							String EVENT_FILENAME = event.getEVENT_FILENAME();
+							String[] filenames = EVENT_FILENAME.split(",");
+					%>
+					<a href="../event/event.jsp"> 
+					<img class="eventImg" src='../filestorage/<%=filenames[0]%>'/>
+					</a>
+					<%
+					}
+					} else {
+					%>
+					<div>알림이 없습니다.</div>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>

@@ -36,6 +36,33 @@
     position: absolute;
 }
 
+.chatNameBox{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/*chat알림아이콘*/
+.chatRedIcon {
+	position: absolute;
+	top: 18px;
+	right: 220px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background-color: red;
+	display: block;
+}
+
+.chatListRedIcon{
+	margin-left: 5px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background-color: red;
+	display: block;
+}
+
 /* 상대방 */
 .chat-room p.from-them {
     align-items: flex-start;

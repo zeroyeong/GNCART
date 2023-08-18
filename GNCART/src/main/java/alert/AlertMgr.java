@@ -105,6 +105,34 @@ public class AlertMgr {
 			pool.freeConnection(con, pstmt);
 		}
 	}
+	
+	public int getAlertNum() {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+
+		try {
+			con = pool.getConnection();
+
+			sql = "SELECT ALERT_NO FROM ALERT ORDER BY ALERT_NO DESC";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+		
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+	
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		
+		return 0;
+	}
 
 	public void PKkeySort() {
 

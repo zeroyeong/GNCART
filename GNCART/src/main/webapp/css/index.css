@@ -252,6 +252,11 @@
 	color: #11101d;
 }
 
+.alertBell-dropdown active ul li a {
+	text-decoration: none;
+	color: #11101d;
+}
+
 .alertBell-dropdown ul li:hover {
 	background-color: #ccc;
 }
@@ -409,6 +414,23 @@ nav .profile-details .admin_name {
 	background: #4070f4;
 }
 
+/* picture-box*/
+.home-content .board-boxes .picture-box {
+	width: 40%;
+	background: #fff;
+	padding: 20px 30px;
+	margin: 0 25px 25px 0;
+	border-radius: 12px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-content .board-boxes .picture-box .eventImg {
+	width: 100%;
+	max-width: 550px;
+	height: auto;
+	border-radius: 15px;
+}
+
 /*달력*/
 td {
 	width: 30px;
@@ -470,51 +492,6 @@ td {
 	background: #eee;
 }
 
-/* Right box */
-.home-content .board-boxes .picture-box {
-	width: 40%;
-	background: #fff;
-	padding: 20px 30px;
-	margin: 0 25px 25px 0;
-	border-radius: 12px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.home-content .board-boxes .picture-box .title a {
-	font-size: 20px;
-	font-weight: 700;
-	text-decoration: none;
-	color: #11101d;
-}
-
-.board-boxes .picture-box li {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin: 10px 0;
-}
-
-.board-boxes .picture-box li a img {
-	height: 40px;
-	width: 40px;
-	object-fit: cover;
-	border-radius: 12px;
-	margin-right: 10px;
-	background: #333;
-}
-
-.board-boxes .picture-box li a {
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-}
-
-.board-boxes .picture-box li .product {
-	font-size: 17px;
-	font-weight: 400;
-	color: #333;
-}
-
 /* Responsive Media Query */
 @media ( max-width : 1660px) {
 	.overview-boxes .box {
@@ -554,6 +531,9 @@ td {
 	.sidebar.active ~.home-section nav {
 		width: calc(100% - 220px);
 		left: 220px;
+	}
+	.home-content .board-boxes .picture-box .eventImg {
+		max-width: 100%;
 	}
 }
 

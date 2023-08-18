@@ -17,11 +17,12 @@ String massege = "";
 String myName = (String) session.getAttribute("memName");
 %>
 
-<link rel="stylesheet" href="../css/chat.css">
+<link rel="stylesheet" href="../css/chat.css?ddsasdadaq">
 
 <nav>
 	<div class="alert-icon">
 		<i class='bx bx-message-dots bx-flip-horizontal chatIcon' onclick="toggleChat()"></i>
+		<div class="chatRedIcon"></div>
 		<jsp:include page="../chat/chat.jsp" flush="false" />
 		<i class='bx bx-bell' onclick="alertToggle()"></i>
 		<div class="redIcon"></div>
@@ -29,12 +30,11 @@ String myName = (String) session.getAttribute("memName");
 			<ul id="alertList">
 				<%
 				alist = alertMgr.checkAlert(myName);
-				for (int i = 0; i < alist.size(); i++) {
-					AlertBean abean = new AlertBean();
-					abean = alist.get(i);
-					alertNo = abean.getALERT_NO();
-					fromName = abean.getALERT_FROM();
-					massege = abean.getALERT_MESSAGE();
+				for (int i = alist.size() - 1; i >= 0; i--) {
+		            AlertBean abean = alist.get(i);
+		            alertNo = abean.getALERT_NO();
+		            fromName = abean.getALERT_FROM();
+		            massege = abean.getALERT_MESSAGE();
 				%>
 				<li><a href="../auth/authHold.jsp?alertNo=<%=alertNo%>"><%=fromName%><%=massege%></a></li>
 				<%
@@ -50,7 +50,7 @@ String myName = (String) session.getAttribute("memName");
 	</div>
 </nav>
 
-<script src="../script/webSocket.js?qq"></script>    
+<script src="../script/webSocket.js"></script>    
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>     
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 

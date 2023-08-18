@@ -80,7 +80,10 @@ if (request.getParameter("openPop") != null) {
 				if(!userName.equals(fromName)){
 			%>
 			<hr>
+			<div class="chatNameBox">
 			<p ondblclick="dblclick('<%=userPartType%>','<%=userName%>')"><%=userPartType%> / <%=userName%></p>
+			<div class="chatListRedIcon"></div>
+			</div>
 			<hr>
 			<%
 				}//if
@@ -98,7 +101,10 @@ if (request.getParameter("openPop") != null) {
 				if(!userName.equals(fromName)){
 			%>
 			<hr>
+			<div class="chatNameBox">
 			<p ondblclick="dblclick('<%=userPartType%>','<%=userName%>')"><%=userPartType%> / <%=userName%></p>
+			<div class="chatListRedIcon"></div>
+			</div>
 			<hr>
 			<%
 				}//if
@@ -159,6 +165,3 @@ if (request.getParameter("openPop") != null) {
 		</div>
 	</div>
 </div>
-
-
-

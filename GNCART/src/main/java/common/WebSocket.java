@@ -44,7 +44,7 @@ public class WebSocket{
 
 			AlertMgr alertMgr = new AlertMgr();
 			AlertBean abean = new AlertBean();
-			
+			int alertNum = 0;
 			if (toSession1 == null || !toSession1.isOpen()) {
 				//db 저장		
 				abean.setALERT_FROM(fromName);
@@ -53,6 +53,7 @@ public class WebSocket{
 				abean.setALERT_STATE("안읽음");
 				
 				alertMgr.insertAlert(abean);
+				alertNum = alertMgr.getAlertNum();
 
 			}else {
 				abean.setALERT_FROM(fromName);
@@ -61,8 +62,8 @@ public class WebSocket{
 				abean.setALERT_STATE("안읽음");
 				
 				alertMgr.insertAlert(abean);
-
-				toSession1.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineFirst + "/" + content); 
+				alertNum = alertMgr.getAlertNum();
+				toSession1.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineFirst + "/" + content + "/" + alertNum); 
 			}
 			if (toSession2 == null || !toSession2.isOpen()) {
 				//db 저장
@@ -72,7 +73,7 @@ public class WebSocket{
 				abean.setALERT_STATE("안읽음");
 				
 				alertMgr.insertAlert(abean);
-	
+				alertNum = alertMgr.getAlertNum();
 			}else {
 				//db저장
 				abean.setALERT_FROM(toLineFirst);
@@ -81,8 +82,8 @@ public class WebSocket{
 				abean.setALERT_STATE("안읽음");
 				
 				alertMgr.insertAlert(abean);
-
-				toSession2.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineFirst + "/" + content); 
+				alertNum = alertMgr.getAlertNum();
+				toSession2.getBasicRemote().sendText(type + "/" + fromName +"/"+ toLineFirst + "/" + content + "/" + alertNum); 
 			}
 		}
 
