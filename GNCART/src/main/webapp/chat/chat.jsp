@@ -16,8 +16,11 @@ String toName = "";
 String fromPartType = "";
 String fromName = "";
 String chatState = "";
-String openPop ="";
 String keyWord = "";
+String chatting = "";
+String listPopState ="open";
+
+boolean read = false;
 if (request.getParameter("keyWord") != null) {
 	keyWord = request.getParameter("keyWord");
 }
@@ -41,77 +44,29 @@ if (session.getAttribute("memName") != null) {
 if (request.getParameter("chatState") != null) {
 	chatState = request.getParameter("chatState");
 }
-if (request.getParameter("openPop") != null) {
-	openPop = request.getParameter("openPop");
+
+if (request.getParameter("listPopState") != null) {
+	listPopState = request.getParameter("listPopState");
 }
+
+if (request.getParameter("chatting") != null) {
+	chatting = request.getParameter("chatting");
+}
+
+//채팅방에서 서로 주고받은 메시지는 읽음 처리
+if(!chatting.equals("")){
+	String[] parts = chatting.split("/", 2);
+	String toUserPartType = parts[0];
+	String toUserName = parts[1];
+	
+	chatMgr.setRead(toUserPartType, toUserName, fromPartType, fromName);
+}
+
+boolean chatRead = false;
+chatRead = chatMgr.getRead(fromPartType, fromName);
 %>
 
-
-<form name="chatFrm" method="post" target="_self">
-
-	<!-- 히든 -->
-	<input type="hidden" id="toPartType" name="toPartType" value="<%=toPartType%>"> 
-	<input type="hidden" id="toName" name="toName" value="<%=toName%>"> 
-	<input type="hidden" id="fromPartType" name="fromPartType" value="<%=fromPartType%>">
-	<input type="hidden" id="fromName" name="fromName" value="<%=fromName%>"> 
-	<input type="hidden" id="keyWord" name="keyWord" value="<%=keyWord%>"> 
-	<input type="hidden" id="chatState" name="chatState" value="<%=chatState%>">
-	<input type="hidden" id="openPop" name="openPop" value="<%=openPop%>">
-</form>
-
-
 <div class="slider" id="chatSlider">
-	<div class="listChatPop">
-		<div class="listChatTop">
-			<p>사원 목록</p>
-		</div>
-		<div class="searchBox">
-			<input id="searchbar" onkeydown="return searchEnter()" />
-			<button class="searchBtn" onclick="userSearch()">찾 기</button>
-		</div>
-		<div class="chat-list" id="allList">
-			<%
-			userList = chatMgr.userInfo();
-
-			for (int i = 0; i < userList.size(); i++) {
-				ManagementBean mbean = userList.get(i);
-				String userPartType = mbean.getPART_TYPE();
-				String userName = mbean.getMEM_NAME();
-				if(!userName.equals(fromName)){
-			%>
-			<hr>
-			<div class="chatNameBox">
-			<p ondblclick="dblclick('<%=userPartType%>','<%=userName%>')"><%=userPartType%> / <%=userName%></p>
-			<div class="chatListRedIcon"></div>
-			</div>
-			<hr>
-			<%
-				}//if
-			}//for
-			%>
-		</div>
-		<div class="chat-list" id="searchList" style="display: none;">
-			<%
-			userList = chatMgr.userFind(keyWord);
-
-			for (int i = 0; i < userList.size(); i++) {
-				ManagementBean mbean = userList.get(i);
-				String userPartType = mbean.getPART_TYPE();
-				String userName = mbean.getMEM_NAME();
-				if(!userName.equals(fromName)){
-			%>
-			<hr>
-			<div class="chatNameBox">
-			<p ondblclick="dblclick('<%=userPartType%>','<%=userName%>')"><%=userPartType%> / <%=userName%></p>
-			<div class="chatListRedIcon"></div>
-			</div>
-			<hr>
-			<%
-				}//if
-			}//for
-			%>
-		</div>
-	</div>
 
 	<div class="chatPop">
 		<div class="chatTop">
@@ -132,6 +87,8 @@ if (request.getParameter("openPop") != null) {
 			<%
 			if (toName != "" && toPartType != "") {
 				chatList = chatMgr.callChat(toPartType, toName, fromPartType, fromName);
+				chatMgr.setRead(toPartType, toName, fromPartType, fromName);
+				chatRead = chatMgr.getRead(fromPartType, fromName);
 				for (int i = 0; i < chatList.size(); i++) {
 					ChatBean cbean = chatList.get(i);
 					String chatToName = cbean.getChat_toName();
@@ -145,9 +102,7 @@ if (request.getParameter("openPop") != null) {
 			<%
 					} else {
 			%>
-			<p class="from-them"><%=chatFromName%>
-				:
-				<%=chatContent%></p>
+			<p class="from-them"> <%=chatFromName%> : <%=chatContent%></p>
 			<br>
 			<%
 					} //if
@@ -164,4 +119,84 @@ if (request.getParameter("openPop") != null) {
 			<button class="chatBtn" onclick="send()">전 송</button>
 		</div>
 	</div>
+
+	<div class="listChatPop">
+		<div class="listChatTop">
+			<p>사원 목록</p>
+		</div>
+		<div class="searchBox">
+			<input id="searchbar" onkeydown="return searchEnter()" />
+			<button class="searchBtn" onclick="userSearch()">찾 기</button>
+		</div>
+		<div class="chat-list" id="allList">
+			<%
+			
+			userList = chatMgr.userInfo();
+
+			for (int i = 0; i < userList.size(); i++) {
+				ManagementBean mbean = userList.get(i);
+				String userPartType = mbean.getPART_TYPE();
+				String userName = mbean.getMEM_NAME();
+				if(!userName.equals(fromName)){ 
+			%>
+			<hr>
+			<div class="chatNameBox" id="<%=userName%>">
+			<p ondblclick="dblclick('<%=userPartType%>','<%=userName%>')"><%=userPartType%> / <%=userName%></p>
+			<%
+			read = chatMgr.readState(fromPartType, fromName, userPartType, userName);
+			if(read){
+			%>
+			<div class="chatListRedIcon" id="<%=userName%>Icon"></div>
+			<% 
+			}
+			%>
+			</div>
+			<hr>
+			<%
+				}//for
+			}//if
+			%>
+		</div>
+		<div class="chat-list" id="searchList" style="display: none;">
+			<%
+			userList = chatMgr.userFind(keyWord);
+
+			for (int i = 0; i < userList.size(); i++) {
+				ManagementBean mbean = userList.get(i);
+				String userPartType = mbean.getPART_TYPE();
+				String userName = mbean.getMEM_NAME();
+				if(!userName.equals(fromName)){
+			%>
+			<hr>
+			<div class="chatNameBox">
+			<p ondblclick="dblclick('<%=userPartType%>','<%=userName%>')"><%=userPartType%> / <%=userName%></p>
+			<%
+			read = chatMgr.readState(fromPartType, fromName, userPartType, userName);
+			if(read){
+			%>
+			<div class="chatListRedIcon"></div>
+			<% 
+			}
+			%>
+			</div>
+			<hr>
+			<%
+				}//if
+			}//for
+			%>
+		</div>
+	</div>
+	
+	<form name="chatFrm" method="post" target="_self">
+		<!-- 히든 -->
+		<input type="hidden" id="toPartType" name="toPartType" value="<%=toPartType%>"> 
+		<input type="hidden" id="toName" name="toName" value="<%=toName%>"> 
+		<input type="hidden" id="fromPartType" name="fromPartType" value="<%=fromPartType%>">
+		<input type="hidden" id="fromName" name="fromName" value="<%=fromName%>"> 
+		<input type="hidden" id="keyWord" name="keyWord" value="<%=keyWord%>"> 
+		<input type="hidden" id="chatRead" name="chatRead" value="<%=chatRead%>">
+		<input type="hidden" id="chatState" name="chatState" value="<%=chatState%>">
+		<input type="hidden" id="listPopState" name="listPopState" value="<%=listPopState%>">
+		<input type="hidden" id="chatting" name="chatting" value="<%=chatting%>">
+	</form>		
 </div>

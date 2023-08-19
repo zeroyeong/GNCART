@@ -4,6 +4,7 @@ var toPartType = document.getElementById("toPartType");
 var toName = document.getElementById("toName");
 var fromPartType = document.getElementById("fromPartType");
 var fromName = document.getElementById("fromName");
+var chatting = document.getElementById("chatting"); //서로 같은 방에서 chat중인지
 
 //결재자에게
 var toLineFirst = document.getElementById("LINE_FIRST");
@@ -22,8 +23,7 @@ var keyWord = document.getElementById("keyWord");
 //chat Pops
 var listChatPop = document.querySelector('.listChatPop');
 var chatPop = document.querySelector('.chatPop');
-var openPop = document.getElementById("openPop"); 
-
+var listPopState = document.getElementById("listPopState"); 
 //socket
 var webSocket =  "";
 var url = "ws://localhost:8080/GNCART/WebSocket/" + fromPartType.value + "/" + fromName.value;
@@ -55,10 +55,17 @@ function onMessage(event) {
     var content = messageParts[3];
 
     if (type == "chat") {
-        var toPartType = messageParts[1];
-        var toName = messageParts[2];
-
-        handleMessage(toName, content);
+        var toUserPartType = messageParts[1];
+        var toUser = messageParts[2];
+     
+		if((toUserPartType != toPartType.value) || (toUser != toName.value)){
+			updateChatBadge();
+			chatRedIconAdd(toUser);
+			chatting.value ="";
+		}else{	
+			chatting.value = toUserPartType + "/" + toUser;
+			handleMessage(toUser, content);	
+		}		
     }
     else if (type == "alert") {
         var firstName = messageParts[1];
@@ -73,6 +80,16 @@ function onError(event) {
   alert(event.data);
 }
 
+//맨처음 안읽은 chat 있는지 확인
+if(document.getElementById("chatRead") != null){	
+	var chatRead = document.getElementById("chatRead");
+	
+	if(chatRead.value =="true"){
+		updateChatBadge();
+	}
+}
+
+
 //메시지 받았을때
 function handleMessage(toUser,content) {  
     let new_pTag = document.createElement('p');
@@ -84,6 +101,24 @@ function handleMessage(toUser,content) {
     chatRoom.appendChild(new_br);        
  
     chatRoom.scrollTop = chatRoom.scrollHeight;
+}
+
+//메시지 받았을때 chat redIcon 활성화
+function updateChatBadge(){
+	if(document.querySelector(".chatRedIcon") != null){
+	    var chatRedIcon = document.querySelector(".chatRedIcon");
+        chatRedIcon.style.display = "block";		
+	}
+}
+
+function chatRedIconAdd(toUser) {
+    var chatNameBox = document.getElementById(toUser);
+    
+    if(document.getElementById(toUser+"Icon") == null){		
+	    var redIcon = document.createElement("div");
+		redIcon.className = 'chatListRedIcon';
+	  	chatNameBox.appendChild(redIcon);
+	}
 }
 
 //메시지 보낼때
@@ -108,7 +143,8 @@ function dblclick(toPartType, toName){
   document.getElementById("toPartType").value = toPartType;
   document.getElementById("toName").value = toName;  
 
-  openPop.value = "chatPop";
+  listPopState.value = "close";
+  keyWord.value ="";
   document.chatFrm.submit();
 }
 
@@ -126,13 +162,11 @@ function enter() {
 
 //상대 정해지면 chat 창으로 이동
 if(toPartType != null){	
-	if(toPartType.value != null && toPartType.value != ""){
-		listChatPop.style.display = 'none';
+	if(toPartType.value != ""){
+		if(listPopState.value === "close"){
+			listChatPop.style.display = 'none';		
+		}
 		chatPop.style.display = 'block';
-	
-	}else{
-		listChatPop.style.display = 'block';
-		chatPop.style.display = 'none';
 	}
 }
 
@@ -164,8 +198,8 @@ function userSearch(){
 	}else{
 		keyWord.value = searchbar.value;
 	}
-
-    openPop.value = "listChatPop";
+	
+ 	listPopState.value = "open";
 	document.chatFrm.submit();
 }
 
@@ -188,7 +222,7 @@ if(document.getElementById("chatState") != null){
 }
 
 //chat toggle
-function toggleChat() {
+function chatToggle() {
     chatSlider.classList.toggle('active');
     
     var chatState = "";
@@ -203,14 +237,16 @@ function toggleChat() {
 	}
 }
 
-//chat 옆으로 이동
+//listchat 창 열기
 function slideChatPop() {
     var listChatPop = document.querySelector('.listChatPop');
 
     if (listChatPop.style.display === 'none' || listChatPop.style.display === '') {
         listChatPop.style.display = 'block';
+        listPopState.value = "open";
     } else {
         listChatPop.style.display = 'none';
+        listPopState.value = "close";
     }
 }
 
@@ -223,7 +259,6 @@ function sendAlert(content) {
     }else{
 		webSocket.send("alert" + "/" + "temp" + "/" + toLineSecond.value + "/" + content);
 	}
-	console.log("들어옴");
 }
 
 //받을때
