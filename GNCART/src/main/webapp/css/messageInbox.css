@@ -1,198 +1,301 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css);
-@import url(https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css);
+/* 변수선언 */
+:root {
+  /* color */
+  --allBorderColor: #333;
 
-a{
-  text-decoration:none;
-  color:#11101d
+  /* margin + padding */
+  --bigBottomMargin: 20px;
+  --mediumBottomMargin: 10px;
+  --smallBottomMargin: 5px;
+  --rightMargin: 5px;
+
+  /* font */
+  --fontColor: #333;
+  --fontSize: 1em;
+
+  /* button */
+  --buttonBackColor: #eee;
+  --buttonRadius: 5px;
+  --buttonPadding: 5px 7px;
+  --buttonFontSize: 0.9em;
+  --buttonTransition: 0.3s;
+
+  --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
+  --buttonHoverFontColor: #fff;
+
+  /* container */
+  --conMargin: 20px;
+  --conPadding: 30px;
+  --conBorder: 3px solid #eee;
+  --conRadius: 20px;
+  --conBack: #fff;
+
+  /* title */
+  --titleBottomPadding: 5px;
+  --titleBottomMargin: 10px;
+  --titleBorder: 1px solid var(--allBorderColor);
+  --titleH3Size: 1.5em;
+
+  /* table */
+  --tableBorder: 1px solid var(--allBorderColor);
+  --tablePadding: 7px;
+  --tableHeadBackColor: #333;
+  --tableHeadFontColor: #fff;
+
+  /* pagination */
+  --pagiLiMargin: 5px;
+  --pagiLiPadding: 5px;
+  --pagiApadding: 0 3px;
+  --pagiColor: rgb(123, 126, 131);
+  --pagiBorder: 2px solid transparent;
+
+  --pagiActiveColor: #333;
+  --pagiActiveBorder: 2px solid #333;
 }
 
-li {
-    list-style:none;
+/* 전체 설정 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--fontColor);
+  font-size: var(--fontSize);
 }
+
+a {
+  text-decoration: none;
+}
+
 ul {
-    padding-left: 0;
-}
-#condolences-wr ul li {
-    line-height: 30px;
-    list-style: none;
-    padding: 10px auto;
-    margin: 20px auto;
+  list-style: none;
 }
 
-#condolences-wr textarea{
-    resize: none;
-    width: 70%;
-    height: 300px;
-
-}
-        
-#condolences-wr label {
-    float: left;  /* 왼쪽으로 배치 */
-    font-size: 20px;  /* 글자 크기 - 13px */
-    width: 150px;  /* 너비 - 110px */
+button {
+  background-color: transparent;
+  border: none;
 }
 
-#condolences-wr input{
-    width: 70%;
-    height: 30px;
-
+input[type="button"] {
+  background-color: transparent;
+  border: none;
 }
 
-#condolences-wr input[readonly] {  /* 읽기 전용 필드의 스타일 */
-    border:none;
+table,
+td,
+th {
+  border-collapse: collapse;
 }
 
-#condolences-wr select{
-    width:200px;
-    height:30px;
-}
-.bt_wrap {
-    text-align: center;
-    margin-top: 30px;
-}
-.bt_wrap a {
-    display: inline-block;
-    padding: 10px;
-    font-size: 1.4rem;
-}
-.board_view {
-    width: 100%;
+/* container */
+.container {
+  margin: var(--conMargin);
+  padding: var(--conPadding);
+  border: var(--conBorder);
+  border-radius: var(--conRadius);
+  background-color: var(--conBack);
 }
 
-.board_view .title {
-    padding: 20px 15px;
-    font-size: 2rem;
+/* title */
+.title {
+  margin-bottom: var(--titleBottomMargin);
 }
 
-.board_view .info {
-    padding: 15px;
-    border-bottom: 1px solid black;
-    font-size: 0;
+.title h3 {
+  font-size: var(--titleH3Size);
+  border-bottom: var(--titleBorder);
+  padding-bottom: var(--titleBottomPadding);
+  margin-bottom: var(--mediumBottomMargin);
 }
 
-.board_view .info dl {
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10
+.title .button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.board_view .info dl:first-child {
-    padding-left: 0;
+.title .button button {
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
 }
 
-.board_view .info dl::before {
-    position: absolute;
-    top: 1px;
-    left: 0;
-    display: block;
-    width: 1px;
-    height: 13px;
-    background: #ddd;
+.title .button button:first-child {
+  margin-right: var(--rightMargin);
 }
 
-.board_view .info dl:first-child::before {
-    display: none;
+.title .button button:last-child {
+  margin-right: 0;
 }
 
-.board_view .info dl dt,
-.board_view .info dl dd {
-    display: inline-block;
-    font-size: 1.4rem;
+.title .button button:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
 }
 
-.board_view .info dl dd {
-    margin-left: 10px;
-    color: #777;
+/* content */
+.content {
+  width: 100%;
 }
 
-.board_view .cont {
-    padding: 15px;
-    border-bottom: 1px solid #000;
-    line-height: 160%;
-    font-size: 1.4rem;
-}
-.none input[type=text] {
-    outline: none;
-}
-.none textarea {
-    border: none;
-    overflow: auto;
-    outline: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-.container-fluid {
-    padding-top: 100px !important;
-}
-.page-link {
-    background-color: #11101D !important;
-    color: white !important;
-}
-  #btns{
-    margin:20px 0;
-    margin-left: auto;
-    float: right;
-  }
-  #btns button{
-    background-color:#11101d;
-    color:#fff;
-    width:90px;
-    height:50px;
-    border:transparent;
-    border-radius:10px;
-    transition:0.5s;
-  }
-  
-  #btns button:first-child{
-   /* margin-right:20px; */
-  }
-  
-  #btns button a{
-    color:#fff;
-    font-weight:bold;
-  }
-  #btns button:hover{
-    background-color:#eee;
-  }
-  #btns button:hover a{
-    color:#11101d;
-  }
-  
-  .checkbox {
-  	margin-right: 15px;
-  }
-  
-  #messageBox{
-  	display:flex;
-  	align-items: baseline;
-  }
-  
-   .msgBtn{
-    margin:0 0;
-    margin-left: 20px;
-    float: left;
-  }
-  .msgBtn button{
-    background-color:#11101d;
-    color:#fff;
-    width:90px;
-    height:50px;
-    border:transparent;
-    border-radius:10px;
-    transition:0.5s;
-  }
+/* content - tableMenu */
+.content .tableMenu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 
-  .msgBtn button a{
-    color:#fff;
-    font-weight:bold;
-  }
-  .msgBtn button:hover{
-    background-color:#eee;
-  }
-  .msgBtn button:hover a{
-    color:#11101d;
-  }
+  margin-bottom: var(--smallBottomMargin);
+}
 
+/* .content .tableMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 
-  
+  margin-bottom: var(--smallBottomMargin);
+/* } */ /* checkbox 위에 삭제버튼 원하는 분은 이거 주석 해제하고 위에거 삭제하면 됩니당 */
+
+.content .tableMenu .button button {
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
+}
+
+.content .tableMenu .button button:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
+}
+
+.content .tableMenu .record {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.content .tableMenu .record li:first-child {
+  margin-right: 5px;
+}
+
+.content .tableMenu .record li:last-child {
+  width: 35px;
+  text-align: center;
+}
+
+/* content - table */
+.content table {
+  width: 100%;
+  margin-bottom: var(--bigBottomMargin);
+}
+
+.content table colgroup .col1 {
+  width: 3%;
+}
+
+.content table colgroup .col2 {
+  width: 6%;
+}
+
+.content table colgroup .col3 {
+  width: 55%;
+}
+
+.content table colgroup .col4 {
+  width: 10%;
+}
+
+.content table colgroup .col5 {
+  width: 8%;
+}
+.content table colgroup .col6 {
+  width: 18%;
+}
+
+.content table tbody td:first-child,
+.content table tbody td:nth-child(2),
+.content table tbody td:nth-child(4),
+.content table tbody td:nth-child(5),
+.content table tbody td:last-child {
+  text-align: center;
+}
+
+.content table td,
+.content table th {
+  padding: var(--tablePadding);
+  border-bottom: var(--tableBorder);
+}
+
+.content table thead th {
+  background-color: var(--tableHeadBackColor);
+  color: var(--tableHeadFontColor);
+}
+
+/* content - bottomMenu */
+.content .bottomMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.content .bottomMenu .empty,
+.content .bottomMenu .pagination,
+.content .bottomMenu .button {
+  width: calc(100% / 3);
+}
+
+/* content - bottomMenu - pagination */
+.content .bottomMenu .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content .bottomMenu .pagination li {
+  padding: var(--pagiLiPadding);
+  margin: var(--pagiLiMargin);
+}
+
+.content .bottomMenu .pagination li a {
+  color: var(--pagiColor);
+  padding: var(--pagiApadding);
+  border: var(--pagiBorder);
+}
+
+.content .bottomMenu .pagination li.active a {
+  color: var(--pagiActiveColor);
+  font-weight: bold;
+  border-bottom: var(--pagiActiveBorder);
+}
+
+/* content - bottomMenu - button */
+.content .bottomMenu .button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.content .bottomMenu .button button {
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
+}
+
+.content .bottomMenu .button button:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
+}
+
+.content .bottomMenu .button button:first-child {
+  margin-right: var(--rightMargin);
+}
+
+.content .bottomMenu .button button:last-child {
+  margin-right: 0;
+}

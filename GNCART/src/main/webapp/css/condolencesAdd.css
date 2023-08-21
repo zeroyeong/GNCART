@@ -1,213 +1,206 @@
-a{
-  text-decoration:none;
-  color:#11101d
+/* 변수선언 */
+:root {
+  /* color */
+  --allBorderColor: #333;
+
+  /* margin + padding */
+  --bigBottomMargin: 20px;
+  --mediumBottomMargin: 10px;
+  --smallBottomMargin: 5px;
+  --rightMargin: 5px;
+  --rightBigMargin: 10px;
+
+  /* font */
+  --fontColor: #333;
+  --smallFontColor: #808080;
+  --fontSize: 1em;
+  --titleFontSize: 1.25em;
+  --smallFontSize: 0.9em;
+
+  /* button */
+  --buttonBackColor: #eee;
+  --buttonRadius: 5px;
+  --buttonPadding: 5px 7px;
+  --buttonFontSize: 0.9em;
+  --buttonTransition: 0.3s;
+
+  --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
+  --buttonHoverFontColor: #fff;
+
+  /* container */
+  --conMargin: 20px;
+  --conPadding: 30px;
+  --conBorder: 3px solid #eee;
+  --conRadius: 20px;
+  --conBack: #fff;
+
+  /* title */
+  --titleBottomPadding: 5px;
+  --titleBottomMargin: 10px;
+  --titleBorder: 1px solid var(--allBorderColor);
+  --titleH3Size: 1.5em;
+
+  /* table */
+  --tableBorder: 1px solid var(--allBorderColor);
+  --tablePadding: 7px;
+  --tableHeadBackColor: #333;
+  --tableHeadFontColor: #fff;
+  --tableThColor: #eee;
+  --tableThickBorder: 2px solid #808080;
+
+  /* pagination */
+  --pagiLiMargin: 5px;
+  --pagiLiPadding: 5px;
+  --pagiApadding: 0 3px;
+  --pagiColor: rgb(123, 126, 131);
+  --pagiBorder: 2px solid transparent;
+
+  --pagiActiveColor: #333;
+  --pagiActiveBorder: 2px solid #333;
 }
 
-#filename{
-	color:blue;
+/* 전체 설정 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--fontColor);
+  font-size: var(--fontSize);
 }
 
-#container{
-  margin:20px;
-  padding:30px 30px 15px;
-  background-color:#fff;
-  border:3px solid #eee;
-  border-radius:20px;
-  display:flex;
-  flex-direction:column;
+a {
+  text-decoration: none;
 }
 
-#title{
-  display:flex;
-  justify-content:space-between;
-  margin:5px 0;
+ul {
+  list-style: none;
 }
 
-/* Detail */
-#writerInfo{
-  margin:5px 0;
+button {
+  background-color: transparent;
+  border: none;
 }
 
-#writerInfo span{
-  margin-right:10px;
-  font-size:0.9em;
-  color:#888;
-}
-#writerInfo span a{
-  font-size:0.9em;
-  color:#888;
-}
-/* Detail */
-
-
-
-table{
-  margin:30px auto 0;
-  width:100%;
+input[type="button"] {
+  background-color: transparent;
+  border: none;
 }
 
-table,th,td{
-  border:1px solid #11101d;
-  border-collapse:collapse;
-}
-td{
-  width:500px;
-  height:70px;
-  text-align:center;
-}
-td input,select,textarea{
-  width:100%;
-  height:100%;
-  border:transparent;
-  padding:20px;
-  font-size:1em;
+table,
+td,
+th {
+  border-collapse: collapse;
 }
 
-td button{
-    width: 5.5rem;
- 	height:30px;
-    margin: 0 auto;
+/* container */
+.container {
+  margin: var(--conMargin);
+  padding: var(--conPadding);
+  border: var(--conBorder);
+  border-radius: var(--conRadius);
+  background-color: var(--conBack);
 }
 
-textarea{
-  border-top:1px solid #11101d;
+/* title */
+.title {
+  margin-bottom: var(--titleBottomMargin);
 }
 
-td input,select{
-  text-align:center;
+.title h3 {
+  font-size: var(--titleH3Size);
+  border-bottom: var(--titleBorder);
+  padding-bottom: var(--titleBottomPadding);
+  margin-bottom: var(--mediumBottomMargin);
 }
 
-.tableTitle{
-  width:200px;
-  background-color:#11101d;
-  color:#fff;
-  font-size:1em;
-  font-weight:bold;
+.title .button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.detail{
-  height:300px;
+/* title - writer */
+.title .writer {
+  display: flex;
+  justify-content: flex-end;
 }
 
-#btns{
-  margin:20px 0;
-  margin-left: auto;
-  float:right;
+.title .writer ul {
+  display: flex;
+  justify-content: space-between;
 }
 
-#btns input{
-  background-color:#11101d;
-  width:90px;
-  height:50px;
-  border:transparent;
-  border-radius:10px;
-  transition:0.5s;
+.title .writer ul li {
+  font-size: var(--smallFontSize);
+  color: var(--smallFontColor);
 }
 
-#btns input:first-child{
- /* margin-right:0px; */
+.title .writer ul:first-child {
+  margin-right: var(--rightBigMargin);
 }
 
-#btns input {
-  color:#fff;
-  font-weight:bold;
-}
-#btns input:hover{
-  background-color:#eee;
-  color:#11101d;
+.title .writer ul li:first-child {
+  margin-right: var(--rightMargin);
 }
 
-/* input을 button 변경 임시 */
-
-#btns{
-  margin:20px 0;
-  margin-left: auto;
-}
-#btns button{
-  background-color:#11101d;
-  color:#fff;
-  width:90px;
-  height:50px;
-  border:transparent;
-  border-radius:10px;
-  transition:0.5s;
+.title .writer ul:first-child li:last-child {
+  margin-left: var(--rightMargin);
 }
 
-#btns button:first-child{
- /* margin-right:20px;*/
+/* content */
+.content {
+  width: 100%;
 }
 
-#btns button a{
-  color:#fff;
-  font-weight:bold;
-}
-#btns button:hover{
-  background-color:#eee;
-}
-#btns button:hover a{
-  color:#11101d;
+/* content - caption */
+.content .caption {
+  font-size: var(--titleFontSize);
+  text-align: center;
+  margin-bottom: var(--mediumBottomMargin);
 }
 
-#btns > button[type="submit"]:hover{
-  color:#11101d;
+/* content - table */
+.content table {
+  width: 100%;
+  border-top: var(--tableThickBorder);
+  border-bottom: var(--tableThickBorder);
+  margin-bottom: var(--bigBottomMargin);
 }
 
-.addbox #filename {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
+.content table th,
+.content table td {
+  border-bottom: var(--tableBorder);
+  padding: var(--tablePadding);
 }
 
-.addbox #kakaoField {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
+.content table th {
+  background-color: var(--tableThColor);
 }
 
-.addbox #user_part_name {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 50%;
-    color: #999999;
+/* content - button */
+.content .button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.content .button button {
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
 }
 
-.addbox label {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #11101d;
-    border-radius:20px;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
+.content .button button:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
 }
 
-.addbox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
+.content .button button:first-child {
+  margin-right: var(--rightMargin);
 }
 
-.addbox input[type="button"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
+.content .button button:last-child {
+  margin-right: 0;
 }

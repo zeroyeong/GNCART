@@ -36,7 +36,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/messageDetail.css">
+<link rel="stylesheet" href="../css/NEWmessageDetail.css">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -47,71 +47,88 @@
 	<!-- sidebar include -->
 	<jsp:include page="../index/sidebar.jsp" flush="false" />
 	<section class="home-section">
-		<!-- top include -->
-		<jsp:include page="../index/top.jsp" flush="false" />
+	<!-- top include -->
+	<jsp:include page="../index/top.jsp" flush="false" />
 
-		<!--home-content-->
-		<div class="home-content">
-			<div id="container">
-				<div id="title">
-					<h2>메세지 내용</h2>
-				</div>
-				<hr>
-				<form name="msgFrm" method="post" action="msgDelete.jsp">
-					<table>
-						<tr>
-							<td class="tableTitle">제목</td>
-							<td colspan="3"><%= title %></td>
-						</tr>
-						<tr>
-							<td class="tableTitle">보낸사람</td>
-							<td><%= fromName %></td>
-							<td class="tableTitle">해당부서</td>
-							<td><%= fromPartType %></td>
-						</tr>
-						<tr>
-							<td class="tableTitle">받는사람</td>
-							<td><%= toName %></td>
-							<td class="tableTitle">해당부서</td>
-							<td><%= toPartType %></td></tr>
-						<tr>
-							<td class="tableTitle detail">상세내용</td>
-							<td colspan="3"><%= content %></td>
-						</tr>
-						
-						<%
-            			if(filename != null && !filename.isEmpty()){  
-						%>
-						<tr>
-							<td class="tableTitle">첨부파일</td>
-							<td colspan="3"><a id="filename"
-								href="msgFiledown.jsp?filename=<%=filename%>"><%= filename %></a></td>
-						</tr>
-						<%
-            			}
-						%>
-					</table>
-
-					<input type="hidden" name="read" value="읽음"> 
-					<input type="hidden" name="msg_no" value="<%= msg_no %>"> 
-					<input type="hidden" name="pageName" value="<%= pageName %>">
-
-					<div id="btns">
-						<%
-						if(pageName.equals("messageInbox")){
-						%>
-						<button type="button"><a href="messageReply.jsp?fromPartType=<%= fromPartType %>&fromName=<%= fromName %>">답장하기</a></button>
-						<%
-						}
-						%>
-						<button type="button" onclick="deleteBtn()">삭제하기</button>
-						<button type="button"><a href="<%= pageName %>.jsp">목록</a></button>
-					</div>
-
-				</form>
-			</div>
-
-		</div>
+	<!--home-content-->
+	<div class="home-content">
+		<div class="container">
+	      <div class="title">
+	        <h3>메세지 내용</h3>
+	        <div class="writer">
+	          <ul>
+	            <li>작성자</li>
+	            <li>경영지원팀</li>
+	            <li>강민서</li>
+	          </ul>
+	          <ul>
+	            <li>작성일</li>
+	            <li>2023-08-18</li>
+	          </ul>
+	        </div>
+	      </div>
+	      <div class="content">
+	        <h3 class="caption">조예은 님의 결혼을 축하합니다.</h3>
+	        <form name="msgFrm" method="post" action="msgDelete.jsp">
+	        <table>
+	          <colgroup>
+	            <col class="col1" />
+	            <col class="col2" />
+	            <col class="col3" />
+	            <col class="col4" />
+	          </colgroup>
+	          <tr>
+	            <th>제목</th>
+	            <td colspan="3"><%= title %></td>
+	          </tr>
+	          <tr>
+	            <th>보낸사람</th>
+	            <td><%= fromName %></td>
+	            <th>해당부서</th>
+	            <td><%= fromPartType %></td>
+	          </tr>
+	          <tr>
+	            <th>받는사람</th>
+	            <td><%= toName %></td>
+	            <th>해당부서</th>
+	            <td><%= toPartType %></td></tr>
+	          </tr>
+	          <tr>
+	            <th>내용</th>
+	            <td colspan="3"><%= content %></td>
+	          </tr>
+	
+	          <%
+	          if(filename != null && !filename.isEmpty()){  
+	          %>
+	          <tr>
+	            <th>첨부파일</th>
+	            <td colspan="3">
+	              <a id="filename" href="msgFiledown.jsp?filename=<%=filename%>"><%= filename %></a>
+	            </td>
+	          </tr>
+	          <%
+	          }
+	          %>
+	        </table>
+	        <div class="button">
+	          <%
+	          if(pageName.equals("messageInbox")){
+	          %>
+	          <button type="button"><a href="messageReply.jsp?fromPartType=<%= fromPartType %>&fromName=<%= fromName %>">답장하기</a></button>
+	          <%
+	          }
+	          %>
+	          <button type="button" onclick="deleteBtn()">삭제하기</button>
+	          <button type="button"><a href="<%= pageName %>.jsp">목록</a></button>
+	        </div>
+	          <input type="hidden" name="read" value="읽음"> 
+	          <input type="hidden" name="msg_no" value="<%= msg_no %>"> 
+	          <input type="hidden" name="pageName" value="<%= pageName %>">
+	        </form>
+	      </div>
+    	</div>
+	</div>
 	</section>
 	<script src="../script/messageDetail.js"></script>
 	<script src="../script/indexScript.js"></script>
