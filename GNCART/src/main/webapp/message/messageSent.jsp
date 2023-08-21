@@ -27,7 +27,7 @@ int cnt = 1;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/NEWmessageInbox.css?1">
+<link rel="stylesheet" href="../css/messageInbox.css?1">
 
 
 <!--Boxicons CDN Link-->
