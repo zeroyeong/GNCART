@@ -1,5 +1,5 @@
 /* Googlefont Poppins CDN Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
 	margin: 0;
@@ -374,7 +374,7 @@ nav .profile-details .admin_name {
 	text-align: right;
 	text-decoration: none;
 	color: #11101d;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .board-boxes .schedule-box .schedule-details table.details th:first-child
@@ -383,6 +383,16 @@ nav .profile-details .admin_name {
 }
 
 .board-boxes .schedule-box .schedule-details table.details td:first-child
+	{
+	text-align: left;
+}
+
+.board-boxes .schedule-box .schedule-details table.details th:nth-child(2)
+	{
+	text-align: left;
+}
+
+.board-boxes .schedule-box .schedule-details table.details td:nth-child(2)
 	{
 	text-align: left;
 }
@@ -426,8 +436,9 @@ nav .profile-details .admin_name {
 
 .home-content .board-boxes .picture-box .eventImg {
 	width: 100%;
+	padding-top: 7px;
 	max-width: 550px;
-	height: auto;
+	height: 645px;
 	border-radius: 15px;
 }
 

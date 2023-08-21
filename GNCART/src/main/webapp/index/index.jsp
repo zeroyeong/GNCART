@@ -190,7 +190,7 @@ Vector<EventBean> eventList = eventMgr.getBoardList("","",0,1);
 					</div>
 					<div class="schedule-details">
 						<%
-						int numToDisplay = Math.min(scheduleList.size(), 9);
+						int numToDisplay = Math.min(scheduleList.size(), 15);
 						if (numToDisplay > 0) {
 						%>
 						<table class="details">
@@ -207,7 +207,7 @@ Vector<EventBean> eventList = eventMgr.getBoardList("","",0,1);
 								for (int i = 0; i < numToDisplay; i++) {
 									ScheduleBean schedule = scheduleList.get(i);
 								%>
-								<tr onclick="window.location='../schedule/jsp/scheduleMonth.jsp';">
+								<tr onclick="window.location='../schedule/scheduleMonth.jsp';">
 									<td><%=schedule.getSCHE_NO()%></td>
 									<td><%=schedule.getSCHE_NAME()%></td>
 									<td><%=schedule.getSCHE_START_DATE()%></td>
