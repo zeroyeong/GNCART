@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<jsp:useBean id="mMgr" class="login.MemberMgr" />
+<jsp:useBean id="mMgr" class="login.MemberMgr"/>
 <%@ page import="auth.AuthMgr"%>
 <%@ page import="java.util.*"%>
 <%
@@ -21,38 +21,38 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>휴가 신청서</title>
-<link rel="stylesheet" href="../css/authVacation.css">
-<script src="https://code.jquery.com/jquery-3.7.0.js"
-   integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-   crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>휴가 신청서</title>
+	<link rel="stylesheet" href="../css/authVacation.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
 
 <body>
-   <h2>휴가 신청서</h2>
+    <h2>휴가 신청서</h2>
 
-   <form method="post" action="../authWrite" onsubmit="return chkLine()">
-      <button type="button" class="lineBtn" onclick="vacLineBtn()">결재선</button>
-		<div class="lineContainer">
+    <form method="post" action="../authWrite" onsubmit="return chkLine()">
+        <button type="button" class="lineBtn" onclick="vacLineBtn()">결재선</button>
+	     <div class="lineContainer">
 			<table>
 				<tr>
 					<% if (!"팀장".equals(leLevel)) { %>
-					<th><span>팀장</span>
-					<% if (teamLeader != null) { %> 
-					<input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"> <%=teamLeader %>
-					 <% } else { %> 
-					<input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="">
-					<% } %>
+					<th>
+						<span>팀장</span>
+						<% if (teamLeader != null) { %> 
+						<input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="<%= teamLeader %>"> <%=teamLeader %>
+						<% } else { %> 
+						<input id="LINE_FIRST" type="hidden" name="LINE_FIRST" value="">
+						<% } %>
 					</th>
 					<% } %>
-					<th><span>부장</span>
-					<% if (manager != null) { %> 
-					<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="<%= manager %>"> <%=manager %> 
-					<% } else { %> 
-					<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="">
-					<% } %>
+					<th>
+						<span>부장</span>
+						<% if (manager != null) { %> 
+						<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="<%= manager %>"> <%=manager %> 
+						<% } else { %> 
+						<input id="LINE_SECOND" type="hidden" name="LINE_SECOND" value="">
+						<% } %>
 					</th>
 				</tr>
 				<tr>

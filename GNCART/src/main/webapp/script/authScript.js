@@ -55,57 +55,65 @@ function vacSubmit() {
 }
 
 /*auth modal*/
+// 모달 백그라운드 요소 가져오기
 var modalBackground = document.getElementById('modalBackground');
+
+// 모달 표시 함수
 function showModal() {
     modalBackground.style.display = 'block';
 }
 
+// 모달 숨기기 함수
 function hideModal() {
     modalBackground.style.display = 'none';
+    closePopup();
 }
 
 /*휴가,업무 창 */
-var isPopupOpen = false;
+// 열린 팝업 창에 대한 참조 저장
+var newPopup = null;
+
+// '휴가' 또는 '업무' 버튼 클릭 시 함수
 function btnClick(option) {
-    if (!isPopupOpen) {
-        isPopupOpen = true;
-        
-        var url = option === 'vacation' ? "authVacation.jsp" : "authBusiness.jsp";
-        var _width = '800';
-        var _height = '800';
-
-        var _left = Math.ceil((window.screen.width - _width) / 2);
-        var _top = Math.ceil((window.screen.height - _height) / 2);
-
-        var newPopup = window.open(url, "_blank", 'width=' + _width + ', height=' + _height + ', left=' + _left + ', top=' + _top);
-        
-        newPopup.onbeforeunload = function () {
-            isPopupOpen = false;
-        };
-    }
+    var url = option === 'vacation' ? "authVacation.jsp" : "authBusiness.jsp";
+    openPopup(url);
 }
 
 /*viewPopup*/
+// URL을 통해 뷰 팝업 열기
+function openViewPopup(url) {
+    openPopup(url);
+}
+
+// 팝업 열기 함수
+function openPopup(popupUrl) {
+    var _width = '800';
+    var _height = '800';
+
+    var _left = Math.ceil((window.screen.width - _width) / 2);
+    var _top = Math.ceil((window.screen.height - _height) / 2);
+
+    newPopup = window.open(popupUrl, "_blank", 'width=' + _width + ', height=' + _height + ', left=' + _left + ', top=' + _top);
+}
+
+// 팝업 닫기 함수
+function closePopup() {
+    if (newPopup) {
+        newPopup.close();
+    }
+}
+
+// '휴가' 뷰 팝업 열기
 function vacView(DOC_NO) {
-
-    var _width = '800';
-    var _height = '800';
-
-    var _left = Math.ceil((window.screen.width - _width) / 2);
-    var _top = Math.ceil((window.screen.height - _height) / 2);
-
-    window.open("authVacationView.jsp?DOC_NO=" + DOC_NO, "_blank",
-        'width=' + _width + ', height=' + _height + ', left=' + _left + ', top=' + _top);
+    openViewPopup("authVacationView.jsp?DOC_NO=" + DOC_NO);
 }
 
+// '업무' 뷰 팝업 열기
 function busView(DOC_NO) {
-
-    var _width = '800';
-    var _height = '800';
-
-    var _left = Math.ceil((window.screen.width - _width) / 2);
-    var _top = Math.ceil((window.screen.height - _height) / 2);
-
-    window.open("authBusinessView.jsp?DOC_NO=" + DOC_NO, "_blank",
-        'width=' + _width + ', height=' + _height + ', left=' + _left + ', top=' + _top);
+    openViewPopup("authBusinessView.jsp?DOC_NO=" + DOC_NO);
 }
+
+//체크박스 클릭스 팝업 안열리게
+document.getElementById('myCheckbox').onclick = function(event) {
+    event.stopPropagation(); // 이벤트 전파 중지
+};

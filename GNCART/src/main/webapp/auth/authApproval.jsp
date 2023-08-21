@@ -1,15 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="auth.AuthBean"%>
 <%@ page import="java.util.Vector"%>
 <jsp:useBean id="aMgr" class="auth.AuthMgr" />
-<jsp:useBean id="mMgr" class="login.MemberMgr"/>
+<jsp:useBean id="mMgr" class="login.MemberMgr" />
+
 <%
-	if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
+if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");
 
-	int leNo = (int)session.getAttribute("leNo"); 
+int leNo = (int) session.getAttribute("leNo");
 %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -20,113 +21,113 @@
     <link rel="stylesheet" href="../css/auth.css">
     <!--boxIcons CDN Link-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
- 
 <body>
-  <!-- sidebar include -->
-  <jsp:include page="../index/sidebar.jsp" flush="false" />
+    <!-- sidebar include -->
+    <jsp:include page="../index/sidebar.jsp" flush="false" />
 
-  <section class="home-section">
-    <!-- top include -->
-    <jsp:include page="../index/top.jsp" flush="false" />
+    <section class="home-section">
+        <!-- top include -->
+        <jsp:include page="../index/top.jsp" flush="false" />
 
-    <!--home-content-->
-    <div class="container-fluid">
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h5>결재 대기</h5>
-        </div>
-        <div class="card-body">
-            <div>
-                <table id="example" class="table table-striped" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>문서번호</th>
-                            <th>문서명</th>
-                            <th>작성자</th>
-                            <th>유형</th>
-                            <th>신청일</th>
-                            <th>결재일</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>문서번호</th>
-                            <th>문서명</th>
-                            <th>작성자</th>
-                            <th>유형</th>
-                            <th>신청일</th>
-                            <th>결재일</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <%
-                        Vector<AuthBean> vlist = null; 
-                        vlist = aMgr.getAuthList();
-                        if (!vlist.isEmpty()) {
-                            for (int i = 0; i < vlist.size(); i++) {
-                                AuthBean bean = vlist.get(i);
-                                int DOC_NO = bean.getDOC_NO();
-                                String DOC_NAME = bean.getDOC_NAME();
-                                String MEM_NAME = bean.getMEM_NAME();
-                                int DOC_STATES = bean.getDOC_STATES();
-                                String DOC_REGDATE = bean.getDOC_REGDATE();
-                                String DOC_APPDATE = bean.getDOC_APPDATE(); 
-                                int DOC_TYPE = bean.getDOC_TYPE();
-                                
-                                if ((leNo == 3 && (DOC_STATES == 1 || DOC_STATES == 3)) ||
-                                    (leNo == 4 && DOC_STATES == 3)) {
-                        %>
-                        <tr>
-                            <td><%=DOC_NO %></td>
-                            <%if (DOC_TYPE == 1) {%>
-                            <td><a href="javascript:vacView('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
-                            <% } else if (DOC_TYPE == 2) { %>
-                            <td><a href="javascript:busView('<%=DOC_NO%>')"><%=DOC_NAME %></a></td>
-                            <% } %>
-                            <td><%=MEM_NAME %></td>
-                            <%if(DOC_STATES == 0) {%>
-                                <td>대기</td>
-                            <%} else if(DOC_STATES == 1) {%>
-                                <td>승인</td>
-                            <%} else if(DOC_STATES == 2) {%>
-                                <td>반려</td>
-                            <%} else { %>
-                                <td>종결</td>
-                            <%} %>
-                            <td><%=DOC_REGDATE %></td>
-                            <%if(DOC_APPDATE == null) {%>
-                                <td>결재대기중</td>
-                            <%} else { %>
-                                <td><%=DOC_APPDATE %></td>
-                            <%} %>
-                        </tr>
-                        <%
+        <!-- home-content -->
+        <div class="container-fluid">
+            <div class="container">
+                <div class="title">
+                    <h3>결재 승인</h3>
+                </div>
+                <div class="content">
+                      <div class="tableMenu">
+				         <div class="button">
+		                    <a href="authHold.jsp"><button>대기</button></a> 
+                            <a href="authApproval.jsp"><button>승인</button></a> 
+                            <a href="authReturn.jsp"><button>반려</button></a>
+				         </div>
+		           	  </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>제목</th>
+                                <th>작성자</th>
+                                <th>유형</th>
+                                <th>신청일</th>
+                                <th>결재일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                Vector<AuthBean> vlist = aMgr.getAuthList();
+                                if (vlist.isEmpty()) {
+                                } else {
+                                    for (int i = 0; i < vlist.size(); i++) {
+                                        AuthBean bean = vlist.get(i);
+                                        int DOC_NO = bean.getDOC_NO();
+                                        String DOC_NAME = bean.getDOC_NAME();
+                                        String MEM_NAME = bean.getMEM_NAME();
+                                        int DOC_STATES = bean.getDOC_STATES();
+                                        String DOC_REGDATE = bean.getDOC_REGDATE();
+                                        String DOC_APPDATE = bean.getDOC_APPDATE();
+                                        int DOC_TYPE = bean.getDOC_TYPE();
+                    
+                                        String linkFunction = (DOC_TYPE == 1) ? "vacView" : "busView";
+                    
+                                        boolean leNo3 = (leNo == 3) && (DOC_STATES == 1 || DOC_STATES == 3);
+                                        boolean leNo4 = (leNo == 4) && (DOC_STATES == 3);
+                    			
+                                        if (leNo3 || leNo4) {
+                            %>
+                            <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
+                                <td><input type="checkbox" /></td>
+                                <td><%= DOC_NAME %></td>
+                                <td><%= MEM_NAME %></td>
+                                <td>
+                                    <% if (DOC_STATES == 0) { %>
+                                    대기
+                                    <% } else if (DOC_STATES == 1) { %>
+                                    승인
+                                    <% } else if (DOC_STATES == 2) { %>
+                                    반려
+                                    <% } else { %>
+                                    종결
+                                    <% } %>
+                                </td>
+                                <td><%= DOC_REGDATE %></td>
+                                <td>
+                                    <% if (DOC_APPDATE == null) { %>
+                                    결재대기중
+                                    <% } else { %>
+                                    <%= DOC_APPDATE %>
+                                    <% } %>
+                                </td>
+                            </tr>
+                            <%
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        %>
-                    </tbody>
-                </table>
-                <div id="btns">
-                    <a href="authHold.jsp"><button>대기</button></a>
-                    <a href="authApproval.jsp"><button>승인</button></a>
-                    <a href="authReturn.jsp"><button>반려</button></a>
+                            %>
+                        </tbody>
+                    </table>
+                    <div class="bottomMenu">
+                        <div class="empty"></div>
+                        <ul class="pagination">
+                            <li class="active"><a href="">1</a></li>
+                            <li><a href="">2</a></li>
+                            <li><a href="">3</a></li>
+                        </ul>
+                        <div class="button">
+                            <button class="del">삭제</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </section>
-  
+
     <form name="VACviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
     <form name="BUSviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="../script/authScript.js"></script>
-    <script src="../script/notice.js"></script>
 </body>
-
 </html>

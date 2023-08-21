@@ -247,12 +247,12 @@
 	border-bottom: none;
 }
 
-.alertBell-dropdown ul li a {
+.alertBell-dropdown ul a {
 	text-decoration: none;
 	color: #11101d;
 }
 
-.alertBell-dropdown active ul li a {
+.alertBell-dropdown active ul a {
 	text-decoration: none;
 	color: #11101d;
 }
@@ -541,9 +541,6 @@ td {
 	.overview-boxes .box {
 		width: 100%;
 		margin-bottom: 15px;
-	}
-	.sidebar.active ~.home-section nav .profile-details {
-		display: none;
 	}
 }
 
