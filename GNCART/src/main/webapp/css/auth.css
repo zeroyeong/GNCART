@@ -213,6 +213,7 @@ th {
 .content table tbody td:nth-child(3),
 .content table tbody td:nth-child(4),
 .content table tbody td:nth-child(5),
+.content table tbody td:nth-child(6),
 .content table tbody td:last-child {
 	text-align: center;
 }

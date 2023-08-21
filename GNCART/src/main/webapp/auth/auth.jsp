@@ -37,9 +37,13 @@
                 </div>
                 <div class="content">
                     <table>
+           		       <colgroup>
+				            <col class="col1 " />
+			       	   </colgroup>
                         <thead>
                             <tr>
-                                <th>No</th>
+                            	<th></th>
+                                <th>No.</th>
                                 <th>제목</th>
                                 <th>작성자</th>
                                 <th>유형</th>
@@ -70,6 +74,7 @@
                         %>
                                         <tr class="authOnclick" onclick="javascript:<%= linkFunction %>('<%= DOC_NO %> ')">
                                             <td><input type="checkbox"/></td>
+                                            <td><%= DOC_NO %></td>
                                             <td><%= DOC_NAME %></td>
                                             <td><%= MEM_NAME %></td>
                                             <td>

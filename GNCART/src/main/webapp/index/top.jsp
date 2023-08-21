@@ -17,11 +17,11 @@ String massege = "";
 String myName = (String) session.getAttribute("memName");
 %>
 
-<link rel="stylesheet" href="../css/chat.css">
+<link rel="stylesheet" href="../css/chat.css?ddddwqewqe">
 
 <nav>
 	<div class="alert-icon">
-		<i class='bx bx-message-dots bx-flip-horizontal chatIcon' onclick="toggleChat()"></i>
+		<i class='bx bx-message-dots bx-flip-horizontal chatIcon' onclick="chatToggle()"></i>
 		<div class="chatRedIcon"></div>
 		<jsp:include page="../chat/chat.jsp" flush="false" />
 		<i class='bx bx-bell' onclick="alertToggle()"></i>
@@ -50,7 +50,7 @@ String myName = (String) session.getAttribute("memName");
 	</div>
 </nav>
 
-<script src="../script/webSocket.js"></script>    
+<script src="../script/webSocket.js?gggbbd"></script>    
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>     
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 

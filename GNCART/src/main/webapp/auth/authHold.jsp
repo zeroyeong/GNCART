@@ -42,7 +42,7 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="title">
-                    <h3>결재 승인</h3>
+                    <h3>결재 대기</h3>
                 </div>
                 <div class="content">
                    <div class="tableMenu">
@@ -53,9 +53,13 @@
 			         </div>
 	         	   </div>
                     <table>
+        		       <colgroup>
+				            <col class="col1 " />
+			       	   </colgroup>
                         <thead>
                             <tr>
-                                <th>No</th>
+                          		<th></th>
+                                <th>No.</th>
                                 <th>제목</th>
                                 <th>작성자</th>
                                 <th>유형</th>
@@ -86,6 +90,7 @@
                             %>
                             <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
                                 <td><input type="checkbox" id="myCheckbox" /></td>
+                                <td><%= DOC_NO %></td>
                                 <td><%= DOC_NAME %></td>
                                 <td><%= MEM_NAME %></td>
                                 <td>
