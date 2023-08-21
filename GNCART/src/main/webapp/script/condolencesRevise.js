@@ -16,7 +16,7 @@ function mapSearch() {
 function findFile(){
 	$("#file").on('change',function(){
 	  var name = $("#file").val();
-	  $("#addfile").val(name);
+	  $("#filename").val(name);
 	});
 }
 

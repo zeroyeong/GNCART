@@ -46,8 +46,6 @@ searchbar.addEventListener("keydown", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     document.getElementById("searchBtn").click();
-    
-    console.log("엔터");
   }
 });
 

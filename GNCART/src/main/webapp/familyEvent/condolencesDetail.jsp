@@ -34,7 +34,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesAdd.css">
+<link rel="stylesheet" href="../css/condolencesDetail.css?asd">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -52,23 +52,23 @@
 	<!--home-content-->
 	<div class="home-content">
 		<div class="container">
-	        <div class="title">
-	          <h3>경조사 일정</h3>
-	          <div class="writer">
-	            <ul>
-	              <li>작성자</li>
-	              <li><%= part_type %></li>
-	              <li><%= writer %></li>
-	            </ul>
-	            <ul>
-	              <li>작성일</li>
-	              <li><%= regdate %></li>
-	            </ul>
-	          </div>
+	      <div class="title">
+	        <h3>경조사 일정</h3>
+	        <div class="writer">
+	          <ul>
+	            <li>작성자</li>
+	            <li><%= part_type %></li>
+	            <li><%= writer %></li>
+	          </ul>
+	          <ul>
+	            <li>작성일</li>
+	            <li><%= regdate %></li>
+	          </ul>
 	        </div>
-	        <div class="content">
-	          <h3 class="caption">조예은 님의 결혼을 축하합니다.</h3>
-	          <form name="detailFrm" method="post" action="conDelete.jsp">
+	      </div>
+	      <div class="content">
+	        <h3 class="caption"><%= title %></h3>
+	        <form name="detailFrm" method="post" action="conDelete.jsp">
 	          <table>
 	            <colgroup>
 	              <col class="col1" />
@@ -77,58 +77,48 @@
 	              <col class="col4" />
 	            </colgroup>
 	            <tr>
-	              <th>제목</th>
-	              <td colspan="3">
-	                <%= title %>
-	              </td>
-	            </tr>
-	            <tr>
 	              <th>종류</th>
-					  <td>
-		                <%= type %>
-		              </td>
+	              <td><%= type %></td>
 	              <th>날짜</th>
-	              <td>
-	                <%= desdate %>
-	              </td>
+	              <td><%= desdate %></td>
 	            </tr>
 	            <tr>
 	              <th>부서 / 이름</th>
-	              <td colspan="3">
-	             	 <%= userPart %> / <%= userName %>
-	              </td>
+	              <td colspan="3"><%= userPart %> / <%= userName %></td>
 	            </tr>
 	            <tr>
 	              <th>장소 및 주소</th>
 	              <td colspan="3">
-	                <input id="locationId" value="<%= location %>" readonly>
+	                <input id="locationId" value="<%= location %>" readonly />
 	              </td>
 	            </tr>
 	            <tr>
 	              <th>내용</th>
-	              <td colspan="3">
-	                <%= content %>
-	              </td>
+	              <td colspan="3"><%= content %></td>
 	            </tr>
 	            <%
 	            if(map != null && !map.isEmpty()){  
 	            %>
 	            <tr>
 	              <th>지도</th>
-				  <td colspan="3">
-	                <div id="map"></div>             
+	              <td colspan="3">
+	                <div id="map"></div>
 	              </td>
 	            </tr>
-				<%
-			    }
-				%>
-				<%
-			    if(filename != null && !filename.isEmpty()){  
-				%>
+	            <%
+	            }
+	            %>
+	            <%
+				      if(filename != null && !filename.isEmpty()){  
+					    %>
 	            <tr>
 	              <th>첨부파일</th>
-								<td colspan="3">
-	                <a id="filename" href="condolencesFiledown.jsp?filename=<%=filename%>"><%= filename %></a>
+	              <td colspan="3">
+	                <a
+	                  id="filename"
+	                  href="condolencesFiledown.jsp?filename=<%=filename%>"
+	                  ><%= filename %></a
+	                >
 	              </td>
 	            </tr>
 	            <%
@@ -137,29 +127,30 @@
 	          </table>
 	          <div class="button">
 	            <% 
-	            if(mem_no == memNo){
+	            if(mem_no == memNo){ 
 	            %>
-	              <button type="button">
-	                <a href="condolencesRevise.jsp?con_no=<%=con_no%>">수정</a>
-	              </button>
-	              <button type="button" onclick="deleteBtn()">삭제</button>
+	            <button type="button">
+	              <a href="condolencesRevise.jsp?con_no=<%=con_no%>">수정</a>
+	            </button>
+	            <button type="button" onclick="deleteBtn()">삭제</button>
 	            <%
-	            }
+	            } 
 	            %>
-	              <button type="button">
-	                <a href="condolences.jsp">목록</a>
-	              </button>
+	            <button type="button">
+	              <a href="condolences.jsp">목록</a>
+	            </button>
 	          </div>
-	          	<input type="hidden" name="con_no" value="<%= con_no %>">
-				<input type="hidden" name ="pageName" value="condolencesDetail">
-	          </form>
-	        </div>
-		</div>
+	          <input type="hidden" name="con_no" value="<%= con_no %>" />
+	          <input type="hidden" name="pageName" value="condolencesDetail" />
+	        </form>
+	      </div>
+	    </div>
 	</div>
 	</section>
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24e23b8a98c1750309dd34a0c1ea57d3&libraries=services"></script>
-	<script src="../script/condolencesDetail.js"></script>
-	<script src="../script/indexScript.js"></script>
+	
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24e23b8a98c1750309dd34a0c1ea57d3&libraries=services"></script>
+<script src="../script/condolencesDetail.js"></script>
+<script src="../script/indexScript.js"></script>
 </body>
 </html>
