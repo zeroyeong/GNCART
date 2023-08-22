@@ -7,7 +7,6 @@
 request.setCharacterEncoding("UTF-8");
 
 String memNo = request.getParameter("MEM_NO");
-//String memNo = "2";
 
 int totalWorkday = 0; //총 근태
 int totalPage = 0; //총 페이지

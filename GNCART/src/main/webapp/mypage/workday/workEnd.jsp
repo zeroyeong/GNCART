@@ -26,7 +26,7 @@ if (id != null && pw != null && start != null) { //id, pw, 오늘 날짜의 데�
 
 		wMgr.workEnd(start, workdNo);
 
-		String url = "http://localhost:8080/GNCART/mypage/mypageMain.jsp";
+		String url = "../mypageMain.jsp";
 
 		response.sendRedirect(url);
 	} //출근 기록이 있다면 if 종료 else문 안씀

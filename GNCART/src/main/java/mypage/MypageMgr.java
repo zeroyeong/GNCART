@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,6 +25,49 @@ public class MypageMgr {
 		} catch (Exception e) {
 			System.out.println("Error : 커넥션 얻어오기 실패");
 		}
+	}
+
+	// name 찾기
+	public Vector<MypageBean> memberFind(String id, String pw) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = null;
+
+		Vector<MypageBean> vlist = new Vector<MypageBean>();
+
+		try {
+			con = pool.getConnection();
+
+			sql = "select * from member a join part b join level c ON a.PART_NO=b.PART_NO and a.LE_NO=c.LE_NO where MEM_ID = ? and MEM_PW = ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				MypageBean bean = new MypageBean();
+
+				bean.setMEM_IMG(rs.getString("MEM_IMG"));
+				bean.setMEM_NAME(rs.getString("MEM_NAME"));
+				bean.setPART_TYPE(rs.getString("PART_TYPE"));
+				bean.setLE_LEVEL(rs.getString("LE_LEVEL"));
+				bean.setMEM_NO(rs.getString("MEM_NO"));
+				bean.setMEM_DATE(rs.getString("MEM_DATE"));
+
+				vlist.add(bean);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
 	}
 
 	// name 찾기
@@ -306,100 +350,100 @@ public class MypageMgr {
 		}
 		return add;
 	}
-	
+
 	// img 찾기
-		public String imgFind(String id, String pw) {
+	public String imgFind(String id, String pw) {
 
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-			String sql = null;
-			String name = null;
-			try {
-				con = pool.getConnection();
+		String sql = null;
+		String name = null;
+		try {
+			con = pool.getConnection();
 
-				sql = "select MEM_IMG from member where MEM_ID = ? and MEM_PW = ?";
+			sql = "select MEM_IMG from member where MEM_ID = ? and MEM_PW = ?";
 
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, id);
-				pstmt.setString(2, pw);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
 
-				rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 
-				if (rs.next()) {
-					name = rs.getString("MEM_IMG");
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				pool.freeConnection(con, pstmt, rs);
+			if (rs.next()) {
+				name = rs.getString("MEM_IMG");
 			}
-			return name;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
 		}
-	
+		return name;
+	}
+
 	// MEM_NO로 name 찾기
-		public String memNoNameFind(String memNo) {
+	public String memNoNameFind(String memNo) {
 
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-			String sql = null;
-			String name = null;
-			try {
-				con = pool.getConnection();
+		String sql = null;
+		String name = null;
+		try {
+			con = pool.getConnection();
 
-				sql = "select MEM_NAME from member where MEM_NO = ?";
+			sql = "select MEM_NAME from member where MEM_NO = ?";
 
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, memNo);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memNo);
 
-				rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 
-				if (rs.next()) {
-					name = rs.getString("MEM_NAME");
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				pool.freeConnection(con, pstmt, rs);
+			if (rs.next()) {
+				name = rs.getString("MEM_NAME");
 			}
-			return name;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
 		}
-		
-		// MEM_NO로 입사일 찾기
-		public String memNoDateFind(String memNo) {
+		return name;
+	}
 
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
+	// MEM_NO로 입사일 찾기
+	public String memNoDateFind(String memNo) {
 
-			String sql = null;
-			String name = null;
-			try {
-				con = pool.getConnection();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-				sql = "select MEM_DATE from member where MEM_NO = ?";
+		String sql = null;
+		String name = null;
+		try {
+			con = pool.getConnection();
 
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, memNo);
+			sql = "select MEM_DATE from member where MEM_NO = ?";
 
-				rs = pstmt.executeQuery();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memNo);
 
-				if (rs.next()) {
-					name = rs.getString("MEM_DATE");
-				}
+			rs = pstmt.executeQuery();
 
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				pool.freeConnection(con, pstmt, rs);
+			if (rs.next()) {
+				name = rs.getString("MEM_DATE");
 			}
-			return name;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
 		}
+		return name;
+	}
 
 	// 전화번호 수정
 	public void updatePhone(MypageBean bean, String id) {
@@ -522,53 +566,52 @@ public class MypageMgr {
 			pool.freeConnection(con, pstmt);
 		}
 	}
-	
-	//SAVEFOLDER, ENCTYPE, MAXSIZE 지정
-	private static final String  SAVEFOLDER = "C:/GNCART/GNCART/GNCART/src/main/webapp/management/filestorage";
+
+	// SAVEFOLDER, ENCTYPE, MAXSIZE 지정
+	private static final String SAVEFOLDER = "C:/GNCART/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/GNCART/management/filestorage";
 	private static final String ENCTYPE = "UTF-8";
-	private static int MAXSIZE = 10*1024*1024;
-	
-	//img 수정
+	private static int MAXSIZE = 10 * 1024 * 1024;
+
+	// img 수정
 	public void updateImg(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		String sql = null;
-		
-		MultipartRequest multi = null; //이미지 업로드 위한 객체
-		
-		String img = null; //이미지 이름
-		
+
+		MultipartRequest multi = null; // 이미지 업로드 위한 객체
+
+		String img = null; // 이미지 이름
+
 		try {
 			con = pool.getConnection();
-			
+
 			File file = new File(SAVEFOLDER);
-			
-			if(!file.exists()) {
+
+			if (!file.exists()) {
 				file.mkdirs();
 			}
-			
-			multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCTYPE,
-					new DefaultFileRenamePolicy());
-			
-			if(multi.getFilesystemName("file") != null) {
+
+			multi = new MultipartRequest(req, SAVEFOLDER, MAXSIZE, ENCTYPE, new DefaultFileRenamePolicy());
+
+			if (multi.getFilesystemName("file") != null) {
 				img = multi.getFilesystemName("file");
 			}
-			
-			sql="update member set MEM_IMG = ? where MEM_ID = ?";
-			
-			pstmt=con.prepareStatement(sql);
-			
+
+			sql = "update member set MEM_IMG = ? where MEM_ID = ?";
+
+			pstmt = con.prepareStatement(sql);
+
 			pstmt.setString(1, img);
 			pstmt.setString(2, (String) session.getAttribute("idKey"));
-			
+
 			pstmt.executeUpdate();
-		}catch(Exception e) {
-				e.printStackTrace();
-			} finally {
-				pool.freeConnection(con, pstmt);
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
 		}
-} 
+	}
+}

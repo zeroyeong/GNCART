@@ -16,18 +16,22 @@ String memNo = null;
 String date = null;
 String img = null;
 
+Vector<MypageBean> vlist = pMgr.memberFind(id, pw);
+
+MypageBean bean = vlist.get(0);
+	
 if (id != null & pw != null) {
-	name = pMgr.nameFind(id, pw);
-	partType = pMgr.partTypeFind(id, pw);
-	level = pMgr.levelFind(id, pw);
-	memNo = pMgr.memNoFind(id, pw);
-	date = pMgr.dateFind(id, pw);
-	img = pMgr.imgFind(id, pw);
+	name = bean.getMEM_NAME();
+	partType = bean.getPART_TYPE();
+	level = bean.getLE_LEVEL();
+	memNo = bean.getMEM_NO();
+	date = bean.getMEM_DATE();
+	img = bean.getMEM_IMG();
 }
 
 String check = null;
 if (img != null) {
-File file = new File("C:/GNCART/GNCART/GNCART/src/main/webapp/management/filestorage/"+img);
+File file = new File("C:/GNCART/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/GNCART/management/filestorage/"+img);
 
 if(file.exists() ){ //파일 유무 확인
 	check = "check";

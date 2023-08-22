@@ -23,7 +23,7 @@ public class UpdateImgServlet extends HttpServlet {
 		
 		String img = request.getParameter("img");
 		
-		File file = new File("C:\\Users\\Administrator\\git\\GNCART\\GNCART\\GNCART\\src\\main\\webapp\\management\\filestorage\\"+img);
+		File file = new File("C:/GNCART/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/GNCART/management/filestorage/"+img);
 	    
 		if(file.exists() ){ //파일 유무 확인
 			if(file.delete()){ //파일 삭제
