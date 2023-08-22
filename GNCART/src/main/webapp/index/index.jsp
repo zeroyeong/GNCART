@@ -16,7 +16,7 @@
 //로그인 안했을 시 로그인 페이지로 리다이렉트 
 if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null) {
 	response.sendRedirect("../login.jsp");
-	return;
+	return; 
 }
 
 // 캐시 설정(로그아웃 하고 뒤로가기시 인덱스 접근 차단)

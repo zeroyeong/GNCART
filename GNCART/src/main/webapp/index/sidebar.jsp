@@ -14,7 +14,7 @@
         <a href="../index/index.jsp">
           <i class='bx bx-home-alt icon'></i>
           <span class="links_name">Home</span>
-        </a>
+        </a> 
       </li>
       <li>
         <a href="../notice/notice.jsp"> 

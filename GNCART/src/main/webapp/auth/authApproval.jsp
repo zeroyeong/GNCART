@@ -3,7 +3,7 @@
 <%@ page import="java.util.Vector"%>
 <jsp:useBean id="aMgr" class="auth.AuthMgr" />
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
-
+ 
 <%
 if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");

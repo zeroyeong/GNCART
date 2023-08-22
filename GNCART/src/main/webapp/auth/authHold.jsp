@@ -57,7 +57,7 @@
 				            <col class="col1 " />
 			       	   </colgroup>
                         <thead>
-                            <tr>
+                            <tr>  
                           		<th></th>
                                 <th>No.</th>
                                 <th>제목</th>

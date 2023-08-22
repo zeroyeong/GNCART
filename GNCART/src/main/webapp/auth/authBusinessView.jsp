@@ -88,7 +88,7 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
             </table>
         </div>
         <table>
-            <tr>
+            <tr> 
                 <th>항목</th>
                 <th colspan="3">내용</th>
             </tr>

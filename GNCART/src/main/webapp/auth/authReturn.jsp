@@ -8,7 +8,7 @@
     if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
         response.sendRedirect("../login.jsp");
 	int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
-%>
+%> 
 
 <!DOCTYPE html>
 <html lang="ko">

@@ -13,7 +13,7 @@ function vacLineBtn() {
 }
 
 /*authBusiness*/
-function busLineBtn() {
+function busLineBtn() { 
     var popupUrl = "authBusinessLine.jsp";
     var _width = '400';
     var _height = '390';

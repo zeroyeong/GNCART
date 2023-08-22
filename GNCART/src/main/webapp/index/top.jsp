@@ -17,7 +17,7 @@ String myName = (String) session.getAttribute("memName");
 
 String memImg = (String) session.getAttribute("memImg");
 %>
-
+ 
 <link rel="stylesheet" href="../css/chat.css">
 
 <nav>

@@ -13,7 +13,7 @@
 	int No = (int)session.getAttribute("memNo");
 	String leLevel = (String)session.getAttribute("leLevel");
 	String parttype = (String)session.getAttribute("parttype");
-	
+	 
 	//결재선 선택값가져오기
 	String teamLeader = request.getParameter("line1");
 	String manager = request.getParameter("line2");
