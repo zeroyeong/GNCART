@@ -50,7 +50,7 @@ public class ConMgr {
 		String sql = null;
 
 		Vector<ConBean> blist = new Vector<ConBean>();
-
+ 
 		try {
 			con = pool.getConnection();
 

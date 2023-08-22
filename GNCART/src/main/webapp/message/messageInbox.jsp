@@ -115,10 +115,10 @@ int cnt = 0;
 					  %>
 					  <td><%= msg_read %></td>
 					  <%											
-					  } else {
+					  } else { 
 					  %>
 					  <td><%= msg_readTime %></td>
-					  <%
+					  <% 
 					  } //else
 					  %>
 					</tr>

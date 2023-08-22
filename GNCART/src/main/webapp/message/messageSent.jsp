@@ -10,8 +10,8 @@
 if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null) {
 	response.sendRedirect("../login.jsp");
 	return; 
-}
-
+} 
+ 
 //캐시 설정(로그아웃 하고 뒤로가기시 인덱스 접근 차단)
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 response.setHeader("Pragma", "no-cache");

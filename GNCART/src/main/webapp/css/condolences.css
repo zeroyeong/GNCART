@@ -210,7 +210,7 @@ th {
   padding: var(--tablePadding);
   border-bottom: var(--tableBorder);
 }
-
+ 
 .content table thead th {
   background-color: var(--tableHeadBackColor);
   color: var(--tableHeadFontColor);

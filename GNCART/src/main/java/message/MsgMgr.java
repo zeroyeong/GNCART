@@ -63,7 +63,7 @@ public class MsgMgr {
 
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) {
+			while (rs.next()) { 
 				MsgBean bean = new MsgBean();
 				bean.setMsg_no(rs.getInt("msg_no"));
 				bean.setMsg_title(rs.getString("msg_title"));

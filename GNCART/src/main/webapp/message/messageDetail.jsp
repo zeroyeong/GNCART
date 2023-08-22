@@ -73,7 +73,7 @@
 		          <tr>
 		            <th>보낸사람</th>
 		            <td><%= fromName %></td>
-		            <th>해당부서</th>
+		            <th>해당부서</th> 
 		            <td><%= fromPartType %></td>
 		          </tr>
 		          <tr>

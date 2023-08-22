@@ -276,7 +276,7 @@ th {
 
 /* content - bottomMenu - button */ 
 
-.content .bottomMenu .button {
+.content .bottomMenu .button { 
   display: flex;
   justify-content: flex-end;
   align-items: center;

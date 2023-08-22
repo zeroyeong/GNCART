@@ -8,7 +8,7 @@
 
 <% 
 request.setCharacterEncoding("UTF-8");
-
+  
 ManagementBean bean = new ManagementBean();
 
 int mem_no = (int)session.getAttribute("memNo");
