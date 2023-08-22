@@ -29,9 +29,11 @@ if (id != null & pw != null) {
 	img = bean.getMEM_IMG();
 }
 
+String path = session.getServletContext().getRealPath("/management/filestorage");
+
 String check = null;
 if (img != null) {
-File file = new File("C:/GNCART/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/GNCART/management/filestorage/"+img);
+	File file = new File(path+"/"+img);
 
 if(file.exists() ){ //파일 유무 확인
 	check = "check";

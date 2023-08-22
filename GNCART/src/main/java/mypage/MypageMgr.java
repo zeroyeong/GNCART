@@ -567,14 +567,16 @@ public class MypageMgr {
 		}
 	}
 
-	// SAVEFOLDER, ENCTYPE, MAXSIZE 지정
-	private static final String SAVEFOLDER = "C:/GNCART/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/GNCART/management/filestorage";
-	private static final String ENCTYPE = "UTF-8";
-	private static int MAXSIZE = 10 * 1024 * 1024;
+
 
 	// img 수정
 	public void updateImg(HttpServletRequest req) {
 		HttpSession session = req.getSession();
+		
+		// SAVEFOLDER, ENCTYPE, MAXSIZE 지정
+		String SAVEFOLDER = session.getServletContext().getRealPath("/management/filestorage");
+		String ENCTYPE = "UTF-8";
+		int MAXSIZE = 10 * 1024 * 1024;
 
 		Connection con = null;
 		PreparedStatement pstmt = null;

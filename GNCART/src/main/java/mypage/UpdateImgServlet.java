@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/UpdateImgServlet")
 public class UpdateImgServlet extends HttpServlet {
@@ -16,6 +17,7 @@ public class UpdateImgServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 
 		MypageMgr pMgr = new MypageMgr();
 		
@@ -23,7 +25,7 @@ public class UpdateImgServlet extends HttpServlet {
 		
 		String img = request.getParameter("img");
 		
-		File file = new File("C:/GNCART/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/GNCART/management/filestorage/"+img);
+		File file = new File(session.getServletContext().getRealPath("/management/filestorage")+"/"+img);
 	    
 		if(file.exists() ){ //파일 유무 확인
 			if(file.delete()){ //파일 삭제
