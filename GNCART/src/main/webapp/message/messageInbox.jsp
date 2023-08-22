@@ -28,7 +28,7 @@ int cnt = 1;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/messageInbox.css?after3">
+<link rel="stylesheet" href="../css/messageInbox.css?afgfhft">
 
 
 <!--Boxicons CDN Link-->
@@ -50,8 +50,8 @@ int cnt = 1;
 	
 	      <div class="button">삭제</div>
 	
-	      <button type="button"><a href="NEWmessageInbox.jsp">받은 편지함</a></button>
-	      <button type="button"><a href="NEWmessageSent.jsp">보낸 편지함</a></button>
+	      <button type="button"><a href="messageInbox.jsp">받은 편지함</a></button>
+	      <button type="button"><a href="messageSent.jsp">보낸 편지함</a></button>
 	
 	    </div>
 		<div class="content">
@@ -78,8 +78,8 @@ int cnt = 1;
 	              <tr>
 	                <th></th>
 	                <th>No.</th>
-	                <th>보낸사람</th>
 	                <th>제목</th>
+	                <th>보낸사람</th>
 	                <th>받은시간</th>
 	                <th>확인여부</th>
 	              </tr>
@@ -115,8 +115,8 @@ int cnt = 1;
 					<tr>
 					  <td><input class="checkbox" name="check" type="checkbox" value="<%= msg_no %>"></td>
 					  <td><%= cnt %></td>
-					  <td><%= msg_fromParyType %> <%= msg_fromName %></td>
 					  <td><a id="" href="messageDetail.jsp?msg_no=<%= msg_no %>&pageName=<%= pageName %>"><%= msg_title %></a></td>
+					  <td><%= msg_fromParyType %> <%= msg_fromName %></td>
 					  <td><%= msg_sendTime %></td>
 					  <% 
 					  if(msg_read.equals("안읽음")){
@@ -139,11 +139,9 @@ int cnt = 1;
 	          	</table>
 	          <div class="bottomMenu">
 	            <div class="empty"></div>
-	            <ul class="pagination">
-	              <li class="active"><a href="">1</a></li>
-	              <li><a href="">2</a></li>
-	              <li><a href="">3</a></li>
-	            </ul>
+          	  	<ul class="pagination" id="pagenation">
+            
+              	</ul>
 	            <div class="button">
 					<button type="button"><a href="messageWrite.jsp">보내기</a></button>
 					<button type="button" onclick="deleteBtn()">삭제하기</button>
@@ -155,6 +153,8 @@ int cnt = 1;
 		</div>
 	</div>
 	</section>
+	
+<script src="../script/boardPagenation.js?asffd"></script>
 <script src="../script/indexScript.js"></script>
 <script src="../script/messageInbox.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>  

@@ -34,7 +34,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesDetail.css?asd">
+<link rel="stylesheet" href="../css/condolencesDetail.css?sdf">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -68,7 +68,7 @@
 	      </div>
 	      <div class="content">
 	        <h3 class="caption"><%= title %></h3>
-	        <form name="detailFrm" method="post" action="conDelete.jsp">
+	        <form name="detailFrm" method="post" action="conDelete.jsp" class="detail">
 	          <table>
 	            <colgroup>
 	              <col class="col1" />
@@ -89,7 +89,7 @@
 	            <tr>
 	              <th>장소 및 주소</th>
 	              <td colspan="3">
-	                <input id="locationId" value="<%= location %>" readonly />
+	                <%= location %>
 	              </td>
 	            </tr>
 	            <tr>
@@ -109,8 +109,8 @@
 	            }
 	            %>
 	            <%
-				      if(filename != null && !filename.isEmpty()){  
-					    %>
+			    if(filename != null && !filename.isEmpty()){  
+				%>
 	            <tr>
 	              <th>첨부파일</th>
 	              <td colspan="3">
@@ -140,6 +140,7 @@
 	              <a href="condolences.jsp">목록</a>
 	            </button>
 	          </div>
+	          <input type="hidden" id="locationId" value="<%= location %>"/>
 	          <input type="hidden" name="con_no" value="<%= con_no %>" />
 	          <input type="hidden" name="pageName" value="condolencesDetail" />
 	        </form>
