@@ -71,7 +71,6 @@
   margin: 0;
   box-sizing: border-box;
   color: var(--fontColor);
-  font-size: var(--fontSize);
 }
 
 a {
@@ -213,6 +212,7 @@ th {
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);
   font-weight: bold;
+   cursor: pointer;
 }
 
 .content table tr:last-child {
@@ -242,6 +242,7 @@ th {
 .content .button button:hover {
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);
+    cursor: pointer;
 }
 
 .content .button button:last-child {

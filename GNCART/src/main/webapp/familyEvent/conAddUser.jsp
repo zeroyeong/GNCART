@@ -21,10 +21,10 @@ if(request.getParameter("keyWord") != null){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
-<link rel="stylesheet" href="../css/conPopup.css?asdfdff">
+<link rel="stylesheet" href="../css/conPopup.css?dddas">
 
 </head>
-<body>
+<body style="background-color: #96969648">
 	<div class="container">
       <div class="title">
         <h3>사원찾기</h3>
@@ -39,7 +39,7 @@ if(request.getParameter("keyWord") != null){
             <td>부서 / 이름</td>
             <td><input type="text" id="searchbar" placeholder="이름을 입력해 주세요" onClick="test()"></td>
             <td>
-              <button><a href="">찾기</a></button>
+<!--               <button><a href="" onClick="searchUser()">찾기</a></button> -->
               <button type="button" id="searchBtn" onClick="searchUser()">찾기</button>
             </td>
           </tr>

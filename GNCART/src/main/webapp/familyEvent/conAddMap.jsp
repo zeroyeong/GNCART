@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
-<link rel="stylesheet" href="../css/conPopup.css?asssdd">
+<link rel="stylesheet" href="../css/conPopup.css?sddff">
 
 </head>
-<body>
+<body style="background-color: #96969648">
     <div class="container">
       <div class="title">
         <h3>지도추가</h3>
@@ -23,8 +23,7 @@
             <td>주소</td>
             <td><input type="text" id="place" placeholder="주소를 입력해 주세요." /></td>
             <td>
-              <button><a onClick="searchPlace()">찾기</a></button>
-              <input type="button" id="searchBtn" onClick="searchPlace()" value="찾기" />
+              <button type="button" id="searchBtn" onClick="searchPlace()">찾기</button>
             </td>
           </tr>
           <tr>
@@ -41,7 +40,7 @@
 
 <!-- kakao map  -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24e23b8a98c1750309dd34a0c1ea57d3&libraries=services"></script>
-<script src="../script/conAddMap.js?asfdd"></script>
+<script src="../script/conAddMap.js?dd"></script>
 
 </body>
 </html>

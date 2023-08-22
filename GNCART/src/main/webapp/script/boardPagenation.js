@@ -13,12 +13,12 @@ console.log(pages);
 
 for (let i = 1; i <= totalPage; i++) {
   let btn = document.createElement("button");
-  btn.innerHTML = i;
+  btn.innerHTML =  `<li><a href="">${i}</a></li>`;
 
   pages.appendChild(btn);
 }
 
-const page = document.querySelectorAll("#pagenation button");
+const page = document.querySelectorAll("#pagenation li");
 console.log(page);
 
 page.forEach((t, idx) => {

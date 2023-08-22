@@ -59,7 +59,6 @@
   margin: 0;
   box-sizing: border-box;
   color: var(--fontColor);
-  font-size: var(--fontSize);
 }
 
 a {
@@ -245,6 +244,10 @@ th {
 .content .bottomMenu .pagination,
 .content .bottomMenu .button {
   width: calc(100% / 3);
+}
+
+.content table tr:hover{
+	background-color:#eee;
 }
 
 /* content - bottomMenu - pagination */

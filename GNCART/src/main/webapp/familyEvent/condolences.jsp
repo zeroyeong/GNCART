@@ -17,7 +17,7 @@ blist = conMgr.getBoardList();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolences.css">
+<link rel="stylesheet" href="../css/condolences.css?addfddfdsd">
 
 
 <!--Boxicons CDN Link-->
@@ -119,10 +119,8 @@ blist = conMgr.getBoardList();
           </table>
           <div class="bottomMenu">
             <div class="empty"></div>
-            <ul class="pagination">
-              <li class="active"><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
+            <ul class="pagination" id="pagenation">
+            
             </ul>
             <div class="button">
               <button type="button">
@@ -138,7 +136,7 @@ blist = conMgr.getBoardList();
     </div>
 	</div>		
  	</section>
- 
+<script src="../script/boardPagenation.js?asffd"></script>
 <script src="../script/condolences.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>  
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>

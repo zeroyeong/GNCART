@@ -18,7 +18,7 @@
     height: 500px;
     overflow: auto; 
 }
-
+/* 16px 1em(부모까지 적용된다)  */
 .chat-room p {
     border-radius: 1.15rem;
     line-height: 1.25;
