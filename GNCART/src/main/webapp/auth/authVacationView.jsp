@@ -148,9 +148,6 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
             <% } else if(Name.equals(LINE_SECOND) && DOC_APPTURN == 1) { %>
             <button class="submitBtn" type="submit" name="action" value="second">승인</button>
             <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
-            <% } else if ("부장".equals(leLevel)) { %>
-            <button class="submitBtn" type="submit" name="action" value="second">승인</button>
-            <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
             <% } %>
         </div>
     </form>

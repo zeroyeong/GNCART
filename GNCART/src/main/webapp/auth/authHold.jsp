@@ -84,7 +84,7 @@
 
                                         String linkFunction = (DOC_TYPE == 1) ? "vacView" : "busView";
 
-                                        boolean isApprover = (leNo == 3 && DOC_STATES == 0) || (leNo == 4 && DOC_STATES == 1);
+                                        boolean isApprover = (leNo == 3 && DOC_STATES == 0) || (leNo == 4 && DOC_STATES == 0);
 
                                         if (isApprover) {
                             %>
