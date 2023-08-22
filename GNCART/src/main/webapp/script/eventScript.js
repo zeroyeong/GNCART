@@ -42,7 +42,7 @@ function findFile(index) {
     fileIndex++;
 
     var newInput = $('<input id="filename' + fileIndex + '" placeholder="첨부파일" readonly>');
-    var newLabel = $('<label for="file' + fileIndex + '">파일찾기</label>');
+    var newLabel = $('<label for="file' + fileIndex + '"></label>');
     var newFileInput = $('<input type="file" id="file' + fileIndex + '" name="NOT_FILENAME' + fileIndex + '" onchange="findFile(' + fileIndex + ')">');
 
     newInput.insertBefore("a[onclick='fileplus()']");
