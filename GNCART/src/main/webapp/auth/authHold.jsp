@@ -12,7 +12,7 @@
     int leNo = (int) session.getAttribute("leNo");
 
     int alertNo = 0;
-
+    int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
     if (request.getParameter("alertNo") != null && Integer.parseInt(request.getParameter("alertNo")) != 0) {
         alertNo = Integer.parseInt(request.getParameter("alertNo"));
         alertMgr.updateAlert(alertNo);
@@ -52,6 +52,7 @@
                            <a href="authReturn.jsp"><button>반려</button></a>
 			         </div>
 	         	   </div>
+                     <form>
                     <table>
         		       <colgroup>
 				            <col class="col1 " />
@@ -89,7 +90,7 @@
                                         if (isApprover) {
                             %>
                             <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
-                                <td><input type="checkbox" /></td>
+                                <td><input type="checkbox" id="checkbox<%= DOC_NO %>" value="<%= DOC_NO %>" /></td>
                                 <td><%= DOC_NO %></td>
                                 <td><%= DOC_NAME %></td>
                                 <td><%= MEM_NAME %></td>
@@ -115,6 +116,7 @@
                             %>
                         </tbody>
                     </table>
+                   </form>
                     <div class="bottomMenu">
                         <div class="empty"></div>
                         <ul class="pagination">
@@ -122,9 +124,11 @@
                             <li><a href="">2</a></li>
                             <li><a href="">3</a></li>
                         </ul>
-                        <div class="button">
-                           <button class="del">삭제</button>
-                        </div>
+	                        <div class="button">
+	                            <% if(acNo == 2){%>
+                                <button class="submitBtn" type="submit" name="action" value="busdelete">삭제</button>
+	                            <%} %>
+	                        </div>
                     </div>
                 </div>
             </div>

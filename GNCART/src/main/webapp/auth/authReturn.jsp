@@ -7,6 +7,7 @@
 <%
     if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
         response.sendRedirect("../login.jsp");
+	int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
 %>
 
 <!DOCTYPE html>
@@ -77,27 +78,27 @@
                                         if (DOC_STATES == 2) {
                             %>
                         	    <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
-                                    <td><input type="checkbox" /></td>
+                                    <td><input type="checkbox" id="myCheckbox"/></td>
                                     <td><%= DOC_NO %></td>
-                                <% if (DOC_TYPE == 1) { %>
-                                    <td><%= DOC_NAME %></td>
-                                <% } else if (DOC_TYPE == 2) { %>
-                                    <td><%= DOC_NAME %></td>
-                                <% } %>
-                                <td><%= MEM_NAME %></td>
-                                <% if (DOC_STATES == 0) { %>
-                                    <td>대기</td>
-                                <% } else if (DOC_STATES == 1) { %>
-                                    <td>승인</td>
-                                <% } else if (DOC_STATES == 2) { %>
-                                    <td>반려</td>
-                                <% } else { %>
-                                    <td>종결</td>
-                                <% } %>
-                                <td><%= DOC_REGDATE %></td>
-                                <% if (DOC_APPDATE == null) { %>
-                                    <td>결재대기중</td>
-                                <% } %>
+	                                <% if (DOC_TYPE == 1) { %>
+	                                    <td><%= DOC_NAME %></td>
+	                                <% } else if (DOC_TYPE == 2) { %>
+	                                    <td><%= DOC_NAME %></td>
+	                                <% } %>
+	                                <td><%= MEM_NAME %></td>
+	                                <% if (DOC_STATES == 0) { %>
+	                                    <td>대기</td>
+	                                <% } else if (DOC_STATES == 1) { %>
+	                                    <td>승인</td>
+	                                <% } else if (DOC_STATES == 2) { %>
+	                                    <td>반려</td>
+	                                <% } else { %>
+	                                    <td>종결</td>
+	                                <% } %>
+	                                <td><%= DOC_REGDATE %></td>
+	                                <% if (DOC_APPDATE == null) { %>
+	                                    <td>결재대기중</td>
+	                                <% } %>
                             </tr>
                             <% } %>
                         <% } %>
@@ -111,8 +112,10 @@
                             <li><a href="">2</a></li>
                             <li><a href="">3</a></li>
                         </ul>
-                        <div class="button">
+                   	    <div class="button">
+                            <% if(acNo == 2){%>
                             <button class="del">삭제</button>
+                            <%} %>
                         </div>
                     </div>
                 </div>

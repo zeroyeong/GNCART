@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page import="java.util.Vector"%>
-<%@page import="chat.ChatBean"%>
-<%@page import="alert.AlertBean"%>
-<%@page import="management.ManagementBean"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.Vector" %>
+<%@ page import="chat.ChatBean" %>
+<%@ page import="alert.AlertBean" %>
+<%@ page import="management.ManagementBean" %>
 <jsp:useBean id="chatMgr" class="chat.ChatMgr" />
 <jsp:useBean id="alertMgr" class="alert.AlertMgr" />
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
@@ -15,6 +14,8 @@ String fromName = "";
 String massege = "";
 
 String myName = (String) session.getAttribute("memName");
+
+String memImg = (String) session.getAttribute("memImg");
 %>
 
 <link rel="stylesheet" href="../css/chat.css">
@@ -45,7 +46,7 @@ String myName = (String) session.getAttribute("memName");
 	</div>
 
 	<div class="profile-details">
-		<a href="#"><img src="../images/profile.jpg" alt="" /></a> 
+  	    <a href="#"><img src="../management/filestorage/<%= memImg %>" alt="" /></a>
 		<span class="admin_name"><%=session.getAttribute("leLevel")%> <%=session.getAttribute("memName")%></span>
 	</div>
 </nav>

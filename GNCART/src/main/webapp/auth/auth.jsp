@@ -9,6 +9,9 @@
 <%
     if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
         response.sendRedirect("../login.jsp");
+	
+	int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -114,7 +117,10 @@
                         </ul>
                         <div class="button">
                             <button class="authBtn" type="submit" value="결재신청" onclick="showModal()">작성</button>
+                       
+                            <% if(acNo == 2){%>
                             <button class="del">삭제</button>
+                            <%} %>
                             
                             <div class="modal-background" id="modalBackground">
                                 <div class="modal-content">

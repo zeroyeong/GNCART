@@ -9,6 +9,7 @@ if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == nu
     response.sendRedirect("../login.jsp");
 
 int leNo = (int) session.getAttribute("leNo");
+int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
 %>
 
 <!DOCTYPE html>
@@ -83,7 +84,7 @@ int leNo = (int) session.getAttribute("leNo");
                                         if (leNo3 || leNo4) {
                             %>
                             <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
-                                <td><input type="checkbox" /></td>
+                                <td><input type="checkbox" id="myCheckbox"/></td>
                                 <td><%= DOC_NO %></td>
                                 <td><%= DOC_NAME %></td>
                                 <td><%= MEM_NAME %></td>
@@ -122,7 +123,9 @@ int leNo = (int) session.getAttribute("leNo");
                             <li><a href="">3</a></li>
                         </ul>
                         <div class="button">
+                            <% if(acNo == 2){%>
                             <button class="del">삭제</button>
+                            <%} %>
                         </div>
                     </div>
                 </div>
