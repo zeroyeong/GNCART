@@ -98,15 +98,15 @@ blist = conMgr.getBoardList();
                 int hit = bean.getCon_hit();
                 int mem_no = bean.getMem_no();
               %>
-              <tr class= "urlBtn"onclick="urlBtn(<%= con_no %>)">
+              <tr class= "urlBtn">
                 <td>
                   <input class="checkbox" name="check" type="checkbox" value="<%=con_no%>"/>
                 </td>
-                <td><%=con_no%></td>
-                <td><%=title%></td>
-                <td><%=wtriter%></td>
-                <td><%=hit%></td>
-                <td><%=regdate%></td>
+                <td onclick="urlBtn(<%= con_no %>)"><%=con_no%></td>
+                <td onclick="urlBtn(<%= con_no %>)"><%=title%></td>
+                <td onclick="urlBtn(<%= con_no %>)"><%=wtriter%></td>
+                <td onclick="urlBtn(<%= con_no %>)"><%=hit%></td>
+                <td onclick="urlBtn(<%= con_no %>)"><%=regdate%></td>
               </tr>
               <%						
                 } //for
@@ -134,7 +134,7 @@ blist = conMgr.getBoardList();
 	</div>		
  	</section>
 <script src="../script/boardPagenation.js?asffd"></script>
-<script src="../script/condolences.js?sdddf"></script>
+<script src="../script/condolences.js?sddf"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>  
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 

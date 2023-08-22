@@ -54,7 +54,7 @@ public class ConMgr {
 		try {
 			con = pool.getConnection();
 
-			sql = "SELECT * FROM condolences C JOIN member M ON C.MEM_NO = M.MEM_NO";
+			sql = "SELECT * FROM condolences C JOIN member M ON C.MEM_NO = M.MEM_NO ORDER BY CON_NO DESC";
 			pstmt = con.prepareStatement(sql);
 
 			rs = pstmt.executeQuery();
