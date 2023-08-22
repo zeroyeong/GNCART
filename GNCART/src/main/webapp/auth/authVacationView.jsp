@@ -71,11 +71,12 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
                     </th>
                 </tr>
                 <% } %>
-
                 <tr>
                     <th>
                         <% if (firstApproved) { %>
-                        <img src="../images/stamp1.png" alt="">
+                        <img src="../images/stamp1.png" alt="">	
+                        <% } else if (secondApproved) { %>
+                        <img src="../images/stamp2.png" alt="">
                         <% } %>
                     </th>
                     <% if (!"팀장".equals(LE_LEVEL)) { %>

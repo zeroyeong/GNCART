@@ -73,6 +73,8 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
                     <th>
                         <% if (firstApproved) { %>
                         <img src="../images/stamp1.png" alt="">
+                        <% }  else if (secondApproved) {  %>
+                        <img src="../images/stamp2.png" alt="">
                         <% } %>
                     </th>
                     <% if (!"팀장".equals(LE_LEVEL)) { %>
@@ -126,7 +128,7 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
             <% if (Name.equals(LINE_FIRST) && DOC_APPTURN == 0) { %>
             <button class="submitBtn" type="submit" name="action" value="first">승인</button>
             <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
-            <% } else if(Name.equals(LINE_SECOND) && DOC_APPTURN == 1) { %>
+            <% } else if(Name.equals(LINE_SECOND) || DOC_APPTURN == 1) { %>
             <button class="submitBtn" type="submit" name="action" value="second">승인</button>
             <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
             <% } %>
