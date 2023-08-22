@@ -22,12 +22,12 @@ blist = conMgr.getBoardList();
 %> 
 <!DOCTYPE html>
 <html lang="ko">
-<head> 
+<head>  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolences.css?addsd">
+<link rel="stylesheet" href="../css/condolences.css">
 
 
 <!--Boxicons CDN Link-->
@@ -133,8 +133,8 @@ blist = conMgr.getBoardList();
     </div>
 	</div>		
  	</section>
-<script src="../script/boardPagenation.js?asffd"></script>
-<script src="../script/condolences.js?sddf"></script>
+<script src="../script/boardPagenation.js"></script>
+<script src="../script/condolences.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>  
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 

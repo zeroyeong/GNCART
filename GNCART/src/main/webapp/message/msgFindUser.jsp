@@ -14,14 +14,14 @@ if(request.getParameter("keyWord") != null){
 }
 
 %>
-
+ 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
-<link rel="stylesheet" href="../css/conPopup.css?dddas">
+<link rel="stylesheet" href="../css/conPopup.css">
 
 </head>
 <body style="background-color: #96969648">
@@ -96,7 +96,7 @@ if(request.getParameter("keyWord") != null){
       </div>
     </div>
 
-<script src="../script/msgFindUser.js?after2"></script>
+<script src="../script/msgFindUser.js"></script>
 
 </body>
 </html>

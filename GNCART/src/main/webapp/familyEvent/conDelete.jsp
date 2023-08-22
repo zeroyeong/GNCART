@@ -22,7 +22,7 @@ int memNo = (int)session.getAttribute("memNo");
 </head>
 <body>
 <%
-
+ 
 //선택된 게시글이 없을때
 if(checkedList == null && pageName.equals("condolences")){
 %>

@@ -39,14 +39,14 @@ int cnt = 0;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/messageInbox.css?sst">
+<link rel="stylesheet" href="../css/messageInbox.css">
 
 
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
 </head>
-<body>
+<body> 
 
 	<!-- sidebar include -->
 	<jsp:include page="../index/sidebar.jsp" flush="false" />
@@ -148,11 +148,10 @@ int cnt = 0;
 	</div>
 	</section>
 	
-<script src="../script/boardPagenation.js?asffd"></script>
-<script src="../script/messageInbox.js"></script>
+<script src="../script/boardPagenation.js"></script>
+<script src="../script/messageDelBtn.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>  
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
 
 </body>
 </html>

@@ -5,28 +5,39 @@
 <jsp:useBean id="msgMgr" class="message.MsgMgr" />
 
 <%
-	int msg_no = Integer.parseInt(request.getParameter("msg_no"));
-	String pageName = request.getParameter("pageName");	
+//로그인 안했을 시 로그인 페이지로 리다이렉트 
+if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null) {
+	response.sendRedirect("../login.jsp");
+	return; 
+}
 
-	MsgBean bean = new MsgBean();	
-	bean = msgMgr.getMsg(msg_no);
+//캐시 설정(로그아웃 하고 뒤로가기시 인덱스 접근 차단)
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+response.setHeader("Pragma", "no-cache");
+response.setHeader("Expires", "0");
 
-	String title = bean.getMsg_title();
-	String content = bean.getMsg_content();
-	String toPartType = bean.getMsg_toPartType();
-	String toName = bean.getMsg_toName();
-	String fromPartType = bean.getMsg_fromPartType();
-	String fromName = bean.getMsg_fromName();
-	String sendTime = bean.getMsg_sendTime();
-	String readTime = bean.getMsg_readTime(); 
-	String read = bean.getMsg_read();
-	int delCnt = bean.getMsg_delCnt();
-	String filename = bean.getMsg_file(); 
-	
-	//받은 메일함에서 열때
-	if(pageName.endsWith("messageInbox") && read.equals("안읽음")){
-		msgMgr.setRead(msg_no);
-	} 
+int msg_no = Integer.parseInt(request.getParameter("msg_no"));
+String pageName = request.getParameter("pageName");	
+
+MsgBean bean = new MsgBean();	
+bean = msgMgr.getMsg(msg_no);
+
+String title = bean.getMsg_title();
+String content = bean.getMsg_content();
+String toPartType = bean.getMsg_toPartType();
+String toName = bean.getMsg_toName();
+String fromPartType = bean.getMsg_fromPartType();
+String fromName = bean.getMsg_fromName();
+String sendTime = bean.getMsg_sendTime();
+String readTime = bean.getMsg_readTime(); 
+String read = bean.getMsg_read();
+int delCnt = bean.getMsg_delCnt();
+String filename = bean.getMsg_file(); 
+
+//받은 메일함에서 열때
+if(pageName.endsWith("messageInbox") && read.equals("안읽음")){
+	msgMgr.setRead(msg_no);
+} 
 %>
 
 <!DOCTYPE html>
@@ -36,7 +47,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/messageDetail.css?dddf">
+<link rel="stylesheet" href="../css/messageDetail.css">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -73,7 +84,7 @@
 		          <tr>
 		            <th>보낸사람</th>
 		            <td><%= fromName %></td>
-		            <th>해당부서</th> 
+		            <th>해당부서</th>  
 		            <td><%= fromPartType %></td>
 		          </tr>
 		          <tr>
@@ -124,7 +135,7 @@
 	    </div>
 	</div>
 	</section>
-	<script src="../script/messageDetail.js"></script>
-	<script src="../script/indexScript.js"></script>
+	
+<script src="../script/messageDelBtn.js"></script>
 </body>
 </html>
