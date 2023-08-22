@@ -160,12 +160,12 @@ th {
 /* content - table - colgroup */
 .content table colgroup .col1,
 .content table colgroup .col3 {
-  width: 13%;
+  width: 15%;
 }
 
 .content table colgroup .col2,
 .content table colgroup .col4 {
-  width: 32%;
+  width: 35%;
 }
 
 /* content - table */
@@ -176,6 +176,20 @@ th {
 
 .content table td {
   padding: var(--tablePadding);
+}
+
+.content table td > span {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 0;
+  width: 85%;
+  border-radius: 8px;
+  background-color: var(--tableThColor);
+  /* font-weight: bold; */
+}
+
+.content table td > span.memeo {
+  padding: 65px 0;
 }
 
 .content table td:nth-child(3) {
@@ -212,7 +226,7 @@ th {
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);
   font-weight: bold;
-   cursor: pointer;
+  cursor: pointer;
 }
 
 .content table tr:last-child {
@@ -242,7 +256,7 @@ th {
 .content .button button:hover {
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .content .button button:last-child {

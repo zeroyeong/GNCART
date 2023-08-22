@@ -16,8 +16,7 @@
  
 	<%
 	request.setCharacterEncoding("UTF-8");
-	
-// 	int MEM_NO = (int)session.getAttribute("MEM_NO");
+	int MEM_NO = (int)session.getAttribute("memNo");
 	
 	LocalDateTime date = LocalDateTime.now();
 	int year=date.getYear();
@@ -183,7 +182,7 @@
         </table>
         
         <!-- submit을 위한 hidden input - MEM_NO + SCHE_DATE -->
-        <input type="hidden" value="1" name="MEM_NO">
+        <input type="hidden" value="<%=MEM_NO %>" name="MEM_NO">
         <input type="hidden" value="<%=SCHE_DATE %>" name="SCHE_DATE">
 	        
         <!----------------버튼---------------->

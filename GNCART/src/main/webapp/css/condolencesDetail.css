@@ -85,9 +85,9 @@ input[type="button"] {
   border: none;
 }
 
-table,
-td,
-th {
+.detail table,
+.detail table td,
+.detail table th {
   border-collapse: collapse;
 }
 
@@ -159,21 +159,34 @@ th {
 }
 
 /* content - table */
-.content table {
+.content .detail table {
   width: 100%;
   border-top: var(--tableThickBorder);
   border-bottom: var(--tableThickBorder);
   margin-bottom: var(--bigBottomMargin);
 }
 
-.content table th,
-.content table td {
+.content .detail table colgroup .col1,
+.content .detail table colgroup .col3{
+	width:15%;
+}
+
+.content .detail table th,
+.content .detail table td {
   border-bottom: var(--tableBorder);
   padding: var(--tablePadding);
 }
 
-.content table th {
+.content .detail table th {
   background-color: var(--tableThColor);
+}
+
+.content .detail table td #map{
+	height:300px;
+}
+
+.content .detail table td textarea {
+	white-space:pre-wrap;
 }
 
 /* content - button */
@@ -196,7 +209,7 @@ th {
   color: var(--buttonHoverFontColor);
 }
 
-.content .button button:first-child {
+.content .button button {
   margin-right: var(--rightMargin);
 }
 

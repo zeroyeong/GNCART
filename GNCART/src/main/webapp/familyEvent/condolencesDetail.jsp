@@ -34,7 +34,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesDetail.css?asd">
+<link rel="stylesheet" href="../css/condolencesDetail.css?absssssdfb">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -68,7 +68,7 @@
 	      </div>
 	      <div class="content">
 	        <h3 class="caption"><%= title %></h3>
-	        <form name="detailFrm" method="post" action="conDelete.jsp">
+	        <form name="detailFrm" method="post" action="conDelete.jsp" class="detail">
 	          <table>
 	            <colgroup>
 	              <col class="col1" />
@@ -89,7 +89,7 @@
 	            <tr>
 	              <th>장소 및 주소</th>
 	              <td colspan="3">
-	                <input id="locationId" value="<%= location %>" readonly />
+	                <%= location %>
 	              </td>
 	            </tr>
 	            <tr>
