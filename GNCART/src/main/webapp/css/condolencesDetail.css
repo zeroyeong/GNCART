@@ -209,10 +209,10 @@ input[type="button"] {
   color: var(--buttonHoverFontColor);
 }
 
-.content .button button {
+.content .button a {
   margin-right: var(--rightMargin);
 }
 
-.content .button button:last-child {
+.content .button a:last-child {
   margin-right: 0;
 }

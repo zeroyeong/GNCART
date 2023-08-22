@@ -279,10 +279,10 @@ th {
   color: var(--buttonHoverFontColor);
 }
 
-.content .bottomMenu .button button:first-child {
+.content .bottomMenu .button a{
   margin-right: var(--rightMargin);
 }
 
-.content .bottomMenu .button button:last-child {
+.content .bottomMenu .button a:last-child {
   margin-right: 0;
 }

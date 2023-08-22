@@ -27,7 +27,7 @@ blist = conMgr.getBoardList();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolences.css?asd">
+<link rel="stylesheet" href="../css/condolences.css?addsd">
 
 
 <!--Boxicons CDN Link-->

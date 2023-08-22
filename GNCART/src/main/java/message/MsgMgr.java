@@ -57,7 +57,7 @@ public class MsgMgr {
 		try {
 			con = pool.getConnection();
 
-			sql = "SELECT * FROM MESSAGE WHERE MSG_TONAME = ?";
+			sql = "SELECT * FROM MESSAGE WHERE MSG_TONAME = ? ORDER BY MSG_SENDTIME DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, fromName);
 
@@ -99,7 +99,7 @@ public class MsgMgr {
 		try {
 			con = pool.getConnection();
 
-			sql = "SELECT * FROM MESSAGE WHERE MSG_FROMNAME = ?";
+			sql = "SELECT * FROM MESSAGE WHERE MSG_FROMNAME = ? ORDER BY MSG_SENDTIME DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, toName);
 			

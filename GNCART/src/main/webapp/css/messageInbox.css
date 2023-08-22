@@ -275,12 +275,13 @@ th {
 }
 
 /* content - bottomMenu - button */
+
 .content .bottomMenu .button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-
+.title .btns button,
 .content .bottomMenu .button button {
   background-color: var(--buttonBackColor);
   border-radius: var(--buttonRadius);
@@ -289,16 +290,16 @@ th {
   font-weight: bold;
   transition: var(--buttonTransition);
 }
-
+.title .btns button:hover,
 .content .bottomMenu .button button:hover {
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);
 }
-
-.content .bottomMenu .button button:first-child {
+.title .btns button,
+.content .bottomMenu .button a{
   margin-right: var(--rightMargin);
 }
-
-.content .bottomMenu .button button:last-child {
+.title .btns button:last-child,
+.content .bottomMenu .button a:last-child {
   margin-right: 0;
 }

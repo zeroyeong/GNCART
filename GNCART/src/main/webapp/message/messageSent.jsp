@@ -6,6 +6,17 @@
 <jsp:useBean id="msgMgr" class="message.MsgMgr" />
 
 <%
+//로그인 안했을 시 로그인 페이지로 리다이렉트 
+if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null) {
+	response.sendRedirect("../login.jsp");
+	return; 
+}
+
+//캐시 설정(로그아웃 하고 뒤로가기시 인덱스 접근 차단)
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+response.setHeader("Pragma", "no-cache");
+response.setHeader("Expires", "0");
+
 request.setCharacterEncoding("UTF-8");
 Vector<MsgBean> msglist = null; 
 
@@ -18,7 +29,7 @@ String memName = (String)session.getAttribute("memName");
 int memNo = (int)session.getAttribute("memNo");
 
 String pageName = "messageSent";
-int cnt = 1;
+int cnt = 0;
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -27,7 +38,7 @@ int cnt = 1;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/messageInbox.css?fdg">
+<link rel="stylesheet" href="../css/messageInbox.css?fdddd">
 
 
 <!--Boxicons CDN Link-->
@@ -47,21 +58,12 @@ int cnt = 1;
 		<div class="container">
 	      <div class="title">
 	        <h3>보낸 메시지</h3>
-	
-	      <div class="button">삭제</div>
-		      <button type="button"><a href="messageInbox.jsp">받은 편지함</a></button>
-		      <button type="button"><a href="messageSent.jsp">보낸 편지함</a></button>
+	        <div class="btns">
+		      <a href="messageInbox.jsp"><button type="button">받은 편지함</button></a>
+		      <a href="messageSent.jsp"><button type="button">보낸 편지함</button></a>
+	      	</div>
 	      </div>
 	      <div class="content">
-	        <div class="tableMenu">
-	          <div class="button">
-	            <button class="del">삭제</button>
-	          </div>
-	          <ul class="record">
-	            <li>total</li>
-	            <li>5</li>
-	          </ul>
-	        </div>
 	        <form name="msgFrm" method="post" action="msgDelete.jsp">
 	          <table>
 	            <colgroup>
@@ -83,16 +85,9 @@ int cnt = 1;
 	              </tr>
 	            </thead>
 	            <tbody>
-	              <tr>
-	                <td><input type="checkbox" /></td>
-	                <td>0</td>
-	                <td>누구누구 결혼식</td>
-	                <td>홍길동</td>
-	                <td>작성자</td>
-	                <td>1--</td>
-	              </tr>
 	              <%												
-	              msglist = msgMgr.msgSentList(memName);								
+	              msglist = msgMgr.msgSentList(memName);	
+	      		  cnt = msglist.size();
 	              for(int i=0; i < msglist.size(); i++){
 	                
 	                MsgBean bean = new MsgBean();
@@ -128,7 +123,7 @@ int cnt = 1;
 	                %>
 	              </tr>
 	              <%
-	              cnt++;
+	              cnt--;
 	                }//if
 	              }//for
 	              %>

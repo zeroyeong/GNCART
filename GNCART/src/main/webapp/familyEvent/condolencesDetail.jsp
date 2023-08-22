@@ -34,7 +34,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesDetail.css?sdf">
+<link rel="stylesheet" href="../css/condolencesDetail.css?sdddf">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -132,7 +132,7 @@
 	          	<a href="condolencesRevise.jsp?con_no=<%=con_no%>">
 	            	<button type="button">수정</button>
 	            </a>
-	            <button type="button" onclick="deleteBtn()">삭제</button>
+	            <a><button type="button" onclick="deleteBtn()">삭제</button></a>
 	            <%
 	            } 
 	            %>
