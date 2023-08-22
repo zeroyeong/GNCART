@@ -14,18 +14,17 @@
   justify-content: flex-start;
 }
 
-.memberTop .memberMenu button {
-  margin-right: 10px;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 0.9em;
+.memberTop .memberMenu button {  
   font-weight: bold;
-  color: var(--main-color);
-  background-color: var(--basic-color);
-  transition: 0.3s;
+  background-color: var(--buttonBackColor);
+  font-size: var(--buttonFontSize);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  transition: var(--buttonTransition);
+  margin-right: 10px;
 }
 
 .memberTop .memberMenu button:hover {
-  color: var(--white-color);
-  background-color: var(--hover-color);
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
 }

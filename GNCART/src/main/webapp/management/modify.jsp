@@ -54,10 +54,10 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
     <!-- 현재 파일의 css -->
-	  <link rel="stylesheet" href="../css/modify.css?ddllss">
+	  <link rel="stylesheet" href="../css/newMember.css?l">
 	
 	<!-- 현재 파일 - includeTop css -->
-	<link rel="stylesheet" href="include/include.css?alods">
+	<link rel="stylesheet" href="include/include.css?l">
 </head>
 
 <body>
@@ -82,6 +82,11 @@
 					<p>- 프로필 사진 권장 최대 사이즈는 330*330px (10MB 미만)입니다.</p>
           
           <table>
+          <colgroup>
+          	<col>
+          	<col>
+          	<col>
+          </colgroup>
 		        <tr>
 		          <td rowspan="4">
 		          	<%
@@ -91,13 +96,14 @@
 											<input type="file" name="MEM_IMG2" accept="image/*" onchange="changePic(event)">
 										</div>
 								<div id="fileArea">
+									<img src="../images/<%=MEM_IMG%>" id="memImg">
 									<input name="MEM_IMG1" value="<%=MEM_IMG%>" id="file1"> <input type="button" value="삭제" onclick="delFile()">
 									<input type="file" name="MEM_IMG1" value="<%=MEM_IMG%>" id="file1" style="display:none;">
-					
 								</div>
 								<%
 									} else{%>
-									<input type="file" name="MEM_IMG3">
+									<img src="../images/profile.jpg" id="memImg">
+									<input type="file" name="MEM_IMG3" accept="image/*" onchange="changePic(event)">
 								<%	
 									} 
 								%>
@@ -132,11 +138,11 @@
 		        </tr>
 		        <tr>
 		          <td>사번</td>
-		          <td><input name="MEM_NO" readonly type="text" value="<%=MEM_NO%>"></td>
+		          <td colspan="2"><input name="MEM_NO" readonly type="text" value="<%=MEM_NO%>"></td>
 		        </tr>
 		        <tr>
 		          <td>근로형태</td>
-		          <td>
+		          <td colspan="2">
 		          	<%
 		          		if(WORK_NO==1){%>
 		          	  <input type="radio" name="WORK_NO" value="1" checked><span>정규직</span>
@@ -151,7 +157,7 @@
 		        </tr>
 		        <tr>
 		        <td>사용자 상태</td>
-		        <td>
+		        <td colspan="2">
 		        	<select name="AP_NO">
 		        		<option>선택</option>
 		        		<%
@@ -188,11 +194,11 @@
 		        </tr>
 		        <tr>
 		          <td>입사일</td>
-		          <td><input name="MEM_DATE" type="text" value="<%=MEM_DATE%>" placeholder="-포함해서 입력 ex) 2023-07-17"></td>
+		          <td colspan="2"><input name="MEM_DATE" type="text" value="<%=MEM_DATE%>" placeholder="-포함해서 입력 ex) 2023-07-17"></td>
 		        </tr>
 		        <tr>
 		          <td>소속부서</td>
-		          <td>
+		          <td colspan="2">
 		          	<select name="PART_NO" id="part">
 		          		<option>선택</option>
 			          	<%
@@ -229,7 +235,7 @@
 		        </tr>
 		        <tr>
 		          <td>직위</td>
-		          <td>
+		          <td colspan="2">
 		          	<select name="LE_NO" id="level">
 		          		<option>선택</option>
 			          	<%
@@ -264,27 +270,27 @@
 		        </tr>
 		        <tr>
 		          <td>내선번호</td>
-		          <td><input name="MEM_TEL" type="text" value="<%=MEM_TEL%>"></td>
+		          <td colspan="2"><input name="MEM_TEL" type="text" value="<%=MEM_TEL%>"></td>
 		        </tr>
 		        <tr>
 		          <td>이메일</td>
-		          <td><input name="MEM_MAIL" type="text" value="<%=MEM_MAIL%>" type="email"></td>
+		          <td colspan="2"><input name="MEM_MAIL" type="text" value="<%=MEM_MAIL%>" type="email"></td>
 		        </tr>
 		        <tr>
 		          <td>휴대전화</td>
-		          <td><input name="MEM_PHONE" type="text" value="<%=MEM_PHONE%>"  placeholder="-포함해서 입력"></td>
+		          <td colspan="2"><input name="MEM_PHONE" type="text" value="<%=MEM_PHONE%>"  placeholder="-포함해서 입력"></td>
 		        </tr>
 		        <tr>
 		          <td>자택주소</td>
-		          <td><input name="MEM_ADD" type="text" value="<%=MEM_ADD%>"></td>
+		          <td colspan="2"><input name="MEM_ADD" type="text" value="<%=MEM_ADD%>"></td>
 		        </tr>
 		        <tr>
 		          <td>생년월일</td>
-		          <td><input name="MEM_BIRTH" type="text" value="<%=MEM_BIRTH%>" type="text"  placeholder="-포함해서 입력 ex) 1998-01-01"></td>
+		          <td colspan="2"><input name="MEM_BIRTH" type="text" value="<%=MEM_BIRTH%>" type="text"  placeholder="-포함해서 입력 ex) 1998-01-01"></td>
 		        </tr>
 		        <tr>
 		          <td>기타정보</td>
-		          <td><textarea name="MEM_AND"><%=MEM_AND%></textarea></td>
+		          <td colspan="2"><textarea name="MEM_AND"><%=MEM_AND%></textarea></td>
 		        </tr>
 		      </table>
 						
@@ -309,6 +315,7 @@
 <script src="../script/indexScript.js"></script>
 
 <script>
+
 /*__________이미지 미리보기__________*/
 function changePic(event) {
     var reader = new FileReader();

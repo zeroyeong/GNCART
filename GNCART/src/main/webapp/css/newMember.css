@@ -1,21 +1,55 @@
 /* 변수 선언 */
 :root {
-  /* color */
-  --main-color: #333;
-  --hover-color: grey;
-  --basic-color: #eee;
-  --table-hover-color: #eee;
-  --background-color: lightgrey;
-  --white-color: #fff;
+  --bottomMargin: 20px;
+  --mediumBottomMargin: 10px;
+  --smallBottomMargin: 5px;
 
-  --search-border-color: grey;
+  /* font */
+  --fontColor: #333;
+
+  --smallFontSize: 0.9em;
+  --smallFontColor: #808080;
+
+  /* container */
+  --containerBorder: 3px solid #eee;
+  --containerPadding: 30px;
+  --containerMargin: 20px;
+  --containerBorderRadius: 20px;
+  --containerBackColor: #fff;
+
+  /* title */
+  --titleBorder: 3px solid #eee;
+  --titlePadding: 10px 20px;
+  --titleMargin: 20px;
+
+  /* table */
+  --tableBorder: 1px solid #333;
+  --tablePadding: 10px 15px;
+
+  --tableInputPadding: 7px 8px;
+  --tableRadioMargin: 0 5px;
+
+  --tableImgWSize: 120px;
+  --tableImgHSize: 160px;
+
+  --tableBottomMargin: 20px;
+
+  /* button */
+  --buttonBackColor: #eee;
+  --buttonRadius: 5px;
+  --buttonPadding: 5px;
+  --buttonFontSize: 0.9em;
+  --buttonTransition: 0.3s;
+
+  --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
+  --buttonHoverFontColor: #fff;
 }
 
 /* css 기본설정 */
 * {
   padding: 0px;
   margin: 0px;
-  color: var(--main-color);
+  color: var(--fontColor);
   box-sizing: border-box;
 }
 
@@ -42,18 +76,18 @@ button {
 
 /* member */
 .member {
-  background-color: var(--white-color);
-  border: 3px solid var(--basic-color);
-  border-radius: 20px;
-  padding: 30px;
-  margin: 20px;
+  border: var(--containerBorder);
+  border-radius: var(--containerBorderRadius);
+  padding: var(--containerPadding);
+  margin: var(--containerMargin);
+  background-color: var(--containerBackColor);
 }
 
 /* Page Title */
 .pageTitle {
-  border: 3px solid var(--basic-color);
-  padding: 10px 20px;
-  margin-bottom: 20px;
+  border: var(--titleBorder);
+  padding: var(--titlePadding);
+  margin-bottom: var(--titleMargin);
 }
 
 .pageTitle h3 {
@@ -62,85 +96,102 @@ button {
 
 /* Member View Table */
 .memberViewTable {
-  margin: 20px 0 0;
+  width: 100%;
 }
 
 .memberViewTable p {
-  font-size: 0.9em;
-  margin-bottom: 10px;
+  font-size: var(--smallFontSize);
+  color: var(--smallFontColor);
+  margin-bottom: var(--mediumBottomMargin);
 }
 
+/* Member View Table - table */
 .memberViewTable table {
-  margin-bottom: 20px;
+  width: 100%;
+  margin: var(--tableBottomMargin);
 }
 
-table,
-td {
+.memberViewTable table,
+.memberViewTable table td {
   border-collapse: collapse;
 }
 
-table {
+.memberViewTable table td {
+  padding: var(--tablePadding);
+  border-bottom: var(--tableBorder);
+}
+
+.memberViewTable table colgroup col:first-child,
+.memberViewTable table colgroup col:nth-child(2) {
+  width: 15%;
+}
+
+.memberViewTable table td > textarea,
+.memberViewTable table td > input[type="text"],
+.memberViewTable table td > select {
+  padding: var(--tableInputPadding);
+}
+
+.memberViewTable table td img,
+.memberViewTable table td>div img {
   width: 100%;
+/*   height: 100%; */
 }
 
-td {
-  padding: 15px;
+.memberViewTable table td > textarea,
+.memberViewTable table td > input[type="text"],
+.memberViewTable table td > select {
+  padding: var(--tableInputPadding);
 }
 
-tr {
-  border-top: 1px solid var(--hover-color);
-  border-bottom: 1px solid var(--hover-color);
-}
-
-tr:first-child {
-  border-top: none;
-}
-
-tr td input[type="text"],
-tr td textarea {
+.memberViewTable table td > textarea {
   width: 100%;
-  padding: 7px;
-  font-size: 0.9em;
+  height: 100px;
 }
 
-tr td input[type="radio"] {
-  margin: 7px 0;
+.memberViewTable table td > input[type="text"] {
+  width: 60%;
 }
 
-tr td select {
-  width: 200px;
-  padding: 7px;
-  font-size: 0.9em;
+.memberViewTable table td > select{
+	width:40%;
 }
 
-td:first-child {
-  width: 170px;
+.memberViewTable table td > button {
+  background-color: var(--buttonBackColor);
+  padding: var(--buttonPadding);
+  border-radius: var(--buttonRadius);
+  font-size: var(--buttonFontSize);
+  transition: var(--buttonTransition);
 }
 
-/* buttons */
+.memberViewTable table td > button:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
+  font-weight: bold;
+}
+
+/* Member View Table - buttons */
 .memberViewTable .buttons {
   display: flex;
   justify-content: flex-end;
 }
 
-.memberViewTable .buttons input[type="button"],
-.memberViewTable .buttons input[type="reset"] {
-  background-color: var(--basic-color);
-  border-radius: 5px;
-
-  display: inline-block;
-  width: 65px;
-  padding: 7px 0;
-  font-size: 0.9em;
-
-  margin-left: 10px;
-
-  transition: 0.3s;
+.memberViewTable .buttons input {
+  background-color: var(--buttonBackColor);
+  font-size: var(--buttonFontSize);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  transition: var(--buttonTransition);
+  margin-right: 5px;
 }
 
-.memberViewTable .buttons input[type="button"]:hover,
-.memberViewTable .buttons input[type="reset"]:hover {
-  background-color: var(--hover-color);
-  color: var(--white-color);
+.memberViewTable .buttons input[type="button"]:last-child {
+  margin-right: 0;
+}
+
+.memberViewTable .buttons input:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
   font-weight: bold;
 }

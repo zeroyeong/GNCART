@@ -19,7 +19,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
     <!-- 현재 파일의 css -->
-	  <link rel="stylesheet" href="../css/newMember.css?ohoho">
+	  <link rel="stylesheet" href="../css/newMember.css?sdfsfd">
 	
 	<!-- 현재 파일 - includeTop css -->
 	<link rel="stylesheet" href="include/include.css?alo">
@@ -45,169 +45,176 @@
       	</div>
 
 	      <form class="memberViewTable" name="newFrm" method="post" action="../management/NewMemberServlet" enctype="multipart/form-data">
-	        <p>- 프로필 사진 권장 최대 사이즈는 330*330px (10MB 미만)입니다.</p>
-	        <table>
-	          <tr>
-	            <td rowspan="4">
-	            	<img src="../images/profile.jpg" id="memImg"/>
-	              <input type="file" name="MEM_IMG" accept="image/*" onchange="changePic(event)">
-	            </td>
-	            <td>이름</td>
-	            <td><input type="text" name="MEM_NAME" id="name" /></td>
-	          </tr>
-	          <tr>
-	            <td>ID</td>
-	            <td>
-	            	<input type="text" name="MEM_ID" id="id"/>
-	            	<input type="button" value="중복확인" onclick="idCheck(this.form.MEM_ID.value)">
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>비밀번호</td>
-	            <td><input type="text" name="MEM_PW" id="pw" /></td>
-	          </tr>
-	          <tr>
-	            <td>계정구분</td>
-	            <td>
-	              <div class="actype">
-	                <input type="radio" name="AC_NO" value="1" checked /> 일반사용자
-	                &nbsp;&nbsp;
-	                <input type="radio" name="AC_NO" value="2" /> 관리자사용자
-	              </div>
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>근로형태</td>
-	            <td colspan="2">
-	              <div class="workType">
-	                <input type="radio" name="WORK_NO" value="1" checked /> 정규직
-	                &nbsp;&nbsp;
-	                <input type="radio" name="WORK_NO" value="2" /> 계약직
-	              </div>
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>입사일</td>
-	            <td colspan="2">
-	              <input type="text" name="MEM_DATE" id="date" />
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>소속부서</td>
-	            <td colspan="2">
-	              <select name="PART_NO" id="part">
-	                <option selected>선택</option>
-	                <%
-							Vector<ManagementBean> partlist = mMgr.getPartList();
-							
-							if(partlist.isEmpty()){
-						%>
-						<option>등록된 type이 없습니다.</option>
-						<%
-							}else{
-								for(int i=0; i<partlist.size(); i++){
-									ManagementBean PARTbean=new ManagementBean();
-									
-									PARTbean=partlist.get(i);
-									
-									int PART_NO = PARTbean.getPART_NO();
-									String PART_TYPE = PARTbean.getPART_TYPE();
-									
-						%>
-						<option value="<%=PART_NO%>"><%=PART_TYPE %></option>
-						<%
-								}
-							}
-						%>
-	              </select>
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>직위</td>
-	            <td colspan="2">
-	              <select name="LE_NO" id="level">
-	                <option selected>선택</option>
-	                <%
-							Vector<ManagementBean> lelist = mMgr.getLevelList();
-							
-							if(lelist.isEmpty()){
-						%>
-						<option>등록된 type이 없습니다.</option>
-						<%
-							}else{
-								for(int i=0; i<lelist.size(); i++){
-									ManagementBean LEbean=new ManagementBean();
-									LEbean=lelist.get(i);
-									int LE_NO = LEbean.getLE_NO();
-									String LE_LEVEL=LEbean.getLE_LEVEL();
-						%>
-						<option value="<%=LE_NO%>"><%=LE_LEVEL %></option>
-						<%
-								}
-							}
-						%>
-	              </select>
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>내선번호</td>
-	            <td colspan="2">
-	              <input type="text" name="MEM_TEL" />
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>이메일</td>
-	            <td colspan="2">
-	              <input name="MEM_MAIL" type="text" type="email" />
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>휴대전화</td>
-	            <td colspan="2">
-	              <input
-	                name="MEM_PHONE"
-	                type="text"
-	                placeholder="-포함해서 입력"
-	              />
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>자택주소</td>
-	            <td colspan="2">
-	              <input name="MEM_ADD" type="text" />
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>생년월일</td>
-	            <td colspan="2">
-	              <input
-	                name="MEM_BIRTH"
-	                type="text"
-	                type="text"
-	                placeholder="-포함해서 입력 ex) 1998-01-01"
-	              />
-	            </td>
-	          </tr>
-	          <tr>
-	            <td>기타정보</td>
-	            <td colspan="2">
-	              <textarea name="MEM_AND"></textarea>
-	            </td>
-	          </tr>
-	        </table>
-	        
-	        <!-- AP_NO 기본값 설정을 위한 hidden input -->
-	        <input type="hidden" name="AP_NO" value="1">
-	        
-	        <!-- [중복확인] 버튼을 눌렀나 확인하는 hidden input -->
-	        <input type="hidden" name="check" id="checkId">
-	
-	        <div class="buttons">
-	          <input type="button" value="저장" onclick="window.check()"/>
-	          <input type="reset" value="재입력" />
-	          <input type="button" value="리스트" onclick="memberList()"/>
-	        </div>
-	      </form>
+         <p>- 프로필 사진 권장 최대 사이즈는 330*330px (10MB 미만)입니다.</p>
+         <table>
+          <colgroup>
+          <col>
+          <col>
+          <col>
+          </colgroup>
+           <tr>
+             <td rowspan="4">
+              <div class="imgArea">
+                <img src="../images/profile.jpg" id="memImg"/>
+              </div>
+               
+             </td>
+             <td>이름</td>
+             <td><input type="text" name="MEM_NAME" id="name" /></td>
+           </tr>
+           <tr>
+             <td>ID</td>
+             <td>
+               <input type="text" name="MEM_ID" id="id"/>
+               <button onclick="idCheck(this.form.MEM_ID.value)">중복확인</button>
+             </td>
+           </tr>
+           <tr>
+             <td>비밀번호</td>
+             <td><input type="text" name="MEM_PW" id="pw" /></td>
+           </tr>
+           <tr>
+             <td>계정구분</td>
+             <td>
+               <div class="actype">
+                 <input type="radio" name="AC_NO" value="1" checked /> 일반사용자
+                 &nbsp;&nbsp;
+                 <input type="radio" name="AC_NO" value="2" /> 관리자사용자
+               </div>
+             </td>
+           </tr>
+           <tr>
+             <td>근로형태</td>
+             <td colspan="2">
+               <div class="workType">
+                 <input type="radio" name="WORK_NO" value="1" checked /> 정규직
+                 &nbsp;&nbsp;
+                 <input type="radio" name="WORK_NO" value="2" /> 계약직
+               </div>
+             </td>
+           </tr>
+           <tr>
+             <td>입사일</td>
+             <td colspan="2">
+               <input type="text" name="MEM_DATE" id="date" placeholder="-을 포함해서 입력해 주세요. ex) 2023-08-22" />
+             </td>
+           </tr>
+           <tr>
+             <td>소속부서</td>
+             <td colspan="2">
+               <select name="PART_NO" id="part">
+                 <option selected>선택</option>
+                 <%
+             Vector<ManagementBean> partlist = mMgr.getPartList();
+             
+             if(partlist.isEmpty()){
+           %>
+           <option>등록된 type이 없습니다.</option>
+           <%
+             }else{
+               for(int i=0; i<partlist.size(); i++){
+                 ManagementBean PARTbean=new ManagementBean();
+                 
+                 PARTbean=partlist.get(i);
+                 
+                 int PART_NO = PARTbean.getPART_NO();
+                 String PART_TYPE = PARTbean.getPART_TYPE();
+                 
+           %>
+           <option value="<%=PART_NO%>"><%=PART_TYPE %></option>
+           <%
+               }
+             }
+           %>
+               </select>
+             </td>
+           </tr>
+           <tr>
+             <td>직위</td>
+             <td colspan="2">
+               <select name="LE_NO" id="level">
+                 <option selected>선택</option>
+                 <%
+             Vector<ManagementBean> lelist = mMgr.getLevelList();
+             
+             if(lelist.isEmpty()){
+           %>
+           <option>등록된 type이 없습니다.</option>
+           <%
+             }else{
+               for(int i=0; i<lelist.size(); i++){
+                 ManagementBean LEbean=new ManagementBean();
+                 LEbean=lelist.get(i);
+                 int LE_NO = LEbean.getLE_NO();
+                 String LE_LEVEL=LEbean.getLE_LEVEL();
+           %>
+           <option value="<%=LE_NO%>"><%=LE_LEVEL %></option>
+           <%
+               }
+             }
+           %>
+               </select>
+             </td>
+           </tr>
+           <tr>
+             <td>내선번호</td>
+             <td colspan="2">
+               <input type="text" name="MEM_TEL" />
+             </td>
+           </tr>
+           <tr>
+             <td>이메일</td>
+             <td colspan="2">
+               <input name="MEM_MAIL" type="text" type="email" />
+             </td>
+           </tr>
+           <tr>
+             <td>휴대전화</td>
+             <td colspan="2">
+               <input
+                 name="MEM_PHONE"
+                 type="text"
+                 placeholder="-포함해서 입력"
+               />
+             </td>
+           </tr>
+           <tr>
+             <td>자택주소</td>
+             <td colspan="2">
+               <input name="MEM_ADD" type="text" />
+             </td>
+           </tr>
+           <tr>
+             <td>생년월일</td>
+             <td colspan="2">
+               <input
+                 name="MEM_BIRTH"
+                 type="text"
+                 type="text"
+                 placeholder="-포함해서 입력 ex) 1998-01-01"
+               />
+             </td>
+           </tr>
+           <tr>
+             <td>기타정보</td>
+             <td colspan="2">
+               <textarea name="MEM_AND"></textarea>
+             </td>
+           </tr>
+         </table>
+         
+         <!-- AP_NO 기본값 설정을 위한 hidden input -->
+         <input type="hidden" name="AP_NO" value="1">
+         
+         <!-- [중복확인] 버튼을 눌렀나 확인하는 hidden input -->
+         <input type="hidden" name="check" id="checkId">
+ 
+         <div class="buttons">
+           <input type="button" value="저장" onclick="window.check()"/>
+           <input type="reset" value="재입력" />
+           <input type="button" value="리스트" onclick="memberList()"/>
+         </div>
+       </form>
     </div>
 	</div>
   </section>
