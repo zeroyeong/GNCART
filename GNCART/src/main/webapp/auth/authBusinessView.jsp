@@ -20,6 +20,7 @@ String BUS_SPECIAL = bean.getBUS_SPECIAL();
 int LINE_NO = bean.getLINE_NO();
 String LINE_FIRST = bean.getLINE_FIRST();
 String LINE_SECOND = bean.getLINE_SECOND();
+int DOC_STATES = bean.getDOC_STATES(); 
 int DOC_APPTURN = bean.getDOC_APPTURN();
 String MEM_ID = bean.getMEM_ID();
 int VAC_NO = bean.getVAC_NO();
@@ -117,22 +118,22 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
         <input type="hidden" name="DOC_NO" value="<%=DOC_NO %>">
         <input type="hidden" name="VAC_NO" value="<%=VAC_NO %>">
         <input type="hidden" name="BUS_NO" value="<%=BUS_NO %>">
+		
+		<div style="text-align: center">
+		    <% if (DOC_STATES != 3 && DOC_STATES != 2) { %>
+		        <% if (MEM_ID.equals(ID) && DOC_APPTURN == 0) { %>
+		            <button class="submitBtn" type="submit" name="action" value="busdelete">삭제</button>
+		        <% } %>
+		        <% if (Name.equals(LINE_FIRST) && DOC_APPTURN == 0) { %>
+		            <button class="submitBtn" type="submit" name="action" value="first">승인</button>
+		            <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
+		        <% } else if (Name.equals(LINE_SECOND) && DOC_APPTURN == 1) { %>
+		            <button class="submitBtn" type="submit" name="action" value="second">승인</button>
+		            <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
+		        <% } %>
+		    <% } %>
+		</div>
 
-        <div style="text-align: center">
-            <% if (MEM_ID.equals(ID)) { %>
-            <button class="submitBtn" type="submit" name="action" value="busdelete">삭제</button>
-            <% } %>
-            <% if (Name.equals(LINE_FIRST) && DOC_APPTURN == 0) { %>
-            <button class="submitBtn" type="submit" name="action" value="first">승인</button>
-            <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
-            <% } else if(Name.equals(LINE_SECOND) && DOC_APPTURN == 1) { %>
-            <button class="submitBtn" type="submit" name="action" value="second">승인</button>
-            <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
-            <% } else if ("부장".equals(leLevel)) { %>
-            <button class="submitBtn" type="submit" name="action" value="second">승인</button>
-            <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
-            <% } %>
-        </div>
     </form>
 
     <script src="../script/authScript.js"></script>

@@ -1,211 +1,218 @@
 /* 변수선언 */
 :root {
-	/* color */
-	--allBorderColor: #333;
+  /* color */
+  --allBorderColor: #333;
 
-	/* margin + padding */
-	--bigBottomMargin: 20px;
-	--mediumBottomMargin: 10px;
-	--smallBottomMargin: 5px;
-	--rightMargin: 5px;
+  /* margin + padding */
+  --bigBottomMargin: 20px;
+  --mediumBottomMargin: 10px;
+  --smallBottomMargin: 5px;
+  --rightMargin: 5px;
 
-	/* font */
-	--fontColor: #333;
-	--fontSize: 1em;
+  /* font */
+  --fontColor: #333;
+  --fontSize: 1em;
 
-	/* button */
-	--buttonBackColor: #eee;
-	--buttonRadius: 5px;
-	--buttonPadding: 5px 7px;
-	--buttonFontSize: 0.9em;
-	--buttonTransition: 0.3s;
+  /* button */
+  --buttonBackColor: #eee;
+  --buttonRadius: 5px;
+  --buttonPadding: 5px 7px;
+  --buttonFontSize: 0.9em;
+  --buttonTransition: 0.3s;
 
-	--buttonHoverBackColor: rgba(103, 103, 105, 0.767);
-	--buttonHoverFontColor: #fff;
+  --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
+  --buttonHoverFontColor: #fff;
 
-	/* container */
-	--conMargin: 20px;
-	--conPadding: 30px;
-	--conBorder: 3px solid #eee;
-	--conRadius: 20px;
-	--conBack: #fff;
+  /* container */
+  --conMargin: 20px;
+  --conPadding: 30px;
+  --conBorder: 3px solid #eee;
+  --conRadius: 20px;
+  --conBack: #fff;
 
-	/* title */
-	--titleBottomPadding: 5px;
-	--titleBottomMargin: 10px;
-	--titleBorder: 1px solid var(--allBorderColor);
-	--titleH3Size: 1.5em;
+  /* title */
+  --titleBottomPadding: 5px;
+  --titleBottomMargin: 10px;
+  --titleBorder: 1px solid var(--allBorderColor);
+  --titleH3Size: 1.5em;
 
-	/* table */
-	--tableBorder: 1px solid var(--allBorderColor);
-	--tablePadding: 7px;
-	--tableHeadBackColor: #333;
-	--tableHeadFontColor: #fff;
+  /* table */
+  --tableBorder: 1px solid var(--allBorderColor);
+  --tablePadding: 7px;
+  --tableHeadBackColor: #333;
+  --tableHeadFontColor: #fff;
 
-	/* pagination */
-	--pagiLiMargin: 5px;
-	--pagiLiPadding: 5px;
-	--pagiApadding: 0 3px;
-	--pagiColor: rgb(123, 126, 131);
-	--pagiBorder: 2px solid transparent;
+  /* pagination */
+  --pagiLiMargin: 5px;
+  --pagiLiPadding: 5px;
+  --pagiApadding: 0 3px;
+  --pagiColor: rgb(123, 126, 131);
+  --pagiBorder: 2px solid transparent;
 
-	--pagiActiveColor: #333;
-	--pagiActiveBorder: 2px solid #333;
+  --pagiActiveColor: #333;
+  --pagiActiveBorder: 2px solid #333;
 }
 
 /* 전체 설정 */
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	color: var(--fontColor);
-	font-size: var(--fontSize);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--fontColor);
+  font-size: var(--fontSize);
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 button {
-	background-color: transparent;
-	border: none;
+  background-color: transparent;
+  border: none;
 }
 
 input[type="button"] {
-	background-color: transparent;
-	border: none;
+  background-color: transparent;
+  border: none;
 }
 
 table,
 td,
 th {
-	border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 /* container */
 .container {
-	margin: var(--conMargin);
-	padding: var(--conPadding);
-	border: var(--conBorder);
-	border-radius: var(--conRadius);
-	background-color: var(--conBack);
+  margin: var(--conMargin);
+  padding: var(--conPadding);
+  border: var(--conBorder);
+  border-radius: var(--conRadius);
+  background-color: var(--conBack);
 }
 
 /* title */
 .title {
-	margin-bottom: var(--titleBottomMargin);
+  margin-bottom: var(--titleBottomMargin);
 }
 
 .title h3 {
-	font-size: var(--titleH3Size);
-	border-bottom: var(--titleBorder);
-	padding-bottom: var(--titleBottomPadding);
-	margin-bottom: var(--mediumBottomMargin);
+  font-size: var(--titleH3Size);
+  border-bottom: var(--titleBorder);
+  padding-bottom: var(--titleBottomPadding);
+  margin-bottom: var(--mediumBottomMargin);
 }
 
 .title .button {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .title .button button {
-	background-color: var(--buttonBackColor);
-	border-radius: var(--buttonRadius);
-	padding: var(--buttonPadding);
-	font-size: var(--buttonFontSize);
-	font-weight: bold;
-	transition: var(--buttonTransition);
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
 }
 
 .title .button button:first-child {
-	margin-right: var(--rightMargin);
+  margin-right: var(--rightMargin);
 }
 
 .title .button button:last-child {
-	margin-right: 0;
+  margin-right: 0;
 }
 
 .title .button button:hover {
-	background-color: var(--buttonHoverBackColor);
-	color: var(--buttonHoverFontColor);
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
 }
 
 /* content */
 .content {
-	width: 100%;
+  width: 100%;
 }
 
 /* content - tableMenu */
 .content .tableMenu {
-	display: flex;
-	justify-content: flex-end;
-	align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 
-	margin-bottom: var(--smallBottomMargin);
+  margin-bottom: var(--smallBottomMargin);
 }
 
+/* .content .tableMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  margin-bottom: var(--smallBottomMargin);
+/* } */ /* checkbox 위에 삭제버튼 원하는 분은 이거 주석 해제하고 위에거 삭제하면 됩니당 */
+
 .content .tableMenu .button button {
-	background-color: var(--buttonBackColor);
-	border-radius: var(--buttonRadius);
-	padding: var(--buttonPadding);
-	font-size: var(--buttonFontSize);
-	font-weight: bold;
-	transition: var(--buttonTransition);
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
 }
 
 .content .tableMenu .button button:hover {
-	background-color: var(--buttonHoverBackColor);
-	color: var(--buttonHoverFontColor);
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
 }
 
 .content .tableMenu .record {
-	display: flex;
-	justify-content: flex-end;
-	align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .content .tableMenu .record li:first-child {
-	margin-right: 5px;
+  margin-right: 5px;
 }
 
 .content .tableMenu .record li:last-child {
-	width: 35px;
-	text-align: center;
+  width: 35px;
+  text-align: center;
 }
 
 /* content - table */
 .content table {
-	width: 100%;
-	margin-bottom: var(--bigBottomMargin);
+  width: 100%;
+  margin-bottom: var(--bigBottomMargin);
 }
 
 .content table colgroup .col1 {
-	width: 3%;
+  width: 3%;
 }
 
 .content table colgroup .col2 {
-	width: 6%;
+  width: 6%;
 }
 
 .content table colgroup .col3 {
-	width: 55%;
+  width: 55%;
 }
 
 .content table colgroup .col4 {
-	width: 10%;
+  width: 10%;
 }
 
 .content table colgroup .col5 {
-	width: 8%;
+  width: 8%;
 }
-
 .content table colgroup .col6 {
-	width: 18%;
+  width: 18%;
 }
 
 .content table tbody td:first-child,
@@ -220,89 +227,79 @@ th {
 
 .content table td,
 .content table th {
-	padding: var(--tablePadding);
-	border-bottom: var(--tableBorder);
+  padding: var(--tablePadding);
+  border-bottom: var(--tableBorder);
 }
 
 .content table thead th {
-	background-color: var(--tableHeadBackColor);
-	color: var(--tableHeadFontColor);
+  background-color: var(--tableHeadBackColor);
+  color: var(--tableHeadFontColor);
 }
 
 /* content - bottomMenu */
 .content .bottomMenu {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .content .bottomMenu .empty,
 .content .bottomMenu .pagination,
 .content .bottomMenu .button {
-	width: calc(100% / 3);
+  width: calc(100% / 3);
 }
 
 /* content - bottomMenu - pagination */
 .content .bottomMenu .pagination {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content .bottomMenu .pagination li {
-	padding: var(--pagiLiPadding);
-	margin: var(--pagiLiMargin);
+  padding: var(--pagiLiPadding);
+  margin: var(--pagiLiMargin);
 }
 
 .content .bottomMenu .pagination li a {
-	color: var(--pagiColor);
-	padding: var(--pagiApadding);
-	border: var(--pagiBorder);
+  color: var(--pagiColor);
+  padding: var(--pagiApadding);
+  border: var(--pagiBorder);
 }
 
 .content .bottomMenu .pagination li.active a {
-	color: var(--pagiActiveColor);
-	font-weight: bold;
-	border-bottom: var(--pagiActiveBorder);
+  color: var(--pagiActiveColor);
+  font-weight: bold;
+  border-bottom: var(--pagiActiveBorder);
 }
 
 /* content - bottomMenu - button */
 .content .bottomMenu .button {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .content .bottomMenu .button button {
-	background-color: var(--buttonBackColor);
-	border-radius: var(--buttonRadius);
-	padding: var(--buttonPadding);
-	font-size: var(--buttonFontSize);
-	font-weight: bold;
-	transition: var(--buttonTransition);
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
 }
 
 .content .bottomMenu .button button:hover {
-	background-color: var(--buttonHoverBackColor);
-	color: var(--buttonHoverFontColor);
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
 }
 
 .content .bottomMenu .button button:first-child {
-	margin-right: var(--rightMargin);
+  margin-right: var(--rightMargin);
 }
 
 .content .bottomMenu .button button:last-child {
-	margin-right: 0;
-}
-
-.modal-background {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
+  margin-right: 0;
 }
 
 /* 모달 창 스타일 설정 */

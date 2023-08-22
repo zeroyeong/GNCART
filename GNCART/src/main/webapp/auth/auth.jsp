@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="auth.AuthBean"%>
 <%@ page import="java.util.Vector"%>
+<jsp:useBean id="manageMgr" class="management.ManagementBean" />
 <jsp:useBean id="aMgr" class="auth.AuthMgr" />
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
 
@@ -73,7 +74,7 @@
                                     if (MEM_ID.equals(memId)) {
                         %>
                                         <tr class="authOnclick" onclick="javascript:<%= linkFunction %>('<%= DOC_NO %> ')">
-                                            <td><input type="checkbox"/></td>
+                                            <td><input type="checkbox" id="myCheckbox"/></td>
                                             <td><%= DOC_NO %></td>
                                             <td><%= DOC_NAME %></td>
                                             <td><%= MEM_NAME %></td>
