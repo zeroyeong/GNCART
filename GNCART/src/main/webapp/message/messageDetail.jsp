@@ -77,7 +77,7 @@
 		            <td><%= fromPartType %></td>
 		          </tr>
 		          <tr>
-		            <th>받는사람</th>
+		            <th>받는사람</th> 
 		            <td><%= toName %></td>
 		            <th>해당부서</th>
 		            <td><%= toPartType %></td>

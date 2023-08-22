@@ -18,7 +18,7 @@ response.setHeader("Pragma", "no-cache");
 response.setHeader("Expires", "0");
 
 request.setCharacterEncoding("UTF-8");
-Vector<MsgBean> msglist = null; 
+Vector<MsgBean> msglist = null;  
 
 if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null) {
 	response.sendRedirect("../login.jsp");

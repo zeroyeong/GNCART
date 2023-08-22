@@ -55,7 +55,7 @@
 	      <div class="title">
 	        <h3>경조사 일정</h3>
 	        <div class="writer">
-	          <ul>
+	          <ul> 
 	            <li>작성자</li>
 	            <li><%= part_type %></li>
 	            <li><%= writer %></li>

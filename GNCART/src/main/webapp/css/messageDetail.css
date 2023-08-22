@@ -606,7 +606,7 @@ input[type="button"] {
 .content .detail table colgroup .col3{
 	width:15%;
 }
-
+ 
 .content .detail table th,
 .content .detail table td {
   border-bottom: var(--tableBorder);

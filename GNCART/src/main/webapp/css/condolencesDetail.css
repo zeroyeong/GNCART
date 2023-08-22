@@ -166,7 +166,7 @@ input[type="button"] {
   margin-bottom: var(--bigBottomMargin);
 }
 
-.content .detail table colgroup .col1,
+.content .detail table colgroup .col1, 
 .content .detail table colgroup .col3{
 	width:15%;
 }

@@ -122,7 +122,7 @@ int cnt = 0;
 					  } //else
 					  %>
 					</tr>
-					<%
+					<% 
 					cnt--;  
 						}//if
 					}//for

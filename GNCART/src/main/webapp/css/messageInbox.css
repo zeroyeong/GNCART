@@ -274,7 +274,7 @@ th {
   border-bottom: var(--pagiActiveBorder);
 }
 
-/* content - bottomMenu - button */
+/* content - bottomMenu - button */ 
 
 .content .bottomMenu .button {
   display: flex;

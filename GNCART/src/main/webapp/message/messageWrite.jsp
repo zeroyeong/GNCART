@@ -17,7 +17,7 @@ bean =  msgMgr.userInfo(mem_no);
 String mem_name = bean.getMEM_NAME();
 String part_type = bean.getPART_TYPE();
 %>
-
+ 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
