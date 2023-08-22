@@ -139,23 +139,6 @@ th {
   width: 100%;
 }
 
-/* content - tableMenu */
-.content .tableMenu {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-
-  margin-bottom: var(--smallBottomMargin);
-}
-
-/* .content .tableMenu {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-
-  margin-bottom: var(--smallBottomMargin);
-/* } */ /* checkbox 위에 삭제버튼 원하는 분은 이거 주석 해제하고 위에거 삭제하면 됩니당 */
-
 .content .tableMenu .button button {
   background-color: var(--buttonBackColor);
   border-radius: var(--buttonRadius);
@@ -248,6 +231,7 @@ th {
 
 .content table tr:hover{
 	background-color:#eee;
+	cursor:pointer;
 }
 
 /* content - bottomMenu - pagination */

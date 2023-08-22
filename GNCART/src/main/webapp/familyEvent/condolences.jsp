@@ -4,8 +4,18 @@
 <%@page import="java.util.Vector"%>
 <%@page import="familyEvent.ConBean"%>
 <jsp:useBean id="conMgr" class="familyEvent.ConMgr" />  
-
 <% 
+//로그인 안했을 시 로그인 페이지로 리다이렉트 
+if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null) {
+	response.sendRedirect("../login.jsp");
+	return; 
+}
+
+//캐시 설정(로그아웃 하고 뒤로가기시 인덱스 접근 차단)
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+response.setHeader("Pragma", "no-cache");
+response.setHeader("Expires", "0");
+
 request.setCharacterEncoding("UTF-8");
 Vector<ConBean> blist = null; 
 blist = conMgr.getBoardList();
@@ -17,7 +27,7 @@ blist = conMgr.getBoardList();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolences.css?addfddfdsd">
+<link rel="stylesheet" href="../css/condolences.css?asd">
 
 
 <!--Boxicons CDN Link-->
@@ -46,17 +56,6 @@ blist = conMgr.getBoardList();
 	        </div> -->
       </div>
       <div class="content">
-        <div class="tableMenu">
-          <div class="button">
-            <button class="del" type="button" onclick="deleteBtn()">
-              삭제
-            </button>
-          </div>
-          <ul class="record">
-            <li>total</li>
-            <li><%= blist.size() %></li>
-          </ul>
-        </div>
         <form name="listFrm" method="post" action="conDelete.jsp">
           <table>
             <colgroup>
@@ -99,14 +98,12 @@ blist = conMgr.getBoardList();
                 int hit = bean.getCon_hit();
                 int mem_no = bean.getMem_no();
               %>
-              <tr>
+              <tr class= "urlBtn"onclick="urlBtn(<%= con_no %>)">
                 <td>
                   <input class="checkbox" name="check" type="checkbox" value="<%=con_no%>"/>
                 </td>
                 <td><%=con_no%></td>
-                <td>
-                  <a href="condolencesDetail.jsp?con_no=<%= con_no %>"><%=title%></a>
-                </td>
+                <td><%=title%></td>
                 <td><%=wtriter%></td>
                 <td><%=hit%></td>
                 <td><%=regdate%></td>
@@ -123,9 +120,9 @@ blist = conMgr.getBoardList();
             
             </ul>
             <div class="button">
-              <button type="button">
-                <a href="condolencesAdd.jsp">글쓰기</a>
-              </button>
+              <a href="condolencesAdd.jsp">
+             	 <button type="button">글쓰기</button>
+              </a>
               <button class="del" type="button" onclick="deleteBtn()">
                 삭제
               </button>
@@ -137,7 +134,7 @@ blist = conMgr.getBoardList();
 	</div>		
  	</section>
 <script src="../script/boardPagenation.js?asffd"></script>
-<script src="../script/condolences.js"></script>
+<script src="../script/condolences.js?sdddf"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>  
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 

@@ -157,9 +157,9 @@ if(request.getParameter("user") != null){
 	            <input type="hidden" name="username" value="username">
 	          <div class="button">
 	            <button type="submit">저장</button>
-	            <button type="button">
-	              <a href="condolences.jsp">목록</a>
-	            </button>
+	            <a href="condolences.jsp">
+	         	   <button type="button">목록</button>
+	            </a>
 	          </div>
 	          </div>
 	        </form>

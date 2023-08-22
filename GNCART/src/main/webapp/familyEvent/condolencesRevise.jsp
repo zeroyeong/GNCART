@@ -168,9 +168,8 @@ int memNo = (int)session.getAttribute("memNo");
 	          <div class="button">
 	            <button type="button" onclick="reviseSubmit()">수정</button>
 	            <button type="reset">리셋</button>
-	            <button>
-	              <a href="javascript:history.back()">뒤로</a>
-	            </button>
+	          	  <a href="javascript:history.back()">
+	            <button>뒤로</button></a>
 	          </div>
 	        </form>
 	      </div>

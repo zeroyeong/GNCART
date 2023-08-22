@@ -12,3 +12,11 @@ function deleteBtn(){
 	document.listFrm.submit();
 	} 
 }
+
+function urlBtn(con_no){
+	
+	var url = "condolencesDetail.jsp?con_no="
+	url+= con_no;
+	console.log("url = " + url);
+	location.href=url;
+}

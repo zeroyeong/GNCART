@@ -21,7 +21,7 @@ if(request.getParameter("keyWord") != null){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
-<link rel="stylesheet" href="../css/conPopup.css?dddas">
+<link rel="stylesheet" href="../css/conPopup.css?dds">
 
 </head>
 <body style="background-color: #96969648">
@@ -33,18 +33,15 @@ if(request.getParameter("keyWord") != null){
         필요없다면 삭제해도 무방합니다.-->
       </div>
       <div class="content">
-        <table>
-          <form name="userFrm" method="post" action="conAddUser.jsp">  
+        <form name="userFrm" method="post" action="conAddUser.jsp">  
+        <table>      
           <tr>
             <td>부서 / 이름</td>
             <td><input type="text" id="searchbar" placeholder="이름을 입력해 주세요" onClick="test()"></td>
             <td>
               <button type="button" id="searchBtn" onClick="searchUser()">찾기</button>
             </td>
-          </tr>
-            <input type="hidden" id="keyWord" name="keyWord" value="<%= keyWord %>">
-				  </form>	
-
+          </tr>        
           <tr id="allList">
             <td colspan="3">
               <select id="selectAll" name="selectAll" onclick= "abctest()">
@@ -70,7 +67,7 @@ if(request.getParameter("keyWord") != null){
           
           <tr id="searchList" style="display: none">
             <td colspan="3">
-							<select id="selectKeyword" name="selectKeyword" onclick= "abctest()">
+				<select id="selectKeyword" name="selectKeyword" onclick= "abctest()">
                 <%
                   Vector<ManagementBean> ulist = conMgr.userFind(keyWord);
                   for(int i=0; i<ulist.size(); i++){
@@ -93,6 +90,8 @@ if(request.getParameter("keyWord") != null){
           <input type="button" onClick="sendUser()" value="저장" />
         </div>
         <input type="hidden" id="user" name="user">
+        <input type="hidden" id="keyWord" name="keyWord" value="<%= keyWord %>">
+        </form>	
       </div>
     </div>
 

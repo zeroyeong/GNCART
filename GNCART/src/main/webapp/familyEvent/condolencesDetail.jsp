@@ -129,16 +129,16 @@
 	            <% 
 	            if(mem_no == memNo){ 
 	            %>
-	            <button type="button">
-	              <a href="condolencesRevise.jsp?con_no=<%=con_no%>">수정</a>
-	            </button>
+	          	<a href="condolencesRevise.jsp?con_no=<%=con_no%>">
+	            	<button type="button">수정</button>
+	            </a>
 	            <button type="button" onclick="deleteBtn()">삭제</button>
 	            <%
 	            } 
 	            %>
-	            <button type="button">
-	              <a href="condolences.jsp">목록</a>
-	            </button>
+             	<a href="condolences.jsp">
+             		<button type="button">목록</button>
+            	</a>
 	          </div>
 	          <input type="hidden" id="locationId" value="<%= location %>"/>
 	          <input type="hidden" name="con_no" value="<%= con_no %>" />
