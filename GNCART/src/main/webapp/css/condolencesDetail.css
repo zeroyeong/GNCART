@@ -42,7 +42,7 @@
 
   /* table */
   --tableBorder: 1px solid var(--allBorderColor);
-  --tablePadding: 7px;
+  --tablePadding: 10px;
   --tableHeadBackColor: #333;
   --tableHeadFontColor: #fff;
   --tableThColor: #eee;
@@ -182,7 +182,7 @@ input[type="button"] {
 }
 
 .content .detail table td #map{
-	height:300px;
+	height:450px;
 }
 
 .content .detail table td textarea {
