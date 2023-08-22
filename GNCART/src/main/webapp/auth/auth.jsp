@@ -77,7 +77,7 @@
                                     if (MEM_ID.equals(memId)) {
                         %>
                                         <tr class="authOnclick" onclick="javascript:<%= linkFunction %>('<%= DOC_NO %> ')">
-                                            <td><input type="checkbox" id="myCheckbox"/></td>
+                           				    <td><input type="checkbox" class="myCheckbox"/></td>
                                             <td><%= DOC_NO %></td>
                                             <td><%= DOC_NAME %></td>
                                             <td><%= MEM_NAME %></td>

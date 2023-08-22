@@ -52,7 +52,6 @@
                            <a href="authReturn.jsp"><button>반려</button></a>
 			         </div>
 	         	   </div>
-                     <form>
                     <table>
         		       <colgroup>
 				            <col class="col1 " />
@@ -82,7 +81,7 @@
                                         String DOC_APPDATE = bean.getDOC_APPDATE();
                                         int DOC_TYPE = bean.getDOC_TYPE();
                                         int DOC_APPTURN = bean.getDOC_APPTURN();
-
+	
                                         String linkFunction = (DOC_TYPE == 1) ? "vacView" : "busView";
 
                                         boolean isApprover = (leNo == 3 && DOC_STATES == 0) || (leNo == 4 && DOC_STATES == 0);
@@ -90,7 +89,7 @@
                                         if (isApprover) {
                             %>
                             <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
-                                <td><input type="checkbox" id="checkbox<%= DOC_NO %>" value="<%= DOC_NO %>" /></td>
+                                <td><input type="checkbox" class="myCheckbox" value="<%= DOC_NO%>"/></td>
                                 <td><%= DOC_NO %></td>
                                 <td><%= DOC_NAME %></td>
                                 <td><%= MEM_NAME %></td>
@@ -116,20 +115,22 @@
                             %>
                         </tbody>
                     </table>
-                   </form>
-                    <div class="bottomMenu">
-                        <div class="empty"></div>
-                        <ul class="pagination">
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                        </ul>
-	                        <div class="button">
-	                            <% if(acNo == 2){%>
-                                <button class="submitBtn" type="submit" name="action" value="busdelete">삭제</button>
-	                            <%} %>
-	                        </div>
-                    </div>
+					 <div class="bottomMenu">
+					    <div class="empty"></div>
+					    <ul class="pagination">
+					        <li class="active"><a href="">1</a></li>
+					        <li><a href="">2</a></li>
+					        <li><a href="">3</a></li>
+					    </ul>
+					    <div class="button">
+					        <% if (acNo == 2) { %>
+					        <form action="../authServlet" method="post" id="deleteForm">
+					            <input type="hidden" name="action" value="busdelete">
+					            <button class="submitBtn" type="button" id="deleteButton">삭제</button>
+					        </form>
+					        <% } %>
+					    </div>
+					</div>
                 </div>
             </div>
         </div>
@@ -138,6 +139,6 @@
     <form name="VACviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
     <form name="BUSviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
 
-    <script src="../script/authScript.js"></script>
+    <script src="../script/authScript.js?qwe"></script>
 </body>
 </html>

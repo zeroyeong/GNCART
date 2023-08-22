@@ -114,6 +114,6 @@ function busView(DOC_NO) {
 }
 
 //체크박스 클릭스 팝업 안열리게
-document.getElementById('myCheckbox').onclick = function(event) {
+document.querySelector('.myCheckbox').onclick = function(event) {
     event.stopPropagation(); // 이벤트 전파 중지
 };

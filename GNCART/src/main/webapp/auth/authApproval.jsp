@@ -84,7 +84,7 @@ int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
                                         if (leNo3 || leNo4) {
                             %>
                             <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
-                                <td><input type="checkbox" id="myCheckbox"/></td>
+                                <td><input type="checkbox" class="myCheckbox"/></td>
                                 <td><%= DOC_NO %></td>
                                 <td><%= DOC_NAME %></td>
                                 <td><%= MEM_NAME %></td>

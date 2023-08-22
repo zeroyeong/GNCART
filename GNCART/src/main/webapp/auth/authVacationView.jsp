@@ -141,7 +141,7 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
 
         <div style="text-align: center">
             <% if (MEM_ID.equals(ID)) { %>
-            <button class="submitBtn" type="submit" name="action" value="busdelete">삭제</button>
+            <button class="submitBtn" type="submit" name="action" value="vacdelete">삭제</button>
             <% } %>
             <% if (Name.equals(LINE_FIRST) && DOC_APPTURN == 0) { %>
             <button class="submitBtn" type="submit" name="action" value="first">승인</button>

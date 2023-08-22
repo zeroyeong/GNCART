@@ -46,7 +46,7 @@ String memImg = (String) session.getAttribute("memImg");
 	</div>
 
 	<div class="profile-details">
-  	    <a href="#"><img src="../management/filestorage/<%= memImg %>" alt="" /></a>
+  	    <a href="../mypage/mypageMain.jsp"><img src="../management/filestorage/<%= memImg %>" alt="" /></a>
 		<span class="admin_name"><%=session.getAttribute("leLevel")%> <%=session.getAttribute("memName")%></span>
 	</div>
 </nav>
