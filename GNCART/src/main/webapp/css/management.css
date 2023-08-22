@@ -9,6 +9,16 @@
   --white-color: #fff;
 
   --search-border-color: grey;
+  
+  /* pagination */
+  --pagiLiMargin: 5px;
+  --pagiLiPadding: 5px;
+  --pagiApadding: 0 3px;
+  --pagiColor: rgb(123, 126, 131);
+  --pagiBorder: 2px solid transparent;
+
+  --pagiActiveColor: #333;
+  --pagiActiveBorder: 2px solid #333;
 }
 
 /* css 기본설정 */
@@ -152,10 +162,6 @@ td {
   background-color: var(--table-hover-color);
 }
 
-.memberTable table tbody tr:last-child {
-  border-bottom: 2px solid var(--main-color);
-}
-
 .col1{
 	width:2%;
 }
@@ -178,7 +184,8 @@ td {
 
 /* Member Table  - table bottom info*/
 .memberTable .tableInfo {
-  margin-top: 20px;
+	border-top:2px solid #333;
+  padding-top: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -226,19 +233,27 @@ td {
 }
 
 /*page nation*/
-#pagenation{
-	display:flex;
-	justify-conten:center;
-	align-items:center;
+
+#pagenation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style:none;
 }
 
-#pagenation button{
-	padding:3px 5px;
-	margin:3px;
-	border:1px solid transparent;
+#pagenation li {
+  padding: var(--pagiLiPadding);
+  margin: var(--pagiLiMargin);
 }
 
-#pagenation button.active{
-	color:blue;
-	border-bottom:solid 1px blue;
+#pagenation li a {
+  color: var(--pagiColor);
+  padding: var(--pagiApadding);
+  border: var(--pagiBorder);
+}
+
+#pagenation li.active a {
+  color: var(--pagiActiveColor);
+  font-weight: bold;
+  border-bottom: var(--pagiActiveBorder);
 }
