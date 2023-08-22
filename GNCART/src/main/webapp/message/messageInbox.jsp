@@ -39,7 +39,7 @@ int cnt = 0;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/messageInbox.css?hffffsst">
+<link rel="stylesheet" href="../css/messageInbox.css?sst">
 
 
 <!--Boxicons CDN Link-->
@@ -149,7 +149,6 @@ int cnt = 0;
 	</section>
 	
 <script src="../script/boardPagenation.js?asffd"></script>
-<script src="../script/indexScript.js"></script>
 <script src="../script/messageInbox.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>  
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>

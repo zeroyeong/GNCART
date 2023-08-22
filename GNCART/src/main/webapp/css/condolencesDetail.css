@@ -189,6 +189,10 @@ input[type="button"] {
 	white-space:pre-wrap;
 }
 
+.content .detail table tr .board-content{
+	height:200px;
+}
+
 /* content - button */
 .content .button {
   display: flex;

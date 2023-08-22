@@ -42,7 +42,7 @@
 
   /* table */
   --tableBorder: 1px solid var(--allBorderColor);
-  --tablePadding: 7px;
+  --tablePadding: 10px;
   --tableHeadBackColor: #333;
   --tableHeadFontColor: #fff;
   --tableThColor: #eee;
@@ -65,7 +65,6 @@
   margin: 0;
   box-sizing: border-box;
   color: var(--fontColor);
-  font-size: var(--fontSize);
 }
 
 a {
@@ -86,9 +85,9 @@ input[type="button"] {
   border: none;
 }
 
-table,
-td,
-th {
+.detail table,
+.detail table td,
+.detail table th {
   border-collapse: collapse;
 }
 
@@ -160,21 +159,34 @@ th {
 }
 
 /* content - table */
-.content table {
+.content .detail table {
   width: 100%;
   border-top: var(--tableThickBorder);
   border-bottom: var(--tableThickBorder);
   margin-bottom: var(--bigBottomMargin);
 }
 
-.content table th,
-.content table td {
+.content .detail table colgroup .col1,
+.content .detail table colgroup .col3{
+	width:15%;
+}
+
+.content .detail table th,
+.content .detail table td {
   border-bottom: var(--tableBorder);
   padding: var(--tablePadding);
 }
 
-.content table th {
+.content .detail table th {
   background-color: var(--tableThColor);
+}
+
+.content .detail table td #map{
+	height:450px;
+}
+
+.content .detail table td textarea {
+	white-space:pre-wrap;
 }
 
 /* content - button */
@@ -197,10 +209,450 @@ th {
   color: var(--buttonHoverFontColor);
 }
 
-.content .button button:first-child {
+.content .button a {
   margin-right: var(--rightMargin);
 }
 
-.content .button button:last-child {
+.content .button a:last-child {
+  margin-right: 0;
+}
+/* 변수선언 */
+:root {
+  /* color */
+  --allBorderColor: #333;
+
+  /* margin + padding */
+  --bigBottomMargin: 20px;
+  --mediumBottomMargin: 10px;
+  --smallBottomMargin: 5px;
+  --rightMargin: 5px;
+  --rightBigMargin: 10px;
+
+  /* font */
+  --fontColor: #333;
+  --smallFontColor: #808080;
+  --fontSize: 1em;
+  --titleFontSize: 1.25em;
+  --smallFontSize: 0.9em;
+
+  /* button */
+  --buttonBackColor: #eee;
+  --buttonRadius: 5px;
+  --buttonPadding: 5px 7px;
+  --buttonFontSize: 0.9em;
+  --buttonTransition: 0.3s;
+
+  --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
+  --buttonHoverFontColor: #fff;
+
+  /* container */
+  --conMargin: 20px;
+  --conPadding: 30px;
+  --conBorder: 3px solid #eee;
+  --conRadius: 20px;
+  --conBack: #fff;
+
+  /* title */
+  --titleBottomPadding: 5px;
+  --titleBottomMargin: 10px;
+  --titleBorder: 1px solid var(--allBorderColor);
+  --titleH3Size: 1.5em;
+
+  /* table */
+  --tableBorder: 1px solid var(--allBorderColor);
+  --tablePadding: 10px;
+  --tableHeadBackColor: #333;
+  --tableHeadFontColor: #fff;
+  --tableThColor: #eee;
+  --tableThickBorder: 2px solid #808080;
+
+  /* pagination */
+  --pagiLiMargin: 5px;
+  --pagiLiPadding: 5px;
+  --pagiApadding: 0 3px;
+  --pagiColor: rgb(123, 126, 131);
+  --pagiBorder: 2px solid transparent;
+
+  --pagiActiveColor: #333;
+  --pagiActiveBorder: 2px solid #333;
+}
+
+/* 전체 설정 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--fontColor);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+input[type="button"] {
+  background-color: transparent;
+  border: none;
+}
+
+.detail table,
+.detail table td,
+.detail table th {
+  border-collapse: collapse;
+}
+
+/* container */
+.container {
+  margin: var(--conMargin);
+  padding: var(--conPadding);
+  border: var(--conBorder);
+  border-radius: var(--conRadius);
+  background-color: var(--conBack);
+}
+
+/* title */
+.title {
+  margin-bottom: var(--titleBottomMargin);
+}
+
+.title h3 {
+  font-size: var(--titleH3Size);
+  border-bottom: var(--titleBorder);
+  padding-bottom: var(--titleBottomPadding);
+  margin-bottom: var(--mediumBottomMargin);
+}
+
+.title .button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* title - writer */
+.title .writer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title .writer ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title .writer ul li {
+  font-size: var(--smallFontSize);
+  color: var(--smallFontColor);
+}
+
+.title .writer ul:first-child {
+  margin-right: var(--rightBigMargin);
+}
+
+.title .writer ul li:first-child {
+  margin-right: var(--rightMargin);
+}
+
+.title .writer ul:first-child li:last-child {
+  margin-left: var(--rightMargin);
+}
+
+/* content */
+.content {
+  width: 100%;
+}
+
+/* content - caption */
+.content .caption {
+  font-size: var(--titleFontSize);
+  text-align: center;
+  margin-bottom: var(--mediumBottomMargin);
+}
+
+/* content - table */
+.content .detail table {
+  width: 100%;
+  border-top: var(--tableThickBorder);
+  border-bottom: var(--tableThickBorder);
+  margin-bottom: var(--bigBottomMargin);
+}
+
+.content .detail table colgroup .col1,
+.content .detail table colgroup .col3{
+	width:15%;
+}
+
+.content .detail table th,
+.content .detail table td {
+  border-bottom: var(--tableBorder);
+  padding: var(--tablePadding);
+}
+
+.content .detail table th {
+  background-color: var(--tableThColor);
+}
+
+.content .detail table td #map{
+	height:450px;
+}
+
+.content .detail table td textarea {
+	white-space:pre-wrap;
+}
+
+/* content - button */
+.content .button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.content .button button {
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
+}
+
+.content .button button:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
+}
+
+.content .button a {
+  margin-right: var(--rightMargin);
+}
+
+.content .button a:last-child {
+  margin-right: 0;
+}
+/* 변수선언 */
+:root {
+  /* color */
+  --allBorderColor: #333;
+
+  /* margin + padding */
+  --bigBottomMargin: 20px;
+  --mediumBottomMargin: 10px;
+  --smallBottomMargin: 5px;
+  --rightMargin: 5px;
+  --rightBigMargin: 10px;
+
+  /* font */
+  --fontColor: #333;
+  --smallFontColor: #808080;
+  --fontSize: 1em;
+  --titleFontSize: 1.25em;
+  --smallFontSize: 0.9em;
+
+  /* button */
+  --buttonBackColor: #eee;
+  --buttonRadius: 5px;
+  --buttonPadding: 5px 7px;
+  --buttonFontSize: 0.9em;
+  --buttonTransition: 0.3s;
+
+  --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
+  --buttonHoverFontColor: #fff;
+
+  /* container */
+  --conMargin: 20px;
+  --conPadding: 30px;
+  --conBorder: 3px solid #eee;
+  --conRadius: 20px;
+  --conBack: #fff;
+
+  /* title */
+  --titleBottomPadding: 5px;
+  --titleBottomMargin: 10px;
+  --titleBorder: 1px solid var(--allBorderColor);
+  --titleH3Size: 1.5em;
+
+  /* table */
+  --tableBorder: 1px solid var(--allBorderColor);
+  --tablePadding: 10px;
+  --tableHeadBackColor: #333;
+  --tableHeadFontColor: #fff;
+  --tableThColor: #eee;
+  --tableThickBorder: 2px solid #808080;
+
+  /* pagination */
+  --pagiLiMargin: 5px;
+  --pagiLiPadding: 5px;
+  --pagiApadding: 0 3px;
+  --pagiColor: rgb(123, 126, 131);
+  --pagiBorder: 2px solid transparent;
+
+  --pagiActiveColor: #333;
+  --pagiActiveBorder: 2px solid #333;
+}
+
+/* 전체 설정 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--fontColor);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+input[type="button"] {
+  background-color: transparent;
+  border: none;
+}
+
+.detail table,
+.detail table td,
+.detail table th {
+  border-collapse: collapse;
+}
+
+/* container */
+.container {
+  margin: var(--conMargin);
+  padding: var(--conPadding);
+  border: var(--conBorder);
+  border-radius: var(--conRadius);
+  background-color: var(--conBack);
+}
+
+/* title */
+.title {
+  margin-bottom: var(--titleBottomMargin);
+}
+
+.title h3 {
+  font-size: var(--titleH3Size);
+  border-bottom: var(--titleBorder);
+  padding-bottom: var(--titleBottomPadding);
+  margin-bottom: var(--mediumBottomMargin);
+}
+
+.title .button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* title - writer */
+.title .writer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title .writer ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title .writer ul li {
+  font-size: var(--smallFontSize);
+  color: var(--smallFontColor);
+}
+
+.title .writer ul:first-child {
+  margin-right: var(--rightBigMargin);
+}
+
+.title .writer ul li:first-child {
+  margin-right: var(--rightMargin);
+}
+
+.title .writer ul:first-child li:last-child {
+  margin-left: var(--rightMargin);
+}
+
+/* content */
+.content {
+  width: 100%;
+}
+
+/* content - caption */
+.content .caption {
+  font-size: var(--titleFontSize);
+  text-align: center;
+  margin-bottom: var(--mediumBottomMargin);
+}
+
+/* content - table */
+.content .detail table {
+  width: 100%;
+  border-top: var(--tableThickBorder);
+  border-bottom: var(--tableThickBorder);
+  margin-bottom: var(--bigBottomMargin);
+}
+
+.content .detail table colgroup .col1,
+.content .detail table colgroup .col3{
+	width:15%;
+}
+
+.content .detail table th,
+.content .detail table td {
+  border-bottom: var(--tableBorder);
+  padding: var(--tablePadding);
+}
+
+.content .detail table th {
+  background-color: var(--tableThColor);
+}
+
+.content .detail table td #map{
+	height:450px;
+}
+
+.content .detail table td textarea {
+	white-space:pre-wrap;
+}
+
+.content .detail table tr .board-content{
+	height:200px;
+}
+
+/* content - button */
+.content .button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.content .button button {
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  font-weight: bold;
+  transition: var(--buttonTransition);
+}
+
+.content .button button:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
+}
+
+.content .button a {
+  margin-right: var(--rightMargin);
+}
+
+.content .button a:last-child {
   margin-right: 0;
 }

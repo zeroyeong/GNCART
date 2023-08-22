@@ -34,7 +34,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesDetail.css?sdddf">
+<link rel="stylesheet" href="../css/condolencesDetail.css?sdf">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -93,7 +93,7 @@
 	              </td>
 	            </tr>
 	            <tr>
-	              <th>내용</th>
+	              <th class="board-content">내용</th>
 	              <td colspan="3"><%= content %></td>
 	            </tr>
 	            <%
