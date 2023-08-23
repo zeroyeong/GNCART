@@ -33,7 +33,7 @@ if (id != null && pw != null) {
 						name="birth6" id="birth6">
 						<input class="nonebox" name="birth4" id="birth4"
 							placeholder="예시 : 19990101" style="width: 220px;"
-							maxlength="8"></input>
+							maxlength="10"></input>
 					</form>
 				</div>
 
@@ -56,3 +56,28 @@ if (id != null && pw != null) {
 
 	</div>
 </div>
+<script>
+let birth = document.querySelector("#birth4");
+
+birth.addEventListener("input", () => {
+
+let val = birth.value.replace(/\D/g, "");
+let leng = val.length;
+
+let result = '';
+
+if(leng < 5) result = val;
+	else if(leng < 7){
+		result += val.substring(0,4);
+		result += "-";
+		result += val.substring(4,6);
+	} else{
+		result += val.substring(0,4);
+		result += "-";
+		result += val.substring(4,6);
+		result += "-";
+		result += val.substring(6);
+	}
+	birth.value = result;
+})
+</script>

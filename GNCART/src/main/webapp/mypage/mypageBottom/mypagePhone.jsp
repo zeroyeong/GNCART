@@ -16,7 +16,7 @@ if (id != null && pw != null) {
 	phone = pMgr.phoneFind(id, pw);
 
 }
-%> 
+%>
 <!-- 전화번호 -->
 <div class="box3">
 	<div class="box4">
@@ -31,9 +31,9 @@ if (id != null && pw != null) {
 					</a>
 					<form action="mypageUpdate/updatePhone.jsp" method="post"
 						name="phone6" id="phone6">
-						<input class="nonebox" name="phone4" id="phone4"
+						<input type="text" class="nonebox" name="phone4" id="phone4"
 							placeholder="-를 빼고 전화번호를 입력해주세요." style="width: 220px;"
-							maxlength="11"></input>
+							maxlength="13"></input>
 					</form>
 				</div>
 
@@ -55,3 +55,34 @@ if (id != null && pw != null) {
 
 	</div>
 </div>
+<script>
+let phone = document.querySelector("#phone4");
+
+phone.addEventListener("input", () => {
+
+let val = phone.value.replace(/\D/g, "");
+let leng = val.length;
+
+let result = '';
+
+if(leng < 4) result = val;
+	else if(leng < 7){
+		result += val.substring(0,3);
+		result += "-";
+		result += val.substring(3,6);
+	} else if(leng < 11){
+		result += val.substring(0,3);
+		result += "-";
+		result += val.substring(3,6);
+		result += "-";
+		result += val.substring(6);
+	} else {
+		result += val.substring(0,3);
+		result += "-";
+		result += val.substring(3,7);
+		result += "-";
+		result += val.substring(7);
+	}
+	phone.value = result;
+})
+</script>

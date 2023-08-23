@@ -2,7 +2,7 @@
 
 //전화번호
 phone1.onclick = function() {
-	document.getElementById("phone").innerHTML = "전화번호 변경"
+	document.getElementById("phone").innerHTML = "전화번호 변경";
 	document.querySelector('#phone1').style.display = "none";
 	document.querySelector('#phone2').style.display = "none";
 	document.querySelector('#phone3').style.display = "block";
@@ -10,7 +10,7 @@ phone1.onclick = function() {
 	document.querySelector('#phone5').style.display = "block";
 }
 phone3.onclick = function() {
-	document.getElementById("phone").innerHTML = "전화번호"
+	document.getElementById("phone").innerHTML = "전화번호";
 	document.querySelector('#phone1').style.display = "block";
 	document.querySelector('#phone2').style.display = "block";
 	document.querySelector('#phone3').style.display = "none";
@@ -20,7 +20,7 @@ phone3.onclick = function() {
 	document.phone6.submit();
 }
 phone5.onclick = function() {
-	document.getElementById("phone").innerHTML = "전화번호"
+	document.getElementById("phone").innerHTML = "전화번호";
 	document.querySelector('#phone1').style.display = "block";
 	document.querySelector('#phone2').style.display = "block";
 	document.querySelector('#phone3').style.display = "none";
@@ -31,7 +31,7 @@ phone5.onclick = function() {
 
 //이메일
 mail1.onclick = function() {
-	document.getElementById("mail").innerHTML = "이메일 변경"
+	document.getElementById("mail").innerHTML = "이메일 변경";
 	document.querySelector('#mail1').style.display = "none";
 	document.querySelector('#mail2').style.display = "none";
 	document.querySelector('#mail3').style.display = "block";
@@ -39,7 +39,7 @@ mail1.onclick = function() {
 	document.querySelector('#mail5').style.display = "block";
 }
 mail3.onclick = function() {
-	document.getElementById("mail").innerHTML = "이메일"
+	document.getElementById("mail").innerHTML = "이메일";
 	document.querySelector('#mail1').style.display = "block";
 	document.querySelector('#mail2').style.display = "block";
 	document.querySelector('#mail3').style.display = "none";
@@ -49,7 +49,7 @@ mail3.onclick = function() {
 	document.mail6.submit();
 }
 mail5.onclick = function() {
-	document.getElementById("mail").innerHTML = "이메일"
+	document.getElementById("mail").innerHTML = "이메일";
 	document.querySelector('#mail1').style.display = "block";
 	document.querySelector('#mail2').style.display = "block";
 	document.querySelector('#mail3').style.display = "none";
@@ -60,7 +60,7 @@ mail5.onclick = function() {
 
 //생년월일
 birth1.onclick = function() {
-	document.getElementById("birth").innerHTML = "생년월일 변경"
+	document.getElementById("birth").innerHTML = "생년월일 변경";
 	document.querySelector('#birth1').style.display = "none";
 	document.querySelector('#birth2').style.display = "none";
 	document.querySelector('#birth3').style.display = "block";
@@ -68,7 +68,7 @@ birth1.onclick = function() {
 	document.querySelector('#birth5').style.display = "block";
 }
 birth3.onclick = function() {
-	document.getElementById("birth").innerHTML = "생년월일"
+	document.getElementById("birth").innerHTML = "생년월일";
 	document.querySelector('#birth1').style.display = "block";
 	document.querySelector('#birth2').style.display = "block";
 	document.querySelector('#birth3').style.display = "none";
@@ -78,7 +78,7 @@ birth3.onclick = function() {
 	document.birth6.submit();
 }
 birth5.onclick = function() {
-	document.getElementById("birth").innerHTML = "생년월일"
+	document.getElementById("birth").innerHTML = "생년월일";
 	document.querySelector('#birth1').style.display = "block";
 	document.querySelector('#birth2').style.display = "block";
 	document.querySelector('#birth3').style.display = "none";
@@ -89,7 +89,7 @@ birth5.onclick = function() {
 
 //주소
 add1.onclick = function() {
-	document.getElementById("add").innerHTML = "주소 변경"
+	document.getElementById("add").innerHTML = "주소 변경";
 	document.querySelector('#add1').style.display = "none";
 	document.querySelector('#add2').style.display = "none";
 	document.querySelector('#add3').style.display = "block";
@@ -97,7 +97,7 @@ add1.onclick = function() {
 	document.querySelector('#add5').style.display = "block";
 }
 add3.onclick = function() {
-	document.getElementById("add").innerHTML = "주소"
+	document.getElementById("add").innerHTML = "주소";
 	document.querySelector('#add1').style.display = "block";
 	document.querySelector('#add2').style.display = "block";
 	document.querySelector('#add3').style.display = "none";
@@ -107,7 +107,7 @@ add3.onclick = function() {
 	document.add6.submit();
 }
 add5.onclick = function() {
-	document.getElementById("add").innerHTML = "주소"
+	document.getElementById("add").innerHTML = "주소";
 	document.querySelector('#add1').style.display = "block";
 	document.querySelector('#add2').style.display = "block";
 	document.querySelector('#add3').style.display = "none";
@@ -118,7 +118,7 @@ add5.onclick = function() {
 
 //비밀번호
 pwd1.onclick = function() {
-	document.getElementById("pwd").innerHTML = "비밀번호 변경"
+	document.getElementById("pwd").innerHTML = "비밀번호 변경";
 	document.querySelector('#pwd1').style.display = "none";
 	document.querySelector('#pwd2').style.display = "none";
 	document.querySelector('#pwd3').style.display = "block";
@@ -131,7 +131,7 @@ pwd1.onclick = function() {
 	document.querySelector('#pwd12').style.display = "none";
 }
 pwd3.onclick = function() {
-	document.getElementById("pwd").innerHTML = "비밀번호"
+	document.getElementById("pwd").innerHTML = "비밀번호";
 	document.querySelector('#pwd1').style.display = "inline-block";
 	document.querySelector('#pwd2').style.display = "inline-block";
 	document.querySelector('#pwd3').style.display = "none";
@@ -149,7 +149,7 @@ pwd3.onclick = function() {
 	document.pwd7.submit();
 }
 pwd6.onclick = function() {
-	document.getElementById("pwd").innerHTML = "비밀번호"
+	document.getElementById("pwd").innerHTML = "비밀번호";
 	document.querySelector('#pwd1').style.display = "inline-block";
 	document.querySelector('#pwd2').style.display = "inline-block";
 	document.querySelector('#pwd3').style.display = "none";

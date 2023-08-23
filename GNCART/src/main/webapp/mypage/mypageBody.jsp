@@ -35,7 +35,7 @@ String check = null;
 if (img != null) {
 	File file = new File(path+"/"+img);
 
-if(file.exists() ){ //파일 유무 확인
+if(file.exists()){ //파일 유무 확인
 	check = "check";
 }
 }

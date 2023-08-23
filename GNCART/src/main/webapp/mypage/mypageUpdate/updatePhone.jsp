@@ -15,32 +15,11 @@ MypageBean upBean = new MypageBean();
 
 String phone = request.getParameter("phone4");
 
-String number = "[0-9]{10,11}";
-
-String phone0 = phone.replaceAll("[^0-9]", "");
-
-String phone1 = null;
-String phone2 = null;
-String phone3 = null;
-String phone4 = null;
-
-if (phone0.length() == 11) {
-	phone1 = phone0.substring(0, 3);
-	phone2 = phone0.substring(3, 7);
-	phone3 = phone0.substring(7, 11);
-	phone4 = phone1 + "-" + phone2 + "-" + phone3;
-} if (phone0.length() == 10) {
-	phone1 = phone0.substring(0, 3);
-	phone2 = phone0.substring(3, 6);
-	phone3 = phone0.substring(6, 10);
-	phone4 = phone1 + "-" + phone2 + "-" + phone3;
-}
-
-upBean.setMEM_PHONE(phone4); 
+upBean.setMEM_PHONE(phone); 
 
 //수정할 내용이 담긴 데이터는 upBean 객체에 있다. (jsp 화면에서 이동해온 phone4 데이터)
 
-if (id != null && upBean != null && phone.matches(number)) {
+if (id != null && upBean != null && phone.length() > 11) {
 
 	//MypageMgr 클래스 updatePhone() 메서드를 호출
 	pMgr.updatePhone(upBean, id);
