@@ -1,23 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ page import="notice.NoticeBean"%>
-<% 
-	  //read.jsp 페이지에서 이동한 num, nowPage 파라미터를 받아 각 각 변수에 저장
-	  int NOT_NO = Integer.parseInt(request.getParameter("NOT_NO"));
-	  
-	  //session에 저장된 bean객체를 이용해서 게시물 정보를 각 각 변수에 저장 
-	  NoticeBean bean = (NoticeBean)session.getAttribute("bean");
-	  String NOT_TITLE = bean.getNOT_TITLE();
-	  String NOT_CONTENT = bean.getNOT_CONTENT(); 
-	  String NOT_DATE = bean.getNOT_DATE();
-	  int MEM_NO = bean.getMEM_NO();
-	  int NOTSUB_NO = bean.getNOTSUB_NO();
-	  int PART_NO = bean.getPART_NO();
-	  String MEM_NAME = bean.getMEM_NAME();
-	  String NOT_SUB = bean.getNOT_SUB();
-	  String MEM_ID = bean.getMEM_ID();
-	  
+
+<%
+int NOT_NO = Integer.parseInt(request.getParameter("NOT_NO"));
+
+NoticeBean bean = (NoticeBean)session.getAttribute("bean");
+String NOT_TITLE = bean.getNOT_TITLE();
+String NOT_CONTENT = bean.getNOT_CONTENT(); 
+String NOT_DATE = bean.getNOT_DATE();
+int MEM_NO = bean.getMEM_NO();
+int NOTSUB_NO = bean.getNOTSUB_NO();
+int PART_NO = bean.getPART_NO();
+String MEM_NAME = bean.getMEM_NAME();
+String NOT_SUB = bean.getNOT_SUB();
+String MEM_ID = bean.getMEM_ID();
+
+String Part = (String)session.getAttribute("parttype");
+int partno = (int)session.getAttribute("partNo");
 %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -25,80 +28,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/noticeWrite.css">
+<link rel="stylesheet" href="../css/noticeWrite.css?123">
 <!--Boxicons CDN Link-->
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+	rel='stylesheet'>
+
 </head>
 <body>
+
 	<!-- sidebar include -->
 	<jsp:include page="../index/sidebar.jsp" flush="false" />
-
 	<section class="home-section">
-		<!-- top include -->
-		<jsp:include page="../index/top.jsp" flush="false" />
+	<!-- top include -->
+	<jsp:include page="../index/top.jsp" flush="false" />
 
 
-		<!--home-content-->
-		<div class="home-content">
-			<div id="container">
-				<div id="title">
-					<h2>공지사항</h2>
-				</div>
-				<hr>
-				<form name="ReviseFrm" method="post" action="../noticeRevise">
-					<table>
-						<tr>
-							<td class="tableTitle"><label>작성자</label></td>
-							<td><input type="text" name="MEM_NO" value="<%=MEM_NAME%>" readonly></td>
-							<!--작성자 이름 나오게-->
-							<td class="tableTitle"><label>작성일</labe></td>
-							<td><input type="text" name="NOT_DATE" value="<%=NOT_DATE%>" readonly></td>
-							<!--작성일 나오게-->
-						</tr>
-						<tr>
-							<td class="tableTitle"><label>말머리</label></td>
-							<td><select name="NOTSUB_NO">
-									<option value="1" <%= (NOTSUB_NO == 1) ? "selected" : "" %>>공지</option>
-									<option value="2" <%= (NOTSUB_NO == 2) ? "selected" : "" %>>긴급</option>
-									<option value="3" <%= (NOTSUB_NO == 3) ? "selected" : "" %>>필독</option>
-							</select></td>
-							<td class="tableTitle"><label>해당 부서</label></td>
-							<td><select name="PART_NO">
-									<option value="1" <%= (PART_NO == 1) ? "selected" : "" %>>경영지원팀</option>
-									<option value="2" <%= (PART_NO == 2) ? "selected" : "" %>>개발팀</option>
-									<option value="3" <%= (PART_NO == 3) ? "selected" : "" %>>홍보팀</option>
-									<option value="4" <%= (PART_NO == 4) ? "selected" : "" %>>영업팀</option>
-									<option value="5" <%= (PART_NO == 5) ? "selected" : "" %>>서비스지원팀</option>
-									<option value="6" <%= (PART_NO == 6) ? "selected" : "" %>>전체부서</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="tableTitle"><label>제목</label></td>
-							<td colspan="3"><input type="text" name="NOT_TITLE" value="<%=NOT_TITLE%>"></td>
-							<!--작성자 이름 나오게-->
-						</tr>
-						<tr>
-							<td class="tableTitle detail"><label>상세 내용</label></td>
-							<td colspan="3"><textarea name="NOT_CONTENT"><%=NOT_CONTENT%></textarea></td>
-						</tr>
-						<tr>
-							<td class="tableTitle"><label>첨부 파일</label></td>
-							<td colspan="3"><input type="file" name="NOT_FILENAME"></td>
-						</tr>
-					</table>
-					<div id="btns">
-						<button>수정하기</button>
-						<button> <a href="noticeDelete.jsp?=&NOT_NO=<%=NOT_NO%>">삭제하기</a></button>
-					</div>
-			</div>
-			<input type='hidden' name="NOT_NO" value="<%=NOT_NO%>">
-			</form>
-		</div>
+	<!--home-content-->
+	<div class="home-content">
+		<div class="container">
+	      <div class="title">
+	        <h3>공지사항 수정</h3>
+	      </div>
+	      <div class="content">
+	        <form name="ReviseFrm" method="post" action="../noticeRevise">
+	          <table>
+	            <colgroup>
+	              <col class="col1" />
+	              <col class="col2" />
+	              <col class="col3" />
+	              <col class="col4" />
+	            </colgroup>
+	            <tr>
+	              <td>제목</td>
+	              <td colspan="3"><input id="detailTitle" name="NOT_TITLE" value="<%=NOT_TITLE%>"required></td>
+	            </tr>
+	            <tr>
+	              <td>종류</td>
+	              <td>
+                  <select id="type" name="NOTSUB_NO">
+					<option value="1" <%= (NOTSUB_NO == 1) ? "selected" : "" %>>공지</option>
+					<option value="2" <%= (NOTSUB_NO == 2) ? "selected" : "" %>>긴급</option>
+					<option value="3" <%= (NOTSUB_NO == 3) ? "selected" : "" %>>필독</option>
+	                </select>
+	              </td>
+	              <td>날짜</td>
+	              <td>
+	                <input type="date" name="NOT_DATE" value="<%=NOT_DATE%>" />
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>부서 및 이름</td>
+	              <td colspan="3">
+	                <div class="user">
+	                  <input type="text" id="user_part_name" name="user_part_name" placeholder="부서 / 이름" value="<%=Part%> / <%=MEM_NAME%>"readonly/>	
+	                  <input type="hidden" name="PART_NO" value="<%=partno %>">
+	                  <input type="hidden" name="MEM_NAME" value="<%=MEM_NAME %>">
+	                </div>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>내용</td>
+	              <td colspan="3">
+	                <textarea id="detailContent" name="NOT_CONTENT" rows="10"><%=NOT_CONTENT%></textarea>
+	              </td>
+	            </tr>
+
+	          </table>
+	          <!-- 페이지 넘버를 넘겨주기 위한 히든 -->
+	          <div class="button">
+	            <button>수정</button>
+	            <button type="reset">리셋</button>
+	          	  <a href="javascript:history.back()">
+	            <button>뒤로</button></a>
+	          </div>
+	          <input type='hidden' name="NOT_NO" value="<%=NOT_NO%>">
+	        </form>
+	      </div>
+	    </div>
+	</div>
 	</section>
-
-
-	<script src="../script/indexScript.js"></script>
-	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
+	
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="../script/indexScript.js"></script>
 </body>
 </html>

@@ -24,6 +24,7 @@ int LINE_NO = bean.getLINE_NO();
 String LINE_FIRST = bean.getLINE_FIRST();
 String LINE_SECOND = bean.getLINE_SECOND();
 int DOC_APPTURN = bean.getDOC_APPTURN();
+int DOC_STATES = bean.getDOC_STATES();
 int VAC_NO = bean.getVAC_NO();
 String MEM_ID = bean.getMEM_ID();
 int BUS_NO = bean.getBUS_NO();
@@ -141,14 +142,20 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
 
         <div style="text-align: center">
             <% if (MEM_ID.equals(ID)) { %>
+            <% if (DOC_STATES != 3) { %>
             <button class="submitBtn" type="submit" name="action" value="vacdelete">삭제</button>
             <% } %>
+            <% } %>
             <% if (Name.equals(LINE_FIRST) && DOC_APPTURN == 0) { %>
+            <% if (DOC_STATES != 2) { %>
             <button class="submitBtn" type="submit" name="action" value="first">승인</button>
             <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
+            <% } %>
             <% } else if(Name.equals(LINE_SECOND) && DOC_APPTURN == 1) { %>
+            <% if (DOC_STATES != 2) { %>
             <button class="submitBtn" type="submit" name="action" value="second">승인</button>
             <button class="submitBtn" type="submit" name="action" value="reject">반려</button>
+            <% } %>
             <% } %>
         </div>
     </form>

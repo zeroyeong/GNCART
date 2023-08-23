@@ -44,6 +44,7 @@
                             <a href="authReturn.jsp"><button>반려</button></a>
 				         </div>
 		           	  </div>
+		           	  <form method="post" action="authChk.jsp" id="authForm">
                     <table>
                        <colgroup>
 				            <col class="col1 " />
@@ -72,13 +73,16 @@
                                         String DOC_REGDATE = bean.getDOC_REGDATE();
                                         String DOC_APPDATE = bean.getDOC_APPDATE(); 
                                         int DOC_TYPE = bean.getDOC_TYPE();
+                                        int LINE_NO = bean.getLINE_NO();
+                                        int VAC_NO = bean.getVAC_NO();
+                                        int BUS_NO = bean.getBUS_NO();
                                         
                                         String linkFunction = (DOC_TYPE == 1) ? "vacView" : "busView";
                                         
                                         if (DOC_STATES == 2) {
                             %>
                         	    <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
-                                	<td><input type="checkbox" class="myCheckbox"/></td>
+                                	<td><input type="checkbox" name="chk" class="myCheckbox" value="<%=LINE_NO %>,<%=VAC_NO %>,<%=BUS_NO %>"></td>
                                     <td><%= DOC_NO %></td>
 	                                <% if (DOC_TYPE == 1) { %>
 	                                    <td><%= DOC_NAME %></td>
@@ -105,16 +109,15 @@
                       <%} %>
                     </tbody>
                     </table>
+                    </form>
                     <div class="bottomMenu">
                         <div class="empty"></div>
-                        <ul class="pagination">
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                        </ul>
+            			 <ul class="pagination" id="pagenation">
+            
+           				 </ul>
                    	    <div class="button">
                             <% if(acNo == 2){%>
-                            <button class="del">삭제</button>
+                            <button class="submitBtn" type="button" id="deleteButton" onclick="submitForm()">삭제</button>
                             <%} %>
                         </div>
                     </div>
@@ -127,5 +130,6 @@
     <form name="BUSviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
 
     <script src="../script/authScript.js"></script>
+    <script src="../script/boardPagenation.js"></script>
 </body>
 </html>

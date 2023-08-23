@@ -196,6 +196,9 @@ public class AuthMgr {
 				bean.setDOC_REGDATE(rs.getString("DOC_REGDATE"));
 				bean.setDOC_APPDATE(rs.getString("DOC_APPDATE"));
 				bean.setDOC_APPTURN(rs.getInt("DOC_APPTURN"));
+				bean.setLINE_NO(rs.getInt("LINE_NO"));
+				bean.setVAC_NO(rs.getInt("VAC_NO"));
+				bean.setBUS_NO(rs.getInt("BUS_NO"));
 				vlist.add(bean);
 			}
 		} catch (Exception e) {
@@ -341,6 +344,7 @@ public class AuthMgr {
 				bean.setLINE_FIRST(rs.getString("LINE_FIRST"));
 				bean.setLINE_SECOND(rs.getString("LINE_SECOND"));
 				bean.setDOC_APPTURN(rs.getInt("DOC_APPTURN"));
+				bean.setDOC_STATES(rs.getInt("DOC_STATES"));
 				bean.setVAC_NO(rs.getInt("VAC_NO"));
 				bean.setMEM_ID(rs.getString("MEM_ID"));		
 				bean.setBUS_NO(rs.getInt("BUS_NO"));

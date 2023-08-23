@@ -110,11 +110,9 @@
                     </table>
                     <div class="bottomMenu">
                         <div class="empty"></div>
-                        <ul class="pagination">
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                        </ul>
+            			 <ul class="pagination" id="pagenation">
+            
+           				 </ul>
                         <div class="button">
                             <button class="authBtn" type="submit" value="결재신청" onclick="showModal()">작성</button>
                        
@@ -140,5 +138,6 @@
     <form name="BUSviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
 
     <script src="../script/authScript.js"></script>
+    <script src="../script/boardPagenation.js"></script>
 </body>
 </html>

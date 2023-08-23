@@ -112,6 +112,10 @@ function vacView(DOC_NO) {
 function busView(DOC_NO) {
     openViewPopup("authBusinessView.jsp?DOC_NO=" + DOC_NO);
 }
+// '체크박스'로 삭제
+function submitForm() {
+    document.getElementById("authForm").submit();
+}
 
 //체크박스 클릭스 팝업 안열리게
 document.querySelector('.myCheckbox').onclick = function(event) {

@@ -27,12 +27,6 @@
   --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
   --buttonHoverFontColor: #fff;
 
-  /* 전체 input / select / textarea */
-  --inputPadding: 7px;
-  --inputBorder: 1px solid rgb(146, 146, 146);
-  --inputBorderRadius: 3px;
-  --textAreaHeight: 100px;
-
   /* container */
   --conMargin: 20px;
   --conPadding: 30px;
@@ -48,7 +42,7 @@
 
   /* table */
   --tableBorder: 1px solid var(--allBorderColor);
-  --tablePadding: 7px;
+  --tablePadding: 10px;
   --tableHeadBackColor: #333;
   --tableHeadFontColor: #fff;
   --tableThColor: #eee;
@@ -91,9 +85,9 @@ input[type="button"] {
   border: none;
 }
 
-table,
-td,
-th {
+.detail table,
+.detail table td,
+.detail table th {
   border-collapse: collapse;
 }
 
@@ -157,84 +151,46 @@ th {
   width: 100%;
 }
 
-/* content - table - colgroup */
-.content table colgroup .col1,
-.content table colgroup .col3 {
-  width: 15%;
-}
-
-.content table colgroup .col2,
-.content table colgroup .col4 {
-  width: 35%;
+/* content - caption */
+.content .caption {
+  font-size: var(--titleFontSize);
+  text-align: center;
+  margin-bottom: var(--mediumBottomMargin);
 }
 
 /* content - table */
-.content table {
+.content .detail table {
   width: 100%;
+  border-top: var(--tableThickBorder);
+  border-bottom: var(--tableThickBorder);
   margin-bottom: var(--bigBottomMargin);
 }
 
-.content table td {
+.content .detail table colgroup .col1, 
+.content .detail table colgroup .col3{
+	width:15%;
+}
+
+.content .detail table th,
+.content .detail table td {
+  border-bottom: var(--tableBorder);
   padding: var(--tablePadding);
 }
-
-.content table td > span {
-  display: inline-block;
-  text-align: center;
-  padding: 10px 0;
-  width: 85%;
-  border-radius: 8px;
+ 
+.content .detail table th {
   background-color: var(--tableThColor);
-  /* font-weight: bold; */
 }
 
-.content table td > span.memeo {
-  padding: 65px 0;
+.content .detail table td #map{
+	height:450px;
 }
 
-.content table td:nth-child(3) {
-  text-align: center;
+.content .detail table td textarea {
+	white-space:pre-wrap;
 }
 
-.content table td > input,
-.content table td > select,
-.content table td > textarea {
-  width: 100%;
-  padding: var(--inputPadding);
-  border: var(--inputBorder);
-  border-radius: var(--inputBorderRadius);
-  font-size: var(--smallFontSize);
-}
-
-.content table td div > input[type="text"] {
-  padding: var(--inputPadding);
-  border: var(--inputBorder);
-  border-radius: var(--inputBorderRadius);
-  font-size: var(--smallFontSize);
-  text-align: center;
-}
-
-.content table td div > input[type="button"] {
-  padding: var(--buttonPadding);
-  background-color: var(--buttonBackColor);
-  border-radius: var(--buttonRadius);
-  font-size: var(--buttonFontSize);
-  transition: var(--buttonTransition);
-}
-
-.content table td div > input[type="button"]:hover {
-  background-color: var(--buttonHoverBackColor);
-  color: var(--buttonHoverFontColor);
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.content table tr:last-child {
-  border-bottom: var(--tableBorder);
-}
-
-.content table tr:last-child td {
-  padding-bottom: 15px;
+.content .detail table tr .board-content{
+	height:200px;
 }
 
 /* content - button */
@@ -244,7 +200,6 @@ th {
   align-items: center;
 }
 .content .button button {
-  margin-right: var(--rightMargin);
   background-color: var(--buttonBackColor);
   border-radius: var(--buttonRadius);
   padding: var(--buttonPadding);
@@ -256,33 +211,12 @@ th {
 .content .button button:hover {
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);
-  cursor: pointer;
 }
 
-.content .button button:last-child {
+.content .button a {
+  margin-right: var(--rightMargin);
+}
+
+.content .button a:last-child {
   margin-right: 0;
-}
-
-.content tr td div input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}
-
-.content tr td div label{
-  padding: var(--buttonPadding);
-  background-color: var(--buttonBackColor);
-  border-radius: var(--buttonRadius);
-  font-size: var(--buttonFontSize);
-  transition: var(--buttonTransition);
-}
-
-.content tr td div label:hover{
-  background-color: var(--buttonHoverBackColor);
-  color: var(--buttonHoverFontColor);
-  font-weight: bold;
-  cursor: pointer;
 }
