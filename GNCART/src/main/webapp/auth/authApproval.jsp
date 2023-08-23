@@ -95,7 +95,7 @@ int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
                                 <td>
                                     <% if (DOC_STATES == 0) { %>
                                     대기
-                                    <% } else if (DOC_STATES == 1) { %>
+                                    <% } else if (DOC_STATES == 1) { %> 
                                     승인
                                     <% } else if (DOC_STATES == 2) { %>
                                     반려

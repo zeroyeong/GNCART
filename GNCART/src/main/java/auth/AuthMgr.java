@@ -165,7 +165,7 @@ public class AuthMgr {
 			pstmt.setInt(3, MEM_NO);
 			pstmt.setInt(4, LINE_NO);
 
-			pstmt.executeUpdate();
+			pstmt.executeUpdate(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

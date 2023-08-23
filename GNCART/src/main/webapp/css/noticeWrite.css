@@ -259,7 +259,7 @@ th {
   cursor: pointer;
 }
 
-.content .button button:last-child {
+.content .button button:last-child { 
   margin-right: 0;
 } 
 

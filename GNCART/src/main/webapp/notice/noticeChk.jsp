@@ -66,7 +66,7 @@
     %>
 	<script type="text/javascript">
         alert("선택된 게시글이 삭제되지 않았습니다.");
-        location.href = "notice.jsp"; 
+        location.href = "notice.jsp";  
         </script>
 	<%
                 }

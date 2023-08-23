@@ -125,7 +125,7 @@
             </div>
         </div>
     </section>
-
+ 
     <form name="VACviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
     <form name="BUSviewFrm" method="get"><input type="hidden" name="DOC_NO"></form>
 

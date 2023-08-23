@@ -205,7 +205,7 @@ input[type="button"] {
   padding: var(--buttonPadding);
   font-size: var(--buttonFontSize);
   font-weight: bold;
-  transition: var(--buttonTransition); 
+  transition: var(--buttonTransition);  
 }
 
 .content .button button:hover {

@@ -90,7 +90,7 @@ function openPopup(popupUrl) {
     var _width = '800';
     var _height = '800';
 
-    var _left = Math.ceil((window.screen.width - _width) / 2);
+    var _left = Math.ceil((window.screen.width - _width) / 2); 
     var _top = Math.ceil((window.screen.height - _height) / 2);
 
     newPopup = window.open(popupUrl, "_blank", 'width=' + _width + ', height=' + _height + ', left=' + _left + ', top=' + _top);

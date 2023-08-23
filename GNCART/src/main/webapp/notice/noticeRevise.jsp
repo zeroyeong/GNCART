@@ -103,7 +103,7 @@ int partno = (int)session.getAttribute("partNo");
 	          </div>
 	          <input type='hidden' name="NOT_NO" value="<%=NOT_NO%>">
 	        </form>
-	      </div>
+	      </div> 
 	    </div>
 	</div>
 	</section>

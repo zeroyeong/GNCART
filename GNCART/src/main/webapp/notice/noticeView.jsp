@@ -42,7 +42,7 @@ session.setAttribute("bean", bean);//게시물을 세션에 저장
 	rel='stylesheet'>
 
 </head>
-<body>
+<body> 
 
 	<!-- sidebar include -->
 	<jsp:include page="../index/sidebar.jsp" flush="false" />

@@ -34,7 +34,7 @@
     <form method="post" action="../authWrite" onsubmit="return chkLine()">
         <button type="button" class="lineBtn" onclick="vacLineBtn()">결재선</button>
 	     <div class="lineContainer">
-			<table>
+			<table> 
 				<tr>
 					<% if (!"팀장".equals(leLevel)) { %>
 					<th>

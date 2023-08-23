@@ -47,7 +47,7 @@
 			<%
 				AuthMgr authMgr = new AuthMgr();
 				ArrayList<String> managers = authMgr.getManagers();
-				for (String manager : managers) {
+				for (String manager : managers) { 
 			%>
 
 			<option value="<%=manager%>"><%=manager%></option>

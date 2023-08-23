@@ -108,7 +108,7 @@ blist = nMgr.getBoardList();
             <div class="empty"></div>
             <ul class="pagination" id="pagenation">
             
-            </ul> 
+            </ul>  
             <div class="button">
               <button type="button">
                 <a href="noticeWrite.jsp">글쓰기</a>

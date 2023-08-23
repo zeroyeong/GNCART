@@ -43,7 +43,7 @@
             }
 
             if (busNo != null) {
-                int lineNoValue = Integer.parseInt(lineNo);
+                int lineNoValue = Integer.parseInt(lineNo); 
                 int busNoValue = Integer.parseInt(busNo);
                 aMgr.busDelete(lineNoValue, busNoValue);
             }

@@ -274,7 +274,7 @@ th {
   transition: var(--buttonTransition);
 }
  
-.content .bottomMenu .button button:hover {
+.content .bottomMenu .button button:hover { 
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);
 }
