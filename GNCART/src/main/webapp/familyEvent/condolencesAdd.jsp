@@ -33,7 +33,7 @@ if(request.getParameter("user") != null){
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesAdd.css">
+<link rel="stylesheet" href="../css/condolencesAdd.css?dssdasd">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -86,60 +86,29 @@ if(request.getParameter("user") != null){
                 <td><span>부서 / 이름</span></td>
                 <td colspan="3">
                   <div class="user">
-                    <input
-                      type="text"
-                      id="user_part_name"
-                      name="user_part_name"
-                      placeholder="부서 / 이름"
-                    />
-                    <input
-                      type="button"
-                      id="userBtn"
-                      name="userBtn"
-                      onclick="userSearch()"
-                      value="직원찾기"
-                    />
+                    <input type="text" id="user_part_name" name="user_part_name" placeholder="부서 / 이름"/>
+                    <input type="button" id="userBtn" name="userBtn" onclick="userSearch()" value="직원찾기" />
                   </div>
                 </td>
               </tr>
               <tr>
                 <td><span>장소 및 주소</span></td>
                 <td colspan="3">
-                  <input
-                    type="text"
-                    id="locationId"
-                    name="location"
-                    placeholder="지도에서 검색해주세요."
-                    readonly
-                  />
+                  <input type="text" id="locationId" name="location" placeholder="지도에서 검색해주세요." readonly />
                 </td>
               </tr>
               <tr>
                 <td><span class="memeo">내용</span></td>
                 <td colspan="3">
-                  <textarea
-                    name="content"
-                    id="detailContent"
-                    rows="10"
-                  ></textarea>
+                  <textarea name="content" id="detailContent" rows="10"></textarea>
                 </td>
               </tr>
               <tr>
                 <td><span>지도</span></td>
                 <td colspan="3">
                   <div class="addr">
-                    <input
-                      type="text"
-                      id="kakaoField"
-                      name="map"
-                      placeholder="지도첨부"
-                    />
-                    <input
-                      type="button"
-                      value="지도찾기"
-                      id="mapBtn"
-                      onclick="mapSearch()"
-                    />
+                    <input type="text" id="kakaoField" name="map" placeholder="지도첨부"/>
+                    <input type="button" value="지도찾기" id="mapBtn" onclick="mapSearch()"/>
                   </div>
                 </td>
               </tr>
@@ -147,18 +116,9 @@ if(request.getParameter("user") != null){
                 <td><span>첨부파일</span></td>
                 <td colspan="3">
                   <div class="file">
-                    <input
-                      type="text"
-                      id="filename"
-                      placeholder="첨부파일"
-                      readonly
-                    />
-                    <input
-                      type="file"
-                      id="file"
-                      name="filename"
-                      onclick="findFile()"
-                    />
+                    <input type="text" id="filename" placeholder="첨부파일" readonly/>
+                    <label for="file">파일찾기</label> 
+                    <input type="file" id="file" name="filename" onclick="findFile()"/>
                   </div>
                 </td>
               </tr>

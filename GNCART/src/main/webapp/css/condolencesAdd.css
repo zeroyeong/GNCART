@@ -262,3 +262,27 @@ th {
 .content .button button:last-child {
   margin-right: 0;
 }
+
+.content tr td div input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.content tr td div label{
+  padding: var(--buttonPadding);
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  font-size: var(--buttonFontSize);
+  transition: var(--buttonTransition);
+}
+
+.content tr td div label:hover{
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
+  font-weight: bold;
+  cursor: pointer;
+}

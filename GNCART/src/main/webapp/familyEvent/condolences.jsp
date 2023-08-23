@@ -77,14 +77,6 @@ blist = conMgr.getBoardList();
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="checkbox" /></td>
-                <td>0</td>
-                <td>누구누구 결혼식</td>
-                <td>작성자</td>
-                <td>1--</td>
-                <td>2023-08-17</td>
-              </tr>
               <%	                       
               if(!blist.isEmpty()){
                                               
