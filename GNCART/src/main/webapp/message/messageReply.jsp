@@ -39,7 +39,7 @@ String part_type = bean.getPART_TYPE();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/messageDetail.css">
+<link rel="stylesheet" href="../css/messageWrite.css">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -57,20 +57,8 @@ String part_type = bean.getPART_TYPE();
 	    <div class="container">
 	      <div class="title">
 	        <h3>메시지 답장</h3>
-	        <div class="writer">
-	          <ul>
-	            <li>작성자</li>
-	            <li>경영지원팀</li>
-	            <li>강민서</li>
-	          </ul>
-	          <ul>
-	            <li>작성일</li>
-	            <li>2023-08-18</li>
-	          </ul>
-	        </div>
 	      </div>
 	      <div class="content">
-	        <h3 class="caption">조예은 님의 결혼을 축하합니다.</h3>
 			<form name="msgFrm" method="post" action="messagedPost" enctype="multipart/form-data">
 	        <table>
 	          <colgroup>
@@ -79,31 +67,31 @@ String part_type = bean.getPART_TYPE();
 	            <col class="col3" />
 	            <col class="col4" />
 	          </colgroup>
-	          <tr>
-	            <th>제목</th>
-	            <td colspan="3">
-	              <input id="detailTitle" name="msg_title"required>
-	            </td>
+         	  <tr>
+	              <td><span>제목</span></td>
+	              <td colspan="3">
+	                <input id="detailTitle" name="title" required />
+	              </td>
 	          </tr>
 	          <tr>
-	            <th>부서 / 이름</th>
+	             <td><span>부서 / 이름</span></td>
 	            <td colspan="3">		
 	              <input id="user_part_name" name="user_part_name" placeholder="부서 / 이름" value="<%= fromPartType %> / <%= fromName %>" readonly>
 	            </td>
 	          </tr>
 	          <tr>
-	            <th>내용</th>
-	            <td>
-	              <textarea id="detailContent" name="msg_content"></textarea>
-	            </td>
+	              <td><span class="memeo">내용</span></td>
+	              <td colspan="3">
+	                <textarea name="content" id="detailContent" rows="10"></textarea>
+	              </td>
 	          </tr>
 	          <tr>
-	            <th>첨부파일</th>
+	            <td><span>첨부파일</span></td>
 	            <td colspan="3">
-	              <div class="addbox">
-	                <input id="filename" placeholder="첨부파일" readonly> 
+	              <div class="file">
+	                <input type="text" id="filename" placeholder="첨부파일" readonly />
 	                <label for="file">파일찾기</label> 
-	                <input type="file" id="file" name="filename" onclick="findFile()">
+	                <input type="file" id="file" name="filename" onclick="findFile()" />
 	              </div>
 	            </td>
 	          </tr>
@@ -111,13 +99,13 @@ String part_type = bean.getPART_TYPE();
 	        <div class="button">
 	          <button type="submit">보내기</button>
 	          <button type="reset">다시쓰기</button>
-	          <button type="button">
-	            <a href="messageInbox.jsp">목록</a>
-	          </button>
+	          <a href="messageInbox.jsp">
+	        	  <button type="button">목록</button>
+	          </a>
 	        </div>
 	          <input type="hidden" name="mem_no" value="<%= mem_no %>">
-	          <input type="hidden" name="msg_frompparttype" value="<%= part_type %>">
-	          <input type="hidden" name="msg_fromname" value="<%= mem_name %>">
+	          <input type="hidden" name="frompparttype" value="<%= part_type %>">
+	          <input type="hidden" name="fromname" value="<%= mem_name %>">
 	        </form>
 	      </div>
 	    </div>

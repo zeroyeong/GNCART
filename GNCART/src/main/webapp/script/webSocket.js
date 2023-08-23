@@ -13,7 +13,7 @@ var toLineSecond = document.getElementById("LINE_SECOND");
 //채팅 p태크 생성
 var chatRoom = document.getElementById("chatRoom");
 var sendContent = document.getElementById("sendContent"); 
-
+var redIconCheck = 0;
 //유저찾기
 var searchbar = document.getElementById("searchbar");
 var allList = document.getElementById("allList");
@@ -117,7 +117,11 @@ function chatRedIconAdd(toUser) {
     if(document.getElementById(toUser+"Icon") == null){		
 	    var redIcon = document.createElement("div");
 		redIcon.className = 'chatListRedIcon';
+	  
+	  if(redIconCheck == 0){
 	  	chatNameBox.appendChild(redIcon);
+	 	redIconCheck = 1;
+	  }
 	}
 }
 

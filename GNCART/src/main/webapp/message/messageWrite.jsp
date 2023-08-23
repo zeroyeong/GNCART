@@ -57,7 +57,6 @@ String part_type = bean.getPART_TYPE();
 	      </div>
 	      <div class="content">
 	        <form name="msgFrm" method="post" action="messagedPost" enctype="multipart/form-data">
-	        <div class="content">
 	          <table>
 	            <colgroup>
 	              <col class="col1" />
@@ -91,23 +90,24 @@ String part_type = bean.getPART_TYPE();
 	              <td colspan="3">
 	                <div class="file">
 	                  <input type="text" id="filename" placeholder="첨부파일" readonly />
-	                  <input
-	                    type="file" id="file" name="filename onclick="findFile()" />
+	                  <label for="file">파일찾기</label> 
+	                  <input type="file" id="file" name="filename" onclick="findFile()" />
 	                </div>
 	              </td>
 	            </tr>
 	          </table>
-	            <input type="hidden" name="memNo" value="<%= mem_no %>">
+	            <input type="hidden" name="mem_no" value="<%= mem_no %>">
 	            <input type="hidden" name="userpart" value="userpart">
 	            <input type="hidden" name="username" value="username">
+	            <input type="hidden" name="frompparttype" value="<%=part_type%>">
+	            <input type="hidden" name="fromname" value="<%= mem_name %>">
 	          <div class="button">
 	            <button type="submit">보내기</button>
 	            <button type="reset">다시쓰기</button>
 	            <a href="messageInbox.jsp">
 	              <button type="button">목록</button>
 	            </a>
-	          </div>
-	          </div>
+	          </div> 
 	        </form>
 	      </div>
 	    </div>

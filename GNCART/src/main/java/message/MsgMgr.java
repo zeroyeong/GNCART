@@ -174,19 +174,19 @@ public class MsgMgr {
 			}
 			
 			
-			String content = multi.getParameter("msg_content");
+			String content = multi.getParameter("content");
 			content = UtilMgr.replace(content, "<", "&lt;");		
 			
 			sql = "INSERT INTO MESSAGE (MSG_TITLE, MSG_CONTENT, MSG_TOPARTTYPE, MSG_TONAME, MSG_FROMPARTTYPE, MSG_FROMNAME, MSG_SENDTIME, MSG_READTIME, MSG_READ, MSG_DELCNT, MSG_SHOWCHECK, MSG_FILE, MEM_NO)"
 					+ "VALUES(?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?, ?, ?)";
 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, multi.getParameter("msg_title"));
-			pstmt.setString(2, multi.getParameter("msg_content"));
+			pstmt.setString(1, multi.getParameter("title"));
+			pstmt.setString(2, multi.getParameter("content"));
 			pstmt.setString(3, userPart);
 			pstmt.setString(4, userName);
-			pstmt.setString(5, multi.getParameter("msg_frompparttype"));
-			pstmt.setString(6, multi.getParameter("msg_fromname"));
+			pstmt.setString(5, multi.getParameter("frompparttype"));
+			pstmt.setString(6, multi.getParameter("fromname"));
 			pstmt.setString(7, ""); // 읽은 시간
 			pstmt.setString(8, "안읽음");
 			pstmt.setInt(9, 0);
