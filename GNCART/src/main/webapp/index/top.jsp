@@ -7,6 +7,7 @@
 <jsp:useBean id="alertMgr" class="alert.AlertMgr" />
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
 <%
+request.setCharacterEncoding("UTF-8");
 Vector<AlertBean> alist = new Vector<AlertBean>();
 
 int alertNo = 0;

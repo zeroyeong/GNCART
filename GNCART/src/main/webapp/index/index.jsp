@@ -13,6 +13,7 @@
 <%@ page import="event.EventMgr, event.EventBean"%>
 <%@ page import="java.util.*"%>
 <%
+request.setCharacterEncoding("UTF-8");
 //로그인 안했을 시 로그인 페이지로 리다이렉트 
 if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null) {
 	response.sendRedirect("../login.jsp");

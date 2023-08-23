@@ -6,6 +6,7 @@
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
 
 <%
+	request.setCharacterEncoding("UTF-8");
     if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
         response.sendRedirect("../login.jsp");
 
