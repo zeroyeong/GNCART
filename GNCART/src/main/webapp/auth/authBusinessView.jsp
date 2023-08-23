@@ -30,6 +30,7 @@ String Name = (String)session.getAttribute("memName");
 String ID = (String)session.getAttribute("memId");
 
 String leLevel = (String)session.getAttribute("leLevel");
+int leNo = (int)session.getAttribute("leNo");
 
 boolean firstApproved = aMgr.firstApproved(LINE_NO);
 boolean secondApproved = aMgr.secondApproved(LINE_NO);
@@ -132,8 +133,8 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
     			<button class="submitBtn" type="submit" name="action" value="first">승인</button>
    				<button class="submitBtn" type="submit" name="action" value="reject">반려</button>
  				<% } %> 
-				<% } else if(Name.equals(LINE_SECOND) && DOC_APPTURN == 1) { %>
- 				<% if (DOC_STATES != 2) { %>
+				<% } else if((Name.equals(LINE_SECOND) && DOC_APPTURN == 1) || (LINE_FIRST == null && leNo == 4)) { %>
+ 				<% if (DOC_STATES != 2 && DOC_STATES != 3) { %>
   			   	<button class="submitBtn" type="submit" name="action" value="second">승인</button>
    			 	<button class="submitBtn" type="submit" name="action" value="reject">반려</button>
  				<% } %>

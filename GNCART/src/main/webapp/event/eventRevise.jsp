@@ -119,6 +119,6 @@ int PART_NO = bean.getPART_NO();
 		</div>
 
 	</section>
-
+<script src="../script/eventScript.js"></script>
 </body>
 </html>
