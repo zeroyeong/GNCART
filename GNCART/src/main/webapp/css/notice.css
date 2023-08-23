@@ -273,7 +273,7 @@ th {
   font-weight: bold;
   transition: var(--buttonTransition);
 }
-
+ 
 .content .bottomMenu .button button:hover {
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);

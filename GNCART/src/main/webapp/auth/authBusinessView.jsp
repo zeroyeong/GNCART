@@ -115,7 +115,7 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
         </table>
         
         <br>
-
+ 
         <input type="hidden" name="LINE_NO" value="<%=LINE_NO %>">
         <input type="hidden" name="DOC_NO" value="<%=DOC_NO %>">
         <input type="hidden" name="VAC_NO" value="<%=VAC_NO %>">

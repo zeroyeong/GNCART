@@ -35,7 +35,7 @@
 			<option value="<%=teamLeader%>"><%=teamLeader%></option>
 	
 			<%
-			}
+			} 
 			%>
 		</select>
 			<% } %>

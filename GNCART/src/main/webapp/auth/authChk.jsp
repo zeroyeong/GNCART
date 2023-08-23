@@ -29,7 +29,7 @@
             LINE_NO[i] = splitValues[0];
             VAC_NO[i] = splitValues[1];
             BUS_NO[i] = splitValues[2];
-        }
+        } 
 
         for (int i = 0; i < values.length; i++) {
             String lineNo = LINE_NO[i];

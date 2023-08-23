@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="../css/authVacation.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
-
+ 
 <body>
     <h2>휴가 신청서</h2>
 

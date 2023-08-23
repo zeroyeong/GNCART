@@ -126,7 +126,7 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
                         <label for="vacation_reason4">기타</label>
                     </div>
                 </td>
-            </tr>
+            </tr> 
             <tr>
                 <td><label for="AUTH_PP">상세 사유</label></td>
                 <td colspan="3"><textarea name="VAC_DETAIL" rows="10" cols="50" readonly><%=VAC_DETAIL %></textarea></td>

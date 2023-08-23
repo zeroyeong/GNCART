@@ -126,7 +126,7 @@
                                     <button class="modalBtn" type="button" onclick="btnClick('vacation')">휴가</button>
                                     <button class="modalBtn" type="button" onclick="btnClick('business')">업무</button>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>

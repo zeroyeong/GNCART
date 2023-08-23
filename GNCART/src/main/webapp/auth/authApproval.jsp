@@ -79,7 +79,7 @@ int acNo = Integer.parseInt(session.getAttribute("acNo").toString());
                                         int LINE_NO = bean.getLINE_NO();
                                         int VAC_NO = bean.getVAC_NO();
                                         int BUS_NO = bean.getBUS_NO();
-                    
+                     
                                         String linkFunction = (DOC_TYPE == 1) ? "vacView" : "busView";
                     
                                         boolean leNo3 = (leNo == 3) && (DOC_STATES == 1 || DOC_STATES == 3);

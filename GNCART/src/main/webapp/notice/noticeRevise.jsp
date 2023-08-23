@@ -95,7 +95,7 @@ int partno = (int)session.getAttribute("partNo");
 
 	          </table>
 	          <!-- 페이지 넘버를 넘겨주기 위한 히든 -->
-	          <div class="button">
+	          <div class="button"> 
 	            <button>수정</button>
 	            <button type="reset">리셋</button>
 	          	  <a href="javascript:history.back()">

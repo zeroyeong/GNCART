@@ -50,7 +50,7 @@ int PartNo = (int)session.getAttribute("partNo");
                 <td><span>제목</span></td>
                 <td colspan="3">
                   <input id="detailTitle" name="NOT_TITLE" required />
-                </td>
+                </td> 
               </tr>
               <tr>
                 <td><span>말머리</span></td>

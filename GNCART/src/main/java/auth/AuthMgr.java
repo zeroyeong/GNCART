@@ -176,7 +176,7 @@ public class AuthMgr {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = null;
+		String sql = null; 
 		Vector<AuthBean> vlist = new Vector<AuthBean>();
 
 		try {

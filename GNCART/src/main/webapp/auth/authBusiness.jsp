@@ -18,7 +18,7 @@
     String teamLeader = request.getParameter("line1");
     String manager = request.getParameter("line2");
 %>
-
+ 
 <!DOCTYPE html>
 <html lang="ko">
 <head>

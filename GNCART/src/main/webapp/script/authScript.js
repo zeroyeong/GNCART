@@ -71,7 +71,7 @@ function hideModal() {
 
 /*휴가,업무 창 */
 // 열린 팝업 창에 대한 참조 저장
-var newPopup = null;
+var newPopup = null; 
 
 // '휴가' 또는 '업무' 버튼 클릭 시 함수
 function btnClick(option) {

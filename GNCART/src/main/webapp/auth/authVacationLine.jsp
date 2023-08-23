@@ -29,7 +29,7 @@
 				ArrayList<String> teamLeaders = authMgr.getTeamLeaders();
 				for (String teamLeader : teamLeaders) {
 			%>
-
+ 
 			<option value="<%=teamLeader%>"><%=teamLeader%></option>
 
 			<%
