@@ -24,7 +24,8 @@
 	int mem_no = bean.getMem_no();
 	String part_type = bean.getPart_type();
 	
-	int memNo = (int)session.getAttribute("memNo");
+	int memNo = (int)session.getAttribute("memNo");	
+	int acNo = (int)session.getAttribute("acNo");
 %>
 
 <!DOCTYPE html>
@@ -114,10 +115,7 @@
 	            <tr>
 	              <th>첨부파일</th>
 	              <td colspan="3">
-	                <a
-	                  id="filename"
-	                  href="condolencesFiledown.jsp?filename=<%=filename%>"
-	                  ><%= filename %></a
+	                <a id="filename" href="condolencesFiledown.jsp?filename=<%=filename%>"><%= filename %></a
 	                >
 	              </td>
 	            </tr>
@@ -132,6 +130,9 @@
 	          	<a href="condolencesRevise.jsp?con_no=<%=con_no%>">
 	            	<button type="button">수정</button>
 	            </a>
+	            <%
+	            } else if(mem_no == memNo || acNo == 2){
+	            %>
 	            <a><button type="button" onclick="deleteBtn()">삭제</button></a>
 	            <%
 	            } 
@@ -149,8 +150,8 @@
 	</div>
 	</section>
 	
-<script src="../script/condolencesDetail.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24e23b8a98c1750309dd34a0c1ea57d3&libraries=services"></script>
+<script src="../script/condolencesDetail.js"></script>
 
 </body>
 </html>

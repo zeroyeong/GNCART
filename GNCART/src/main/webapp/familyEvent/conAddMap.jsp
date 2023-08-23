@@ -53,7 +53,7 @@ response.setHeader("Expires", "0");
 
 <!-- kakao map  -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24e23b8a98c1750309dd34a0c1ea57d3&libraries=services"></script>
-<script src="../script/conAddMap.js?dd"></script>
+<script src="../script/conAddMap.js"></script>
 
 </body>
 </html>

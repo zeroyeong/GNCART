@@ -12,6 +12,7 @@ String conNum = request.getParameter("con_no");
 
 String pageName = request.getParameter("pageName");
 int memNo = (int)session.getAttribute("memNo");
+int acNo = (int)session.getAttribute("acNo");
 %> 
 <!DOCTYPE html>
 <html lang="ko">
@@ -36,6 +37,10 @@ if(checkedList != null){
 	boolean myboard = true;
 
 	myboard = conMgr.checkBoard(checkedList, memNo); //게시판에서 체크한 항목이 내가 작성한 글인지 확인
+	
+	if(acNo == 2){
+		myboard = true;
+	}
 	
 	if(myboard){
 		conMgr.deleteBoard(checkedList); //삭제 
