@@ -65,7 +65,6 @@
   margin: 0;
   box-sizing: border-box;
   color: var(--fontColor);
-  font-size: var(--fontSize);
 }
 
 a {
@@ -122,7 +121,7 @@ th {
 .content .photo {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 /* content - photo - table */
@@ -259,4 +258,8 @@ th {
 
 .container-fluid {
 	padding-top: 100px !important;
+}
+
+tbody {
+    border: solid 5px #eee;
 }

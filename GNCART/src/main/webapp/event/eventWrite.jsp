@@ -33,11 +33,10 @@ Integer No = (Integer) session.getAttribute("memNo");
 		<div class="container-fluid">
 			<div class="container">
 				<div class="title">
-					<h3>행사사진 추가</h3>
+					<h3>행사사진</h3>
 				</div>
 				<div class="content">
-					<form method="post" action="../eventWrite"
-						enctype="multipart/form-data" onsubmit="return notfile();">
+					<form method="post" action="../eventWrite" enctype="multipart/form-data" onsubmit="return notfile();">
 						<table>
 							<colgroup>
 								<col class="col1" />
@@ -47,8 +46,9 @@ Integer No = (Integer) session.getAttribute("memNo");
 							</colgroup>
 							<tr>
 								<td><span>제목</span></td>
-								<td colspan="3"><input type="text" name="EVENT_TITLE"
-									required></td>
+								<td colspan="3">
+									<input type="text" name="EVENT_TITLE" required>
+								</td>
 							</tr>
 							<tr>
 								<td><span>행사종류</span></td>
@@ -59,7 +59,8 @@ Integer No = (Integer) session.getAttribute("memNo");
 								</select></td>
 
 								<td><span>날짜</span></td>
-								<td><input type="text" id="currentDateInput" readonly>
+								<td>
+									<input type="text" id="currentDateInput" readonly>
 								</td>
 							</tr>
 							<tr>
@@ -75,19 +76,22 @@ Integer No = (Integer) session.getAttribute("memNo");
 							</tr>
 							<tr>
 								<td><span class="memeo">내용</span></td>
-								<td colspan="3"><textarea name="EVENT_CONTENT" rows="10"
-										required></textarea></td>
+								<td colspan="3">
+									<textarea name="EVENT_CONTENT" rows="10"required></textarea>
+								</td>
 							</tr>
 							<tr>
 								<td><span>첨부파일</span></td>
 								<td colspan="3">
 									<div class="addbox">
-										<input id="filename1" placeholder="첨부파일" readonly> <input
-											type="file" id="file1" name="EVENT_FILENAME1"
-											onchange="findFile(1)">
-										<div>
-											<a onclick="fileplus()"><label>추가</label></a>
-										</div>
+										<input id="filename1" placeholder="첨부파일" readonly> 
+												
+										<label for="file1">파일찾기</label>
+									    <input type="file" id="file1" name="EVENT_FILENAME1" onchange="findFile(1)">
+									    
+									    
+									    <a onclick="fileplus()"><label for="file">추가</label></a>
+								
 									</div>
 								</td>
 							</tr>

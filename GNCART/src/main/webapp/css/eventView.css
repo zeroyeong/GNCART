@@ -76,7 +76,6 @@
   margin: 0;
   box-sizing: border-box;
   color: var(--fontColor);
-  font-size: var(--fontSize);
 }
 
 a {

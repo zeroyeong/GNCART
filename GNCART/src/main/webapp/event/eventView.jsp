@@ -30,16 +30,17 @@ String[] filenames = EVENT_FILENAME.split(",");
 %>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GNC:ART</title>
-<link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/eventView.css">
-<!--Boxicons CDN Link-->
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
-	rel='stylesheet'>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GNC:ART</title>
+	<link rel="stylesheet" href="../css/index.css">
+	<link rel="stylesheet" href="../css/eventView.css">
+	<!--Boxicons CDN Link-->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'rel='stylesheet'>
 </head>
+
 <body>
 	<!-- sidebar include -->
 	<jsp:include page="../index/sidebar.jsp" flush="false" />
@@ -48,9 +49,8 @@ String[] filenames = EVENT_FILENAME.split(",");
 		<!-- top include -->
 		<jsp:include page="../index/top.jsp" flush="false" />
 
-
 		<!--home-content-->
-		<div class="container-fluid">
+		<div class="home-content">
 			<div class="container">
 				<div class="title">
 					<h3>행사사진</h3>
@@ -80,14 +80,24 @@ String[] filenames = EVENT_FILENAME.split(",");
 							<td><%=EVENT_DATE%></td>
 						</tr>
 						<tr>
-							<td class="tableTitle detail">상세내용</td>
-							<td colspan="3"><%=EVENT_CONTENT%><br /> <%
-								 for (String filename : filenames) {
-								 %> <img src='../filestorage/<%=filename%>' width="600" height="600" />
-								<%
-								}
-								%></td>
+							<th class="tableTitle detail">상세내용</th>
+							<td colspan="3">
+								<%=EVENT_CONTENT%>
+							</td>
 						</tr>
+						<tr>
+							<th>행사사진</th>
+							<td colspan="3"> 
+							<%
+							for (String filename : filenames) {
+							%> 
+								<img src='../filestorage/<%=filename%>' width="600" height="600" />
+							<%
+							}
+							%>
+							</td>
+						</tr>
+						<tr>
 						<th>첨부파일</th>
 						<td colspan="3">
 							<%
@@ -98,22 +108,17 @@ String[] filenames = EVENT_FILENAME.split(",");
 									등록된 파일이 없습니다.
 								<% } %>
 						</td>
+						</tr>
 					</table>
+					<div class="button">
 					<%
 					String id = (String) session.getAttribute("memId");
 					if (id != null && id.equals(MEM_ID)) {
 					%>
-					<div class="button">
 						<a href="eventRevise.jsp?=&EVENT_NO=<%=EVENT_NO%>"><button>수정</button></a>
-						<a href="eventDelete.jsp?=&EVENT_NO=<%=EVENT_NO%>"></a>
-						<button>삭제</button>
-						</a>
-						<%
-						}
-						%>
-						<a href="event.jsp"></a>
-						<button>뒤로가기</button>
-						</a>
+						<a href="eventDelete.jsp?=&EVENT_NO=<%=EVENT_NO%>"><button>삭제</button></a>
+					<% }%>
+						<a href="event.jsp"><button>뒤로</button></a>
 					</div>
 				</div>
 			</div>
@@ -124,6 +129,5 @@ String[] filenames = EVENT_FILENAME.split(",");
 	</form>
 
 	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-	<script src="../script/noticeScript.js"></script>
 </body>
 </html>
