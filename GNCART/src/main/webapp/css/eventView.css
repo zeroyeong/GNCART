@@ -1,0 +1,258 @@
+/* 변수선언 */
+:root {
+  /* color */
+  --allBorderColor: #333;
+
+  /* margin + padding */
+  --bigTopMargin: 20px;
+  --bigBottomMargin: 20px;
+  --mediumBottomMargin: 10px;
+  --smallBottomMargin: 5px;
+  --rightMargin: 5px;
+  --rightBigMargin: 10px;
+
+  /* font */
+  --fontColor: #333;
+  --smallFontColor: #808080;
+  --fontSize: 1em;
+  --titleFontSize: 1.25em;
+  --smallFontSize: 0.9em;
+
+  /* button */
+  --buttonBackColor: #eee;
+  --buttonRadius: 5px;
+  --buttonPadding: 5px 7px;
+  --buttonFontSize: 0.9em;
+  --buttonTransition: 0.3s;
+
+  --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
+  --buttonHoverFontColor: #fff;
+
+  /* 전체 input / select / textarea */
+  --inputPadding: 7px;
+  --inputBorder: 1px solid rgb(146, 146, 146);
+  --inputBorderRadius: 3px;
+  --textAreaHeight: 100px;
+  --inputsamllPadding: 5px;
+
+  /* container */
+  --conMargin: 20px;
+  --conPadding: 30px;
+  --conBorder: 3px solid #eee;
+  --conRadius: 20px;
+  --conBack: #fff;
+
+  /* title */
+  --titleBottomPadding: 5px;
+  --titleBottomMargin: 20px;
+  --titleBorder: 1px solid var(--allBorderColor);
+  --titleH3Size: 1.5em;
+
+  /* table */
+  --tableBorder: 1px solid #b1b1b1;
+  --tablePadding: 7px;
+  --tableHeadBackColor: #333;
+  --tableHeadFontColor: #fff;
+  --tableThColor: #eee;
+  --tableThickBorder: 2px solid #808080;
+
+  /* photo table */
+  --photoTmargin: 10px;
+
+  /* pagination */
+  --pagiLiMargin: 5px;
+  --pagiLiPadding: 5px;
+  --pagiApadding: 0 3px;
+  --pagiColor: rgb(123, 126, 131);
+  --pagiBorder: 2px solid transparent;
+
+  --pagiActiveColor: #333;
+  --pagiActiveBorder: 2px solid #333;
+}
+
+/* 전체 설정 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--fontColor);
+  font-size: var(--fontSize);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+input[type="button"],
+input[type="reset"] {
+  background-color: transparent;
+  border: none;
+}
+
+table,
+td,
+th {
+  border-collapse: collapse;
+}
+
+/* container */
+.container {
+  margin: var(--conMargin);
+  padding: var(--conPadding);
+  border: var(--conBorder);
+  border-radius: var(--conRadius);
+  background-color: var(--conBack);
+}
+
+/* title */
+.title {
+  margin-bottom: var(--titleBottomMargin);
+}
+
+.title h3 {
+  font-size: var(--titleH3Size);
+  border-bottom: var(--titleBorder);
+  padding-bottom: var(--titleBottomPadding);
+  margin-bottom: var(--mediumBottomMargin);
+}
+
+.title .writer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--bigBottomMargin);
+}
+
+.title .writer ul {
+  display: flex;
+}
+
+.title .writer ul li {
+  font-size: var(--smallFontSize);
+  color: var(--smallFontColor);
+}
+
+.title .writer ul:first-child {
+  margin-right: var(--rightMargin);
+}
+
+.title .writer ul li:first-child {
+  margin-right: var(--rightMargin);
+}
+
+/* content */
+.content {
+  width: 100%;
+}
+
+/* content - table */
+.content .caption {
+  text-align: center;
+  font-size: 1.25em;
+  margin-bottom: var(--mediumBottomMargin);
+}
+
+.content table {
+  width: 100%;
+  margin-bottom: var(--bigBottomMargin);
+}
+
+.content table colgroup col:first-child,
+.content table colgroup col:nth-child(3) {
+  width: 13%;
+}
+
+.content table th,
+.content table td {
+  border: var(--tableBorder);
+  padding: var(--tablePadding);
+}
+
+.content table td > input[type="text"],
+.content table td > input[type="date"],
+.content table td > select,
+.content table td > textarea {
+  width: 100%;
+  border: none;
+  font-size: var(--smallFontSize);
+  padding: var(--inputPadding);
+}
+
+.content table td > input[type="file"] {
+  width: fit-content;
+  font-size: var(--smallFontSize);
+  padding: var(--inputPadding);
+}
+
+.content table td > textarea {
+  font-size: 1em;
+}
+
+.content table th {
+  padding: var(--tablePadding);
+  background-color: var(--tableThColor);
+}
+
+.content table td > div {
+  padding-left: var(--rightMargin);
+}
+
+.content table td > div input[type="text"] {
+  width: 15%;
+  text-align: center;
+  font-size: var(--smallFontSize);
+  border: var(--inputBorder);
+  border-radius: var(--inputBorderRadius);
+  padding: var(--inputsamllPadding);
+}
+
+.content table td > div input[type="button"] {
+  padding: var(--buttonPadding);
+  font-size: var(--buttonFontSize);
+  background-color: var(--buttonBackColor);
+  border-radius: var(--buttonRadius);
+  transition: var(--buttonTransition);
+}
+
+.content table td > div input[type="button"]:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
+  font-weight: bold;
+}
+
+/* content - button */
+.content .button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+}
+
+.content .button input,
+.content .button button {
+  background-color: var(--buttonBackColor);
+  padding: var(--buttonPadding);
+  border-radius: var(--buttonRadius);
+  font-size: var(--buttonFontSize);
+  transition: var(--buttonTransition);
+  margin-right: var(--rightMargin);
+}
+
+.content .button input:hover,
+.content .button button:hover {
+  background-color: var(--buttonHoverBackColor);
+  color: var(--buttonHoverFontColor);
+  font-weight: bold;
+}
+
+.content .button input:last-child,
+.content .button button:last-child {
+  margin-right: 0;
+}
