@@ -35,7 +35,7 @@ if (request.getParameter("reload") != null) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>GNC:ART</title>
 	<link rel="stylesheet" href="../css/index.css">
-	<link rel="stylesheet" href="../css/event.css?esss">
+	<link rel="stylesheet" href="../css/event.css?ess1s">
 	<!--Boxicons CDN Link-->
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'rel='stylesheet'>
 </head>
@@ -94,7 +94,7 @@ if (request.getParameter("reload") != null) {
 							</tr>
 							<tr>
 								<th>제목</th>
-								<td colspan="3"><%=EVENT_TITLE%></td>
+								<td colspan="3"><b>[<%=EVENT_SUB %>]</b><%=EVENT_TITLE%></td>
 							</tr>
 							<%
 							} //for
