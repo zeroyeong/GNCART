@@ -55,7 +55,6 @@ if(request.getParameter("user") != null){
 	      </div>
 	      <div class="content">
 	        <form name="postFrm" method="post" action="conboardPost" enctype="multipart/form-data">
-	        <div class="content">
 	          <table>
               <colgroup>
                 <col class="col1" />
@@ -131,7 +130,6 @@ if(request.getParameter("user") != null){
 	            <a href="condolences.jsp">  
 	         	   <button type="button">목록</button>
 	            </a>
-	          </div>
 	          </div>
 	        </form>
 	      </div>

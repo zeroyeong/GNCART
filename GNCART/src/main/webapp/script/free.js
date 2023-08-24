@@ -83,3 +83,12 @@ function down(FREE_FILENAME){
     
     
     
+function findFile(){
+	$("#file").on('change',function(){
+	  var name = $("#file").val();
+	  $("#filename").val(name);
+	});
+}
+
+    
+    

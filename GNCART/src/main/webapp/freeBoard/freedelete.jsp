@@ -21,7 +21,7 @@
     %>
 <script type="text/javascript">
         alert('게시글이 정상적으로 삭제되었습니다.');
-        window.location.href = 'notice.jsp';
+        window.location.href = 'free.jsp';
     </script>
 </head>
 <body>

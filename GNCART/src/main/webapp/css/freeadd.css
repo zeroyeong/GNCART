@@ -2,7 +2,7 @@
 :root {
   /* color */
   --allBorderColor: #333;
- 
+
   /* margin + padding */
   --bigBottomMargin: 20px;
   --mediumBottomMargin: 10px;
@@ -259,9 +259,9 @@ th {
   cursor: pointer;
 }
 
-.content .button button:last-child { 
+.content .button button:last-child {
   margin-right: 0;
-} 
+}
 
 .content tr td div input[type="file"] {
     position: absolute;

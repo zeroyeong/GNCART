@@ -51,7 +51,7 @@ public class BoardMgr {
 		try {
 			con = pool.getConnection();
 			//keyWord 값이 없는 경우 게시물 조회
-				sql = "select * from freeBoard F JOIN member M ON F.MEM_NO = M.MEM_NO";
+				sql = "select * from freeBoard F JOIN member M ON F.MEM_NO = M.MEM_NO ORDER BY FREE_NO DESC";
 				pstmt = con.prepareStatement(sql);
 				
 				rs = pstmt.executeQuery();
@@ -100,13 +100,9 @@ public class BoardMgr {
 			sql = "select max(FREE_NO) from freeBoard"; //게시물이 총 몇개 인지 조회하는 쿼리
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
-
-			
-			
+							
 			File file = new File(SAVEFOLDER);
 			
-
 			//exists() 메서드 : 파일이 존재 하는지 여부를 알아 내는 메서드
 			//파일이 존재 한다면 true, 없으면 false 값을 반환.
 			if (!file.exists()) //파일이 존재 한다면
@@ -117,10 +113,10 @@ public class BoardMgr {
 			if (multi.getFilesystemName("FREE_FILENAME") != null) {
 				filename = multi.getFilesystemName("FREE_FILENAME");
 				filesize = (int) multi.getFile("FREE_FILENAME").length();
+			}else {
+				filename="";
 			}
-
-			
-
+	
 			String FREE_CONTENT = multi.getParameter("FREE_CONTENT");
 	
 			
