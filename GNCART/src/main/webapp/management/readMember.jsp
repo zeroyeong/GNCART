@@ -30,7 +30,7 @@
 	String MEM_IMG=bean.getMEM_IMG();
 	String AP_TYPE=bean.getAP_TYPE();
 	
-	session.setAttribute("bean", bean);
+	session.setAttribute("bean", bean); 
 	
 	%>
 
@@ -51,9 +51,9 @@
 	<link rel="stylesheet" href="../css/readMember.css">
 	
 	<!-- 현재 파일 - includeTop css -->
-	<link rel="stylesheet" href="include/include.css">
+	<link rel="stylesheet" href="include/include.css?ssdfdfs">
 	
-	<script>
+	<script> 
 		function list(){
 			document.listFrm.submit();
 		}

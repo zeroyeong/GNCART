@@ -19,7 +19,7 @@
 %>
 
 <script>
-	function idCheck(){
+	function idCheck(){ 
 		opener.newFrm.MEM_ID.value='<%=MEM_ID%>';
 		opener.newFrm.check.value=true;
 		window.close();

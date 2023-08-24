@@ -28,7 +28,7 @@
 	int prevYear=0;
 	int nextYear=0;
 	
-	int calMonth=0;
+	int calMonth=0; 
 	
 	if(request.getParameter("calYear") != null && request.getParameter("calMonth") != null){
 		calYear = Integer.parseInt(request.getParameter("calYear"));

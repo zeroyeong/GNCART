@@ -31,4 +31,4 @@
 		window.close();
 	}
 </script>
-</html>
+</html> 

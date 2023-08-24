@@ -6,7 +6,7 @@
 <jsp:useBean id="mMgr" class="management.ManagementMgr"/> 
 
 <%
-	/*------------페이지 하단 searchFrm input-------------*/
+	/*------------페이지 하단 searchFrm input-------------*/ 
 	String keyField="";
 	String keyWord="";
 	
@@ -20,7 +20,7 @@
 			
 		if(request.getParameter("reload").equals("true")){
 			keyWord="";
-			keyField="";
+			keyField=""; 
 		}
 	}
 	
@@ -41,10 +41,10 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <!-- 현재 파일의 css -->
-<link rel="stylesheet" href="../css/management.css?844645588">
+<link rel="stylesheet" href="../css/management.css?jkj">
 
 <!-- 현재 파일 - includeTop css -->
-<link rel="stylesheet" href="include/include.css">
+<link rel="stylesheet" href="include/include.css?fgd">
 
 </head>
 

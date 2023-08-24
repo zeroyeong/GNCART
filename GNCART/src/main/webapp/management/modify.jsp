@@ -25,7 +25,7 @@
 	String MEM_AND=bean.getMEM_AND();
 	String MEM_IMG=bean.getMEM_IMG();
 	
-	int AC_NO=bean.getAC_NO();
+	int AC_NO=bean.getAC_NO(); 
 	String AC_TYPE=bean.getAC_TYPE();
 	
 	int WORK_NO=bean.getWORK_NO();

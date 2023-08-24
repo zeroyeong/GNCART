@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">  
 <title>GNC:ART - 상세일정</title>
-<link rel="stylesheet" href="../css/scheduleAdd.css">
+<link rel="stylesheet" href="../css/scheduleAdd.css?Sdmmhhjhs">
 </head>
 <body>
  
@@ -31,7 +31,7 @@
 	
 	String SCHE_DETAIL = bean.getSCHE_DETAIL(); //일정 상세내용
 	
-	String SCHE_FILE = bean.getSCHE_FILE(); //첨부파일
+	String SCHE_FILE = bean.getSCHE_FILE(); //첨부파일 
 	
 	String SCHE_START_DATE = bean.getSCHE_START_DATE(); //시작날짜
 	
@@ -69,6 +69,10 @@
 
     <div class="content">        
         <table>
+	        <colgroup>
+		        <col class="col1"/>
+		        <col class="col2"/>
+	        </colgroup>
           <tr>
             <td>일정종류</td>
             <td><%=TYPE_TYPE%></td>
@@ -98,7 +102,9 @@
            	%>
            	
            		<td>
-           			<%=SCHE_DETAIL %>
+<!--            			<textarea> -->
+           				<%=SCHE_DETAIL %>
+<!--            			</textarea> -->
            		</td>
            		
            	<%

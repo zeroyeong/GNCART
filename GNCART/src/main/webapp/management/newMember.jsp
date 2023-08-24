@@ -56,6 +56,7 @@
              <td rowspan="4">
               <div class="imgArea">
                 <img src="../images/profile.jpg" id="memImg"/>
+                <input type="file" name="MEM_IMG" accept="image/*" onchange="changePic(event)">
               </div>
                
              </td>
@@ -66,7 +67,7 @@
              <td>ID</td>
              <td>
                <input type="text" name="MEM_ID" id="id"/>
-               <button onclick="idCheck(this.form.MEM_ID.value)">중복확인</button>
+               <input type="button" onclick="idCheck(this.form.MEM_ID.value)" value="중복확인">
              </td>
            </tr>
            <tr>
@@ -137,7 +138,7 @@
                  <%
              Vector<ManagementBean> lelist = mMgr.getLevelList();
              
-             if(lelist.isEmpty()){
+             if(lelist.isEmpty()){ 
            %>
            <option>등록된 type이 없습니다.</option>
            <%
@@ -162,7 +163,7 @@
                <input type="text" name="MEM_TEL" />
              </td>
            </tr>
-           <tr>
+           <tr> 
              <td>이메일</td>
              <td colspan="2">
                <input name="MEM_MAIL" type="text" type="email" />
@@ -239,10 +240,11 @@
 	  if(id == ""){
 		  alert("아이디를 입력해 주세요.");
 		  frm.MEM_ID.focus();
-		  return;
+	  } else{
+		  url = "idCheck.jsp?MEM_ID="+id;
+		  window.open(url, "IDCheck", "width=380, height=200");
 	  }
-	  url = "idCheck.jsp?MEM_ID="+id;
-	  window.open(url, "IDCheck", "width=380, height=200");
+	  
   }
   
   function check(){

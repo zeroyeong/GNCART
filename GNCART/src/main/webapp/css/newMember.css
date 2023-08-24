@@ -23,7 +23,7 @@
   --titleMargin: 20px;
 
   /* table */
-  --tableBorder: 1px solid #333;
+  --tableBorder:  1px solid #333;
   --tablePadding: 10px 15px;
 
   --tableInputPadding: 7px 8px;
@@ -157,7 +157,8 @@ button {
 	width:40%;
 }
 
-.memberViewTable table td > button {
+.memberViewTable table td > button,
+.memberViewTable table td > input[type="button"] {
   background-color: var(--buttonBackColor);
   padding: var(--buttonPadding);
   border-radius: var(--buttonRadius);
@@ -165,7 +166,8 @@ button {
   transition: var(--buttonTransition);
 }
 
-.memberViewTable table td > button:hover {
+.memberViewTable table td > button:hover,
+.memberViewTable table td > input[type="button"]:hover {
   background-color: var(--buttonHoverBackColor);
   color: var(--buttonHoverFontColor);
   font-weight: bold;
