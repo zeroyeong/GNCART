@@ -66,7 +66,7 @@ int memNo = (int)session.getAttribute("memNo");
 	        <h3>경조사 일정 수정</h3>
 	      </div>
 	      <div class="content">
-	        <form name="postFrm" method="post" action="conboardUpdate" enctype="multipart/form-data" autocomplete="off">
+	        <form name="postFrm" method="post" action="conboardUpdate" enctype="multipart/form-data" spellcheck="false" autocomplete="off">
 	          <table>
 	            <colgroup>
 	              <col class="col1" />

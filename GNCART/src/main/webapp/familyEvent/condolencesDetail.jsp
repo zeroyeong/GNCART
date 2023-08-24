@@ -131,7 +131,8 @@
 	            	<button type="button">수정</button>
 	            </a>
 	            <%
-	            } else if(mem_no == memNo || acNo == 2){
+	            } 
+	            if(mem_no == memNo || acNo == 2){
 	            %>
 	            <a><button type="button" onclick="deleteBtn()">삭제</button></a>
 	            <%

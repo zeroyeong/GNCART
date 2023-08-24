@@ -69,7 +69,7 @@ if(pageName.endsWith("messageInbox") && read.equals("안읽음")){
 	      </div>
 	      <div class="content">
 	        <h3 class="caption"><%= title %></h3>
-	        <form name="detailFrm" method="post" action="msgDelete.jsp" class="detail">
+	        <form name="msgFrm" method="post" action="msgDelete.jsp" class="detail">
 	          <table>
 	            <colgroup>
 	              <col class="col1" />

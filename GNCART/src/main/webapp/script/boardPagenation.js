@@ -13,7 +13,7 @@ console.log(pages);
 
 for (let i = 1; i <= totalPage; i++) {
   let btn = document.createElement("button");
-  btn.innerHTML =  `<li><a href="">${i}</a></li>`;
+  btn.innerHTML =  `<a href=""><li>${i}</li></a>`;
 
   pages.appendChild(btn);
 }

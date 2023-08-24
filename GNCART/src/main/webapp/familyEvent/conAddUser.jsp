@@ -48,7 +48,7 @@ if(request.getParameter("keyWord") != null){
         <table>      
           <tr>
             <td>부서 / 이름</td>
-            <td><input type="text" id="searchbar" placeholder="이름을 입력해 주세요" onClick="test()" autocomplete="off"></td>
+            <td><input type="text" id="searchbar" placeholder="이름을 입력해 주세요" onClick="test()" spellcheck="false" autocomplete="off"></td>
             <td>
               <button type="button" id="searchBtn" onClick="searchUser()">찾기</button>
             </td>

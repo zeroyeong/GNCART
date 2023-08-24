@@ -65,7 +65,7 @@ if(request.getParameter("user") != null){
               <tr>
                 <td><span>제목</span></td>
                 <td colspan="3">
-                  <input id="detailTitle" name="title" spellcheck="false" spellcheck="false" required />
+                  <input id="detailTitle" name="title" spellcheck="false" required />
                 </td>
               </tr>
               <tr>

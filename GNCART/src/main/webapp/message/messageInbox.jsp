@@ -29,7 +29,7 @@ String memName = (String)session.getAttribute("memName");
 int memNo = (int)session.getAttribute("memNo");
 
 String pageName = "messageInbox";
-int cnt = 0;
+int cnt = 1;
 
 %> 
 <!DOCTYPE html>
@@ -87,7 +87,7 @@ int cnt = 0;
 	            <tbody>
 					<%		
 					msglist = msgMgr.msgInboxList(memName);	
-					cnt = msglist.size();
+	
 					for(int i=0; i < msglist.size(); i++){
 						
 						MsgBean bean = new MsgBean();
@@ -123,7 +123,7 @@ int cnt = 0;
 					  %>
 					</tr>
 					<% 
-					cnt--;  
+					cnt++;  
 						}//if
 					}//for
 					%>	

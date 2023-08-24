@@ -32,7 +32,7 @@ String url = request.getParameter("pageName");
 		msgMgr.deleteMsg(checkedList, url);
 	%> 
 		<script type="text/javascript">
-		alert("선택된 게시글이 삭제되었습니다.");
+		alert("선택된 메시지가 삭제되었습니다.");
 		</script>
 	<%
 	} else if (msgNum != null) {
@@ -40,7 +40,7 @@ String url = request.getParameter("pageName");
 		msgMgr.deleteMsg(msg_no, url);
 	%>
 		<script type="text/javascript">
-		alert("선택된 게시글이 삭제되었습니다.");
+		alert("선택된 메시지가 삭제되었습니다.");
 		</script>
 	<%	
 	}

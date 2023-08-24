@@ -31,7 +31,6 @@ public class MsgDeleteServlet extends HttpServlet {
 		
 		bean = (MsgBean)request.getAttribute("bean");
 			
-		System.out.println("no = " + bean.getMem_no());
 		//msgMgr.deleteMsg(bean);
 			
 		String url = "messageInbox.jsp";

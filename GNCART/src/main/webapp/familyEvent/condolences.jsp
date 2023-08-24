@@ -19,6 +19,9 @@ response.setHeader("Expires", "0");
 request.setCharacterEncoding("UTF-8");
 Vector<ConBean> blist = null; 
 blist = conMgr.getBoardList();
+
+String pageName = "condolences";
+
 %> 
 <!DOCTYPE html>
 <html lang="ko">
@@ -120,12 +123,13 @@ blist = conMgr.getBoardList();
               </button>
             </div>
           </div>
+          <input type="hidden" id="pageName" name="pageName" value="<%= pageName %>">
         </form>
       </div>
     </div>
 	</div>		
  	</section>
-<script src="../script/boardPagenation.js"></script>
+<script src="../script/boardPagenation.js?asd"></script>
 <script src="../script/condolences.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>  
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
