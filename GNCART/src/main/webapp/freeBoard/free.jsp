@@ -28,7 +28,7 @@
 <div class="home-content">
   <div class="container">
     <div class="title">
-      <h3>경조사 알림</h3>
+      <h3>자유게시판</h3>
     </div>
     <div class="content">
       <form name="listFrm" method="post" action="freedelete.jsp">
