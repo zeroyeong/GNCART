@@ -1,5 +1,5 @@
 package freeBoard;
-   
+    
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -23,10 +23,7 @@ public class BoardPostServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
-		
-	
-		System.out.println("boardpostservlet 진입.");
-		
+			
 		request.setCharacterEncoding("UTF-8"); 
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -34,30 +31,25 @@ public class BoardPostServlet extends HttpServlet {
 		
 		String MEM_NO = request.getParameter("MEM_NO");
 		String MEM_NAME = request.getParameter("MEM_NAME");
-		System.out.println(MEM_NAME);
 		String FREE_TITLE = request.getParameter("FREE_TITLE");
-		System.out.println(FREE_TITLE);
 		String FREE_CONTENT = request.getParameter("FREE_CONTENT");
-		System.out.println(FREE_CONTENT);
 		String FREE_FILENAME = request.getParameter("FREE_FILENAME");
-		System.out.println(FREE_FILENAME);
 		String PART_NO = request.getParameter("PART_NO");
 		
-		System.out.println("객체생성 전");
+
 		//BoardMgr 클래스 객체 생성
 		BoardMgr bMgr = new BoardMgr();
-		System.out.println("객체생성 후");
 		
 		//BoardMgr 클래스에 정의된 insertBoard() 메서드를 호출한다.
 		//매개변수를 request(요청) 객체 로 하여, insertBoard() 메서드 안에서 파라미터 를 처리 할 수 있다.
-		System.out.println("insertBoard 메서드 호출 전");
+
 		bMgr.insertBoard(request);
-		System.out.println("insertBoard 메서드 호출 후");
+
 		
 		//응답 시 list.jsp 페이지로 이동한다.
-		System.out.println("response 전");
+
 		response.sendRedirect("free.jsp");
-		System.out.println("response 후");
+
 	}
 }
 

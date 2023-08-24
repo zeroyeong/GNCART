@@ -10,7 +10,8 @@ function view(FREE_NO){
 function down(FREE_FILENAME){
 	document.downFrm.FREE_FILENAME.value=FREE_FILENAME;
 	document.downFrm.submit();
-}    
+}   
+    
     function write() {
     	  var title = document.getElementById("subject").value;
     	  var content = document.getElementById("content").value;
@@ -39,4 +40,46 @@ function down(FREE_FILENAME){
 
     var currentDateInput = document.getElementById('currentDateInput');
     currentDateInput.value = getCurrentDate();
-  
+    
+    
+    $('.modi').click(function(e){
+		e.preventDefault();
+		
+		const txt = $(this).text();
+		
+		if (txt == '수정')
+		{
+			$(this).parent().prev().addClass('mod');
+			$(this).parent().prev().attr('readonly', false);
+			$(this).parent().prev().focus();
+			$(this).text('수정완료');
+			$(this).prev().show();
+			
+		}
+		else
+		{
+			
+			$(this).closest('form').submit();
+			
+			$(this).parent().prev().removeClass('mod');
+			$(this).parent().prev().attr('readonly', true);
+			$(this).text('수정');
+			$(this).prev().hide();
+		}
+	});
+	
+	$(function(){
+		
+		$('.del').click(function(){
+			const result = confirm('댓글을 삭제하시겠습니까?');
+			
+			if (result)
+				return true;
+			else
+				return false;
+		});
+	});
+    
+    
+    
+    

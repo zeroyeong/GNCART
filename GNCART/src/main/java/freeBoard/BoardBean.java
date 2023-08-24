@@ -1,5 +1,5 @@
 package freeBoard;
-
+ 
 public class BoardBean {
 	
 	public BoardBean(int mEM_NO, int fREE_NO, String fREE_TITLE, String fREE_CONTENT, String fREE_DATE, int fREE_HIT,

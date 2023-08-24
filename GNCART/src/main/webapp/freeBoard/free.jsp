@@ -24,37 +24,37 @@
    <!-- top include -->
   <jsp:include page="../index/top.jsp" flush="false"/>
 	
-   
+     
   <!--home-content-->  
-  <div class="container-fluid">
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-          <h5>자유게시판</h5>
-      </div>
- 				<div class="card-body">
+  <div class="home-content">
+    <div class="container">
+      <div class="title">
+          <h3>자유게시판</h3>
+    	  </div>
+ 			<div class="content">
+ 				<div class="tableMenu">
+ 				
+ 				 </div>
  				
  					<form name="listFrm" method="post" action="freedelete.jsp">
-					<table id="example" class="table table-striped" style="width: 100%">
+					<table>
+				  	  <colgroup>
+                		<col class="col2" />
+            			<col class="col3" />
+             			<col class="col4" />
+             			<col class="col5" />
+             			<col class="col6" />
+           			 </colgroup>
 						<thead>
 							<tr>
-								<th>번호</th>
+								<th>No.</th>
 								<th>제목</th>
 								<th>작성자</th>
 								<th>조회수</th>
 								<th>등록일</th>
 							</tr>
 						</thead>
-						<tfoot>
-							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>조회수</th>
-								<th>등록일</th>
-							</tr>
-						</tfoot>
-                       
-				<tboody>
+					<tboody>
 											<%
                   
 				Vector<BoardBean> vlist = bMgr.getBoardList();
@@ -89,18 +89,30 @@
 						</tboody>
 					</table>
 						
-						<div id="btns">
+						<div class="bottomMenu">
+						 <div class="empty"></div>
+          				  <ul class="pagination" id="pagenation">
+            
+           					 </ul> 
+           				   <div class="button"> 
 							<button type="button">
 								<a href="freeadd.jsp">글쓰기</a>
 							</button>
+							<button class="del" type="button" onclick="submitForm()">삭제하기</button>
 						</div>
-						<input type="hidden" name ="con_no">
+					 </div>
+						
 					</form>
 		
 
   </div>
 
   </section>
+  
+   	<form name="listFrm" method="post"></form>
+	<form name="viewFrm" method="get"><input type="hidden" name="FREE_NO"></form>
+  
+  
 <script src="https://code.jquery.com/jquery-3.7.0.js" 
 integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" 
 crossorigin="anonymous"></script>  
