@@ -36,7 +36,7 @@ session.setAttribute("bean", bean);//게시물을 세션에 저장
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css"> 
-<link rel="stylesheet" href="../css/condolencesDetail.css?sdf">
+<link rel="stylesheet" href="../css/noticeView.css">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -90,7 +90,7 @@ session.setAttribute("bean", bean);//게시물을 세션에 저장
 	            </tr>
 	            <tr>
 	              <th class="board-content">내용</th>
-	              <td colspan="3"><%= NOT_CONTENT %></td>
+	              <td colspan="3"><textarea><%=NOT_CONTENT%></textarea></td>
 	            </tr>
 	            <%
 			    if(NOT_FILENAME != null && !NOT_FILENAME.isEmpty()){  
@@ -117,7 +117,9 @@ session.setAttribute("bean", bean);//게시물을 세션에 저장
 	          	<a href="noticeRevise.jsp?=&NOT_NO=<%=NOT_NO%>">
 	            	<button type="button">수정</button>
 	            </a>
-	            <button type="button"><a href="noticeDelete.jsp?=&NOT_NO=<%=NOT_NO%>">삭제하기</a></button>
+	            <a href="noticeDelete.jsp?=&NOT_NO=<%=NOT_NO%>">
+	            	<button type="button">삭제</button>
+	            </a>
 	            <%
 	            } 
 	            %>
@@ -134,8 +136,6 @@ session.setAttribute("bean", bean);//게시물을 세션에 저장
 		<input type="hidden" name="NOT_FILENAME">
 	</form>
 	
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24e23b8a98c1750309dd34a0c1ea57d3&libraries=services"></script>
 <script src="../script/noticeScript.js"></script>
 <script src="../script/indexScript.js"></script>
 </body>

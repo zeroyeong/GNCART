@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="auth.AuthBean"%>
 <%@ page import="java.util.Vector"%>
 <jsp:useBean id="alertMgr" class="alert.AlertMgr" />

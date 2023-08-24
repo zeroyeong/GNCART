@@ -16,7 +16,7 @@ int PartNo = (int)session.getAttribute("partNo");
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/noticeWrite.css?12jhgjg3">
+<link rel="stylesheet" href="../css/noticeWrite.css">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -106,7 +106,7 @@ int PartNo = (int)session.getAttribute("partNo");
               </tr>
             </table>
 	          <div class="button">
-	            <button type="submit">작성하기</button>
+	            <button type="submit">저장</button>
 	            <a href="notice.jsp">
 	         	   <button type="button">목록</button>
 	            </a>
