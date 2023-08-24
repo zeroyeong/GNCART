@@ -89,7 +89,7 @@ int partno = (int)session.getAttribute("partNo");
 	            <tr>
 	              <td>내용</td>
 	              <td colspan="3">
-	                <textarea id="detailContent" name="NOT_CONTENT" rows="10"><%=NOT_CONTENT%></textarea>
+	                <textarea spellcheck="false" id="detailContent" name="NOT_CONTENT" rows="10"><%=NOT_CONTENT%></textarea>
 	              </td>
 	            </tr>
 

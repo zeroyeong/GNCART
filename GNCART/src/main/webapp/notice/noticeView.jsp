@@ -90,7 +90,7 @@ session.setAttribute("bean", bean);//게시물을 세션에 저장
 	            </tr>
 	            <tr>
 	              <th class="board-content">내용</th>
-	              <td colspan="3"><textarea><%=NOT_CONTENT%></textarea></td>
+	              <td colspan="3"><textarea spellcheck="false"><%=NOT_CONTENT%></textarea></td>
 	            </tr>
 	            <%
 			    if(NOT_FILENAME != null && !NOT_FILENAME.isEmpty()){  
@@ -123,7 +123,7 @@ session.setAttribute("bean", bean);//게시물을 세션에 저장
 	            <%
 	            } 
 	            %>
-             	<a href="newnotice.jsp">
+             	<a href="notice.jsp">
              		<button type="button">목록</button>
             	</a>
 	          </div>

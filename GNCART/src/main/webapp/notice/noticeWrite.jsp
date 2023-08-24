@@ -77,7 +77,7 @@ int PartNo = (int)session.getAttribute("partNo");
               <tr>
                 <td><span class="memeo">내용</span></td>
                 <td colspan="3">
-                  <textarea
+                  <textarea spellcheck="false"
                     name="NOT_CONTENT"
                     id="detailContent"
                     rows="10"

@@ -110,12 +110,18 @@ blist = nMgr.getBoardList();
             
             </ul>  
             <div class="button">
+            <% 
+			Integer acNo = (Integer) session.getAttribute("acNo");
+			Integer partNo = (Integer) session.getAttribute("partNo");
+			if (acNo == 2 || partNo == 1) {
+            %>
            	 <a href="noticeWrite.jsp">
               <button type="button">
                 글쓰기
               </button>
               </a>
 				<button class="del" type="button" onclick="submitForm()">삭제</button>
+				<%} %>
             </div>
           </div>
         </form>
