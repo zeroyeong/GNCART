@@ -31,7 +31,7 @@
 	
 	String SCHE_DETAIL = bean.getSCHE_DETAIL(); //일정 상세내용
 	
-	String SCHE_FILE = bean.getSCHE_FILE(); //첨부파일
+	String SCHE_FILE = bean.getSCHE_FILE(); //첨부파일 
 	
 	String SCHE_START_DATE = bean.getSCHE_START_DATE(); //시작날짜
 	

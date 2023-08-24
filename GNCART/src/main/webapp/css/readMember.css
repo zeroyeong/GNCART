@@ -89,7 +89,7 @@ button {
   border: 3px solid var(--basic-color);
   border-radius: 20px;
   padding: 30px;
-  margin: 20px;
+  margin: 20px; 
 }
 
 /* Member Top */
@@ -106,7 +106,7 @@ button {
 .memberTop .memberMenu {
   display: flex;
   justify-content: flex-start;
-}
+} 
 
 /* .memberTop .memberMenu button { */
 /*   margin-right: 10px; */

@@ -138,7 +138,7 @@
                  <%
              Vector<ManagementBean> lelist = mMgr.getLevelList();
              
-             if(lelist.isEmpty()){
+             if(lelist.isEmpty()){ 
            %>
            <option>등록된 type이 없습니다.</option>
            <%
@@ -163,7 +163,7 @@
                <input type="text" name="MEM_TEL" />
              </td>
            </tr>
-           <tr>
+           <tr> 
              <td>이메일</td>
              <td colspan="2">
                <input name="MEM_MAIL" type="text" type="email" />

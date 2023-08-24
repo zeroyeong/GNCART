@@ -20,7 +20,7 @@
           <button class="prevYear">2022년</button>
           <span class="calYear">2023년</span>
           <button class="nextYear">2022년</button>
-        </div>
+        </div> 
         <div class="month">
           <input type="button" value="1" />
           <input type="button" value="2" />

@@ -6,7 +6,7 @@
 <jsp:useBean id="mMgr" class="management.ManagementMgr"/> 
 
 <%
-	/*------------페이지 하단 searchFrm input-------------*/
+	/*------------페이지 하단 searchFrm input-------------*/ 
 	String keyField="";
 	String keyWord="";
 	
@@ -20,7 +20,7 @@
 			
 		if(request.getParameter("reload").equals("true")){
 			keyWord="";
-			keyField="";
+			keyField=""; 
 		}
 	}
 	

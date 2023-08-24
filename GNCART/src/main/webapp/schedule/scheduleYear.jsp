@@ -33,7 +33,7 @@ calYear = Integer.parseInt(request.getParameter("calYear"));
 prevYear = calYear -1;
 nextYear = calYear +1;
 }else{
-LocalDate date = LocalDate.now();
+LocalDate date = LocalDate.now(); 
 
 calYear = date.getYear();
 prevYear = calYear -1;

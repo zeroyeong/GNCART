@@ -31,7 +31,7 @@
 		int ST_NO = bean.getST_NO();
 		String ST_TIME = bean.getST_TIME();
 		int END_NO = bean.getEND_NO();
-		String END_TIME = bean.getEND_TIME();
+		String END_TIME = bean.getEND_TIME(); 
 	%>
 	
 	<div class="container">

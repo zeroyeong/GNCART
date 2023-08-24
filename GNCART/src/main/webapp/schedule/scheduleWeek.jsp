@@ -28,7 +28,7 @@
 	int calYear=0; //현재 년도
 	int calMonth=0; //현재 월
 	int calDay=0; //현재 일
-	int calWeek=0; //현재 주차
+	int calWeek=0; //현재 주차 
 	
 	int lastDay=0; //마지막 날
 	int lastWeek=0; //마지막 날의 요일
