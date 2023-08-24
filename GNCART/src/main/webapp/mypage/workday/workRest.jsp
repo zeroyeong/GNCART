@@ -9,18 +9,15 @@
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html; charset=UTF-8");
 
-String id = (String) session.getAttribute("idKey");
-String pw = (String) session.getAttribute("pwKey");
-
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 LocalDate day = LocalDate.now();
 
 String day2 = day.format(formatter);
 
-String memNo = wMgr.memNoFind(id, pw);
-
 String vacNo = request.getParameter("VAC_NO");
+
+String memNo = wMgr.memNoVacFind(vacNo);
 
 String sdate = null;
 String edate = null;
