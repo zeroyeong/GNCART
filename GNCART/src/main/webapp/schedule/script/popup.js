@@ -4,6 +4,7 @@ function openCenter(doc,win,w,h){
   var left=(screen.availWidth-w)/2; //왼쪽 좌표
   var top=(screen.availHeight-h)/2; //위쪽 좌표
   var opt='left='+left+', top='+top+', width='+w+', height='+h; //창의 좌표값
+  opt+="toolbar=no, status=no, menubar=no, resizable=no, location=no scrollbars=no";
   
   window.open(doc,win,opt); 
 }

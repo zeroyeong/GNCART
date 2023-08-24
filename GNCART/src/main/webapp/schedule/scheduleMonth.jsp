@@ -241,7 +241,7 @@
 		document.getElementById('readF').submit();
 	}
 	function popup(){
-		openCenter('', 'popup', 590,600);
+		openCenter('', 'popup', 600,600);
 		document.getElementById('readF').target='popup';
 		document.getElementById('readF').submit();
 	}

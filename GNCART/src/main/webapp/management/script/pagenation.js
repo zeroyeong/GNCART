@@ -1,6 +1,6 @@
 // 변수 선언
 
-const showTable = 10; //페이지당 보여줄 표 수
+const showTable = 15; //페이지당 보여줄 표 수
 const totalTable = document.querySelectorAll("tbody tr").length; //전체 표 수
 const table = document.querySelectorAll("tbody tr"); //표 리스트
 const totalPage = Math.ceil(totalTable / showTable); //전체 페이지 수 (Math.ceil로 무조건 소수점 올림)

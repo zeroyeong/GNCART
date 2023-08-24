@@ -215,7 +215,7 @@
 	</section>
 
 <script src="../script/indexScript.js"></script>
-<script src="script/pagenation.js?00045"></script>
+<script src="script/pagenation.js?0"></script>
 
 <script>
 /*----------사용자 조회로 이동----------*/
@@ -252,14 +252,19 @@ function check() {
 	if(keyField == "선택" || keyWord == ""){
 		if(keyField == "선택"){
 			alert("검색할 항목을 선택하세요.");
-		}
-		else if(keyWord == ""){
+		}else if(keyWord == ""){
 			alert("검색어를 입력하세요.");
 		}
 	} else{
 		searchFrm.submit();
 	}
 }
+
+document.addEventListener('keydown', function(event) {
+	  if (event.keyCode === 13) {
+		  check();
+	  };
+	});
 
 
 /*-------새로고침을 위한 list Frm------*/

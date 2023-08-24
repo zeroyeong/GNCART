@@ -676,7 +676,7 @@ nextYear = calYear +1;
 		document.getElementById('readF').submit();
 	}
 	function popup(){
-		openCenter('', 'popup', 550,560);
+		openCenter('', 'popup', 600,600);
 		document.getElementById('readF').target='popup';
 		document.getElementById('readF').submit();
 	}
