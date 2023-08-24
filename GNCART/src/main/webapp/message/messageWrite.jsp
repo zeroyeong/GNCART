@@ -67,7 +67,7 @@ String part_type = bean.getPART_TYPE();
 	            <tr>
 	              <td><span>제목</span></td>
 	              <td colspan="3">
-	                <input id="detailTitle" name="title" required />
+	                <input id="detailTitle" name="title" spellcheck="false" required />
 	              </td>
 	            </tr>
 	            <tr>
@@ -82,7 +82,7 @@ String part_type = bean.getPART_TYPE();
 	            <tr>
 	              <td><span class="memeo">내용</span></td>
 	              <td colspan="3">
-	                <textarea name="content" id="detailContent" rows="10"></textarea>
+	                <textarea name="content" id="detailContent" rows="10" spellcheck="false"></textarea>
 	              </td>
 	            </tr>
 	            <tr>

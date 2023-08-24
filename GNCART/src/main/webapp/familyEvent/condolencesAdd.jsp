@@ -66,7 +66,7 @@ if(request.getParameter("user") != null){
               <tr>
                 <td><span>제목</span></td>
                 <td colspan="3">
-                  <input id="detailTitle" name="title" required />
+                  <input id="detailTitle" name="title" spellcheck="false" required />
                 </td>
               </tr>
               <tr>
@@ -80,7 +80,7 @@ if(request.getParameter("user") != null){
                   </select>
                 </td>
                 <td><span>날짜</span></td>
-                <td><input type="date" name="desdate" required /></td>
+                <td><input type="date" name="desdate" spellcheck="false" required /></td>
               </tr>
               <tr>
                 <td><span>부서 / 이름</span></td>
@@ -100,7 +100,7 @@ if(request.getParameter("user") != null){
               <tr>
                 <td><span class="memeo">내용</span></td>
                 <td colspan="3">
-                  <textarea name="content" id="detailContent" rows="10"></textarea>
+                  <textarea name="content" id="detailContent" rows="10" spellcheck="false"></textarea>
                 </td>
               </tr>
               <tr>

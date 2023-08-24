@@ -95,7 +95,7 @@
 	            </tr>
 	            <tr>
 	              <th class="board-content">내용</th>
-	              <td colspan="3"><textarea><%= content %></textarea></td>
+	              <td colspan="3"><textarea spellcheck="false"><%= content %></textarea></td>
 	            </tr>
 	            <%
 	            if(map != null && !map.isEmpty()){  
