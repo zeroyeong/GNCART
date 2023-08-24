@@ -170,17 +170,17 @@ totalPage = (int) Math.ceil((double) totalWorkday / viewWorkday); //총 근태 /
 					} else if (workStart != null && workEnd != null) {
 						workdayCheck = "정상 출근";
 						if (Integer.parseInt(workStart.substring(11, 13)) < 9) {
-					if (Integer.parseInt(workEnd.substring(11, 13)) < 17) {
-						workdayCheck = "조퇴";
-					}
+							if (Integer.parseInt(workEnd.substring(11, 13)) < 17) {
+								workdayCheck = "조퇴";
+							}
 						} else if (Integer.parseInt(workStart.substring(11, 13)) >= 9) {
-					workdayCheck = "지각";
-					if (Integer.parseInt(workEnd.substring(11, 13)) < 17) {
-						workdayCheck = "지각 및 조퇴";
-					}
+							workdayCheck = "지각";
+							if (Integer.parseInt(workEnd.substring(11, 13)) < 17) {
+							workdayCheck = "지각 및 조퇴";
+							}
 						}
-					} else {
-						if (Integer.parseInt(workStart.substring(11, 13)) < 9) {
+					} else if(workStart.length() > 10) {
+						if (Integer.parseInt(workStart.substring(11, 13)) < 9 ) {
 					workdayCheck = "--";
 						} else if (Integer.parseInt(workStart.substring(11, 13)) >= 9) {
 					workdayCheck = "지각";

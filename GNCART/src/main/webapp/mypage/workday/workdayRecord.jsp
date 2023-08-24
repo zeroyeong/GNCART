@@ -21,6 +21,7 @@ String[] yearVac = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
 String[] workStartLate = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
 String[] workEndEarly = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
 String[] rest = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
+String[] work = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
 
 int vac = 0;
 int useVac = 0;
@@ -134,8 +135,8 @@ switch ((int) days) {
 
 		int monthLength = LocalDate.now().minusMonths(i).lengthOfMonth();
 
-		double workLength = (double) monthWorkLength / monthLength;
-
+		double workLength = (double) monthWorkLength / (monthLength-8);
+		
 		if (workLength >= 0.8) {
 			vac++;
 		}
@@ -143,14 +144,14 @@ switch ((int) days) {
 }
 
 if (memNo != null) {
-
-	int monthVac1 = 0;
-	int yearVac1 = 0;
-	int vac1 = 0;
-	int workStartLate1 = 0;
-	int workEndEarly1 = 0;
-
 	for (int i = 1; i < 13; i++) {
+		int monthVac1 = 0;
+		int yearVac1 = 0;
+		int vac1 = 0;
+		int workStartLate1 = 0;
+		int workEndEarly1 = 0;
+		int work1 = 0;
+		
 		String ii = Integer.toString(i);
 		
 		if (ii.length() < 2) {
@@ -188,6 +189,8 @@ if (memNo != null) {
 		if (Integer.parseInt(start.substring(11, 13)) < 9) {
 			if (Integer.parseInt(end.substring(11, 13)) < 17) {
 				workEndEarly1++;
+			} else if (Integer.parseInt(end.substring(11, 13)) >= 17) {
+				work1++;
 			}
 		} else if (Integer.parseInt(start.substring(11, 13)) >= 9) {
 			workStartLate1++;
@@ -210,6 +213,9 @@ if (memNo != null) {
 	}
 	if (workStartLate1 != 0) {
 		workStartLate[i - 1] = Integer.toString(workStartLate1);
+	}
+	if (work1 != 0) {
+		work[i - 1] = Integer.toString(work1);
 	}
 		}
 	}
@@ -284,6 +290,16 @@ if (memNo != null) {
 		%>
 	</tr>
 	<tr>
+		<td>출근</td>
+		<%
+		for (int i = 0; i < 12; i++) {
+		%>
+		<td><%=work[i]%></td>
+		<%
+		}
+		%>
+	</tr>
+	<tr>
 		<td>지각</td>
 		<%
 		for (int i = 0; i < 12; i++) {
@@ -303,6 +319,7 @@ if (memNo != null) {
 		}
 		%>
 	</tr>
+	<%if((int)days>0) { %>
 	<tr>
 		<td>연차</td>
 		<%
@@ -313,6 +330,7 @@ if (memNo != null) {
 		}
 		%>
 	</tr>
+	<%} else if((int)days == 0) {%>
 	<tr>
 		<td>월차</td>
 		<%
@@ -323,6 +341,7 @@ if (memNo != null) {
 		}
 		%>
 	</tr>
+	<%} %>
 	<tr>
 		<td>기타</td>
 		<%
