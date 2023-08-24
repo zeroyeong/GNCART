@@ -35,7 +35,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesDetail.css">
+<link rel="stylesheet" href="../css/condolencesDetail.css?Asddddfddd">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -95,7 +95,7 @@
 	            </tr>
 	            <tr>
 	              <th class="board-content">내용</th>
-	              <td colspan="3"><%= content %></td>
+	              <td colspan="3"><textarea><%= content %></textarea></td>
 	            </tr>
 	            <%
 	            if(map != null && !map.isEmpty()){  
