@@ -198,7 +198,7 @@ totalPage = (int) Math.ceil((double) totalWorkday / viewWorkday); //총 근태 /
 			</table>
 		</div>
 
-		<div class="month">
+		<div class="month" style="text-align: center;">
 			<%
 			if (totalPage != 0) {
 				for (int i = 1; i <= totalPage; i++) {

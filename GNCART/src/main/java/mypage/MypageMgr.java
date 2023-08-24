@@ -601,6 +601,9 @@ public class MypageMgr {
 			if (multi.getFilesystemName("file") != null) {
 				img = multi.getFilesystemName("file");
 			}
+			
+			session.removeAttribute("memImg");
+			session.setAttribute("memImg", img);
 
 			sql = "update member set MEM_IMG = ? where MEM_ID = ?";
 
