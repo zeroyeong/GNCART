@@ -97,9 +97,6 @@ public class BoardMgr {
 		
 		try {
 			con = pool.getConnection();
-			sql = "select max(FREE_NO) from freeBoard"; //게시물이 총 몇개 인지 조회하는 쿼리
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
 							
 			File file = new File(SAVEFOLDER);
 			
@@ -120,18 +117,13 @@ public class BoardMgr {
 			String FREE_CONTENT = multi.getParameter("FREE_CONTENT");
 	
 			
-		//	if (multi.getParameter("contentType").equalsIgnoreCase("TEXT")) {
-				//게시글 입력시 contentType 속성이 TEXT 라면 
-				//UtilMgr 클래스 replace 메서드를 호출 하여 <(부등호) 를 &lt; 로 바꾼다.
 			FREE_CONTENT = UtilMgr.replace(FREE_CONTENT, "<", "&lt;");
-		//	}
 			sql = "insert INTO freeBoard(FREE_NO,FREE_CONTENT,FREE_TITLE,FREE_DATE,FREE_HIT,FREE_FILENAME,FREE_FILESIZE,MEM_NO,PART_NO)";
 			sql += "values(?, ?, ?, now(), 0, ?, ?, ?, ?)";
-			//작성날짜 regdate 컬럼은 now() 로 현재 날짜를 자동으로 입력 합니다.
-			pstmt = con.prepareStatement(sql);
+
+			pstmt = con.prepareStatement(sql); 
 			
 			pstmt.setString(1, multi.getParameter("FREE_NO"));
-
 			pstmt.setString(2, multi.getParameter("FREE_CONTENT"));
 			pstmt.setString(3, multi.getParameter("FREE_TITLE"));
 			pstmt.setString(4, filename);

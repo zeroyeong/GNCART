@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GNC:ART</title>
   <link rel="stylesheet" href="../css/index.css">
-  <link rel="stylesheet" href="../css/freeread.css?addffsd">
+  <link rel="stylesheet" href="../css/freeread.css?add">
   <!--Boxicons CDN Link-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -78,7 +78,7 @@
 	<div class="home-content">
 	  <div class="container">
 	      <div class="title">
-	        <h3>자유게시판 일정 추가</h3>
+	        <h3>자유게시판</h3>
 	      </div>
 	      <div class="content">
 	        <form name="detailFrm" class="detail">
@@ -90,27 +90,27 @@
 	              <col class="col4" />
 	            </colgroup>
 	            <tr>
-	              <td><span>제목</span></td>
+	           	<th>제목</th>
 	              <td colspan="3">
-	                <input id="detailTitle" name="FREE_TITLE" spellcheck="false" required />
+					<%= FREE_TITLE %>
 	              </td>
 	            </tr>
 	            <tr>
-	              <td><span>날짜</span></td>
-	              <td><%= FREE_DATE %></td>
+	              <th>날짜</th>
+	                  <td colspan="3"><%= FREE_DATE %></td>
 	            </tr>
 	            <tr>
-	              <td><span>부서 / 이름</span></td>
+	            <th>부서 / 이름</th>
 	              <td colspan="3"><%= PART_TYPE %> / <%= MEM_NAME %></td>
 	            </tr>
 	            <tr>
-	              <td><span class="memeo">내용</span></td>
+	              <th class="board-content">내용</th>
 	              <td colspan="3">
 	                <textarea name="FREE_CONTENT" id="detailContent" rows="10" spellcheck="false"><%= FREE_CONTENT %></textarea>
 	              </td>
 	            </tr>
 	            <tr>
-	              <td><span>첨부파일</span></td>
+		              <th>첨부파일</th>
 	              <td colspan="3">
 	              <%
 	              if(!FREE_FILENAME.equals(""))

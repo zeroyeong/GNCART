@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import notice.NoticeBean;
 
-@WebServlet("/freeBorad/boardUpdate")
+@WebServlet("/freeBoard/boardUpdate")
 public class BoardUpdateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -29,17 +29,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		
 		//BoardBean 클래스 객체인 bean에 session에 저장된 게시물 bean 데이터를 대입한다.
 		String freeNoParam = request.getParameter("FREE_NO");
-		int FREE_NO = (freeNoParam != null && !freeNoParam.isEmpty()) ? Integer.parseInt(freeNoParam) : 0;
-
-		// NOT_NO가 0인 경우 처리할 코드를 추가해야 합니다.
-		if (FREE_NO == 0) {
-			// 오류 처리
-			out.println("<script>");
-			out.println("alert('오류가 발생하였습니다.');");
-			out.println("history.back();");
-			out.println("</script>");
-			return;
-		}
+		int FREE_NO = Integer.parseInt(request.getParameter("FREE_NO"));
 		int PART_NO = Integer.parseInt(request.getParameter("PART_NO"));
 
 		// session에 저장된 bean 객체를 이용해서 게시물 정보를 변수에 저장
@@ -49,7 +39,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		String id = (String)session.getAttribute("memId");
 
 		// 작성자와 로그인된 사용자를 비교하여 권한을 확인
-		if (id != null && id.equals(bean.getMEM_ID())) {
+
 			// 변수에 저장된 게시물 정보를 이용하여 값을 설정
 			BoardBean upBean = new BoardBean();
 			upBean.setFREE_NO(FREE_NO);
@@ -60,6 +50,7 @@ public class BoardUpdateServlet extends HttpServlet {
 			upBean.setMEM_ID(bean.getMEM_ID());
 			upBean.setPART_NO(PART_NO);
 
-		}
+	
+		bMgr.updateBoard(upBean);
 	}
 }
