@@ -1,22 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
-    <%
-	request.setCharacterEncoding("UTF-8");
-
-	String Name = (String)session.getAttribute("memName");
-	Integer No = (Integer)session.getAttribute("memNo");
-	
-	if(No == null) {
-%>
-<script>
-	alert("로그인이 되어있지않습니다.");
-	window.location.href = "../login.jsp";
-</script>
-<%
-	return;
-	}   
-%>
+<% 
+String Name = (String)session.getAttribute("memName");
+Integer No = (Integer)session.getAttribute("memNo");
+String Part = (String)session.getAttribute("parttype");
+int PartNo = (int)session.getAttribute("partNo");
+%> 
+ 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -29,7 +20,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
 </head>
-<body>
+<body> 
   <!-- sidebar include -->	
   <jsp:include page="../index/sidebar.jsp" flush="false"/>	
 
@@ -41,45 +32,83 @@
   <div class="home-content">
     <div id="container">
       <div id="title">
-        <h2>자유게시판</h2>
+        <h3>자유게시판</h3>
       </div>      
-      <hr>   
-      <form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data">
-        <table>
-          <tr>
-            <td class="tableTitle"><label>작성자</label></td>
-            <td><input type="text" value="<%=Name%>"></td>
-            <input type="hidden" name="MEM_NO" value="<%=No%>">
-			<td class="tableTitle"><label>해당부서</label></td>
-			<td><select name="PART_NO">
-					<option value="1">경영지원팀</option>
-					<option value="2">개발팀</option>
-					<option value="3">홍보팀</option>
-					<option value="4">영업팀</option>
-					<option value="5">서비스지원팀</option>
-					<option value="6">전체부서</option>
-			</select></td>
-          </tr>
-          <tr>
-            <td class="tableTitle"><label>제목</label></td>
-            <td colspan="3"><input type="text" id="FREE_TITLE" name="FREE_TITLE"></td> <!--작성자 이름 나오게-->
-          </tr>
-          <tr>
-            <td class="tableTitle detail"><label>상세 내용</label></td>
-            <td colspan="3"><textarea id="FREE_CONTENT" name="FREE_CONTENT"></textarea></td>
-          </tr>
-          <tr>
-            <td class="tableTitle"><label>첨부 파일</label></td>
-            <td colspan="3"><input type="file" name="FREE_FILENAME"></td>
-           </tr>
-        </table>
-        <div id="btns">
-           <input type="submit" value="등록하기" style="text-align:center">
-          <button><a href="free.jsp">뒤로가기</a></button>
-        </div>
-      </form>
-  </div>
-  </section>
+	      <div class="content">
+	        <form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data">
+	        <div class="content">
+	          <table>
+              <colgroup>
+                <col class="col1" />
+                <col class="col2" />
+                <col class="col3" />
+                <col class="col4" />
+              </colgroup>
+              <tr>
+                <td><span>제목</span></td>
+                <td colspan="3">
+                  <input id="detailTitle" name="FREE_TITLE" required />
+                </td>  
+              </tr>
+              <tr>
+                <td><span>날짜</span></td>
+                <td><input type="text" id="currentDateInput" readonly></td>
+              </tr>
+              <tr>
+                <td><span>부서 / 이름</span></td>
+                <td colspan="3">
+                  <div class="user">
+					<input type="text" value="<%=Part %> / <%=Name%>" readonly>
+					<input type="hidden" name="MEM_NO" value="<%=No%>">
+					<input type="hidden" name="PART_NO" value="<%=PartNo%>">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="memeo">내용</span></td>
+                <td colspan="3">
+                  <textarea
+                    name="FREE_CONTENT"
+                    id="detailContent"
+                    rows="10"
+                  ></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td><span>첨부파일</span></td>
+                <td colspan="3">
+                  <div class="file">
+                    <input
+                      type="text"
+                      id="filename"
+                      placeholder="첨부파일"
+                      readonly
+                    />
+                    <label for="file">파일찾기</label> 
+                    <input
+                      type="file"
+                      id="file"
+                      name="FREE_FILENAME"
+                      onclick="findFile()"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+	          <div class="button">
+	            <button type="submit">작성하기</button>
+	            <a href="free.jsp">
+	         	   <button type="button">목록</button>
+	            </a>
+	          </div>
+	          </div>
+	        </form>
+	      </div>
+	    </div>
+	</div>
+
+	</section>
+
 <script src="../script/free.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>

@@ -1,6 +1,6 @@
 package freeBoard;
 
- 
+  
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -83,7 +83,6 @@ public class BoardMgr {
 	// 게시물 입력 메서드는 리턴타입 이 void 이므로 반환값은 없다.
 	public void insertBoard(HttpServletRequest req) {
 		
-		System.out.println("insertBoard 메서드 호출 ");
 		Connection con = null; //연결객체
 		PreparedStatement pstmt = null; //쿼리처리객체
 		ResultSet rs = null;  //결과값 담는 객체

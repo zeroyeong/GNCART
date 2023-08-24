@@ -1,6 +1,6 @@
 package freeBoard;
  
-
+ 
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import notice.NoticeBean;
 
 @WebServlet("/freeBorad/boardUpdate")
 public class BoardUpdateServlet extends HttpServlet {
@@ -26,22 +28,38 @@ public class BoardUpdateServlet extends HttpServlet {
 		BoardMgr bMgr = new BoardMgr();
 		
 		//BoardBean 클래스 객체인 bean에 session에 저장된 게시물 bean 데이터를 대입한다.
-		BoardBean bean = (BoardBean) session.getAttribute("bean");
-		
-		String nowPage = request.getParameter("nowPage");
-		
-		BoardBean upBean = new BoardBean(); //BoardBean 클래스 객체 upBean 생성
-		
-		//BoardBean 클래스 객체 upBean을 생성하고, 게시물 관련 파라미터를 setter 메서드를 이용해 담는다.
-		upBean.setMEM_NO(Integer.parseInt(request.getParameter("MEM_NO")));
-		upBean.setMEM_NAME(request.getParameter("MEM_NAME"));
-		upBean.setFREE_TITLE(request.getParameter("FREE_TITLE"));
-		upBean.setFREE_CONTENT(request.getParameter("FREE_CONTENT"));
-		//수정할 내용이 담긴 데이터는 upBean 객체에 있고, (jsp 화면에서 이동해온 게시글 데이터)
-		//수정 전 내용이 담긴 데이터는 bean 객체에 있다. (수정 전 session 에 저장한 게시글 데이터)
-		
-		//upBean 객체 의 패스워드 와 세션에서 받아온 bean 패스워드 를 각 각 변수에 저장.
-		
-		//패스워드 가 일치 하는지 세션에 저장된 패스워드 와 파라미터로 저장한 패스워드를 비교한다. 
+		String freeNoParam = request.getParameter("FREE_NO");
+		int FREE_NO = (freeNoParam != null && !freeNoParam.isEmpty()) ? Integer.parseInt(freeNoParam) : 0;
+
+		// NOT_NO가 0인 경우 처리할 코드를 추가해야 합니다.
+		if (FREE_NO == 0) {
+			// 오류 처리
+			out.println("<script>");
+			out.println("alert('오류가 발생하였습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			return;
+		}
+		int PART_NO = Integer.parseInt(request.getParameter("PART_NO"));
+
+		// session에 저장된 bean 객체를 이용해서 게시물 정보를 변수에 저장
+		BoardBean bean = bMgr.getBoard(FREE_NO);
+
+		// 로그인된 사용자의 정보를 가져옴 (세션에서 사용자 정보를 가져오는 코드를 추가해야 합니다.)
+		String id = (String)session.getAttribute("memId");
+
+		// 작성자와 로그인된 사용자를 비교하여 권한을 확인
+		if (id != null && id.equals(bean.getMEM_ID())) {
+			// 변수에 저장된 게시물 정보를 이용하여 값을 설정
+			BoardBean upBean = new BoardBean();
+			upBean.setFREE_NO(FREE_NO);
+			upBean.setMEM_NO(bean.getMEM_NO());
+			upBean.setFREE_TITLE(request.getParameter("FREE_TITLE"));
+			upBean.setFREE_CONTENT(request.getParameter("FREE_CONTENT"));
+			upBean.setFREE_DATE(bean.getFREE_DATE());
+			upBean.setMEM_ID(bean.getMEM_ID());
+			upBean.setPART_NO(PART_NO);
+
+		}
 	}
 }

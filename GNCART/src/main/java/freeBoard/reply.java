@@ -1,5 +1,5 @@
 package freeBoard;
-
+   
 public class reply {
 	
 	private int replyNo;

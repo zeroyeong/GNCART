@@ -1,10 +1,16 @@
 package freeBoard;
-
+ 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+
 
 import common.DBConnectionMgr;
 
@@ -31,21 +37,19 @@ public class replyDAO {
 
 	
 	public ArrayList<reply> getList(int FREE_NO, int pageNumber){
-		String SQL="SELECT * FROM reply WHERE MEM_NO<? AND replyAvailable=1 AND FREE_NO=? ORDER BY MEM_NO DESC LIMIT 10";
-		System.out.println("reply 여기는");
+		String SQL="SELECT * FROM reply JOIN member ON reply.MEM_NO = member.MEM_NO WHERE FREE_NO=1 ORDER BY replyNo DESC";
 		ArrayList<reply> list=new ArrayList<reply>();
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(SQL);
-			pstmt.setInt(1,getNext()-(pageNumber-1)*10);
-			pstmt.setInt(2, FREE_NO);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				reply reply=new reply();
-				System.out.println("reply 저기도");
 				reply.setFREE_NO(rs.getInt("FREE_NO"));
 				reply.setReplyContent(rs.getString("ReplyContent"));
 				reply.setMEM_NO(rs.getInt("MEM_NO"));
 				reply.setreplyDate(rs.getString("replyDate"));
+				reply.setMEM_NAME(rs.getString("MEM_NAME"));
+				reply.setReplyNo(rs.getInt("replyNo"));
 				reply.setReplyAvailable(1); // rs.getInt(5) => out of index 오류
 				list.add(reply);
 				
@@ -57,14 +61,12 @@ public class replyDAO {
 	}
 	   
 	public int getNext() {
-		System.out.println("reply 필드");
 		String SQL="select reply FROM reply ORDER BY reply DESC";
 		try {
 		
 			PreparedStatement pstmt=conn.prepareStatement(SQL);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				System.out.println(rs.getInt(1)); // select문에서 첫번째 값
 				return rs.getInt(1)+1;  // 현재 인덱스(현재 게시글 개수) +1 반환
 			}
 			return 1;
@@ -76,16 +78,15 @@ public class replyDAO {
 	
 
 	public int write(String MEM_NAME, int FREE_NO , String replyContent, int MEM_NO) {
+		System.out.println("replydao 호출");
 		String SQL="INSERT INTO reply (replyContent, replyDate, MEM_NO, FREE_NO) VALUES(?, now(), ?, ?)";
 	
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(SQL);
 			pstmt.setString(1,replyContent);
-			pstmt.setInt(2, getNext());
 			
-			pstmt.setInt(3, FREE_NO);
-			pstmt.setInt(4, MEM_NO);
-			pstmt.setString(5, MEM_NAME);
+			pstmt.setInt(2, FREE_NO);
+			pstmt.setInt(3, MEM_NO);
 			
 			return pstmt.executeUpdate();
 			
@@ -119,14 +120,9 @@ public class replyDAO {
 			if (rs.next()) {
 				
 				bean.setFREE_NO(rs.getInt("FREE_NO"));
-				
 				bean.setReplyContent(rs.getString("replyContent"));
-				bean.setreplyDate(rs.getString("replyDate"));
-				
-				
+				bean.setreplyDate(rs.getString("replyDate"));	
 				bean.setMEM_NO(rs.getInt("MEM_NO"));
-				
-			
 				bean.setMEM_NAME(rs.getString("MEM_NAME")); 
 			}
 		} catch (Exception e) {
@@ -136,6 +132,28 @@ public class replyDAO {
 		}
 		return bean;
 	}
-
 	
+	
+	public void deleteReply(int replyNo) {
+		String SQL = "DELETE FROM reply WHERE replyNo=?";
+		PreparedStatement psmt = null;
+		try {
+			String dbURL="jdbc:mysql://127.0.0.1:3306/gncart?useUnicode=true&characterEncoding=UTF-8";	
+			String dbID="root";
+			String dbPassword="0000";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn=DriverManager.getConnection(dbURL,dbID,dbPassword);
+			psmt = conn.prepareStatement(SQL);
+			psmt.setInt(1, replyNo);
+			
+			psmt.executeUpdate();
+			
+			psmt.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
 }
