@@ -48,7 +48,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
   <!-- 현재 파일의 css -->
-	<link rel="stylesheet" href="../css/readMember.css">
+	<link rel="stylesheet" href="../css/readMember.css?Sdfsdfsfd">
 	
 	<!-- 현재 파일 - includeTop css -->
 	<link rel="stylesheet" href="include/include.css?ssdfdfs">
@@ -91,11 +91,10 @@
           <table class="memberTable">
             <tr>
               <td colspan="4">
-              <img src=>
                 <% if(MEM_IMG != null && MEM_IMG != ""){ %>
-                <img src="../filestorage/<%=MEM_IMG %>" alt="" />
+                <img src="filestorage/<%=MEM_IMG %>" alt="" />
                 <% }else{ %>
-                <img src="../filestorage/profile.jpg" />
+                <img src="filestorage/profile.jpg" />
                 <% } %>
               </td>
             </tr>
