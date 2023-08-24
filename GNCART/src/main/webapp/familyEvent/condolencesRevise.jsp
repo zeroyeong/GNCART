@@ -44,7 +44,7 @@ int memNo = (int)session.getAttribute("memNo");
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/condolencesAdd.css">
+<link rel="stylesheet" href="../css/condolencesAdd.css?asdf">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -75,11 +75,11 @@ int memNo = (int)session.getAttribute("memNo");
 	              <col class="col4" />
 	            </colgroup>
 	            <tr>
-	              <td>제목</td>
+	          <td><span>제목</span></td>
 	              <td colspan="3"><input id="detailTitle" name="title" value="<%= title %>"required></td>
 	            </tr>
 	            <tr>
-	              <td>종류</td>
+	              <td><span>종류</span></td>
 	              <td>
 	                <select id="type" name="type">
 	                  <option value="결혼식">결혼식</option>
@@ -88,13 +88,13 @@ int memNo = (int)session.getAttribute("memNo");
 	                  <option value="장례식">장례식</option>
 	                </select>
 	              </td>
-	              <td>날짜</td>
+	              <td><span>날짜</span></td>
 	              <td>
 	                <input type="date" name="desdate" value="<%=desdate%>" />
 	              </td>
 	            </tr>
 	            <tr>
-	              <td>부서 및 이름</td>
+	                  <td><span>부서 / 이름</span></td>
 	              <td colspan="3">
 	                <div class="user">
 	                  <input type="text" id="user_part_name" name="user_part_name" placeholder="부서 / 이름" value="<%= userPart %> / <%= userName %>"readonly/>
@@ -103,19 +103,19 @@ int memNo = (int)session.getAttribute("memNo");
 	              </td>
 	            </tr>
 	            <tr>
-	              <td>장소 및 주소</td>
+	             <td><span>장소 및 주소</span></td>
 	              <td colspan="3">
 	                <input type="text" id="locationId" name="location" value="<%=location%>" placeholder="지도에서 검색 해주세요" readonly/>
 	              </td>
 	            </tr>
 	            <tr>
-	              <td>내용</td>
+	                  <td><span class="memeo">내용</span></td>
 	              <td colspan="3">
 	                <textarea id="detailContent" name="content" rows="10"><%=content%></textarea>
 	              </td>
 	            </tr>
 	            <tr>
-	              <td>지도</td>
+	             <td><span>지도</span></td>
 	              <td colspan="3">
 	              <%
 	              if (map != null && !map.isEmpty()) {
@@ -142,7 +142,7 @@ int memNo = (int)session.getAttribute("memNo");
 	              </td>
 	            </tr>
 	            <tr>
-	              <td>첨부파일</td>
+	              <td><span>첨부파일</span></td>
 	              <td colspan="3">
 	                <%
 	                if (filename != null && !filename.isEmpty()) {
