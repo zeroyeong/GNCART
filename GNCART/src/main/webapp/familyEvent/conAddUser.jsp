@@ -44,11 +44,11 @@ if(request.getParameter("keyWord") != null){
         필요없다면 삭제해도 무방합니다.-->
       </div>
       <div class="content">
-        <form name="userFrm" method="post" action="conAddUser.jsp">  
+        <form name="userFrm" method="post" action="conAddUser.jsp" autocomplete="off">  
         <table>      
           <tr>
             <td>부서 / 이름</td>
-            <td><input type="text" id="searchbar" placeholder="이름을 입력해 주세요" onClick="test()"></td>
+            <td><input type="text" id="searchbar" placeholder="이름을 입력해 주세요" onClick="test()" autocomplete="off"></td>
             <td>
               <button type="button" id="searchBtn" onClick="searchUser()">찾기</button>
             </td>
@@ -106,7 +106,7 @@ if(request.getParameter("keyWord") != null){
       </div>
     </div>
 
-<script src="../script/conaddUser.js?after2"></script>
+<script src="../script/conaddUser.js"></script>
 
 </body>
 </html>

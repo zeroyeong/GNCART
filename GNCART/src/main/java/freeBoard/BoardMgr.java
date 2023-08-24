@@ -341,21 +341,22 @@ public class BoardMgr {
 			
 			//update 쿼리로 게시물을 수정한다.
 			//num 으로 수정할 게시물을 찾아서 name, subject, content 컬럼을 수정 한다.
-			sql = "update freeBoard set name=?,subject=?,content=? where FREE_NO=?";
+			sql = "update freeBoard set FREE_TITLE = ?, FREE_CONTENT = ?, FREE_DATE = ? where FREE_NO = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, bean.getFREE_TITLE());
 			pstmt.setString(2, bean.getFREE_CONTENT());
-			pstmt.setInt(3, bean.getFREE_NO());
-			pstmt.setInt(4, bean.getMEM_NO());
+			pstmt.setString(3, bean.getFREE_DATE());
+			pstmt.setInt(4, bean.getFREE_NO());
 			pstmt.executeUpdate();
-			
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt);
 		}
 	}
+	
 	public void deletefreeBoard(int FREE_NO) {
 
 		Connection con = null;

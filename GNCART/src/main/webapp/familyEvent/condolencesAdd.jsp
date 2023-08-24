@@ -54,7 +54,7 @@ if(request.getParameter("user") != null){
 	        <h3>경조사 일정 추가</h3>
 	      </div>
 	      <div class="content">
-	        <form name="postFrm" method="post" action="conboardPost" enctype="multipart/form-data">
+	        <form name="postFrm" method="post" action="conboardPost" enctype="multipart/form-data" autocomplete="off">
 	          <table>
               <colgroup>
                 <col class="col1" />
@@ -65,7 +65,7 @@ if(request.getParameter("user") != null){
               <tr>
                 <td><span>제목</span></td>
                 <td colspan="3">
-                  <input id="detailTitle" name="title" spellcheck="false" required />
+                  <input id="detailTitle" name="title" spellcheck="false" spellcheck="false" required />
                 </td>
               </tr>
               <tr>

@@ -34,7 +34,7 @@ response.setHeader("Expires", "0");
         <table>
           <tr>
             <td>주소</td>
-            <td><input type="text" id="place" placeholder="주소를 입력해 주세요." /></td>
+            <td><input type="text" id="place" placeholder="주소를 입력해 주세요." spellcheck="false" autocomplete="off"/></td>
             <td>
               <button type="button" id="searchBtn" onClick="searchPlace()">찾기</button>
             </td>

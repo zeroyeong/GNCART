@@ -61,7 +61,7 @@ function displayMarker(place) {
         position: new kakao.maps.LatLng(place.y, place.x) 
     });
 
-    var content = '<div>'+ place.place_name + '<br>' + place.address_name + '<br>' +'</div>';
+    var content = '<div style="width:260px">'+ place.place_name + '<br>' + place.address_name + '<br>' +'</div>';
     
     
     console.log("place.place_name = " + place.place_name);

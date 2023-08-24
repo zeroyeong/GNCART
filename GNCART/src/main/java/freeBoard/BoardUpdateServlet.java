@@ -21,36 +21,26 @@ public class BoardUpdateServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-
-		HttpSession session = request.getSession();
-		PrintWriter out = response.getWriter(); 
-
-		BoardMgr bMgr = new BoardMgr();
 		
-		//BoardBean 클래스 객체인 bean에 session에 저장된 게시물 bean 데이터를 대입한다.
+		PrintWriter out = response.getWriter();
+		
+		BoardMgr bMgr = new BoardMgr();	
+
 		String freeNoParam = request.getParameter("FREE_NO");
-		int FREE_NO = Integer.parseInt(request.getParameter("FREE_NO"));
-		int PART_NO = Integer.parseInt(request.getParameter("PART_NO"));
+		int FREE_NO =  Integer.parseInt(freeNoParam);
+		
+		BoardBean upBean = new BoardBean();
+		upBean.setFREE_NO(FREE_NO);
+		upBean.setFREE_TITLE(request.getParameter("FREE_TITLE"));
+		upBean.setFREE_CONTENT(request.getParameter("FREE_CONTENT"));
+		upBean.setFREE_DATE(request.getParameter("FREE_DATE"));
 
-		// session에 저장된 bean 객체를 이용해서 게시물 정보를 변수에 저장
-		BoardBean bean = bMgr.getBoard(FREE_NO);
-
-		// 로그인된 사용자의 정보를 가져옴 (세션에서 사용자 정보를 가져오는 코드를 추가해야 합니다.)
-		String id = (String)session.getAttribute("memId");
-
-		// 작성자와 로그인된 사용자를 비교하여 권한을 확인
-
-			// 변수에 저장된 게시물 정보를 이용하여 값을 설정
-			BoardBean upBean = new BoardBean();
-			upBean.setFREE_NO(FREE_NO);
-			upBean.setMEM_NO(bean.getMEM_NO());
-			upBean.setFREE_TITLE(request.getParameter("FREE_TITLE"));
-			upBean.setFREE_CONTENT(request.getParameter("FREE_CONTENT"));
-			upBean.setFREE_DATE(bean.getFREE_DATE());
-			upBean.setMEM_ID(bean.getMEM_ID());
-			upBean.setPART_NO(PART_NO);
-
-	
 		bMgr.updateBoard(upBean);
-	}
+		
+	
+		out.println("<script>");
+		out.println("alert('게시글이 수정되었습니다.');");
+		out.println("location.href = 'freeread.jsp?FREE_NO=" + FREE_NO + "';");
+		out.println("</script>");
+}
 }

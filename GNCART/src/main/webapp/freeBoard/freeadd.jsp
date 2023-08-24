@@ -35,7 +35,7 @@ int PartNo = (int)session.getAttribute("partNo");
         <h3>자유게시판 일정 추가</h3>
       </div>
       <div class="content">
-        <form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data">
+        <form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data" autocomplete="off">
           <table>
             <colgroup>
               <col class="col1" />

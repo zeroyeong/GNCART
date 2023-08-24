@@ -42,11 +42,11 @@
   <!--home-content-->  
 <div class="home-content">
   <div class="container">
-      <div class="title">
+      <div class="title"> 
         <h3>자유게시판 수정</h3>
       </div>
       <div class="content">
-        <form name="postFrm" method="post" action="boardUpdate" enctype="multipart/form-data">
+        <form name="postFrm" method="post" action="boardUpdate" autocomplete="off">
           <table>
             <colgroup>
               <col class="col1" />
@@ -77,7 +77,7 @@
             <tr>
               <td><span class="memeo">내용</span></td>
               <td colspan="3">
-                <textarea id="detailContent" name="FREE_CONTENT" rows="10"><%=FREE_CONTENT%></textarea>
+                <textarea id="detailContent" name="FREE_CONTENT" rows="10" spellcheck="false"><%=FREE_CONTENT%></textarea>
               </td>
             </tr>
           </table>  

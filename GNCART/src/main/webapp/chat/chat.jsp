@@ -125,7 +125,7 @@ chatRead = chatMgr.getRead(fromPartType, fromName);
 			<p>사원 목록</p>
 		</div>
 		<div class="searchBox">
-			<input id="searchbar" onkeydown="return searchEnter()" />
+			<input id="searchbar" onkeydown="return searchEnter()" autocomplete="off"/>
 			<button class="searchBtn" onclick="userSearch()">찾 기</button>
 		</div>
 		<div class="chat-list" id="allList">
@@ -187,7 +187,7 @@ chatRead = chatMgr.getRead(fromPartType, fromName);
 		</div>
 	</div>
 	
-	<form name="chatFrm" method="post" target="_self">
+	<form name="chatFrm" method="post" target="_self" autocomplete="off">
 		<!-- 히든 -->
 		<input type="hidden" id="toPartType" name="toPartType" value="<%=toPartType%>"> 
 		<input type="hidden" id="toName" name="toName" value="<%=toName%>"> 

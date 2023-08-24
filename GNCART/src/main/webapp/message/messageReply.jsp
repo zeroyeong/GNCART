@@ -59,7 +59,7 @@ String part_type = bean.getPART_TYPE();
 	        <h3>메시지 답장</h3>
 	      </div>
 	      <div class="content">
-			<form name="msgFrm" method="post" action="messagedPost" enctype="multipart/form-data">
+			<form name="msgFrm" method="post" action="messagedPost" enctype="multipart/form-data" autocomplete="off">
 	        <table>
 	          <colgroup>
 	            <col class="col1" />
