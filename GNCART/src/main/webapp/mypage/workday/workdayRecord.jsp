@@ -14,6 +14,7 @@ String memDate = pMgr.memNoDateFind(memNo);
 
 Vector<MypageBean> vlist = null;
 Vector<MypageBean> vlist2 = null;
+Vector<MypageBean> vlist3 = null;
 
 String[] monthVac = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
 String[] yearVac = {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"};
@@ -49,27 +50,22 @@ long days2 = 0;
 
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM");
+DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("yyyy");
 
 days = YEARS.between(LocalDate.parse(memDate, formatter), LocalDate.now());
 days2 = MONTHS.between(LocalDate.parse(memDate, formatter), LocalDate.now());
 
+String yearWork = LocalDate.now().minusYears(1).format(formatter3);
+
+vlist3 = wMgr.workdNoTotal(yearWork, memNo);
+
+int yearWorkLength = vlist3.size();
+
+double yearWorkDouble = (double) yearWorkLength / 260;
+
+if((int)days > 0 && yearWorkDouble >= 0.8) {
 switch ((int) days) {
 	case 0 :
-		for (int i = 1; i <= days2; i++) {
-	String monthWork = LocalDate.now().minusMonths(i).format(formatter2);
-
-	vlist2 = wMgr.workdNoTotal(monthWork, memNo);
-
-	int monthWorkLength = vlist2.size();
-
-	int monthLength = LocalDate.now().minusMonths(i).lengthOfMonth();
-
-	double workLength = (double) monthWorkLength / monthLength;
-
-	if (workLength >= 0.8) {
-		vac++;
-	}
-		}
 		break;
 
 	case 1 :
@@ -125,6 +121,25 @@ switch ((int) days) {
 	default :
 		vac = 25;
 		break;
+}
+} else if ((int)days > 0 && yearWorkDouble < 0.8) {
+	
+} else if ((int)days == 0) {
+	for (int i = 1; i <= days2; i++) {
+		String monthWork = LocalDate.now().minusMonths(i).format(formatter2);
+
+		vlist2 = wMgr.workdNoTotal(monthWork, memNo);
+
+		int monthWorkLength = vlist2.size();
+
+		int monthLength = LocalDate.now().minusMonths(i).lengthOfMonth();
+
+		double workLength = (double) monthWorkLength / monthLength;
+
+		if (workLength >= 0.8) {
+			vac++;
+		}
+			}
 }
 
 if (memNo != null) {
