@@ -62,15 +62,7 @@ table{
   margin-bottom:20px;
 }
 
-td:first-child{
-  padding:10px 0px;
-  width:20%;
-}
 
-td:last-child{
-	padding:10px 0px 10px 10px;
-	width:80%;
-}
 
 /**********************************/
 /***************버튼***************/

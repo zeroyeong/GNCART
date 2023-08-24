@@ -177,7 +177,9 @@ public class ManagementMgr {
 			
 			if(multi.getFilesystemName("MEM_IMG")!=null) {
 				MEM_IMG = multi.getFilesystemName("MEM_IMG");
-			}			
+			}else {
+				MEM_IMG = "profile.jpg";
+			}
 			
 			sql = "insert into member(MEM_NAME, MEM_ID, MEM_PW, MEM_DATE, MEM_TEL, MEM_MAIL, MEM_PHONE, MEM_ADD, MEM_BIRTH, MEM_AND, MEM_IMG, AC_NO, WORK_NO, PART_NO, LE_NO, AP_NO)";
 			sql += "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

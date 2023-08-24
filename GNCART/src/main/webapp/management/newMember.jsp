@@ -56,6 +56,7 @@
              <td rowspan="4">
               <div class="imgArea">
                 <img src="../images/profile.jpg" id="memImg"/>
+                <input type="file" name="MEM_IMG" accept="image/*" onchange="changePic(event)">
               </div>
                
              </td>
@@ -66,7 +67,7 @@
              <td>ID</td>
              <td>
                <input type="text" name="MEM_ID" id="id"/>
-               <button onclick="idCheck(this.form.MEM_ID.value)">중복확인</button>
+               <input type="button" onclick="idCheck(this.form.MEM_ID.value)" value="중복확인">
              </td>
            </tr>
            <tr>
@@ -239,10 +240,11 @@
 	  if(id == ""){
 		  alert("아이디를 입력해 주세요.");
 		  frm.MEM_ID.focus();
-		  return;
+	  } else{
+		  url = "idCheck.jsp?MEM_ID="+id;
+		  window.open(url, "IDCheck", "width=380, height=200");
 	  }
-	  url = "idCheck.jsp?MEM_ID="+id;
-	  window.open(url, "IDCheck", "width=380, height=200");
+	  
   }
   
   function check(){

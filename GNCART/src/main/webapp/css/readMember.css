@@ -9,6 +9,50 @@
   --white-color: #fff;
 
   --search-border-color: grey;
+  
+  --bottomMargin: 20px;
+  --mediumBottomMargin: 10px;
+  --smallBottomMargin: 5px;
+
+  /* font */
+  --fontColor: #333;
+
+  --smallFontSize: 0.9em;
+  --smallFontColor: #808080;
+
+  /* container */
+  --containerBorder: 3px solid #eee;
+  --containerPadding: 30px;
+  --containerMargin: 20px;
+  --containerBorderRadius: 20px;
+  --containerBackColor: #fff;
+
+  /* title */
+  --titleBorder: 3px solid #eee;
+  --titlePadding: 10px 20px;
+  --titleMargin: 20px;
+
+  /* table */
+  --tableBorder: 1px solid #333;
+  --tablePadding: 10px 15px;
+
+  --tableInputPadding: 7px 8px;
+  --tableRadioMargin: 0 5px;
+
+  --tableImgWSize: 120px;
+  --tableImgHSize: 160px;
+
+  --tableBottomMargin: 20px;
+
+  /* button */
+  --buttonBackColor: #eee;
+  --buttonRadius: 5px;
+  --buttonPadding: 5px;
+  --buttonFontSize: 0.9em;
+  --buttonTransition: 0.3s;
+
+  --buttonHoverBackColor: rgba(103, 103, 105, 0.767);
+  --buttonHoverFontColor: #fff;
 }
 
 /* css 기본설정 */
@@ -47,6 +91,39 @@ button {
   padding: 30px;
   margin: 20px;
 }
+
+/* Member Top */
+.memberTop {
+  margin-bottom: 20px;
+}
+
+.memberTop .title {
+  padding: 5px;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+.memberTop .memberMenu {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* .memberTop .memberMenu button { */
+/*   margin-right: 10px; */
+/*   padding: 5px; */
+/*   border-radius: 5px; */
+/*   font-size: 0.9em; */
+/*   font-weight: bold; */
+/*   color: var(--main-color); */
+/*   background-color: var(--basic-color); */
+/*   transition: 0.3s; */
+/* } */
+
+.memberTop .memberMenu button:hover {
+  color: var(--white-color);
+  background-color: var(--hover-color);
+}
+
 
 /* Page Title - 제목 */
 .pageTitle {

@@ -51,7 +51,7 @@
 	<link rel="stylesheet" href="../css/readMember.css">
 	
 	<!-- 현재 파일 - includeTop css -->
-	<link rel="stylesheet" href="include/include.css">
+	<link rel="stylesheet" href="include/include.css?ssdfdfs">
 	
 	<script>
 		function list(){
