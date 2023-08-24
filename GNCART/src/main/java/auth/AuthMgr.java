@@ -199,6 +199,7 @@ public class AuthMgr {
 				bean.setLINE_NO(rs.getInt("LINE_NO"));
 				bean.setVAC_NO(rs.getInt("VAC_NO"));
 				bean.setBUS_NO(rs.getInt("BUS_NO"));
+				bean.setMEM_NO(rs.getInt("MEM_NO"));
 				vlist.add(bean);
 			}
 		} catch (Exception e) {

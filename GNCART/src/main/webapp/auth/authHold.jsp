@@ -70,54 +70,55 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%
-                                Vector<AuthBean> vlist = aMgr.getAuthList();
-                                if (!vlist.isEmpty()) {
-                                    for (int i = 0; i < vlist.size(); i++) {
-                                        AuthBean bean = vlist.get(i);
-                                        int DOC_NO = bean.getDOC_NO();
-                                        String DOC_NAME = bean.getDOC_NAME();
-                                        String MEM_NAME = bean.getMEM_NAME();
-                                        int DOC_STATES = bean.getDOC_STATES();
-                                        String DOC_REGDATE = bean.getDOC_REGDATE();
-                                        String DOC_APPDATE = bean.getDOC_APPDATE();
-                                        int DOC_TYPE = bean.getDOC_TYPE();
-                                        int DOC_APPTURN = bean.getDOC_APPTURN();
-                                        int LINE_NO = bean.getLINE_NO();
-                                        int VAC_NO = bean.getVAC_NO();
-                                        int BUS_NO = bean.getBUS_NO();
-	
-                                        String linkFunction = (DOC_TYPE == 1) ? "vacView" : "busView";
+<%
+Vector<AuthBean> vlist = aMgr.getAuthList();
+if (!vlist.isEmpty()) {
+    for (int i = 0; i < vlist.size(); i++) {
+        AuthBean bean = vlist.get(i);
+        int DOC_NO = bean.getDOC_NO();
+        String DOC_NAME = bean.getDOC_NAME();
+        String MEM_NAME = bean.getMEM_NAME();
+        int DOC_STATES = bean.getDOC_STATES();
+        String DOC_REGDATE = bean.getDOC_REGDATE();
+        String DOC_APPDATE = bean.getDOC_APPDATE();
+        int DOC_TYPE = bean.getDOC_TYPE();
+        int DOC_APPTURN = bean.getDOC_APPTURN();
+        int LINE_NO = bean.getLINE_NO();
+        int VAC_NO = bean.getVAC_NO();
+        int BUS_NO = bean.getBUS_NO();
+        int MEM_NO = bean.getMEM_NO();
 
-                                        boolean isApprover = (leNo == 3 && DOC_STATES == 0) || (leNo == 4 && DOC_STATES == 0) || (leNo == 4 && DOC_STATES == 1);
+        String linkFunction = (DOC_TYPE == 1) ? "vacView" : "busView";
 
-                                        if (isApprover) {
-                            %>
-                            <tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
-                                <td><input type="checkbox" name="chk" class="myCheckbox" value="<%=LINE_NO %>,<%=VAC_NO %>,<%=BUS_NO %>"></td>
-                                <td><%= DOC_NO %></td>
-                                <td><%= DOC_NAME %></td>
-                                <td><%= MEM_NAME %></td>
-                                <td>
-                                    <%
-                                        if (DOC_STATES == 0) { out.println("대기"); }
-                                        else if (DOC_STATES == 1 || DOC_APPTURN == 1) { out.println("승인"); }
-                                        else if (DOC_STATES == 2) { out.println("반려"); }
-                                        else { out.println("종결"); }
-                                    %>
-                                </td>
-                                <td><%= DOC_REGDATE %></td>
-                                <td>
-                                    <%
-                                        if (DOC_APPDATE == null) { out.println("결재대기중"); }
-                                    %>
-                                </td>
-                            </tr>
-                            <%
-                                        }
-                                    }
-                                }
-                            %>
+        boolean isApprover = (leNo == 3 && DOC_STATES == 0) || (leNo == 4 && DOC_STATES == 0) || (leNo == 4 && DOC_STATES == 1);
+
+        if (isApprover && (session.getAttribute("memNo") == null || !session.getAttribute("memNo").equals(MEM_NO))) {
+%>
+<tr class="authOnclick" onclick="javascript:<%= linkFunction %>(' <%= DOC_NO %> ')">
+    <td><input type="checkbox" name="chk" class="myCheckbox" value="<%=LINE_NO %>,<%=VAC_NO %>,<%=BUS_NO %>"></td>
+    <td><%= DOC_NO %></td>
+    <td><%= DOC_NAME %></td>
+    <td><%= MEM_NAME %></td>
+    <td>
+        <%
+            if (DOC_STATES == 0) { out.println("대기"); }
+            else if (DOC_STATES == 1 || DOC_APPTURN == 1) { out.println("승인"); }
+            else if (DOC_STATES == 2) { out.println("반려"); }
+            else { out.println("종결"); }
+        %>
+    </td>
+    <td><%= DOC_REGDATE %></td>
+    <td>
+        <%
+            if (DOC_APPDATE == null) { out.println("결재대기중"); }
+        %>
+    </td>
+</tr>
+<%
+        }
+    }
+}
+%>
                         </tbody> 
                     </table>
                     </form>
