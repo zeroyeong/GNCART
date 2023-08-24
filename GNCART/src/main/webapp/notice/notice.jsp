@@ -17,7 +17,7 @@ blist = nMgr.getBoardList();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="../css/notice.css">
+<link rel="stylesheet" href="../css/notice.css?1">
 
 
 <!--Boxicons CDN Link-->
@@ -110,9 +110,11 @@ blist = nMgr.getBoardList();
             
             </ul>  
             <div class="button">
+           	 <a href="noticeWrite.jsp">
               <button type="button">
-                <a href="noticeWrite.jsp">글쓰기</a>
+                글쓰기
               </button>
+              </a>
 				<button class="del" type="button" onclick="submitForm()">삭제</button>
             </div>
           </div>

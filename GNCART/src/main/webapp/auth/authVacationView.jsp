@@ -154,7 +154,7 @@ boolean secondApproved = aMgr.secondApproved(LINE_NO);
  				<% } %> 
 				<% } else if((Name.equals(LINE_SECOND) && DOC_APPTURN == 1) || (LINE_FIRST == null && leNo == 4)) { %>
  				<% if (DOC_STATES != 2 && DOC_STATES != 3) { %>
-  			   	<button class="submitBtn" type="submit" name="action" value="second">승인</button>
+  			   	<button class="submitBtn" type="submit" name="action" value="second1">승인</button>
    			 	<button class="submitBtn" type="submit" name="action" value="reject">반려</button>
  				<% } %>
 				<% } %>

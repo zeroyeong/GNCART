@@ -36,7 +36,7 @@ session.setAttribute("bean", bean);//게시물을 세션에 저장
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GNC:ART</title>
 <link rel="stylesheet" href="../css/index.css"> 
-<link rel="stylesheet" href="../css/noticeView.css">
+<link rel="stylesheet" href="../css/noticeView.css?1">
 <!--Boxicons CDN Link-->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 	rel='stylesheet'>
