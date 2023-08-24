@@ -75,7 +75,7 @@ String[] filenames = EVENT_FILENAME.split(",");
 						</colgroup>
 						<tr>
 							<th>제목</th>
-							<td><%=EVENT_TITLE%></td>
+							<td><b>[<%=EVENT_SUB %>]</b><%=EVENT_TITLE%></td>
 							<th>날짜</th>
 							<td><%=EVENT_DATE%></td>
 						</tr>
