@@ -94,7 +94,7 @@ int memNo = (int)session.getAttribute("memNo");
 	              </td>
 	            </tr>
 	            <tr>
-	                  <td><span>부서 / 이름</span></td>
+	              <td><span>부서 / 이름</span></td>
 	              <td colspan="3">
 	                <div class="user">
 	                  <input type="text" id="user_part_name" name="user_part_name" placeholder="부서 / 이름" value="<%= userPart %> / <%= userName %>"readonly/>
@@ -109,9 +109,9 @@ int memNo = (int)session.getAttribute("memNo");
 	              </td>
 	            </tr>
 	            <tr>
-	                  <td><span class="memeo">내용</span></td>
+	             <td><span class="memeo">내용</span></td>
 	              <td colspan="3">
-	                <textarea id="detailContent" name="content" rows="10"><%=content%></textarea>
+	                <textarea id="detailContent" name="content" rows="10" spellcheck="false"><%=content%></textarea>
 	              </td>
 	            </tr>
 	            <tr>
@@ -126,7 +126,7 @@ int memNo = (int)session.getAttribute("memNo");
 	                  <!--지도삭제 누르면 지도찾기 버튼-->
 	                </div>
 	                <div class="changeBox" id="changeMap" style="display: none;">
-	                  <input id="kakaoField" placeholder="지도첨부" readonly>
+	                  <input type="text" id="kakaoField" placeholder="지도첨부" readonly>
 	                  <input type="button" id="mapBtn" onclick="mapSearch()" value="지도찾기"/>
 	                </div>         
 	              <%
