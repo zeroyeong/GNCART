@@ -155,16 +155,18 @@ int memNo = (int)session.getAttribute("memNo");
 	                  </div>
                       <div class="changeBox" id="changeFile" style="display: none;">
                         <input type="text" id="filename" placeholder="첨부파일" readonly>
+                        <label for="file">파일찾기</label> 
 	                    <input type="file" id="file" name="filename" onclick="findFile()">
 	                  </div>
 	                </div>
 	                <%
 	                } else {
 	                %>
-	                <div class="file">
-	                  <input type="text" id="filename" placeholder="첨부파일" readonly>
-	                  <input type="file" id="file" name="filename" onclick="findFile()"/>
-	                </div>    
+	                  <div class="file">
+	                    <input type="text" id="filename" placeholder="첨부파일" readonly/>
+	                    <label for="file">파일찾기</label> 
+	                    <input type="file" id="file" name="filename" onclick="findFile()"/>
+	                  </div>  
 	                <%
 	                }
 	                %>
