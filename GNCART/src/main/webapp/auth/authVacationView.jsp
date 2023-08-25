@@ -5,7 +5,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="auth.AuthBean"%>
 <jsp:useBean id="aMgr" class="auth.AuthMgr" />
-<%
+<% 
 if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
     response.sendRedirect("../login.jsp");
 

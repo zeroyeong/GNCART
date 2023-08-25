@@ -5,7 +5,7 @@
 <jsp:useBean id="manageMgr" class="management.ManagementBean" />
 <jsp:useBean id="aMgr" class="auth.AuthMgr" />
 <jsp:useBean id="mMgr" class="login.MemberMgr"/>
-
+ 
 <%
 	request.setCharacterEncoding("UTF-8");
     if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)

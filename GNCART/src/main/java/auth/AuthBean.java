@@ -1,5 +1,5 @@
 package auth;
-
+ 
 public class AuthBean {
 	/*결재 통합*/
 	private int DOC_NO; 

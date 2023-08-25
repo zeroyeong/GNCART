@@ -3,7 +3,7 @@
 <jsp:useBean id="mMgr" class="login.MemberMgr" />
 <%@ page import="auth.AuthMgr"%>
 <%@ page import="java.util.*"%>
-<%
+<% 
 	request.setCharacterEncoding("UTF-8");
 	if (session.getAttribute("idKey") == null || session.getAttribute("pwKey") == null)
 		response.sendRedirect("../login.jsp");
