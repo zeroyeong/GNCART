@@ -191,7 +191,7 @@ Vector<EventBean> eventList = eventMgr.getBoardList("","",0,1);
 					</div>
 					<div class="schedule-details">
 						<%
-						int numToDisplay = Math.min(scheduleList.size(), 15);
+						int numToDisplay = Math.min(scheduleList.size(), 13);
 						if (numToDisplay > 0) {
 						%>
 						<table class="details">
